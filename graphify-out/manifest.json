@@ -5,19 +5,19 @@
     "semantic_hash": "598cb075410bcd95220ac90bbb60344a"
   },
   ".claude/settings.local.json": {
-    "mtime": 1783398052.8867195,
-    "ast_hash": "4cdd637cd6c892f33b4e3d9fab100211",
-    "semantic_hash": "4cdd637cd6c892f33b4e3d9fab100211"
+    "mtime": 1783433275.5571024,
+    "ast_hash": "db092ce59dc278dc3f3160b12c9206d5",
+    "semantic_hash": ""
   },
   "app/api/auth/login/route.ts": {
-    "mtime": 1783323916.9439688,
-    "ast_hash": "7016f64ab1be156aa4df1af92761c549",
-    "semantic_hash": "7016f64ab1be156aa4df1af92761c549"
+    "mtime": 1783425937.7956843,
+    "ast_hash": "dfe1eb1239627cc1fa776e66543f398d",
+    "semantic_hash": ""
   },
   "app/api/auth/verify-otp/route.ts": {
-    "mtime": 1783337299.045128,
-    "ast_hash": "68004c93c5b42e10241f509476b8a69a",
-    "semantic_hash": "68004c93c5b42e10241f509476b8a69a"
+    "mtime": 1783425947.0275047,
+    "ast_hash": "fd2ba0d6d73ceb6e6570021ac6913692",
+    "semantic_hash": ""
   },
   "app/fonts/fontsConfig.ts": {
     "mtime": 1769346140.0,
@@ -25,7 +25,7 @@
     "semantic_hash": "55122a94cfdf1ed7d463a9a45b9c066b"
   },
   "app/layout.tsx": {
-    "mtime": 1783349953.3921244,
+    "mtime": 1783429949.1154077,
     "ast_hash": "30adf224901c6787897715f8c4ca2e13",
     "semantic_hash": "30adf224901c6787897715f8c4ca2e13"
   },
@@ -45,9 +45,9 @@
     "semantic_hash": "4f7f286a0f27bdf9c71fc03fe33acc90"
   },
   "app/page.tsx": {
-    "mtime": 1783362782.9505248,
-    "ast_hash": "21ccd606c0c540a4400e3e38005767bb",
-    "semantic_hash": "21ccd606c0c540a4400e3e38005767bb"
+    "mtime": 1783430894.9522078,
+    "ast_hash": "d6971c7882d6bdae74c2a56222951fa3",
+    "semantic_hash": ""
   },
   "app/product/[slug]/page.tsx": {
     "mtime": 1783405137.824278,
@@ -65,9 +65,9 @@
     "semantic_hash": ""
   },
   "components/Hero.tsx": {
-    "mtime": 1783350210.5095692,
-    "ast_hash": "f42a27387d4943afcf7f0c7a2974c97d",
-    "semantic_hash": "f42a27387d4943afcf7f0c7a2974c97d"
+    "mtime": 1783431424.8146095,
+    "ast_hash": "d44b3d6021235a1b619a76e9593ac7e8",
+    "semantic_hash": ""
   },
   "components/LoginForm.tsx": {
     "mtime": 1783323784.6860938,
@@ -80,8 +80,8 @@
     "semantic_hash": "9675b6a61e7b9f0827e1e124c31b38f1"
   },
   "components/Navbar.tsx": {
-    "mtime": 1783410083.776006,
-    "ast_hash": "94c4d514ce69cc194f8cbc2149d6cf37",
+    "mtime": 1783432740.9184692,
+    "ast_hash": "4cf8410e58b2d6e4be5b2cfe5abc8088",
     "semantic_hash": ""
   },
   "components/NewsletterForm.tsx": {
@@ -365,8 +365,8 @@
     "semantic_hash": ""
   },
   "app/collections/page.tsx": {
-    "mtime": 1783410366.6265109,
-    "ast_hash": "69485b249f4afeb183867f22acf9b0ae",
+    "mtime": 1783425124.3231852,
+    "ast_hash": "9ebd3237571ad6a0a51e44de12753840",
     "semantic_hash": ""
   },
   "components/CollectionsShowcase.tsx": {
@@ -380,13 +380,48 @@
     "semantic_hash": ""
   },
   "app/about/page.tsx": {
-    "mtime": 1783411990.7100434,
-    "ast_hash": "32179037224c192665c013ab24b21222",
+    "mtime": 1783433145.3818579,
+    "ast_hash": "27093a6f42d83d9372de2c855e10ff31",
     "semantic_hash": ""
   },
   "app/contact-me/page.tsx": {
-    "mtime": 1783412107.715112,
-    "ast_hash": "ef91a6e5921f44180d0c752e4d8b8f8d",
+    "mtime": 1783424692.9402657,
+    "ast_hash": "57279a6883d3180ad08f99d3bb7b3e5b",
+    "semantic_hash": ""
+  },
+  "app/collections/[slug]/page.tsx": {
+    "mtime": 1783430014.4522963,
+    "ast_hash": "f820f03f718679e33fc2d34f50f6ec72",
+    "semantic_hash": ""
+  },
+  "app/error.tsx": {
+    "mtime": 1783430360.3620973,
+    "ast_hash": "397c4848c2c0ca5d57e6d64bb6ed0bbb",
+    "semantic_hash": ""
+  },
+  "app/loading.tsx": {
+    "mtime": 1783430343.4485,
+    "ast_hash": "1d2c3e4e1cb10876f628b320193a6baa",
+    "semantic_hash": ""
+  },
+  "app/not-found.tsx": {
+    "mtime": 1783430629.180934,
+    "ast_hash": "be91eae8821ac8cf95da2c84de589647",
+    "semantic_hash": ""
+  },
+  "types/singleCollection.d.ts": {
+    "mtime": 1783429047.9751282,
+    "ast_hash": "02c0653fe215a0fd4558a6d16ca93db7",
+    "semantic_hash": ""
+  },
+  "utils/getURL.ts": {
+    "mtime": 1783425103.6426854,
+    "ast_hash": "9354ea7a9e39968f29fc77e67d3aeca8",
+    "semantic_hash": ""
+  },
+  "public/assets/adagio.png": {
+    "mtime": 1783425565.7147968,
+    "ast_hash": "bb58c09170f197d83b6f9a84fc9bfab1",
     "semantic_hash": ""
   }
 }

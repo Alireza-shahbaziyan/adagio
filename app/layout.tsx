@@ -4,6 +4,7 @@ import { interFontForEnglishChar, yekanBakhFontForFarsiChar, nastaliq } from "./
 import "./globals.css";
 import { Providers } from "@/lib/providers";
 import Toast from "@/components/Toast";
+import { cn } from "@/lib/utils";
 
 const vazirmatn = Vazirmatn({
   variable: "--font-vazirmatn",
@@ -38,9 +39,9 @@ export default function RootLayout({
     <html
       lang="fa"
       dir="rtl"
-      className={`${vazirmatn.variable} ${instrumentSerif.variable} ${anton.variable} ${interFontForEnglishChar.variable} ${yekanBakhFontForFarsiChar.variable} ${nastaliq.variable}`}
+      className={cn(vazirmatn.variable, instrumentSerif.variable, anton.variable, interFontForEnglishChar.variable, yekanBakhFontForFarsiChar.variable, nastaliq.variable)}
     >
-      <body className="bg-[#090909] text-white antialiased">
+      <body className="bg-background text-foreground antialiased">
         <Providers>
           {children}
           <Toast />

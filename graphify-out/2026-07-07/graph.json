@@ -52,6 +52,46 @@
   },
   "nodes": [
     {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/about/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_about_page",
+      "community": 118,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "metadata",
+      "file_type": "code",
+      "source_file": "app/about/page.tsx",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "app_about_page_metadata",
+      "community": 118,
+      "norm_label": "metadata"
+    },
+    {
+      "label": "values",
+      "file_type": "code",
+      "source_file": "app/about/page.tsx",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "app_about_page_values",
+      "community": 118,
+      "norm_label": "values"
+    },
+    {
+      "label": "AboutPage()",
+      "file_type": "code",
+      "source_file": "app/about/page.tsx",
+      "source_location": "L28",
+      "_origin": "ast",
+      "id": "app_about_page_aboutpage",
+      "community": 118,
+      "norm_label": "aboutpage()"
+    },
+    {
       "label": "route.ts",
       "file_type": "code",
       "source_file": "app/api/auth/login/route.ts",
@@ -120,6 +160,46 @@
       "id": "app_collections_page_collectionspage",
       "community": 1,
       "norm_label": "collectionspage()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/contact-me/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_contact_me_page",
+      "community": 118,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "metadata",
+      "file_type": "code",
+      "source_file": "app/contact-me/page.tsx",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "app_contact_me_page_metadata",
+      "community": 118,
+      "norm_label": "metadata"
+    },
+    {
+      "label": "contactInfo",
+      "file_type": "code",
+      "source_file": "app/contact-me/page.tsx",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "app_contact_me_page_contactinfo",
+      "community": 118,
+      "norm_label": "contactinfo"
+    },
+    {
+      "label": "ContactPage()",
+      "file_type": "code",
+      "source_file": "app/contact-me/page.tsx",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "app_contact_me_page_contactpage",
+      "community": 118,
+      "norm_label": "contactpage()"
     },
     {
       "label": "fontsConfig.ts",
@@ -338,7 +418,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_bestsellerscarousel",
-      "community": 6,
+      "community": 117,
       "norm_label": "bestsellerscarousel.tsx"
     },
     {
@@ -348,7 +428,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "components_bestsellerscarousel_bestsellerscarousel",
-      "community": 6,
+      "community": 117,
       "norm_label": "bestsellerscarousel()"
     },
     {
@@ -388,7 +468,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_footer",
-      "community": 1,
+      "community": 118,
       "norm_label": "footer.tsx"
     },
     {
@@ -398,7 +478,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "components_footer_footer",
-      "community": 1,
+      "community": 118,
       "norm_label": "footer()"
     },
     {
@@ -758,7 +838,7 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "components_icons_chevronlefticon",
-      "community": 1,
+      "community": 117,
       "norm_label": "chevronlefticon()"
     },
     {
@@ -768,7 +848,7 @@
       "source_location": "L63",
       "_origin": "ast",
       "id": "components_icons_chevronrighticon",
-      "community": 6,
+      "community": 117,
       "norm_label": "chevronrighticon()"
     },
     {
@@ -898,7 +978,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "lib_app_state_appstateprovider",
-      "community": 4,
+      "community": 1,
       "norm_label": "appstateprovider()"
     },
     {
@@ -998,7 +1078,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_products",
-      "community": 6,
+      "community": 117,
       "norm_label": "products.ts"
     },
     {
@@ -1008,7 +1088,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_products_product",
-      "community": 6,
+      "community": 117,
       "norm_label": "product"
     },
     {
@@ -1018,7 +1098,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "lib_products_products",
-      "community": 6,
+      "community": 117,
       "norm_label": "products"
     },
     {
@@ -1028,7 +1108,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "lib_products_collection_label",
-      "community": 6,
+      "community": 117,
       "norm_label": "collection_label"
     },
     {
@@ -1038,7 +1118,7 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "lib_products_getproductbyslug",
-      "community": 6,
+      "community": 117,
       "norm_label": "getproductbyslug()"
     },
     {
@@ -1048,7 +1128,7 @@
       "source_location": "L54",
       "_origin": "ast",
       "id": "lib_products_getotherproducts",
-      "community": 6,
+      "community": 117,
       "norm_label": "getotherproducts()"
     },
     {
@@ -1058,7 +1138,7 @@
       "source_location": "L61",
       "_origin": "ast",
       "id": "lib_products_product_accordion",
-      "community": 6,
+      "community": 117,
       "norm_label": "product_accordion"
     },
     {
@@ -1068,7 +1148,7 @@
       "source_location": "L82",
       "_origin": "ast",
       "id": "lib_products_sizes",
-      "community": 6,
+      "community": 117,
       "norm_label": "sizes"
     },
     {
@@ -1078,7 +1158,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_providers",
-      "community": 4,
+      "community": 1,
       "norm_label": "providers.tsx"
     },
     {
@@ -1242,10 +1322,20 @@
       "norm_label": "@tanstack/react-query"
     },
     {
-      "label": "next",
+      "label": "lucide-react",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L13",
+      "_origin": "ast",
+      "id": "package_dependencies_lucide_react",
+      "community": 3,
+      "norm_label": "lucide-react"
+    },
+    {
+      "label": "next",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L14",
       "_origin": "ast",
       "id": "package_dependencies_next",
       "community": 3,
@@ -1255,7 +1345,7 @@
       "label": "react",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L14",
+      "source_location": "L15",
       "_origin": "ast",
       "id": "package_dependencies_react",
       "community": 3,
@@ -1265,7 +1355,7 @@
       "label": "react-dom",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L15",
+      "source_location": "L16",
       "_origin": "ast",
       "id": "package_dependencies_react_dom",
       "community": 3,
@@ -1275,7 +1365,7 @@
       "label": "react-hook-form",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L16",
+      "source_location": "L17",
       "_origin": "ast",
       "id": "package_dependencies_react_hook_form",
       "community": 3,
@@ -1285,7 +1375,7 @@
       "label": "devDependencies",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L18",
+      "source_location": "L19",
       "_origin": "ast",
       "id": "package_devdependencies",
       "community": 3,
@@ -1295,7 +1385,7 @@
       "label": "@tailwindcss/postcss",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L19",
+      "source_location": "L20",
       "_origin": "ast",
       "id": "package_devdependencies_tailwindcss_postcss",
       "community": 3,
@@ -1305,7 +1395,7 @@
       "label": "@tanstack/eslint-plugin-query",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L20",
+      "source_location": "L21",
       "_origin": "ast",
       "id": "package_devdependencies_tanstack_eslint_plugin_query",
       "community": 3,
@@ -1315,7 +1405,7 @@
       "label": "@types/node",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L21",
+      "source_location": "L22",
       "_origin": "ast",
       "id": "package_devdependencies_types_node",
       "community": 3,
@@ -1325,7 +1415,7 @@
       "label": "@types/react",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L22",
+      "source_location": "L23",
       "_origin": "ast",
       "id": "package_devdependencies_types_react",
       "community": 3,
@@ -1335,7 +1425,7 @@
       "label": "@types/react-dom",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L23",
+      "source_location": "L24",
       "_origin": "ast",
       "id": "package_devdependencies_types_react_dom",
       "community": 3,
@@ -1345,7 +1435,7 @@
       "label": "eslint",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L24",
+      "source_location": "L25",
       "_origin": "ast",
       "id": "package_devdependencies_eslint",
       "community": 3,
@@ -1355,7 +1445,7 @@
       "label": "eslint-config-next",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L25",
+      "source_location": "L26",
       "_origin": "ast",
       "id": "package_devdependencies_eslint_config_next",
       "community": 3,
@@ -1365,7 +1455,7 @@
       "label": "tailwindcss",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L26",
+      "source_location": "L27",
       "_origin": "ast",
       "id": "package_devdependencies_tailwindcss",
       "community": 3,
@@ -1375,7 +1465,7 @@
       "label": "typescript",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L27",
+      "source_location": "L28",
       "_origin": "ast",
       "id": "package_devdependencies_typescript",
       "community": 3,
@@ -3843,7 +3933,7 @@
       "contributor": null,
       "community": 71,
       "norm_label": "graphify trigger rule (.claude/claude.md)",
-      "id": "claude_claude_claude_claude_claude_graphify_trigger_rule"
+      "id": "claude_claude_claude_claude_claude_claude_graphify_trigger_rule"
     },
     {
       "label": "Apache License 2.0 (frontend-design, .claude)",
@@ -5023,6 +5113,47 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "app/about/page.tsx",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "app_about_page",
+      "target": "app_about_page_aboutpage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/about/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_about_page",
+      "target": "app_about_page_metadata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/about/page.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "app_about_page",
+      "target": "app_about_page_values",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/about/page.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "app_about_page",
+      "target": "components_footer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "app/api/auth/login/route.ts",
       "source_location": "L5",
       "weight": 1.0,
@@ -5102,6 +5233,47 @@
       "weight": 1.0,
       "source": "app_collections_page",
       "target": "components_navbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/contact-me/page.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "app_contact_me_page",
+      "target": "app_contact_me_page_contactinfo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/contact-me/page.tsx",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "app_contact_me_page",
+      "target": "app_contact_me_page_contactpage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/contact-me/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "app_contact_me_page",
+      "target": "app_contact_me_page_metadata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/contact-me/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "app_contact_me_page",
+      "target": "components_footer",
       "confidence_score": 1.0
     },
     {
@@ -6922,7 +7094,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "package.json",
-      "source_location": "L18",
+      "source_location": "L19",
       "weight": 1.0,
       "source": "package",
       "target": "package_devdependencies",
@@ -7015,7 +7187,7 @@
       "source_location": "L13",
       "weight": 1.0,
       "source": "package_dependencies",
-      "target": "package_dependencies_next",
+      "target": "package_dependencies_lucide_react",
       "confidence_score": 1.0
     },
     {
@@ -7025,7 +7197,7 @@
       "source_location": "L14",
       "weight": 1.0,
       "source": "package_dependencies",
-      "target": "package_dependencies_react",
+      "target": "package_dependencies_next",
       "confidence_score": 1.0
     },
     {
@@ -7035,7 +7207,7 @@
       "source_location": "L15",
       "weight": 1.0,
       "source": "package_dependencies",
-      "target": "package_dependencies_react_dom",
+      "target": "package_dependencies_react",
       "confidence_score": 1.0
     },
     {
@@ -7043,6 +7215,16 @@
       "confidence": "EXTRACTED",
       "source_file": "package.json",
       "source_location": "L16",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_react_dom",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L17",
       "weight": 1.0,
       "source": "package_dependencies",
       "target": "package_dependencies_react_hook_form",
@@ -7062,7 +7244,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "package.json",
-      "source_location": "L24",
+      "source_location": "L25",
       "weight": 1.0,
       "source": "package_devdependencies",
       "target": "package_devdependencies_eslint",
@@ -7072,7 +7254,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "package.json",
-      "source_location": "L25",
+      "source_location": "L26",
       "weight": 1.0,
       "source": "package_devdependencies",
       "target": "package_devdependencies_eslint_config_next",
@@ -7082,7 +7264,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "package.json",
-      "source_location": "L26",
+      "source_location": "L27",
       "weight": 1.0,
       "source": "package_devdependencies",
       "target": "package_devdependencies_tailwindcss",
@@ -7092,7 +7274,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "package.json",
-      "source_location": "L19",
+      "source_location": "L20",
       "weight": 1.0,
       "source": "package_devdependencies",
       "target": "package_devdependencies_tailwindcss_postcss",
@@ -7102,7 +7284,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "package.json",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0,
       "source": "package_devdependencies",
       "target": "package_devdependencies_tanstack_eslint_plugin_query",
@@ -7112,7 +7294,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "package.json",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0,
       "source": "package_devdependencies",
       "target": "package_devdependencies_types_node",
@@ -7122,7 +7304,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "package.json",
-      "source_location": "L22",
+      "source_location": "L23",
       "weight": 1.0,
       "source": "package_devdependencies",
       "target": "package_devdependencies_types_react",
@@ -7132,7 +7314,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "package.json",
-      "source_location": "L23",
+      "source_location": "L24",
       "weight": 1.0,
       "source": "package_devdependencies",
       "target": "package_devdependencies_types_react_dom",
@@ -7142,7 +7324,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "package.json",
-      "source_location": "L27",
+      "source_location": "L28",
       "weight": 1.0,
       "source": "package_devdependencies",
       "target": "package_devdependencies_typescript",

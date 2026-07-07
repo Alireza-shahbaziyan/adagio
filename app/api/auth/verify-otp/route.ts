@@ -1,6 +1,7 @@
+import { backend } from "@/utils/getURL";
 import { NextRequest, NextResponse } from "next/server";
 
-const backend = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
+
 
 export async function POST(req: NextRequest) {
   try {

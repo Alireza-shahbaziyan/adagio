@@ -1,11 +1,11 @@
 # Graph Report - online-shop  (2026-07-07)
 
 ## Corpus Check
-- 62 files · ~176,442 words
+- 64 files · ~177,258 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 464 nodes · 473 edges · 117 communities (26 shown, 91 thin omitted)
+- 473 nodes · 482 edges · 119 communities (28 shown, 91 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 1% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.76)
 - Token cost: 0 input · 0 output
 
@@ -128,6 +128,8 @@
 - [[_COMMUNITY_Community 114|Community 114]]
 - [[_COMMUNITY_Community 115|Community 115]]
 - [[_COMMUNITY_Community 116|Community 116]]
+- [[_COMMUNITY_Community 117|Community 117]]
+- [[_COMMUNITY_Community 118|Community 118]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `compilerOptions` - 16 edges
@@ -161,7 +163,7 @@
 - **Adagio site: Home, Login, Product pages form one navigable site** — project_home_dc_component, project_login_dc_component, project_product_dc_component [EXTRACTED 1.00]
 - **Shared toast-notification pattern across Home/Login/Product** — project_home_dc_showtoast, project_login_dc_showtoast, project_product_dc_showtoast [INFERRED 0.85]
 
-## Communities (117 total, 91 thin omitted)
+## Communities (119 total, 91 thin omitted)
 
 ### Community 0 - "DC Template Runtime (prototype engine)"
 Cohesion: 0.07
@@ -169,7 +171,7 @@ Nodes (42): boot(), collectProps(), compileAttr(), compileTemplate(), contentKey
 
 ### Community 1 - "Storefront UI Components"
 Cohesion: 0.07
-Nodes (27): SearchParams, Hero(), BagIcon(), ChevronDownIcon(), ChevronLeftIcon(), CloseIcon(), HeartIcon(), HomeIcon() (+19 more)
+Nodes (27): SearchParams, Hero(), BagIcon(), ChevronDownIcon(), CloseIcon(), HeartIcon(), HomeIcon(), MenuIcon() (+19 more)
 
 ### Community 2 - "Graphify Skill & Agent Docs"
 Cohesion: 0.07
@@ -177,19 +179,19 @@ Nodes (26): For /graphify add and --watch, For /graphify query, For the commit h
 
 ### Community 3 - "Package Dependencies (package.json)"
 Cohesion: 0.08
-Nodes (24): dependencies, next, react, react-dom, react-hook-form, @tanstack/react-query, devDependencies, eslint (+16 more)
+Nodes (25): dependencies, lucide-react, next, react, react-dom, react-hook-form, @tanstack/react-query, devDependencies (+17 more)
 
 ### Community 4 - "App Layout & Global State"
-Cohesion: 0.18
-Nodes (10): interFontForEnglishChar, nastaliq, yekanBakhFontForFarsiChar, anton, instrumentSerif, metadata, vazirmatn, Toast() (+2 more)
+Cohesion: 0.21
+Nodes (9): interFontForEnglishChar, nastaliq, yekanBakhFontForFarsiChar, anton, instrumentSerif, metadata, vazirmatn, Toast() (+1 more)
 
 ### Community 5 - "TypeScript Config"
 Cohesion: 0.10
 Nodes (19): compilerOptions, allowJs, esModuleInterop, incremental, isolatedModules, jsx, lib, module (+11 more)
 
 ### Community 6 - "Login & OTP Auth Flow"
-Cohesion: 0.08
-Nodes (14): ChevronRightIcon(), PhoneFormValues, DIGIT_KEYS, DigitKey, OtpForm(), OtpFormValues, savePhoneNumber(), COLLECTION_LABEL (+6 more)
+Cohesion: 0.14
+Nodes (8): PhoneFormValues, DIGIT_KEYS, DigitKey, OtpForm(), OtpFormValues, savePhoneNumber(), loginApi(), verifyOtpApi()
 
 ### Community 7 - "Brand Design Brief (Adagio)"
 Cohesion: 1.00
@@ -251,6 +253,14 @@ Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphif
 Cohesion: 0.50
 Nodes (3): Product, ProductCollection, ProductTag
 
+### Community 117 - "Community 117"
+Cohesion: 0.18
+Nodes (7): ChevronLeftIcon(), ChevronRightIcon(), COLLECTION_LABEL, Product, PRODUCT_ACCORDION, PRODUCTS, SIZES
+
+### Community 118 - "Community 118"
+Cohesion: 0.20
+Nodes (4): metadata, values, contactInfo, metadata
+
 ## Ambiguous Edges - Review These
 - `ProductCard.tsx` → `Cigarettes After Sex Newsprint Tee (Product Photo)`  [AMBIGUOUS]
   public/assets/tee-newsprint.jpg · relation: referenced_by
@@ -260,7 +270,7 @@ Nodes (3): Product, ProductCollection, ProductTag
   project/Home.dc.html · relation: calls
 
 ## Knowledge Gaps
-- **241 isolated node(s):** `SearchParams`, `vazirmatn`, `instrumentSerif`, `anton`, `metadata` (+236 more)
+- **246 isolated node(s):** `metadata`, `values`, `SearchParams`, `metadata`, `contactInfo` (+241 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **91 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -274,10 +284,10 @@ _Questions this graph is uniquely positioned to answer:_
 - **What is the exact relationship between `_showToast` and `onSubscribe`?**
   _Edge tagged AMBIGUOUS (relation: calls) - confidence is low._
 - **Why does `useAppState()` connect `Storefront UI Components` to `App Layout & Global State`, `Login & OTP Auth Flow`?**
-  _High betweenness centrality (0.010) - this node is a cross-community bridge._
-- **What connects `SearchParams`, `vazirmatn`, `instrumentSerif` to the rest of the system?**
-  _262 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.011) - this node is a cross-community bridge._
+- **What connects `metadata`, `values`, `SearchParams` to the rest of the system?**
+  _267 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `DC Template Runtime (prototype engine)` be split into smaller, more focused modules?**
   _Cohesion score 0.06688311688311688 - nodes in this community are weakly interconnected._
 - **Should `Storefront UI Components` be split into smaller, more focused modules?**
-  _Cohesion score 0.07138047138047138 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.0726764500349406 - nodes in this community are weakly interconnected._

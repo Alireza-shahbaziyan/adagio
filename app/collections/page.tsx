@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import MobileBottomNav from "@/components/MobileBottomNav";
 import CollectionsShowcase from "@/components/CollectionsShowcase";
 import { CollectionResponse } from "@/types/collections";
+import { backend } from "@/utils/getURL";
 
 type SearchParams = Promise<{
   page?: string;
@@ -26,7 +27,7 @@ export default async function CollectionsPage({
   if (search) query.set("search", search);
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/api/collections/?${query.toString()}`,
+    `${backend}/api/collections/?${query.toString()}`,
     {
       next: {
         revalidate: 60 * 60,

@@ -7,10 +7,10 @@ import { useScrollY } from "@/lib/hooks";
 import { BagIcon, CloseIcon, HeartIcon, MenuIcon, SearchIcon, UserIcon } from "@/components/icons";
 
 const NAV_LINKS = [
-  { href: "/#featured", label: "فروشگاه" },
+  { href: "/store", label: "فروشگاه" },
   { href: "/collections", label: "کالکشن‌ها" },
-  { href: "/#story", label: "درباره" },
-  { href: "/#newsletter", label: "تماس" },
+  { href: "/about", label: "درباره" },
+  { href: "/contact-me", label: "تماس" },
 ];
 
 function Badge({ count }: { count: number }) {

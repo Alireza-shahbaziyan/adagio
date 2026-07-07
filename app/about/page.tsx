@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "درباره آداجیو",
@@ -44,7 +46,6 @@ export default function AboutPage() {
           "
         />
 
-
         <div
           className="
           relative
@@ -55,7 +56,11 @@ export default function AboutPage() {
           text-center
           "
         >
-
+          <div className="w-full overflow-hidden p-15 relative flex justify-center items-center">
+            <Image src={'/assets/adagio.png'} alt="Adagio"
+              className="rounded-md shadow-white logo-shadow "
+               width={300} height={300} />
+          </div>
           <p
             className="
             text-xs
@@ -286,7 +291,7 @@ export default function AboutPage() {
           </p>
 
 
-          <a
+          <Link
             href="/collections"
             className="
             mt-10
@@ -302,7 +307,7 @@ export default function AboutPage() {
             "
           >
             مشاهده کالکشن‌ها
-          </a>
+          </Link>
 
         </div>
 

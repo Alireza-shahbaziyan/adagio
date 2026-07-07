@@ -1,11 +1,11 @@
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Reveal from "@/components/Reveal";
 import ProductCard from "@/components/ProductCard";
-import BestSellersCarousel from "@/components/BestSellersCarousel";
-import NewsletterForm from "@/components/NewsletterForm";
+// import BestSellersCarousel from "@/components/BestSellersCarousel";
+// import NewsletterForm from "@/components/NewsletterForm";
 import Footer from "@/components/Footer";
 import MobileBottomNav from "@/components/MobileBottomNav";
 // import { PRODUCTS } from "@/lib/products";
@@ -100,7 +100,7 @@ export default async function Home() {
               </h2>
             </div>
             <Link
-              href="#categories"
+              href="/store"
               className="whitespace-nowrap border-b border-white/25 pb-1 text-sm text-[#A8A8A8]"
             >
               مشاهده همه محصولات
@@ -302,7 +302,7 @@ export default async function Home() {
         </section>
       </Reveal> */}
 
-      <Footer mobileBottomPad />
+      <Footer mobileBottomPad/>
       <MobileBottomNav />
     </div>
   );

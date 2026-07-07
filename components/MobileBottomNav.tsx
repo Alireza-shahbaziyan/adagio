@@ -15,7 +15,7 @@ export default function MobileBottomNav() {
       <Link href="/" className="flex h-11 w-11 items-center justify-center text-[#F3F3F3]">
         <HomeIcon />
       </Link>
-      <Link href="/#featured" className="flex h-11 w-11 items-center justify-center text-[#A8A8A8]">
+      <Link href="/store#featured" className="flex h-11 w-11 items-center justify-center text-[#A8A8A8]">
         <SearchIcon size={20} />
       </Link>
       <button className="relative flex h-11 w-11 items-center justify-center bg-transparent text-[#A8A8A8]">

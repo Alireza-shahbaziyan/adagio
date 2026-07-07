@@ -1,6 +1,10 @@
 import Link from "next/link";
 
-export default function Footer({ mobileBottomPad = false }: { mobileBottomPad?: boolean }) {
+export default function Footer({
+  mobileBottomPad = false,
+}: {
+  mobileBottomPad?: boolean;
+}) {
   return (
     <footer
       className={`border-t border-white/8 px-5 pt-16 md:px-16 md:pt-24 ${
@@ -16,15 +20,17 @@ export default function Footer({ mobileBottomPad = false }: { mobileBottomPad?: 
             Adagio
           </p>
           <p className="max-w-60 text-sm leading-[1.8] text-[#A8A8A8]">
-            طرح‌های تک‌رنگ برای شب‌های دیر و رانندگی‌های طولانی.
+            موسیقی را به تن کن
           </p>
         </div>
         <div>
           <p className="mb-5 text-[13px] text-[#F3F3F3]">فروشگاه</p>
-          <Link href="/#featured" className="mb-3.5 block text-sm text-[#A8A8A8]">
+          <Link
+            href="/store#featured"
+            className="mb-3.5 block text-sm text-[#A8A8A8]"
+          >
             ویژه
           </Link>
-   
         </div>
         <div>
           <p className="mb-5 text-[13px] text-[#F3F3F3]">درباره ما</p>
@@ -46,7 +52,9 @@ export default function Footer({ mobileBottomPad = false }: { mobileBottomPad?: 
         </div> */}
       </div>
       <div className="flex flex-wrap items-center justify-between gap-6 border-t border-white/[0.08] pt-8">
-        <p className="text-[13px] text-[#5a5a5a]">© ۲۰۲۶ آداجیو. تمامی حقوق محفوظ است.</p>
+        <p className="text-[13px] text-[#5a5a5a]">
+          © ۲۰۲۶ آداجیو. تمامی حقوق محفوظ است.
+        </p>
         <div className="flex gap-3.5">
           {["IG", "TT", "SP"].map((s) => (
             <Link

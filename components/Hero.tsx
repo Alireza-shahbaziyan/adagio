@@ -20,12 +20,19 @@ export default function Hero() {
 
   const scrollCueOpacity = Math.max(1 - scrollY / 260, 0);
 
+  const bottomTextProgress = Math.min(scrollY / 500, 1);
+
+const bottomTextScale =
+  1 + (1 - Math.pow(1 - bottomTextProgress, 3)) * 0.35;
+
+const bottomTextOpacity =
+  0.7 + bottomTextProgress * 0.3;
   return (
     <section className="relative flex min-h-svh w-full items-center justify-center overflow-hidden bg-[#050505] md:h-screen">
       <div className="film-grain" />
 
       {/* Top Label */}
-      <div className="absolute inset-x-0 top-24 z-10 px-6 text-center md:top-28">
+      <div className="absolute inset-x-0 top-24 z-10 px-6 text-center md:font-bold md:top-20">
         <span className="text-xs tracking-[1px] text-[#A8A8A8]">
         وقتی موسیقی تبدیل به لباس می‌شود
         </span>
@@ -100,13 +107,17 @@ export default function Hero() {
       </div>
 
       {/* Bottom Text */}
-      <div className="absolute inset-x-0 bottom-28 z-10 px-6 text-center md:bottom-32">
+  <div
+  className="absolute inset-x-0 bottom-28 z-10 px-6 text-center md:bottom-14 
+  font-thin will-change-transform"
+  style={{
+    transform: `scale(${bottomTextScale})`,
+    opacity: bottomTextOpacity,
+  }}
+>
         <p
-          className="mx-auto max-w-72 text-[13px] leading-[1.7] text-[#d8d8d8] md:max-w-105 md:text-base"
-          style={{
-            textShadow: "0 2px 14px rgba(0,0,0,.7)",
-          }}
-        >
+          className="mx-auto max-w-72 text-[13px] 
+          leading-[1.7]  md:max-w-105 md:text-xl">
         برای شب‌هایی که موسیقی تنها هم‌صحبت توست
         </p>
       </div>
