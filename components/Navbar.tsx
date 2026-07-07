@@ -8,7 +8,7 @@ import { BagIcon, CloseIcon, HeartIcon, MenuIcon, SearchIcon, UserIcon } from "@
 
 const NAV_LINKS = [
   { href: "/#featured", label: "فروشگاه" },
-  { href: "/#categories", label: "کالکشن‌ها" },
+  { href: "/collections", label: "کالکشن‌ها" },
   { href: "/#story", label: "درباره" },
   { href: "/#newsletter", label: "تماس" },
 ];
@@ -27,7 +27,7 @@ export default function Navbar({
   productWishlisted,
   onToggleProductWishlist,
 }: {
-  variant: "home" | "product";
+  variant: "home" | "product" | "default";
   productWishlisted?: boolean;
   onToggleProductWishlist?: () => void;
 }) {
@@ -35,7 +35,7 @@ export default function Navbar({
   const scrollY = useScrollY();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const navSolid = variant === "product" || scrollY > 40;
+  const navSolid = variant !== "home" || scrollY > 40;
   const position = variant === "home" ? "fixed" : "sticky";
 
   return (
@@ -74,14 +74,14 @@ export default function Navbar({
           <button className="flex p-2 text-[#F3F3F3]">
             <SearchIcon />
           </button>
-          {variant === "home" ? (
+          {variant === "product" ? (
+            <button onClick={onToggleProductWishlist} className="relative flex p-2 text-[#F3F3F3]">
+              <HeartIcon filled={productWishlisted} />
+            </button>
+          ) : (
             <button className="relative flex p-2 text-[#F3F3F3]">
               <HeartIcon />
               <Badge count={wishlist.length} />
-            </button>
-          ) : (
-            <button onClick={onToggleProductWishlist} className="relative flex p-2 text-[#F3F3F3]">
-              <HeartIcon filled={productWishlisted} />
             </button>
           )}
           <button className="relative flex p-2 text-[#F3F3F3]">
@@ -94,7 +94,7 @@ export default function Navbar({
         </div>
 
         {/* Mobile */}
-        {variant === "home" && (
+        {variant !== "product" && (
           <div className="flex items-center gap-4 md:hidden">
             <button className="flex p-2 text-[#F3F3F3]">
               <SearchIcon />
@@ -117,7 +117,7 @@ export default function Navbar({
         )}
       </nav>
 
-      {variant === "home" && menuOpen && (
+      {variant !== "product" && menuOpen && (
         <div
           style={{ animation: "fadeInSoft 0.3s ease" }}
           className="fixed inset-0 z-[2000] flex flex-col bg-[#090909] p-6 md:hidden"

@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Footer({ mobileBottomPad = false }: { mobileBottomPad?: boolean }) {
   return (
     <footer
-      className={`border-t border-white/[0.08] px-5 pt-16 md:px-16 md:pt-24 ${
+      className={`border-t border-white/8 px-5 pt-16 md:px-16 md:pt-24 ${
         mobileBottomPad ? "pb-24 md:pb-8" : "pb-8"
       }`}
     >
@@ -11,11 +11,11 @@ export default function Footer({ mobileBottomPad = false }: { mobileBottomPad?: 
         <div>
           <p
             style={{ direction: "ltr" }}
-            className="mb-4 font-[family-name:var(--font-instrument-serif)] text-[28px] italic text-[#F3F3F3]"
+            className="mb-4 font-instrument-serif text-[28px] italic text-[#F3F3F3]"
           >
             Adagio
           </p>
-          <p className="max-w-[240px] text-sm leading-[1.8] text-[#A8A8A8]">
+          <p className="max-w-60 text-sm leading-[1.8] text-[#A8A8A8]">
             طرح‌های تک‌رنگ برای شب‌های دیر و رانندگی‌های طولانی.
           </p>
         </div>
@@ -24,23 +24,18 @@ export default function Footer({ mobileBottomPad = false }: { mobileBottomPad?: 
           <Link href="/#featured" className="mb-3.5 block text-sm text-[#A8A8A8]">
             ویژه
           </Link>
-          <Link href="/#categories" className="mb-3.5 block text-sm text-[#A8A8A8]">
-            کالکشن مشکی
-          </Link>
-          <Link href="/#categories" className="block text-sm text-[#A8A8A8]">
-            کالکشن سفید
-          </Link>
+   
         </div>
         <div>
           <p className="mb-5 text-[13px] text-[#F3F3F3]">درباره ما</p>
-          <Link href="/#story" className="mb-3.5 block text-sm text-[#A8A8A8]">
+          <Link href="/about" className="mb-3.5 block text-sm text-[#A8A8A8]">
             درباره
           </Link>
-          <Link href="/#newsletter" className="block text-sm text-[#A8A8A8]">
+          <Link href="/contact-me" className="block text-sm text-[#A8A8A8]">
             تماس
           </Link>
         </div>
-        <div>
+        {/* <div>
           <p className="mb-5 text-[13px] text-[#F3F3F3]">راهنما</p>
           <Link href="#" className="mb-3.5 block text-sm text-[#A8A8A8]">
             ارسال
@@ -48,7 +43,7 @@ export default function Footer({ mobileBottomPad = false }: { mobileBottomPad?: 
           <Link href="#" className="block text-sm text-[#A8A8A8]">
             مرجوعی
           </Link>
-        </div>
+        </div> */}
       </div>
       <div className="flex flex-wrap items-center justify-between gap-6 border-t border-white/[0.08] pt-8">
         <p className="text-[13px] text-[#5a5a5a]">© ۲۰۲۶ آداجیو. تمامی حقوق محفوظ است.</p>

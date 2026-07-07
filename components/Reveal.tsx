@@ -5,9 +5,11 @@ import { useEffect, useRef, useState } from "react";
 export default function Reveal({
   children,
   className = "",
+  style,
 }: {
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -31,7 +33,11 @@ export default function Reveal({
   }, []);
 
   return (
-    <div ref={ref} className={`reveal-on-scroll ${visible ? "is-visible" : ""} ${className}`}>
+    <div
+      ref={ref}
+      style={style}
+      className={`reveal-on-scroll ${visible ? "is-visible" : ""} ${className}`}
+    >
       {children}
     </div>
   );

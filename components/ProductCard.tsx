@@ -3,9 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Product } from "@/lib/products";
+// import { Product } from "@/lib/products";
 import { useAppState } from "@/lib/app-state";
 import { HeartIcon } from "@/components/icons";
+import { Product } from "@/types/products";
 
 export default function ProductCard({
   product,
@@ -18,8 +19,10 @@ export default function ProductCard({
 }) {
   const { isWishlisted, toggleWishlist, addToCart } = useAppState();
   const [hovered, setHovered] = useState(false);
-  const wishlisted = isWishlisted(product.id);
-
+  const wishlisted = isWishlisted(product.id.toString());
+  if (!product) return null;
+  const image = product?.images?.[0]?.image || "/placeholder.jpg";
+  const imageAlt = product?.images?.[0]?.alt_text || "Image.jpg";
   return (
     <Link
       href={`/product/${product.slug}`}
@@ -29,8 +32,8 @@ export default function ProductCard({
     >
       <div className="relative aspect-[4/5] overflow-hidden bg-[#111111]">
         <Image
-          src={product.image}
-          alt={product.name}
+          src={image}
+          alt={imageAlt}
           fill
           sizes="(max-width: 768px) 90vw, 320px"
           priority={priority}
@@ -42,7 +45,7 @@ export default function ProductCard({
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
-              toggleWishlist(product.id, product.name);
+              toggleWishlist(product.id.toString(), product.title);
             }}
             className="absolute top-3.5 left-3.5 flex h-9 w-9 items-center justify-center rounded-full bg-black/50 text-[#F3F3F3] backdrop-blur-md"
           >
@@ -62,7 +65,7 @@ export default function ProductCard({
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                addToCart(product.name);
+                addToCart(product?.title || "");
               }}
               className="w-full rounded-full bg-[#F3F3F3] py-3 text-[13px] font-bold tracking-[0.3px] text-[#090909]"
             >
@@ -72,9 +75,9 @@ export default function ProductCard({
         )}
       </div>
       <div className="px-1 py-5">
-        <p className="mb-1 text-[15px] text-[#F3F3F3]">{product.name}</p>
+        <p className="mb-1 text-[15px] text-[#F3F3F3]">{product?.title}</p>
         <p style={{ direction: "ltr", textAlign: "right" }} className="text-sm text-[#A8A8A8]">
-          ${product.price}
+          ${product?.variants?.[0]?.price || 0}
         </p>
       </div>
     </Link>

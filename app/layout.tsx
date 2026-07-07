@@ -26,7 +26,7 @@ const anton = Anton({
 
 export const metadata: Metadata = {
   title: "آداجیو | Adagio",
-  description: "موسیقی‌ای که می‌پوشی — طرح‌های تک‌رنگ برای شب‌های دیر و رانندگی‌های طولانی.",
+  description: "فروشگاه لباس آداجیو | Adagio",
 };
 
 export default function RootLayout({

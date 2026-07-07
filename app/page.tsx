@@ -8,42 +8,45 @@ import BestSellersCarousel from "@/components/BestSellersCarousel";
 import NewsletterForm from "@/components/NewsletterForm";
 import Footer from "@/components/Footer";
 import MobileBottomNav from "@/components/MobileBottomNav";
-import { PRODUCTS } from "@/lib/products";
+// import { PRODUCTS } from "@/lib/products";
+import { ProductsResponse } from "@/types/products";
 
-const REVIEWS = [
-  {
-    stars: "★★★★★",
-    quote:
-      "«کیفیت پارچه به‌تنهایی می‌ارزد. سایز اورسایز عالیه و طرح بعد از ماه‌ها هنوز رنگش نرفته.»",
-    name: "مانا ت.",
-  },
-  {
-    stars: "★★★★★",
-    quote: "«انگار مرچ گروهی‌ست که هنوز وجود نداره. مدام می‌پوشمش.»",
-    name: "دنیز ک.",
-  },
-  {
-    stars: "★★★★★",
-    quote:
-      "«تیشرت کلاژ رو سفارش دادم، فکر کردم فقط یه تیشرته. یه اثر هنری تحویل گرفتم.»",
-    name: "پریا س.",
-  },
-];
 
-const GALLERY_ITEMS = [
-  { bg: "#181818", ratio: "1 / 1" },
-  { bg: "#111111", ratio: "4 / 5" },
-  { bg: "#181818", ratio: "3 / 4" },
-  { bg: "#111111", ratio: "1 / 1" },
-  { bg: "#181818", ratio: "4 / 5" },
-  { bg: "#111111", ratio: "3 / 4" },
-  { bg: "#181818", ratio: "1 / 1" },
-  { bg: "#111111", ratio: "4 / 5" },
-];
+// const REVIEWS = [
+//   {
+//     stars: "★★★★★",
+//     quote:
+//       "«کیفیت پارچه به‌تنهایی می‌ارزد. سایز اورسایز عالیه و طرح بعد از ماه‌ها هنوز رنگش نرفته.»",
+//     name: "مانا ت.",
+//   },
+//   {
+//     stars: "★★★★★",
+//     quote: "«انگار مرچ گروهی‌ست که هنوز وجود نداره. مدام می‌پوشمش.»",
+//     name: "دنیز ک.",
+//   },
+//   {
+//     stars: "★★★★★",
+//     quote:
+//       "«تیشرت کلاژ رو سفارش دادم، فکر کردم فقط یه تیشرته. یه اثر هنری تحویل گرفتم.»",
+//     name: "پریا س.",
+//   },
+// ];
 
-const BEST_SELLERS = [PRODUCTS[1], PRODUCTS[2], PRODUCTS[0], PRODUCTS[3]];
 
-export default function Home() {
+
+export default async function Home() {
+  // get products from api
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/api/products/?featured=true&page=1&page_size=4`, {
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+    },
+    cache: "no-store",
+    next: {
+      revalidate: 60 * 60, // 1 hour
+    },
+  });
+  const products: ProductsResponse = await response.json() as ProductsResponse;
   return (
     <div
       dir="rtl"
@@ -90,10 +93,10 @@ export default function Home() {
           <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
             <div>
               <p className="mb-4 text-xs tracking-[1px] text-[#A8A8A8]">
-                این فصل
+                این بخش
               </p>
               <h2 className="  text-[30px] font-black text-[#F3F3F3] md:text-[56px]">
-                طرح‌های ویژه
+                محصولات ویژه
               </h2>
             </div>
             <Link
@@ -104,7 +107,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {PRODUCTS.map((p, i) => (
+            {products.results.map((p, i) => (
               <ProductCard
                 key={p.id}
                 product={p}
@@ -115,7 +118,7 @@ export default function Home() {
           </div>
         </section>
       </Reveal>
-
+{/* 
       <Reveal>
         <section id="categories" className="px-5 pb-20 md:px-16 md:pb-40">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -297,7 +300,7 @@ export default function Home() {
           </h2>
           <NewsletterForm />
         </section>
-      </Reveal>
+      </Reveal> */}
 
       <Footer mobileBottomPad />
       <MobileBottomNav />

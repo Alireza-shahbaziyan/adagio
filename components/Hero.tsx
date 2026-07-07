@@ -27,7 +27,7 @@ export default function Hero() {
       {/* Top Label */}
       <div className="absolute inset-x-0 top-24 z-10 px-6 text-center md:top-28">
         <span className="text-xs tracking-[1px] text-[#A8A8A8]">
-          پوشاک استریت مشکی و سفید
+        وقتی موسیقی تبدیل به لباس می‌شود
         </span>
       </div>
 
@@ -107,7 +107,7 @@ export default function Hero() {
             textShadow: "0 2px 14px rgba(0,0,0,.7)",
           }}
         >
-          طرح‌های تک‌رنگ برای شب‌های دیر و رانندگی‌های طولانی.
+        برای شب‌هایی که موسیقی تنها هم‌صحبت توست
         </p>
       </div>
 
