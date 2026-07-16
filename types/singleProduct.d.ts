@@ -6,7 +6,8 @@ export interface ProductCollection {
   slug: string;
   short_description: string;
   is_active: boolean;
-  parent: number;
+  parent: number | null;
+  image : string |null;
 }
 
 export interface ProductTag {

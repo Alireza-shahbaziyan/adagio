@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Navbar/Navbar";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -28,17 +28,13 @@ const values = [
   },
 ] as const;
 
-
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-black text-white">
-
       <Navbar variant="home" />
-
 
       {/* Hero */}
       <section className="relative border-b border-white/10 overflow-hidden">
-
         <div
           className="
           absolute inset-0
@@ -57,9 +53,13 @@ export default function AboutPage() {
           "
         >
           <div className="w-full overflow-hidden p-15 relative flex justify-center items-center">
-            <Image src={'/assets/adagio.png'} alt="Adagio"
+            <Image
+              src={"/assets/adagio.png"}
+              alt="Adagio"
               className="rounded-md shadow-white logo-shadow "
-               width={300} height={300} />
+              width={300}
+              height={300}
+            />
           </div>
           <p
             className="
@@ -71,7 +71,6 @@ export default function AboutPage() {
           >
             About Adagio
           </p>
-
 
           <h1
             className="
@@ -85,7 +84,6 @@ export default function AboutPage() {
             موسیقی‌ای که می‌پوشی
           </h1>
 
-
           <p
             className="
             mx-auto
@@ -96,29 +94,19 @@ export default function AboutPage() {
             text-white/50
             "
           >
-            آداجیو برندی است که از موسیقی، شب، نوستالژی و هنر الهام می‌گیرد.
-            ما باور داریم لباس می‌تواند همان احساسی را منتقل کند که یک قطعه
-            موسیقی در ذهن و قلب انسان ایجاد می‌کند.
+            آداجیو برندی است که از موسیقی، شب، نوستالژی و هنر الهام می‌گیرد. ما
+            باور داریم لباس می‌تواند همان احساسی را منتقل کند که یک قطعه موسیقی
+            در ذهن و قلب انسان ایجاد می‌کند.
           </p>
-
         </div>
-
       </section>
-
-
 
       {/* Story */}
 
       <section className="mx-auto max-w-6xl px-6 py-24">
-
         <div className="grid gap-12 lg:grid-cols-2">
-
-
           <header>
-
-            <p className="text-xs tracking-[0.4em] text-white/40">
-              OUR STORY
-            </p>
+            <p className="text-xs tracking-[0.4em] text-white/40">OUR STORY</p>
 
             <h2
               className="
@@ -129,9 +117,7 @@ export default function AboutPage() {
             >
               داستان آداجیو
             </h2>
-
           </header>
-
 
           <div
             className="
@@ -140,31 +126,23 @@ export default function AboutPage() {
             text-white/50
             "
           >
-
             <p>
-              آداجیو از علاقه به موسیقی و طراحی مینیمال متولد شد.
-              هر کالکشن با یک احساس آغاز می‌شود، نه یک ترند.
+              آداجیو از علاقه به موسیقی و طراحی مینیمال متولد شد. هر کالکشن با
+              یک احساس آغاز می‌شود، نه یک ترند.
             </p>
 
-
             <p>
-              شب‌های طولانی، جاده‌های خلوت، تصاویر سیاه‌وسفید و موسیقی‌هایی
-              که سال‌ها همراه ما می‌مانند، الهام‌بخش طراحی‌های ما هستند.
+              شب‌های طولانی، جاده‌های خلوت، تصاویر سیاه‌وسفید و موسیقی‌هایی که
+              سال‌ها همراه ما می‌مانند، الهام‌بخش طراحی‌های ما هستند.
             </p>
 
-
             <p>
-              هدف ما ساخت لباس‌هایی است که فقط یک محصول نباشند؛
-              بلکه بخشی از شخصیت و داستان شما باشند.
+              هدف ما ساخت لباس‌هایی است که فقط یک محصول نباشند؛ بلکه بخشی از
+              شخصیت و داستان شما باشند.
             </p>
-
           </div>
-
         </div>
-
       </section>
-
-
 
       {/* Values */}
 
@@ -175,7 +153,6 @@ export default function AboutPage() {
         bg-white/[0.02]
         "
       >
-
         <div
           className="
           mx-auto
@@ -187,9 +164,7 @@ export default function AboutPage() {
           md:grid-cols-3
           "
         >
-
-          {values.map((item)=>(
-
+          {values.map((item) => (
             <article
               key={item.title}
               className="
@@ -202,11 +177,7 @@ export default function AboutPage() {
               hover:border-white/30
               "
             >
-
-              <h3 className="text-xl font-medium">
-                {item.title}
-              </h3>
-
+              <h3 className="text-xl font-medium">{item.title}</h3>
 
               <p
                 className="
@@ -217,27 +188,15 @@ export default function AboutPage() {
               >
                 {item.description}
               </p>
-
-
             </article>
-
           ))}
-
-
         </div>
-
       </section>
-
-
 
       {/* Philosophy */}
 
       <section className="mx-auto max-w-5xl px-6 py-32 text-center">
-
-        <p className="text-xs tracking-[0.5em] text-white/40">
-          PHILOSOPHY
-        </p>
-
+        <p className="text-xs tracking-[0.5em] text-white/40">PHILOSOPHY</p>
 
         <blockquote
           className="
@@ -254,16 +213,11 @@ export default function AboutPage() {
           <br />
           ما فقط آن حس را به لباس تبدیل کرده‌ایم.»
         </blockquote>
-
-
       </section>
-
-
 
       {/* CTA */}
 
       <section className="border-t border-white/10">
-
         <div
           className="
           mx-auto
@@ -273,11 +227,7 @@ export default function AboutPage() {
           text-center
           "
         >
-
-          <h2 className="text-4xl font-light">
-            به دنیای آداجیو خوش آمدید
-          </h2>
-
+          <h2 className="text-4xl font-light">به دنیای آداجیو خوش آمدید</h2>
 
           <p
             className="
@@ -286,10 +236,9 @@ export default function AboutPage() {
             text-white/50
             "
           >
-            کالکشن‌هایی با الهام از موسیقی، نوستالژی و زیبایی مینیمالیسم؛
-            برای کسانی که موسیقی را فقط گوش نمی‌دهند، بلکه می‌پوشند.
+            کالکشن‌هایی با الهام از موسیقی، نوستالژی و زیبایی مینیمالیسم؛ برای
+            کسانی که موسیقی را فقط گوش نمی‌دهند، بلکه می‌پوشند.
           </p>
-
 
           <Link
             href="/collections"
@@ -308,14 +257,10 @@ export default function AboutPage() {
           >
             مشاهده کالکشن‌ها
           </Link>
-
         </div>
-
       </section>
 
-
       <Footer />
-
     </main>
   );
 }

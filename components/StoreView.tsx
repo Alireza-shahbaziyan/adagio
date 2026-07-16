@@ -27,7 +27,9 @@ export default function StoreView({
   currentPage: number;
   queryState: StoreQueryState;
 }) {
-  const basePath = activeCollectionSlug ? `/store/collection/${activeCollectionSlug}` : "/store";
+  const basePath = activeCollectionSlug
+    ? `/store/collection/${activeCollectionSlug}`
+    : "/store";
   const totalPages = Math.ceil(products.count / PRODUCTS_PAGE_SIZE);
   const hasActiveFilters = Boolean(
     queryState.search || queryState.featured || activeCollectionSlug,
@@ -53,12 +55,16 @@ export default function StoreView({
 
         <div className="mb-12 flex flex-wrap items-end  justify-between gap-6">
           <div>
-            <p className="mb-4 text-xs tracking-[1px] text-[#A8A8A8]">{eyebrow}</p>
-            <h1 className="text-[36px] font-black leading-[1.15] text-[#F3F3F3] md:text-[64px]">
+            <p className="mb-4 text-xs tracking-[1px] text-muted-foreground">
+              {eyebrow}
+            </p>
+            <h1 className="text-[36px] font-black leading-[1.15] text-foreground md:text-[64px]">
               {title}
             </h1>
             {description && (
-              <p className="mt-5 max-w-xl leading-8 text-[#A8A8A8]">{description}</p>
+              <p className="mt-5 max-w-xl leading-8 text-muted-foreground">
+                {description}
+              </p>
             )}
           </div>
         </div>

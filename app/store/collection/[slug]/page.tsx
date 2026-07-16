@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer";
 import MobileBottomNav from "@/components/MobileBottomNav";
 import StoreView from "@/components/StoreView";
@@ -35,7 +35,9 @@ export async function generateMetadata({
   if (!collection) return { title: "کالکشن پیدا نشد | آداجیو" };
 
   const title = `${collection.title} | فروشگاه آداجیو`;
-  const description = collection.short_description || `محصولات کالکشن ${collection.title} را در فروشگاه آداجیو مرور کن.`;
+  const description =
+    collection.short_description ||
+    `محصولات کالکشن ${collection.title} را در فروشگاه آداجیو مرور کن.`;
 
   return {
     title,
@@ -70,7 +72,11 @@ export default async function StoreCollectionPage({
   ]);
 
   return (
-    <div dir="rtl" lang="fa" className="relative min-h-screen bg-[#090909] pb-24 text-white md:pb-0">
+    <div
+      dir="rtl"
+      lang="fa"
+      className="relative min-h-screen bg-primary-foreground pb-24 text-white md:pb-0"
+    >
       <Navbar variant="default" />
       <StoreView
         eyebrow="کالکشن"

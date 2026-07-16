@@ -35,12 +35,14 @@ export async function getStoreProducts({
   search,
   ordering,
   page,
+  pageSize,
 }: {
   collectionSlug?: string;
   featured?: string;
   search?: string;
   ordering?: string;
   page?: string;
+  pageSize?: number;
 }): Promise<ProductsResponse> {
   const query = new URLSearchParams();
 
@@ -51,7 +53,7 @@ export async function getStoreProducts({
 
   query.set("ordering", isOrderingValue(ordering) ? ordering : DEFAULT_ORDERING);
   query.set("page", String(parsePageParam(page)));
-  query.set("page_size", String(PRODUCTS_PAGE_SIZE));
+  query.set("page_size", String(pageSize ?? PRODUCTS_PAGE_SIZE));
 
   const trimmedSearch = search?.trim();
   if (trimmedSearch) query.set("search", trimmedSearch);

@@ -39,6 +39,7 @@ export default function RootLayout({
     <html
       lang="fa"
       dir="rtl"
+      data-scroll-behavior="smooth"
       className={cn(vazirmatn.variable, instrumentSerif.variable, anton.variable, interFontForEnglishChar.variable, yekanBakhFontForFarsiChar.variable, nastaliq.variable)}
     >
       <body className="bg-background text-foreground antialiased">

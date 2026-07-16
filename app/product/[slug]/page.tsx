@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import ProductDetail from "@/components/ProductDetail";
+import ProductDetail from "@/components/ProductPage/ProductDetail";
 import { Product } from "@/types/singleProduct";
 import type { Product as ProductSummary, ProductsResponse } from "@/types/products";
 
@@ -17,7 +17,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         "Content-Type": "application/json",
         "Accept": "application/json",
       },
-      cache: "no-store",
       next: {
         revalidate: 60 * 10, // 10 minutes
       },
@@ -36,7 +35,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           "Content-Type": "application/json",
           "Accept": "application/json",
         },
-        cache: "no-store",
         next: {
           revalidate: 60 * 10,
         },

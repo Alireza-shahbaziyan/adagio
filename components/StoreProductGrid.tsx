@@ -13,15 +13,18 @@ export default function StoreProductGrid({
   hasActiveFilters: boolean;
 }) {
   return (
-    <section id="featured" className="scroll-mt-24 px-5 pb-20 pt-10 md:px-16 md:pb-32">
+    <section
+      id="featured"
+      className="scroll-mt-24 px-5 pb-20 pt-10 md:px-16 md:pb-32"
+    >
       {products.length === 0 ? (
         <div className="rounded-[20px] border border-white/8 bg-[#111111] px-8 py-20 text-center">
-          <p className="mb-3 text-lg font-bold text-[#F3F3F3]">
+          <p className="mb-3 text-lg font-bold text-foreground">
             {hasActiveFilters
               ? "محصولی با این فیلترها پیدا نشد"
               : "محصولی هنوز منتشر نشده است"}
           </p>
-          <p className="mb-8 text-sm text-[#A8A8A8]">
+          <p className="mb-8 text-sm text-muted-foreground">
             {hasActiveFilters
               ? "فیلتر دیگری را امتحان کن یا همه را پاک کن."
               : "به‌زودی برمی‌گردیم."}
@@ -29,7 +32,7 @@ export default function StoreProductGrid({
           {hasActiveFilters && (
             <Link
               href={clearFiltersHref}
-              className="inline-block rounded-full border border-white/25 px-7 py-3 text-sm text-[#F3F3F3] transition-colors hover:border-white/60 hover:bg-white/[0.08]"
+              className="inline-block rounded-full border border-white/25 px-7 py-3 text-sm text-foreground transition-colors hover:border-white/60 hover:bg-white/8"
             >
               پاک‌کردن فیلترها
             </Link>
@@ -38,7 +41,10 @@ export default function StoreProductGrid({
       ) : (
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {products.map((product, i) => (
-            <Reveal key={product.id} style={{ transitionDelay: `${Math.min(i, 8) * 60}ms` }}>
+            <Reveal
+              key={product.id}
+              style={{ transitionDelay: `${Math.min(i, 8) * 60}ms` }}
+            >
               <ProductCard product={product} interactive priority={i === 0} />
             </Reveal>
           ))}

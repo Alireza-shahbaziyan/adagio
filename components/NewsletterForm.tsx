@@ -19,11 +19,11 @@ export default function NewsletterForm() {
         placeholder="ایمیل شما"
         required
         style={{ textAlign: "right" }}
-        className="min-w-[240px] flex-1 rounded-full border border-white/[0.12] bg-[#181818] px-6 py-[18px] text-[15px] text-[#F3F3F3] outline-none"
+        className="min-w-[240px] flex-1 rounded-full border border-white/[0.12] bg-[#181818] px-6 py-4.5 text-[15px] text-foreground outline-none"
       />
       <button
         type="submit"
-        className="rounded-full bg-[#F3F3F3] px-9 py-[18px] text-[15px] font-bold text-[#090909] transition-transform hover:scale-[1.04]"
+        className="rounded-full bg-foreground px-9 py-4.5 text-[15px] font-bold text-primary-foreground transition-transform hover:scale-[1.04]"
       >
         عضویت
       </button>

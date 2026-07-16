@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Mail, MapPin, Phone, ArrowUpRight } from "lucide-react";
 import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Navbar/Navbar";
 
 export const metadata: Metadata = {
   title: "تماس با ما | آداجیو",
@@ -48,17 +48,14 @@ export default function ContactPage() {
           </h1>
 
           <p className="mx-auto mt-8 max-w-2xl text-base leading-9 text-white/50 md:text-lg">
-            برای همکاری، پشتیبانی یا هر سوالی که دارید،
-            با ما در ارتباط باشید.
+            برای همکاری، پشتیبانی یا هر سوالی که دارید، با ما در ارتباط باشید.
             داستان آداجیو با ارتباط میان موسیقی و انسان‌ها ساخته می‌شود.
           </p>
         </div>
       </section>
 
-
       {/* Contact cards */}
       <section className="mx-auto max-w-6xl px-6 py-20">
-
         <div className="grid gap-5 md:grid-cols-3">
           {contactInfo.map((item) => {
             const Icon = item.icon;
@@ -74,7 +71,7 @@ export default function ContactPage() {
                 transition-all
                 duration-500
                 hover:border-white/30
-                hover:bg-white/[0.05]
+                hover:bg-white/6
                 "
               >
                 <Icon
@@ -86,10 +83,7 @@ export default function ContactPage() {
                   "
                 />
 
-                <h2 className="mt-8 text-lg font-medium">
-                  {item.title}
-                </h2>
-
+                <h2 className="mt-8 text-lg font-medium">{item.title}</h2>
 
                 {"href" in item ? (
                   <a
@@ -105,25 +99,19 @@ export default function ContactPage() {
                     "
                   >
                     {item.value}
-                    <ArrowUpRight size={14}/>
+                    <ArrowUpRight size={14} />
                   </a>
                 ) : (
-                  <p className="mt-3 text-white/50">
-                    {item.value}
-                  </p>
+                  <p className="mt-3 text-white/50">{item.value}</p>
                 )}
-
               </div>
             );
           })}
         </div>
-
       </section>
-
 
       {/* Form */}
       <section className="mx-auto max-w-4xl px-6 pb-32">
-
         <div
           className="
           border
@@ -133,26 +121,17 @@ export default function ContactPage() {
           md:p-12
           "
         >
-
           <div className="mb-10">
-            <h2 className="text-3xl font-light">
-              ارسال پیام
-            </h2>
+            <h2 className="text-3xl font-light">ارسال پیام</h2>
 
             <p className="mt-3 text-white/40">
               پیام شما را می‌خوانیم و در اولین فرصت پاسخ می‌دهیم.
             </p>
           </div>
 
-
           <form className="space-y-7">
-
             <div className="grid gap-7 md:grid-cols-2">
-
-              {[
-                "نام و نام خانوادگی",
-                "ایمیل"
-              ].map((label)=>(
+              {["نام و نام خانوادگی", "ایمیل"].map((label) => (
                 <div key={label}>
                   <label className="mb-3 block text-sm text-white/60">
                     {label}
@@ -173,14 +152,10 @@ export default function ContactPage() {
                   />
                 </div>
               ))}
-
             </div>
 
-
             <div>
-              <label className="mb-3 block text-sm text-white/60">
-                موضوع
-              </label>
+              <label className="mb-3 block text-sm text-white/60">موضوع</label>
 
               <input
                 className="
@@ -195,11 +170,8 @@ export default function ContactPage() {
               />
             </div>
 
-
             <div>
-              <label className="mb-3 block text-sm text-white/60">
-                پیام
-              </label>
+              <label className="mb-3 block text-sm text-white/60">پیام</label>
 
               <textarea
                 rows={5}
@@ -215,7 +187,6 @@ export default function ContactPage() {
                 "
               />
             </div>
-
 
             <button
               className="
@@ -240,17 +211,11 @@ export default function ContactPage() {
                 className="transition group-hover:translate-x-1 group-hover:-translate-y-1"
               />
             </button>
-
-
           </form>
-
         </div>
-
       </section>
 
-
       <Footer />
-
     </main>
   );
 }

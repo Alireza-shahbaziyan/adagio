@@ -1,16 +1,16 @@
-# Graph Report - online-shop  (2026-07-07)
+# Graph Report - online-shop  (2026-07-16)
 
 ## Corpus Check
-- 70 files · ~204,808 words
+- 173 files · ~324,224 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 487 nodes · 499 edges · 122 communities (29 shown, 93 thin omitted)
-- Extraction: 97% EXTRACTED · 2% INFERRED · 1% AMBIGUOUS · INFERRED: 10 edges (avg confidence: 0.77)
+- 946 nodes · 1352 edges · 160 communities (54 shown, 106 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `df56227c`
+- Built from commit: `26b629ef`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -19,7 +19,6 @@
 - [[_COMMUNITY_Storefront UI Components|Storefront UI Components]]
 - [[_COMMUNITY_Graphify Skill & Agent Docs|Graphify Skill & Agent Docs]]
 - [[_COMMUNITY_Package Dependencies (package.json)|Package Dependencies (package.json)]]
-- [[_COMMUNITY_App Layout & Global State|App Layout & Global State]]
 - [[_COMMUNITY_TypeScript Config|TypeScript Config]]
 - [[_COMMUNITY_Login & OTP Auth Flow|Login & OTP Auth Flow]]
 - [[_COMMUNITY_Brand Design Brief (Adagio)|Brand Design Brief (Adagio)]]
@@ -29,7 +28,9 @@
 - [[_COMMUNITY_ESLint Config|ESLint Config]]
 - [[_COMMUNITY_Product Type Definitions|Product Type Definitions]]
 - [[_COMMUNITY_Frontend Design License|Frontend Design License]]
+- [[_COMMUNITY_Login API Route|Login API Route]]
 - [[_COMMUNITY_Verify OTP API Route|Verify OTP API Route]]
+- [[_COMMUNITY_Login Layout|Login Layout]]
 - [[_COMMUNITY_Cigarettes After Sex Tee|Cigarettes After Sex Tee]]
 - [[_COMMUNITY_React Query Keys|React Query Keys]]
 - [[_COMMUNITY_Next.js Config|Next.js Config]]
@@ -133,68 +134,102 @@
 - [[_COMMUNITY_Community 118|Community 118]]
 - [[_COMMUNITY_Community 119|Community 119]]
 - [[_COMMUNITY_Community 120|Community 120]]
+- [[_COMMUNITY_Community 122|Community 122]]
+- [[_COMMUNITY_Community 123|Community 123]]
+- [[_COMMUNITY_Community 124|Community 124]]
+- [[_COMMUNITY_Community 125|Community 125]]
+- [[_COMMUNITY_Community 127|Community 127]]
+- [[_COMMUNITY_Community 128|Community 128]]
+- [[_COMMUNITY_Community 129|Community 129]]
+- [[_COMMUNITY_Community 130|Community 130]]
+- [[_COMMUNITY_Community 131|Community 131]]
+- [[_COMMUNITY_Community 132|Community 132]]
+- [[_COMMUNITY_Community 133|Community 133]]
+- [[_COMMUNITY_Community 136|Community 136]]
+- [[_COMMUNITY_Community 137|Community 137]]
+- [[_COMMUNITY_Community 138|Community 138]]
+- [[_COMMUNITY_Community 139|Community 139]]
+- [[_COMMUNITY_Community 140|Community 140]]
+- [[_COMMUNITY_Community 141|Community 141]]
+- [[_COMMUNITY_Community 142|Community 142]]
+- [[_COMMUNITY_Community 143|Community 143]]
+- [[_COMMUNITY_Community 144|Community 144]]
+- [[_COMMUNITY_Community 145|Community 145]]
+- [[_COMMUNITY_Community 147|Community 147]]
+- [[_COMMUNITY_Community 148|Community 148]]
+- [[_COMMUNITY_Community 149|Community 149]]
+- [[_COMMUNITY_Community 150|Community 150]]
+- [[_COMMUNITY_Community 151|Community 151]]
+- [[_COMMUNITY_Community 152|Community 152]]
+- [[_COMMUNITY_Community 153|Community 153]]
+- [[_COMMUNITY_Community 154|Community 154]]
+- [[_COMMUNITY_Community 155|Community 155]]
+- [[_COMMUNITY_Community 156|Community 156]]
+- [[_COMMUNITY_Community 157|Community 157]]
+- [[_COMMUNITY_Community 158|Community 158]]
+- [[_COMMUNITY_Community 159|Community 159]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `compilerOptions` - 16 edges
-2. `useAppState()` - 15 edges
-3. `What You Must Do When Invoked` - 12 edges
-4. `/graphify` - 11 edges
-5. `Product Images` - 11 edges
-6. `PAGE 1 — Landing / Home` - 10 edges
-7. `graphify reference: extra exports and benchmark` - 8 edges
-8. `walkChildren()` - 7 edges
-9. `walk()` - 7 edges
-10. `createRuntime()` - 7 edges
+1. `cn()` - 76 edges
+2. `useAppState()` - 19 edges
+3. `compilerOptions` - 16 edges
+4. `useMe()` - 15 edges
+5. `Component Composition` - 13 edges
+6. `Styling & Customization` - 13 edges
+7. `shadcn/ui` - 12 edges
+8. `What You Must Do When Invoked` - 12 edges
+9. `Button()` - 11 edges
+10. `getStoreProducts()` - 11 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `Hero()` --calls--> `useScrollY()`  [EXTRACTED]
-  components/Hero.tsx → lib/hooks.ts
-- `MobileBottomNav()` --calls--> `useAppState()`  [EXTRACTED]
-  components/MobileBottomNav.tsx → lib/app-state.tsx
-- `NewsletterForm()` --calls--> `useAppState()`  [EXTRACTED]
-  components/NewsletterForm.tsx → lib/app-state.tsx
-- `OtpForm()` --calls--> `useAppState()`  [EXTRACTED]
-  components/OtpForm.tsx → lib/app-state.tsx
-- `Toast()` --calls--> `useAppState()`  [EXTRACTED]
-  components/Toast.tsx → lib/app-state.tsx
+- `Page()` --calls--> `getStoreProducts()`  [EXTRACTED]
+  app/collections/[slug]/page.tsx → lib/store.ts
+- `RootLayout()` --calls--> `cn()`  [EXTRACTED]
+  app/layout.tsx → lib/utils.ts
+- `pillClass()` --calls--> `cn()`  [EXTRACTED]
+  components/StoreFilters.tsx → lib/utils.ts
+- `CommandSeparator()` --calls--> `cn()`  [EXTRACTED]
+  components/ui/command.tsx → lib/utils.ts
+- `CommandShortcut()` --calls--> `cn()`  [EXTRACTED]
+  components/ui/command.tsx → lib/utils.ts
 
 ## Import Cycles
-- None detected.
+- 1-file cycle: `components/ui/button.tsx -> components/ui/button.tsx`
+- 1-file cycle: `components/ui/input.tsx -> components/ui/input.tsx`
+- 1-file cycle: `components/ui/dialog.tsx -> components/ui/dialog.tsx`
+- 1-file cycle: `components/ui/popover.tsx -> components/ui/popover.tsx`
+- 1-file cycle: `components/ui/separator.tsx -> components/ui/separator.tsx`
 
 ## Hyperedges (group relationships)
 - **graphify skill + its reference-file pipeline** — claude_skills_graphify_skill_graphify, claude_skills_graphify_references_add_watch_graphify_add, claude_skills_graphify_references_exports_neo4j_export, claude_skills_graphify_references_extraction_spec_node_id_format_rule, claude_skills_graphify_references_github_and_merge_graphify_clone, claude_skills_graphify_references_hooks_git_commit_hook, claude_skills_graphify_references_query_bfs_dfs_traversal, claude_skills_graphify_references_transcribe_whisper_transcription, claude_skills_graphify_references_update_incremental_update [EXTRACTED 1.00]
 - **Adagio site: Home, Login, Product pages form one navigable site** — project_home_dc_component, project_login_dc_component, project_product_dc_component [EXTRACTED 1.00]
 - **Shared toast-notification pattern across Home/Login/Product** — project_home_dc_showtoast, project_login_dc_showtoast, project_product_dc_showtoast [INFERRED 0.85]
 
-## Communities (122 total, 93 thin omitted)
+## Communities (160 total, 106 thin omitted)
 
 ### Community 0 - "DC Template Runtime (prototype engine)"
 Cohesion: 0.07
 Nodes (42): boot(), collectProps(), compileAttr(), compileTemplate(), contentKey(), createComponentFactory(), createExternalModules(), createHelmetManager() (+34 more)
 
 ### Community 1 - "Storefront UI Components"
-Cohesion: 0.08
-Nodes (27): SearchParams, Hero(), BagIcon(), ChevronDownIcon(), ChevronLeftIcon(), CloseIcon(), HeartIcon(), HomeIcon() (+19 more)
+Cohesion: 0.15
+Nodes (12): metadata, metadata, BagIcon(), HomeIcon(), SearchIcon(), UserIcon(), MobileBottomNav(), NAV_LINKS (+4 more)
 
 ### Community 2 - "Graphify Skill & Agent Docs"
 Cohesion: 0.07
 Nodes (26): For /graphify add and --watch, For /graphify query, For the commit hook and native CLAUDE.md integration, For --update and --cluster-only, /graphify, Honesty Rules, Interpreter guard for subcommands, Part A - Structural extraction for code files (+18 more)
 
 ### Community 3 - "Package Dependencies (package.json)"
-Cohesion: 0.08
-Nodes (25): dependencies, lucide-react, next, react, react-dom, react-hook-form, @tanstack/react-query, devDependencies (+17 more)
-
-### Community 4 - "App Layout & Global State"
-Cohesion: 0.18
-Nodes (10): interFontForEnglishChar, nastaliq, yekanBakhFontForFarsiChar, anton, instrumentSerif, metadata, vazirmatn, Toast() (+2 more)
+Cohesion: 0.06
+Nodes (34): dependencies, @base-ui/react, class-variance-authority, clsx, cmdk, lucide-react, motion, next (+26 more)
 
 ### Community 5 - "TypeScript Config"
 Cohesion: 0.10
 Nodes (19): compilerOptions, allowJs, esModuleInterop, incremental, isolatedModules, jsx, lib, module (+11 more)
 
 ### Community 6 - "Login & OTP Auth Flow"
-Cohesion: 0.14
-Nodes (8): PhoneFormValues, DIGIT_KEYS, DigitKey, OtpForm(), OtpFormValues, savePhoneNumber(), loginApi(), verifyOtpApi()
+Cohesion: 0.12
+Nodes (13): CheckoutFormValues, checkoutSchema, LoginForm(), PhoneFormValues, DIGIT_KEYS, DigitKey, OtpForm(), OtpFormValues (+5 more)
 
 ### Community 7 - "Brand Design Brief (Adagio)"
 Cohesion: 1.00
@@ -216,9 +251,17 @@ Nodes (4): compat, __dirname, eslintConfig, __filename
 Cohesion: 0.40
 Nodes (4): Product, ProductImage, ProductsResponse, ProductVariant
 
+### Community 14 - "Login API Route"
+Cohesion: 0.09
+Nodes (22): FEATURED_OPTIONS, pillClass(), DropdownMenu(), DropdownMenuCheckboxItem(), DropdownMenuContent(), DropdownMenuItem(), DropdownMenuLabel(), DropdownMenuRadioGroup() (+14 more)
+
 ### Community 15 - "Verify OTP API Route"
-Cohesion: 0.33
-Nodes (3): Page(), NotFound(), ProductPage()
+Cohesion: 0.09
+Nodes (21): aliases, components, hooks, lib, ui, utils, iconLibrary, menuAccent (+13 more)
+
+### Community 16 - "Login Layout"
+Cohesion: 0.11
+Nodes (19): Chat & Messaging → [chat.md](./rules/chat.md), CLI, Component Docs, Examples, and Usage, Component Selection, Component Structure → [composition.md](./rules/composition.md), Critical Rules, Current Project Context, Detailed References (+11 more)
 
 ### Community 36 - "Community 36"
 Cohesion: 0.06
@@ -241,8 +284,8 @@ Cohesion: 0.33
 Nodes (5): For /graphify explain, For /graphify path, graphify reference: query, path, explain, Step 0 — Constrained query expansion (REQUIRED before traversal), Step 1 — Traversal
 
 ### Community 42 - "Community 42"
-Cohesion: 0.33
-Nodes (5): About the design files, Bundle contents, CODING AGENTS: READ THIS FIRST, Implementation status, What you should do — IMPORTANT
+Cohesion: 0.29
+Nodes (6): About the design files, Authentication & membership, Bundle contents, CODING AGENTS: READ THIS FIRST, Implementation status, What you should do — IMPORTANT
 
 ### Community 43 - "Community 43"
 Cohesion: 0.50
@@ -261,40 +304,122 @@ Cohesion: 0.50
 Nodes (3): Product, ProductCollection, ProductTag
 
 ### Community 117 - "Community 117"
-Cohesion: 0.20
-Nodes (6): ChevronRightIcon(), COLLECTION_LABEL, Product, PRODUCT_ACCORDION, PRODUCTS, SIZES
+Cohesion: 0.12
+Nodes (17): `add` — Add components, `apply` — Apply a preset to an existing project, `build` — Build a custom registry, Commands, Contents, `diff` — Check for updates, `docs` — Get component documentation URLs, Dry-Run Mode (+9 more)
 
 ### Community 118 - "Community 118"
 Cohesion: 0.20
-Nodes (4): metadata, values, contactInfo, metadata
+Nodes (16): generateMetadata(), generateStaticParams(), SearchParams, StoreCollectionPage(), metadata, SearchParams, StorePage(), FeaturedFilter (+8 more)
+
+### Community 119 - "Community 119"
+Cohesion: 0.15
+Nodes (8): HeartIcon(), ProductActions(), ProductBreadcrumb(), ProductDetail(), ProductMobileBar(), ProductQuantityStepper(), useAddCartItem(), useRecentlyViewed()
+
+### Community 122 - "Community 122"
+Cohesion: 0.14
+Nodes (14): 1. Built-in variants, 2. Tailwind classes via `className`, 3. Add a new variant, 4. Wrapper components, Adding Custom Colors, Border Radius, Changing the Theme, Checking for Updates (+6 more)
+
+### Community 123 - "Community 123"
+Cohesion: 0.15
+Nodes (13): Avatar always needs AvatarFallback, Button has no isPending or isLoading prop, Callouts use Alert, Card structure, Choosing between overlay components, Component Composition, Contents, Dialog, Sheet, and Drawer always need a Title (+5 more)
+
+### Community 124 - "Community 124"
+Cohesion: 0.15
+Nodes (13): Built-in variants first, className for layout only, Contents, No manual dark: color overrides, No manual z-index on overlay components, No raw color values for status/state indicators, No space-x-* / space-y-*, Prefer size-* over w-* h-* when equal (+5 more)
+
+### Community 125 - "Community 125"
+Cohesion: 0.17
+Nodes (11): Configuring Registries, Setup, `shadcn:get_add_command_for_items`, `shadcn:get_audit_checklist`, `shadcn:get_item_examples_from_registries`, `shadcn:get_project_registries`, `shadcn:list_items_in_registries`, shadcn MCP Server (+3 more)
+
+### Community 127 - "Community 127"
+Cohesion: 0.19
+Nodes (3): SearchParams, Reveal(), RecentlyViewedItem
+
+### Community 128 - "Community 128"
+Cohesion: 0.05
+Nodes (53): AddressForm(), AddressModal(), AddressSection(), CartView(), CheckoutModal(), NewsletterForm(), ProductCard(), Toast() (+45 more)
+
+### Community 130 - "Community 130"
+Cohesion: 0.22
+Nodes (9): Address Schemes, Build and Verify, GitHub Registries, Include, Item Definitions, Mental Model, Registry Authoring and Addresses, Registry Dependencies (+1 more)
+
+### Community 131 - "Community 131"
+Cohesion: 0.22
+Nodes (9): Accordion, Base vs Radix, Button / trigger as non-button element (base only), Composition: asChild (radix) vs render (base), Contents, Select, Select — multiple selection and object values (base only), Slider (+1 more)
+
+### Community 136 - "Community 136"
+Cohesion: 0.22
+Nodes (9): Attachments use Attachment, Chat & Messaging, Contents, Escape hatch: the scroller hooks, Message rows use Message, Message surfaces use Bubble, Scrollable threads use MessageScroller, Streaming, anchoring, and jump-to-latest are built in (+1 more)
+
+### Community 137 - "Community 137"
+Cohesion: 0.29
+Nodes (10): getPageNumbers(), StorePagination(), Pagination(), PaginationContent(), PaginationEllipsis(), PaginationItem(), PaginationLink(), PaginationLinkProps (+2 more)
+
+### Community 139 - "Community 139"
+Cohesion: 0.23
+Nodes (11): Mode, CheckoutFormValues, Button(), buttonVariants, Dialog(), DialogContent(), DialogDescription(), DialogFooter() (+3 more)
+
+### Community 140 - "Community 140"
+Cohesion: 0.25
+Nodes (8): Buttons inside inputs use InputGroup + InputGroupAddon, Contents, Field validation and disabled states, FieldSet + FieldLegend for grouping related fields, Forms & Inputs, Forms use FieldGroup + Field, InputGroup requires InputGroupInput/InputGroupTextarea, Option sets (2–7 choices) use ToggleGroup
+
+### Community 141 - "Community 141"
+Cohesion: 0.21
+Nodes (10): interFontForEnglishChar, nastaliq, yekanBakhFontForFarsiChar, anton, instrumentSerif, metadata, RootLayout(), vazirmatn (+2 more)
+
+### Community 143 - "Community 143"
+Cohesion: 0.40
+Nodes (4): Icons, Icons in Button use data-icon attribute, No sizing classes on icons inside components, Pass icons as component objects, not string keys
+
+### Community 144 - "Community 144"
+Cohesion: 0.22
+Nodes (5): ChevronDownIcon(), ChevronLeftIcon(), CloseIcon(), MenuIcon(), ProductAccordion()
+
+### Community 145 - "Community 145"
+Cohesion: 0.25
+Nodes (14): Field(), FieldContent(), FieldDescription(), FieldError(), FieldGroup(), FieldLabel(), FieldLegend(), FieldSeparator() (+6 more)
+
+### Community 148 - "Community 148"
+Cohesion: 0.27
+Nodes (9): Command(), CommandDialog(), CommandEmpty(), CommandGroup(), CommandInput(), CommandItem(), CommandList(), CommandSeparator() (+1 more)
+
+### Community 149 - "Community 149"
+Cohesion: 0.22
+Nodes (10): InputGroup(), InputGroupAddon(), inputGroupAddonVariants, InputGroupButton(), inputGroupButtonVariants, InputGroupInput(), InputGroupText(), InputGroupTextarea() (+2 more)
+
+### Community 150 - "Community 150"
+Cohesion: 0.12
+Nodes (9): ErrorPage(), ErrorPageProps, REVIEWS, ChevronRightIcon(), COLLECTION_LABEL, Product, PRODUCT_ACCORDION, PRODUCTS (+1 more)
+
+### Community 154 - "Community 154"
+Cohesion: 0.83
+Nodes (3): DELETE(), PATCH(), proxyCartItemRequest()
 
 ## Ambiguous Edges - Review These
 - `ProductCard.tsx` → `Cigarettes After Sex Newsprint Tee (Product Photo)`  [AMBIGUOUS]
-  public/assets/tee-newsprint.jpg · relation: referenced_by
-- `ProductDetail.tsx` → `Cigarettes After Sex Newsprint Tee (Product Photo)`  [AMBIGUOUS]
   public/assets/tee-newsprint.jpg · relation: referenced_by
 - `_showToast` → `onSubscribe`  [AMBIGUOUS]
   project/Home.dc.html · relation: calls
 
 ## Knowledge Gaps
-- **249 isolated node(s):** `metadata`, `values`, `SearchParams`, `metadata`, `contactInfo` (+244 more)
+- **416 isolated node(s):** `metadata`, `values`, `metadata`, `SearchParams`, `metadata` (+411 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **93 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **106 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **What is the exact relationship between `ProductCard.tsx` and `Cigarettes After Sex Newsprint Tee (Product Photo)`?**
   _Edge tagged AMBIGUOUS (relation: referenced_by) - confidence is low._
-- **What is the exact relationship between `ProductDetail.tsx` and `Cigarettes After Sex Newsprint Tee (Product Photo)`?**
-  _Edge tagged AMBIGUOUS (relation: referenced_by) - confidence is low._
 - **What is the exact relationship between `_showToast` and `onSubscribe`?**
   _Edge tagged AMBIGUOUS (relation: calls) - confidence is low._
-- **Why does `useAppState()` connect `Storefront UI Components` to `App Layout & Global State`, `Login & OTP Auth Flow`?**
-  _High betweenness centrality (0.012) - this node is a cross-community bridge._
-- **Why does `Toast()` connect `App Layout & Global State` to `Storefront UI Components`?**
-  _High betweenness centrality (0.002) - this node is a cross-community bridge._
-- **What connects `metadata`, `values`, `SearchParams` to the rest of the system?**
-  _270 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `cn()` connect `Community 145` to `Community 128`, `Community 137`, `Community 139`, `Community 141`, `Login API Route`, `Community 148`, `Community 149`, `Community 151`?**
+  _High betweenness centrality (0.033) - this node is a cross-community bridge._
+- **Why does `useAppState()` connect `Community 128` to `Community 139`, `Login & OTP Auth Flow`, `Community 119`?**
+  _High betweenness centrality (0.009) - this node is a cross-community bridge._
+- **Why does `shadcn/ui` connect `Login Layout` to `Community 126`?**
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
+- **What connects `metadata`, `values`, `metadata` to the rest of the system?**
+  _437 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `DC Template Runtime (prototype engine)` be split into smaller, more focused modules?**
   _Cohesion score 0.06688311688311688 - nodes in this community are weakly interconnected._

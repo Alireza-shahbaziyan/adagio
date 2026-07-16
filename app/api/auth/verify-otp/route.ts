@@ -7,14 +7,28 @@ export async function POST(req: NextRequest) {
   try {
     const { phone, code } = await req.json();
      const formattedPhone = phone.replace(/^0/, "");
+     
     const res = await fetch(`${backend}/api/auth/verify/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      credentials: "include",
       body: JSON.stringify({ phone: formattedPhone, code }),
     });
-    const data = await res.json();
-    // check Django status
+
+    const rawText = await res.text();
+    let data: unknown;
+    try {
+      data = JSON.parse(rawText);
+    } catch {
+      console.error("verify-otp: backend returned non-JSON response", {
+        status: res.status,
+        bodyPreview: rawText.slice(0, 300),
+      });
+      return NextResponse.json(
+        { detail: "سرور با خطا مواجه شد. لطفاً بعداً دوباره تلاش کن." },
+        { status: 502 },
+      );
+    }
+
     if (!res.ok) {
       return NextResponse.json(data, {
         status: res.status,
@@ -24,11 +38,14 @@ export async function POST(req: NextRequest) {
     const response = NextResponse.json(data, {
       status: 200,
     });
+
     if (setCookie) {
       response.headers.set("set-cookie", setCookie);
     }
+
     return response
-  } catch {
+  } catch (error) {
+    console.log('----',error);
     return NextResponse.json(
       { detail: "Internal Server Error | Error in send verify OTP" },
       { status: 500 }

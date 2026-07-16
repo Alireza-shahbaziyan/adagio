@@ -1,7 +1,7 @@
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer";
 import MobileBottomNav from "@/components/MobileBottomNav";
-import CollectionsShowcase from "@/components/CollectionsShowcase";
+import CollectionsShowcase from "@/components/Collection/CollectionsShowcase";
 import { CollectionResponse } from "@/types/collections";
 import { backend } from "@/utils/getURL";
 
@@ -26,14 +26,11 @@ export default async function CollectionsPage({
   });
   if (search) query.set("search", search);
 
-  const res = await fetch(
-    `${backend}/api/collections/?${query.toString()}`,
-    {
-      next: {
-        revalidate: 60 * 60,
-      },
-    }
-  );
+  const res = await fetch(`${backend}/api/collections/?${query.toString()}`, {
+    next: {
+      revalidate: 60 * 60,
+    },
+  });
 
   if (!res.ok) {
     throw new Error("Failed to fetch collections");
@@ -44,7 +41,11 @@ export default async function CollectionsPage({
   const currentPage = Number(page) || 1;
 
   return (
-    <div dir="rtl" lang="fa" className="relative min-h-screen bg-[#090909] pb-24 text-white md:pb-0">
+    <div
+      dir="rtl"
+      lang="fa"
+      className="relative min-h-screen bg-primary-foreground pb-24 text-white md:pb-0"
+    >
       <Navbar variant="default" />
       <CollectionsShowcase
         collections={collectionResponse.results}

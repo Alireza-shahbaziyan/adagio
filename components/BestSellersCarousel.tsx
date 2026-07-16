@@ -18,21 +18,21 @@ export default function BestSellersCarousel({
   };
 
   return (
-    <section className="relative z-[1] pb-20 md:pb-40">
+    <section className="relative z-1 pb-20 md:pb-40">
       <div className="mb-10 flex flex-wrap items-end justify-between gap-6 px-5 md:px-16">
-        <h2 className="  text-[28px] font-black text-[#F3F3F3] md:text-[48px]">
+        <h2 className="  text-[28px] font-black text-foreground md:text-[48px]">
           پرفروش‌ترین‌ها
         </h2>
         <div className="flex gap-3">
           <button
             onClick={() => scrollBy(-340)}
-            className="flex h-[46px] w-[46px] items-center justify-center rounded-full border border-white/20 text-[#F3F3F3] transition-colors hover:bg-white/[0.08] hover:border-white/40"
+            className="flex h-[46px] w-[46px] items-center justify-center rounded-full border border-white/20 text-foreground transition-colors hover:bg-white/8 hover:border-white/40"
           >
             <ChevronLeftIcon />
           </button>
           <button
             onClick={() => scrollBy(340)}
-            className="flex h-[46px] w-[46px] items-center justify-center rounded-full border border-white/20 text-[#F3F3F3] transition-colors hover:bg-white/[0.08] hover:border-white/40"
+            className="flex h-[46px] w-[46px] items-center justify-center rounded-full border border-white/20 text-foreground transition-colors hover:bg-white/8 hover:border-white/40"
           >
             <ChevronRightIcon />
           </button>
@@ -60,10 +60,10 @@ export default function BestSellersCarousel({
               />
             </div>
             <div className="p-[18px]">
-              <p className="mb-1 text-[15px] text-[#F3F3F3]">{p.name}</p>
+              <p className="mb-1 text-[15px] text-foreground">{p.name}</p>
               <p
                 style={{ direction: "ltr", textAlign: "right" }}
-                className="text-sm text-[#A8A8A8]"
+                className="text-sm text-muted-foreground"
               >
                 ${p.price}
               </p>

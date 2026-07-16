@@ -1,9 +1,12 @@
 import Footer from "@/components/Footer";
 import MobileBottomNav from "@/components/MobileBottomNav";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Navbar/Navbar";
+import ProductCard from "@/components/ProductCard";
+import { getStoreProducts } from "@/lib/store";
 import { CollectionResponse } from "@/types/collections";
 import { Callection } from "@/types/singleCollection";
 import { backend } from "@/utils/getURL";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -26,15 +29,17 @@ export default async function Page({
 }) {
   const { slug } = await params;
 
-  const res = await fetch(`${backend}/api/collections/${slug}`, {
-    next: {
-      revalidate: 300,
-    },
-  });
-
-  if (!res.ok) notFound();
-
-  const collection: Callection = await res.json();
+  const [collection, products] = await Promise.all([
+    fetch(`${backend}/api/collections/${slug}`, {
+      next: { revalidate: 300 },
+    }).then((res) => {
+      if (!res.ok) notFound();
+      return res.json() as Promise<Callection>;
+    }),
+    getStoreProducts({ collectionSlug: slug, page: "1", pageSize: 6 }).catch(
+      () => null,
+    ),
+  ]);
 
   return (
     <main className="relative overflow-hidden bg-light-in-dark text-white">
@@ -82,6 +87,23 @@ export default async function Page({
           )}
         </section>
 
+        {/* Hero image */}
+
+        {collection.image && (
+          <section className="mt-12 md:mt-16">
+            <div className="relative aspect-21/9 w-full overflow-hidden rounded-3xl border border-white/10">
+              <Image
+                src={collection.image}
+                alt={collection.title}
+                fill
+                sizes="(max-width: 1280px) 100vw, 1280px"
+                priority
+                className="object-cover object-top"
+              />
+            </div>
+          </section>
+        )}
+
         {/* Description */}
 
         {collection.description && (
@@ -113,22 +135,57 @@ export default async function Page({
                 <Link
                   key={child.id}
                   href={`/collections/${child.slug}`}
-                  className="group rounded-3xl border border-white/10 bg-white/[0.03] p-8 transition-all duration-300 hover:border-white/30 hover:bg-white/[0.06]"
+                  className="group overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] transition-all duration-300 hover:border-white/30 hover:bg-white/6"
                 >
-                  <h3 className="text-xl font-medium transition group-hover:text-white">
-                    {child.title}
-                  </h3>
+                  {child.image ? (
+                    <div className="relative h-40 w-full overflow-hidden">
+                      <Image
+                        src={child.image}
+                        alt={child.title}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                  ) : (
+                    <div className="h-40 w-full bg-white/[0.03]" />
+                  )}
 
-                  <p className="mt-4 line-clamp-3 text-sm leading-7 text-neutral-400">
-                    {child.short_description}
-                  </p>
+                  <div className="p-8">
+                    <h3 className="text-xl font-medium transition group-hover:text-white">
+                      {child.title}
+                    </h3>
+
+                    <p className="mt-4 line-clamp-3 text-sm leading-7 text-neutral-400">
+                      {child.short_description}
+                    </p>
+                  </div>
                 </Link>
               ))}
             </div>
           </section>
         )}
+
+        {/* Products */}
+
+        {products && products.results.length > 0 && (
+          <section className="mt-24">
+            <h2 className="mb-8 text-2xl font-semibold">Products</h2>
+
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {products.results.map((product, i) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  interactive
+                  priority={i === 0}
+                />
+              ))}
+            </div>
+          </section>
+        )}
       </div>
-      <Footer/>
+      <Footer />
       <MobileBottomNav />
     </main>
   );

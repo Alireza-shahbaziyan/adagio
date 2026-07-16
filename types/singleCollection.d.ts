@@ -3,6 +3,7 @@ export interface CallectionSummary {
   title: string;
   slug: string;
   short_description: string;
+  image: string | null;
   is_active: boolean;
   parent: number | null;
 }
@@ -17,6 +18,7 @@ export interface Callection {
   short_description: string;
   description: string;
   is_active: boolean;
+  image: string | null;
 
   children: CallectionSummary[];
 

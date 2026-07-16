@@ -1,46 +1,68 @@
 "use client";
 
 import Image from "next/image";
-import { useScrollY } from "@/lib/hooks";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useSpring,
+  useReducedMotion,
+} from "motion/react";
+
+// Same easing as the original component
+const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
 
 export default function Hero() {
-  const scrollY = useScrollY();
+  const reduceMotion = useReducedMotion();
+  const { scrollY } = useScroll();
 
-  // Animation Progress
-  const progress = Math.min(scrollY / 420, 1);
+  // Physics-based smoothing — all scroll-linked transforms read from this
+  const smoothY = useSpring(scrollY, {
+    stiffness: 140,
+    damping: 26,
+    mass: 0.4,
+  });
 
-  // Ease Out Cubic
-  const easedProgress = 1 - Math.pow(1 - progress, 3);
+  // Hero (image + title container)
+  const heroY = useTransform(smoothY, [0, 420], [0, -70], {
+    ease: easeOutCubic,
+  });
+  const heroScale = useTransform(smoothY, [0, 420], [1, 1.1], {
+    ease: easeOutCubic,
+  });
+  const heroOpacity = useTransform(smoothY, [0, 420], [1, 0], {
+    ease: easeOutCubic,
+  });
 
-  const heroScale = 1 + easedProgress * 0.1;
-  const heroTranslate = easedProgress * -70;
-  const heroOpacity = 1 - easedProgress;
+  // Title: slight upward parallax + the two halves splitting apart.
+  // vw units keep the split proportional on every screen size.
+  const titleY = useTransform(smoothY, [0, 420], [0, -30], {
+    ease: easeOutCubic,
+  });
+  const titleLeftX = useTransform(smoothY, [0, 420], ["0vw", "-48vw"], {
+    ease: easeOutCubic,
+  });
+  const titleRightX = useTransform(smoothY, [0, 420], ["0vw", "48vw"], {
+    ease: easeOutCubic,
+  });
 
-  const titleTranslate = easedProgress * -30;
+  // Bottom text
+  const bottomScale = useTransform(smoothY, [0, 500], [1, 1.35], {
+    ease: easeOutCubic,
+  });
+  const bottomOpacity = useTransform(scrollY, [0, 500], [0.7, 1]);
 
-  const scrollCueOpacity = Math.max(1 - scrollY / 260, 0);
+  // Scroll cue — tied to raw scroll so it reacts instantly
+  const cueOpacity = useTransform(scrollY, [0, 260], [1, 0]);
 
-  const bottomTextProgress = Math.min(scrollY / 500, 1);
-
-const bottomTextScale =
-  1 + (1 - Math.pow(1 - bottomTextProgress, 3)) * 0.35;
-
-const bottomTextOpacity =
-  0.7 + bottomTextProgress * 0.3;
   return (
     <section className="relative flex min-h-svh w-full items-center justify-center overflow-hidden bg-[#050505] md:h-screen">
-      <div className="film-grain" />
-
-      {/* Top Label */}
-      <div className="absolute inset-x-0 top-24 z-10 px-6 text-center md:font-bold md:top-20">
-        <span className="text-xs tracking-[1px] text-[#A8A8A8]">
-        وقتی موسیقی تبدیل به لباس می‌شود
-        </span>
-      </div>
+      <div className="film-grain" aria-hidden="true" />
 
       {/* Spotlight */}
       <div
-        className="absolute inset-0"
+        className="pointer-events-none absolute inset-0"
+        aria-hidden="true"
         style={{
           background:
             "radial-gradient(circle at 50% 72%, rgba(243,243,243,.14), transparent 55%)",
@@ -49,7 +71,8 @@ const bottomTextOpacity =
 
       {/* Mountains */}
       <div
-        className="absolute inset-x-0 bottom-0 h-[28%] bg-[#151515]"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-[28%] bg-[#151515]"
+        aria-hidden="true"
         style={{
           clipPath:
             "polygon(0% 100%,0% 55%,6% 70%,14% 40%,24% 62%,34% 35%,44% 58%,54% 30%,64% 55%,74% 38%,84% 60%,92% 42%,100% 58%,100% 100%)",
@@ -57,7 +80,8 @@ const bottomTextOpacity =
       />
 
       <div
-        className="absolute inset-x-0 bottom-0 h-[17%] bg-[#080808]"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-[17%] bg-[#080808]"
+        aria-hidden="true"
         style={{
           clipPath:
             "polygon(0% 100%,0% 70%,10% 82%,20% 60%,32% 78%,44% 55%,56% 75%,68% 58%,80% 78%,90% 62%,100% 75%,100% 100%)",
@@ -65,35 +89,50 @@ const bottomTextOpacity =
       />
 
       {/* Hero */}
-      <div
-        className="absolute inset-0 flex items-center justify-center bg-hero will-change-transform"
+      <motion.div
+        className="pointer-events-none absolute inset-0 flex items-center justify-center bg-hero"
         style={{
-          transform: `translate3d(0, ${heroTranslate}px, 0) scale(${heroScale})`,
+          y: reduceMotion ? 0 : heroY,
+          scale: reduceMotion ? 1 : heroScale,
           opacity: heroOpacity,
         }}
       >
-        {/* Title */}
-        <div
-          style={{
-            direction: "ltr",
-            transform: `translate3d(0, ${titleTranslate}px, 0)`,
-          }}
-          className="absolute inset-x-0 z-10 text-center"
+        {/* Title — two halves that slide apart on scroll */}
+        <motion.div
+          dir="ltr"
+          className="absolute inset-x-0 z-10"
+          style={{ y: reduceMotion ? 0 : titleY }}
         >
-          <span className="font-anton text-9xl leading-[0.85] text-[#dcdcdc] md:text-[31vw]">
-            ADAGIO
-          </span>
-        </div>
+          <h1
+            aria-label="ADAGIO"
+            className="flex items-center justify-center font-anton text-[26vw] leading-[0.85] text-[#dcdcdc] sm:text-[24vw] md:text-[31vw]"
+          >
+            <motion.span
+              aria-hidden="true"
+              className="inline-block will-change-transform"
+              style={{ x: reduceMotion ? 0 : titleLeftX }}
+            >
+              ADA
+            </motion.span>
+            <motion.span
+              aria-hidden="true"
+              className="inline-block will-change-transform"
+              style={{ x: reduceMotion ? 0 : titleRightX }}
+            >
+              GIO
+            </motion.span>
+          </h1>
+        </motion.div>
 
-        {/* Person */}
-        <div className="relative z-20 h-[90svh] w-auto md:h-[min(72vh,620px)]">
+        {/* Person — taller and more dominant on mobile */}
+        <div className="relative z-20 h-[92svh] w-auto md:h-[min(72vh,620px)]">
           <Image
             src="/assets/heroPerson.png"
             alt=""
             width={620}
             height={775}
             priority
-            className="h-full w-auto object-contain select-none pointer-events-none"
+            className="pointer-events-none h-full w-auto object-contain select-none"
             style={{
               filter:
                 "grayscale(1) contrast(1.12) brightness(.92) drop-shadow(0 30px 60px rgba(0,0,0,.6))",
@@ -104,42 +143,46 @@ const bottomTextOpacity =
             }}
           />
         </div>
-      </div>
+      </motion.div>
 
       {/* Bottom Text */}
-  <div
-  className="absolute inset-x-0 bottom-28 z-10 px-6 text-center md:bottom-14 
-  font-thin will-change-transform"
-  style={{
-    transform: `scale(${bottomTextScale})`,
-    opacity: bottomTextOpacity,
-  }}
->
-        <p
-          className="mx-auto max-w-72 text-[13px] 
-          leading-[1.7]  md:max-w-105 md:text-xl">
-        برای شب‌هایی که موسیقی تنها هم‌صحبت توست
+      <motion.div
+        dir="rtl"
+        lang="fa"
+        className="pointer-events-none absolute inset-x-0 bottom-28 z-30 px-6 text-center font-thin md:bottom-14"
+        style={{
+          scale: reduceMotion ? 1 : bottomScale,
+          opacity: bottomOpacity,
+        }}
+      >
+        <p className="mx-auto max-w-64 text-[13px] leading-[1.7] sm:max-w-72 md:max-w-105 md:text-xl">
+          برای شب‌هایی که موسیقی تنها هم‌صحبت توست
         </p>
-      </div>
+      </motion.div>
 
       {/* Scroll Hint */}
-      <div
-        className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2.5"
-        style={{ opacity: scrollCueOpacity }}
+      <motion.div
+        dir="rtl"
+        lang="fa"
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 z-30 flex -translate-x-1/2 flex-col items-center gap-2.5 bottom-[max(2rem,calc(env(safe-area-inset-bottom)+1rem))]"
+        style={{ opacity: cueOpacity }}
       >
-        <span className="text-[10px] tracking-[1px] text-[#A8A8A8]">
+        <span className="text-[10px] tracking-[1px] text-muted-foreground">
           اسکرول کن
         </span>
 
-        <div
+        <motion.div
           className="h-8 w-px"
           style={{
-            background:
-              "linear-gradient(180deg,#A8A8A8,transparent)",
-            animation: "scrollHint 2s ease-in-out infinite",
+            background: "linear-gradient(180deg,#A8A8A8,transparent)",
           }}
+          animate={
+            reduceMotion ? undefined : { y: [0, 6, 0], opacity: [1, 0.4, 1] }
+          }
+          transition={{ duration: 2, ease: "easeInOut", repeat: Infinity }}
         />
-      </div>
+      </motion.div>
     </section>
   );
 }
