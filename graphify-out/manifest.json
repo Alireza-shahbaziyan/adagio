@@ -270,8 +270,8 @@
     "semantic_hash": "b0517ee048d45b5cd5463430230eb52f"
   },
   "README.md": {
-    "mtime": 1783679477.953901,
-    "ast_hash": "110e7ef7b886da49dad02c28af1d98d3",
+    "mtime": 1784225328.7757056,
+    "ast_hash": "8d3c576902bd4b02b0f850741d24a7df",
     "semantic_hash": ""
   },
   "chats/chat1.md": {
@@ -982,6 +982,16 @@
   "public/assets/heroPerson2.png": {
     "mtime": 1783248824.4448063,
     "ast_hash": "4e20eaa14d46ecc0b4644e2c488dcf2d",
+    "semantic_hash": ""
+  },
+  "ARCHITECTURE.fa.md": {
+    "mtime": 1784225297.3934426,
+    "ast_hash": "3481d9c6f7958c9496ca01e285e0939e",
+    "semantic_hash": ""
+  },
+  "ARCHITECTURE.md": {
+    "mtime": 1784225206.9907565,
+    "ast_hash": "42c81d506c51e3d8c810d17575afaf81",
     "semantic_hash": ""
   }
 }

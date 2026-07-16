@@ -145,7 +145,7 @@
       "label": "POST()",
       "file_type": "code",
       "source_file": "app/api/auth/addresses/route.ts",
-      "source_location": "L37",
+      "source_location": "L48",
       "_origin": "ast",
       "id": "app_api_auth_addresses_route_post",
       "community": 4,
@@ -428,7 +428,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_cart_page",
-      "community": 129,
+      "community": 1,
       "norm_label": "page.tsx"
     },
     {
@@ -438,7 +438,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "app_cart_page_metadata",
-      "community": 129,
+      "community": 1,
       "norm_label": "metadata"
     },
     {
@@ -448,7 +448,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "app_cart_page_cartpage",
-      "community": 129,
+      "community": 1,
       "norm_label": "cartpage()"
     },
     {
@@ -458,7 +458,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_collections_slug_page",
-      "community": 118,
+      "community": 158,
       "norm_label": "page.tsx"
     },
     {
@@ -468,7 +468,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "app_collections_slug_page_generatestaticparams",
-      "community": 118,
+      "community": 158,
       "norm_label": "generatestaticparams()"
     },
     {
@@ -478,7 +478,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "app_collections_slug_page_page",
-      "community": 118,
+      "community": 158,
       "norm_label": "page()"
     },
     {
@@ -488,7 +488,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_collections_page",
-      "community": 1,
+      "community": 127,
       "norm_label": "page.tsx"
     },
     {
@@ -498,7 +498,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "app_collections_page_searchparams",
-      "community": 1,
+      "community": 127,
       "norm_label": "searchparams"
     },
     {
@@ -508,7 +508,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "app_collections_page_collectionspage",
-      "community": 1,
+      "community": 127,
       "norm_label": "collectionspage()"
     },
     {
@@ -518,7 +518,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_contact_me_page",
-      "community": 129,
+      "community": 159,
       "norm_label": "page.tsx"
     },
     {
@@ -528,7 +528,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "app_contact_me_page_metadata",
-      "community": 129,
+      "community": 159,
       "norm_label": "metadata"
     },
     {
@@ -538,7 +538,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "app_contact_me_page_contactinfo",
-      "community": 129,
+      "community": 159,
       "norm_label": "contactinfo"
     },
     {
@@ -548,7 +548,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "app_contact_me_page_contactpage",
-      "community": 129,
+      "community": 159,
       "norm_label": "contactpage()"
     },
     {
@@ -558,7 +558,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_error",
-      "community": 127,
+      "community": 150,
       "norm_label": "error.tsx"
     },
     {
@@ -568,7 +568,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "app_error_errorpageprops",
-      "community": 127,
+      "community": 150,
       "norm_label": "errorpageprops"
     },
     {
@@ -578,7 +578,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "app_error_errorpage",
-      "community": 127,
+      "community": 150,
       "norm_label": "errorpage()"
     },
     {
@@ -588,7 +588,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_fonts_fontsconfig",
-      "community": 6,
+      "community": 141,
       "norm_label": "fontsconfig.ts"
     },
     {
@@ -598,7 +598,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "app_fonts_fontsconfig_interfontforenglishchar",
-      "community": 6,
+      "community": 141,
       "norm_label": "interfontforenglishchar"
     },
     {
@@ -608,7 +608,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "app_fonts_fontsconfig_yekanbakhfontforfarsichar",
-      "community": 6,
+      "community": 141,
       "norm_label": "yekanbakhfontforfarsichar"
     },
     {
@@ -618,7 +618,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "app_fonts_fontsconfig_nastaliq",
-      "community": 6,
+      "community": 141,
       "norm_label": "nastaliq"
     },
     {
@@ -628,7 +628,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_layout",
-      "community": 6,
+      "community": 141,
       "norm_label": "layout.tsx"
     },
     {
@@ -638,7 +638,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "app_layout_vazirmatn",
-      "community": 6,
+      "community": 141,
       "norm_label": "vazirmatn"
     },
     {
@@ -648,7 +648,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "app_layout_instrumentserif",
-      "community": 6,
+      "community": 141,
       "norm_label": "instrumentserif"
     },
     {
@@ -658,7 +658,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "app_layout_anton",
-      "community": 6,
+      "community": 141,
       "norm_label": "anton"
     },
     {
@@ -668,7 +668,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "app_layout_metadata",
-      "community": 6,
+      "community": 141,
       "norm_label": "metadata"
     },
     {
@@ -678,7 +678,7 @@
       "source_location": "L33",
       "_origin": "ast",
       "id": "app_layout_rootlayout",
-      "community": 6,
+      "community": 141,
       "norm_label": "rootlayout()"
     },
     {
@@ -728,7 +728,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_login_layout",
-      "community": 129,
+      "community": 1,
       "norm_label": "layout.tsx"
     },
     {
@@ -738,7 +738,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "app_login_layout_loginlayout",
-      "community": 129,
+      "community": 1,
       "norm_label": "loginlayout()"
     },
     {
@@ -788,7 +788,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_page",
-      "community": 127,
+      "community": 150,
       "norm_label": "page.tsx"
     },
     {
@@ -798,7 +798,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "app_page_reviews",
-      "community": 127,
+      "community": 150,
       "norm_label": "reviews"
     },
     {
@@ -808,7 +808,7 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "app_page_home",
-      "community": 127,
+      "community": 150,
       "norm_label": "home()"
     },
     {
@@ -1038,7 +1038,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_wishlist_page",
-      "community": 129,
+      "community": 1,
       "norm_label": "page.tsx"
     },
     {
@@ -1048,7 +1048,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "app_wishlist_page_metadata",
-      "community": 129,
+      "community": 1,
       "norm_label": "metadata"
     },
     {
@@ -1058,7 +1058,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "app_wishlist_page_wishlistpage",
-      "community": 129,
+      "community": 1,
       "norm_label": "wishlistpage()"
     },
     {
@@ -1308,34 +1308,24 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_addresses_addressform",
-      "community": 145,
+      "community": 128,
       "norm_label": "addressform.tsx"
-    },
-    {
-      "label": "AddressFormValues",
-      "file_type": "code",
-      "source_file": "components/Addresses/AddressForm.tsx",
-      "source_location": "L25",
-      "_origin": "ast",
-      "id": "components_addresses_addressform_addressformvalues",
-      "community": 145,
-      "norm_label": "addressformvalues"
     },
     {
       "label": "Select()",
       "file_type": "code",
       "source_file": "components/Addresses/AddressForm.tsx",
-      "source_location": "L42",
+      "source_location": "L28",
       "_origin": "ast",
       "id": "components_addresses_addressform_select",
-      "community": 145,
+      "community": 128,
       "norm_label": "select()"
     },
     {
       "label": "AddressForm()",
       "file_type": "code",
       "source_file": "components/Addresses/AddressForm.tsx",
-      "source_location": "L69",
+      "source_location": "L55",
       "_origin": "ast",
       "id": "components_addresses_addressform_addressform",
       "community": 128,
@@ -1348,7 +1338,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_addresses_addresslist",
-      "community": 151,
+      "community": 128,
       "norm_label": "addresslist.tsx"
     },
     {
@@ -1358,7 +1348,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "components_addresses_addresslist_addresslist",
-      "community": 151,
+      "community": 128,
       "norm_label": "addresslist()"
     },
     {
@@ -1375,7 +1365,7 @@
       "label": "Mode",
       "file_type": "code",
       "source_file": "components/Addresses/AddressModal.tsx",
-      "source_location": "L17",
+      "source_location": "L19",
       "_origin": "ast",
       "id": "components_addresses_addressmodal_mode",
       "community": 139,
@@ -1385,10 +1375,10 @@
       "label": "AddressModal()",
       "file_type": "code",
       "source_file": "components/Addresses/AddressModal.tsx",
-      "source_location": "L19",
+      "source_location": "L21",
       "_origin": "ast",
       "id": "components_addresses_addressmodal_addressmodal",
-      "community": 139,
+      "community": 128,
       "norm_label": "addressmodal()"
     },
     {
@@ -1588,7 +1578,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "components_checkoutmodal_checkoutmodal",
-      "community": 144,
+      "community": 128,
       "norm_label": "checkoutmodal()"
     },
     {
@@ -1598,7 +1588,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_collection_collectioncard",
-      "community": 150,
+      "community": 144,
       "norm_label": "collectioncard.tsx"
     },
     {
@@ -1608,7 +1598,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "components_collection_collectioncard_collectioncard",
-      "community": 150,
+      "community": 144,
       "norm_label": "collectioncard()"
     },
     {
@@ -1638,7 +1628,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_footer",
-      "community": 129,
+      "community": 158,
       "norm_label": "footer.tsx"
     },
     {
@@ -1648,7 +1638,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "components_footer_footer",
-      "community": 129,
+      "community": 158,
       "norm_label": "footer()"
     },
     {
@@ -1658,7 +1648,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_hero",
-      "community": 127,
+      "community": 150,
       "norm_label": "hero.tsx"
     },
     {
@@ -1668,7 +1658,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "components_hero_easeoutcubic",
-      "community": 127,
+      "community": 150,
       "norm_label": "easeoutcubic()"
     },
     {
@@ -1678,7 +1668,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "components_hero_hero",
-      "community": 127,
+      "community": 150,
       "norm_label": "hero()"
     },
     {
@@ -1748,7 +1738,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_newsletterform",
-      "community": 144,
+      "community": 128,
       "norm_label": "newsletterform.tsx"
     },
     {
@@ -1758,7 +1748,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "components_newsletterform_newsletterform",
-      "community": 144,
+      "community": 128,
       "norm_label": "newsletterform()"
     },
     {
@@ -1768,7 +1758,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_productcard",
-      "community": 127,
+      "community": 128,
       "norm_label": "productcard.tsx"
     },
     {
@@ -1778,7 +1768,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "components_productcard_productcard",
-      "community": 127,
+      "community": 128,
       "norm_label": "productcard()"
     },
     {
@@ -1808,7 +1798,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_productpage_productaccordion",
-      "community": 119,
+      "community": 144,
       "norm_label": "productaccordion.tsx"
     },
     {
@@ -1818,7 +1808,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "components_productpage_productaccordion_productaccordion",
-      "community": 119,
+      "community": 144,
       "norm_label": "productaccordion()"
     },
     {
@@ -1968,7 +1958,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_productpage_recommended",
-      "community": 141,
+      "community": 127,
       "norm_label": "recommended.tsx"
     },
     {
@@ -1978,7 +1968,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "components_productpage_recommended_recommended",
-      "community": 141,
+      "community": 127,
       "norm_label": "recommended()"
     },
     {
@@ -2138,7 +2128,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_toast",
-      "community": 6,
+      "community": 128,
       "norm_label": "toast.tsx"
     },
     {
@@ -2148,7 +2138,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "components_toast_toast",
-      "community": 6,
+      "community": 128,
       "norm_label": "toast()"
     },
     {
@@ -2158,7 +2148,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_wishlist_wishlistgrid",
-      "community": 144,
+      "community": 128,
       "norm_label": "wishlistgrid.tsx"
     },
     {
@@ -2168,7 +2158,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "components_wishlist_wishlistgrid_wishlistgrid",
-      "community": 144,
+      "community": 128,
       "norm_label": "wishlistgrid()"
     },
     {
@@ -2178,7 +2168,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_wishlist_wishlistitemcard",
-      "community": 144,
+      "community": 128,
       "norm_label": "wishlistitemcard.tsx"
     },
     {
@@ -2188,7 +2178,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "components_wishlist_wishlistitemcard_wishlistitemcard",
-      "community": 144,
+      "community": 128,
       "norm_label": "wishlistitemcard()"
     },
     {
@@ -2258,7 +2248,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_icons",
-      "community": 1,
+      "community": 144,
       "norm_label": "icons.tsx"
     },
     {
@@ -2278,7 +2268,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "components_icons_hearticon",
-      "community": 1,
+      "community": 119,
       "norm_label": "hearticon()"
     },
     {
@@ -2308,7 +2298,7 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "components_icons_menuicon",
-      "community": 1,
+      "community": 144,
       "norm_label": "menuicon()"
     },
     {
@@ -2318,7 +2308,7 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "components_icons_closeicon",
-      "community": 1,
+      "community": 144,
       "norm_label": "closeicon()"
     },
     {
@@ -2328,7 +2318,7 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "components_icons_chevronlefticon",
-      "community": 150,
+      "community": 144,
       "norm_label": "chevronlefticon()"
     },
     {
@@ -2348,7 +2338,7 @@
       "source_location": "L71",
       "_origin": "ast",
       "id": "components_icons_chevrondownicon",
-      "community": 119,
+      "community": 144,
       "norm_label": "chevrondownicon()"
     },
     {
@@ -2368,7 +2358,7 @@
       "source_location": "L88",
       "_origin": "ast",
       "id": "components_icons_eyeicon",
-      "community": 1,
+      "community": 144,
       "norm_label": "eyeicon()"
     },
     {
@@ -2378,7 +2368,7 @@
       "source_location": "L97",
       "_origin": "ast",
       "id": "components_icons_googleicon",
-      "community": 1,
+      "community": 144,
       "norm_label": "googleicon()"
     },
     {
@@ -3268,7 +3258,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_ui_textarea",
-      "community": 145,
+      "community": 149,
       "norm_label": "textarea.tsx"
     },
     {
@@ -3278,7 +3268,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "components_ui_textarea_textarea",
-      "community": 145,
+      "community": 149,
       "norm_label": "textarea()"
     },
     {
@@ -3442,10 +3432,40 @@
       "norm_label": "addressrequest()"
     },
     {
+      "label": "RawAddress",
+      "file_type": "code",
+      "source_file": "lib/addresses.ts",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "lib_addresses_rawaddress",
+      "community": 128,
+      "norm_label": "rawaddress"
+    },
+    {
+      "label": "toId()",
+      "file_type": "code",
+      "source_file": "lib/addresses.ts",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "lib_addresses_toid",
+      "community": 128,
+      "norm_label": "toid()"
+    },
+    {
+      "label": "normalizeAddress()",
+      "file_type": "code",
+      "source_file": "lib/addresses.ts",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "lib_addresses_normalizeaddress",
+      "community": 128,
+      "norm_label": "normalizeaddress()"
+    },
+    {
       "label": "getAddresses()",
       "file_type": "code",
       "source_file": "lib/addresses.ts",
-      "source_location": "L23",
+      "source_location": "L39",
       "_origin": "ast",
       "id": "lib_addresses_getaddresses",
       "community": 128,
@@ -3455,7 +3475,7 @@
       "label": "createAddress()",
       "file_type": "code",
       "source_file": "lib/addresses.ts",
-      "source_location": "L27",
+      "source_location": "L44",
       "_origin": "ast",
       "id": "lib_addresses_createaddress",
       "community": 128,
@@ -3465,7 +3485,7 @@
       "label": "updateAddress()",
       "file_type": "code",
       "source_file": "lib/addresses.ts",
-      "source_location": "L34",
+      "source_location": "L52",
       "_origin": "ast",
       "id": "lib_addresses_updateaddress",
       "community": 128,
@@ -3475,7 +3495,7 @@
       "label": "deleteAddress()",
       "file_type": "code",
       "source_file": "lib/addresses.ts",
-      "source_location": "L42",
+      "source_location": "L61",
       "_origin": "ast",
       "id": "lib_addresses_deleteaddress",
       "community": 128,
@@ -3485,7 +3505,7 @@
       "label": "useAddresses()",
       "file_type": "code",
       "source_file": "lib/addresses.ts",
-      "source_location": "L56",
+      "source_location": "L75",
       "_origin": "ast",
       "id": "lib_addresses_useaddresses",
       "community": 128,
@@ -3495,7 +3515,7 @@
       "label": "useCreateAddress()",
       "file_type": "code",
       "source_file": "lib/addresses.ts",
-      "source_location": "L69",
+      "source_location": "L88",
       "_origin": "ast",
       "id": "lib_addresses_usecreateaddress",
       "community": 128,
@@ -3505,7 +3525,7 @@
       "label": "useUpdateAddress()",
       "file_type": "code",
       "source_file": "lib/addresses.ts",
-      "source_location": "L77",
+      "source_location": "L96",
       "_origin": "ast",
       "id": "lib_addresses_useupdateaddress",
       "community": 128,
@@ -3515,10 +3535,10 @@
       "label": "useDeleteAddress()",
       "file_type": "code",
       "source_file": "lib/addresses.ts",
-      "source_location": "L86",
+      "source_location": "L105",
       "_origin": "ast",
       "id": "lib_addresses_usedeleteaddress",
-      "community": 139,
+      "community": 128,
       "norm_label": "usedeleteaddress()"
     },
     {
@@ -3528,7 +3548,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_app_state",
-      "community": 6,
+      "community": 128,
       "norm_label": "app-state.tsx"
     },
     {
@@ -3538,7 +3558,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "lib_app_state_appstatecontextvalue",
-      "community": 6,
+      "community": 128,
       "norm_label": "appstatecontextvalue"
     },
     {
@@ -3548,7 +3568,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "lib_app_state_appstatecontext",
-      "community": 6,
+      "community": 128,
       "norm_label": "appstatecontext"
     },
     {
@@ -3558,7 +3578,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "lib_app_state_appstateprovider",
-      "community": 6,
+      "community": 141,
       "norm_label": "appstateprovider()"
     },
     {
@@ -3568,7 +3588,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "lib_app_state_useappstate",
-      "community": 144,
+      "community": 128,
       "norm_label": "useappstate()"
     },
     {
@@ -3718,7 +3738,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_hooks",
-      "community": 141,
+      "community": 127,
       "norm_label": "hooks.ts"
     },
     {
@@ -3728,7 +3748,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "lib_hooks_useismobile",
-      "community": 141,
+      "community": 127,
       "norm_label": "useismobile()"
     },
     {
@@ -3748,7 +3768,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "lib_hooks_recentlyvieweditem",
-      "community": 141,
+      "community": 127,
       "norm_label": "recentlyvieweditem"
     },
     {
@@ -3908,7 +3928,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_providers",
-      "community": 6,
+      "community": 141,
       "norm_label": "providers.tsx"
     },
     {
@@ -3918,7 +3938,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "lib_providers_providers",
-      "community": 6,
+      "community": 141,
       "norm_label": "providers()"
     },
     {
@@ -3958,7 +3978,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "lib_store_ordering_options",
-      "community": 118,
+      "community": 14,
       "norm_label": "ordering_options"
     },
     {
@@ -4058,7 +4078,7 @@
       "source_location": "L102",
       "_origin": "ast",
       "id": "lib_store_buildstorequery",
-      "community": 137,
+      "community": 14,
       "norm_label": "buildstorequery()"
     },
     {
@@ -4068,7 +4088,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_utils",
-      "community": 145,
+      "community": 149,
       "norm_label": "utils.ts"
     },
     {
@@ -4078,7 +4098,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "lib_utils_cn",
-      "community": 14,
+      "community": 145,
       "norm_label": "cn()"
     },
     {
@@ -4088,7 +4108,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_wishlist",
-      "community": 144,
+      "community": 128,
       "norm_label": "wishlist.ts"
     },
     {
@@ -4098,7 +4118,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "lib_wishlist_wishlistrequest",
-      "community": 144,
+      "community": 128,
       "norm_label": "wishlistrequest()"
     },
     {
@@ -4108,7 +4128,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "lib_wishlist_getwishlist",
-      "community": 144,
+      "community": 128,
       "norm_label": "getwishlist()"
     },
     {
@@ -4118,7 +4138,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "lib_wishlist_addwishlistitem",
-      "community": 144,
+      "community": 128,
       "norm_label": "addwishlistitem()"
     },
     {
@@ -4128,7 +4148,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "lib_wishlist_removewishlistitem",
-      "community": 144,
+      "community": 128,
       "norm_label": "removewishlistitem()"
     },
     {
@@ -4148,7 +4168,7 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "lib_wishlist_useaddwishlistitem",
-      "community": 144,
+      "community": 128,
       "norm_label": "useaddwishlistitem()"
     },
     {
@@ -4158,7 +4178,7 @@
       "source_location": "L59",
       "_origin": "ast",
       "id": "lib_wishlist_useremovewishlistitem",
-      "community": 144,
+      "community": 128,
       "norm_label": "useremovewishlistitem()"
     },
     {
@@ -4178,7 +4198,7 @@
       "source_location": "L74",
       "_origin": "ast",
       "id": "lib_wishlist_usewishlisttoggle",
-      "community": 144,
+      "community": 128,
       "norm_label": "usewishlisttoggle()"
     },
     {
@@ -5402,30 +5422,10 @@
       "norm_label": "address.d.ts"
     },
     {
-      "label": "AddressLocationRef",
-      "file_type": "code",
-      "source_file": "types/address.d.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "types_address_d_addresslocationref",
-      "community": 153,
-      "norm_label": "addresslocationref"
-    },
-    {
-      "label": "AddressCityRef",
-      "file_type": "code",
-      "source_file": "types/address.d.ts",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "types_address_d_addresscityref",
-      "community": 153,
-      "norm_label": "addresscityref"
-    },
-    {
       "label": "Address",
       "file_type": "code",
       "source_file": "types/address.d.ts",
-      "source_location": "L10",
+      "source_location": "L1",
       "_origin": "ast",
       "id": "types_address_d_address",
       "community": 153,
@@ -5435,7 +5435,7 @@
       "label": "AddressPayload",
       "file_type": "code",
       "source_file": "types/address.d.ts",
-      "source_location": "L24",
+      "source_location": "L15",
       "_origin": "ast",
       "id": "types_address_d_addresspayload",
       "community": 153,
@@ -8663,7 +8663,7 @@
       "contributor": null,
       "community": 71,
       "norm_label": "graphify trigger rule (.claude/claude.md)",
-      "id": "claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_graphify_trigger_rule"
+      "id": "claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_graphify_trigger_rule"
     },
     {
       "label": "Apache License 2.0 (frontend-design, .claude)",
@@ -9808,7 +9808,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 127,
+      "community": 128,
       "norm_label": "feather tee product image",
       "id": "public_assets_tee_feather"
     },
@@ -9821,7 +9821,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 127,
+      "community": 128,
       "norm_label": "cigarettes after sex newsprint tee (product photo)",
       "id": "public_assets_tee_newsprint"
     },
@@ -9834,7 +9834,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 127,
+      "community": 128,
       "norm_label": "lana del rey graphic tee product image",
       "id": "public_assets_tee_silhouette"
     }
@@ -9937,7 +9937,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/api/auth/addresses/route.ts",
-      "source_location": "L37",
+      "source_location": "L48",
       "weight": 1.0,
       "source": "app_api_auth_addresses_route",
       "target": "app_api_auth_addresses_route_post",
@@ -11924,7 +11924,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/Addresses/AddressForm.tsx",
-      "source_location": "L69",
+      "source_location": "L55",
       "weight": 1.0,
       "source": "components_addresses_addressform",
       "target": "components_addresses_addressform_addressform",
@@ -11934,17 +11934,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/Addresses/AddressForm.tsx",
-      "source_location": "L25",
-      "weight": 1.0,
-      "source": "components_addresses_addressform",
-      "target": "components_addresses_addressform_addressformvalues",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "components/Addresses/AddressForm.tsx",
-      "source_location": "L42",
+      "source_location": "L28",
       "weight": 1.0,
       "source": "components_addresses_addressform",
       "target": "components_addresses_addressform_select",
@@ -12208,7 +12198,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "components/Addresses/AddressModal.tsx",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0,
       "source": "components_addresses_addressmodal",
       "target": "components_addresses_addressform",
@@ -12220,7 +12210,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/Addresses/AddressForm.tsx",
-      "source_location": "L77",
+      "source_location": "L63",
       "weight": 1.0,
       "source": "components_addresses_addressform_addressform",
       "target": "lib_addresses_usecreateaddress"
@@ -12231,7 +12221,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/Addresses/AddressForm.tsx",
-      "source_location": "L78",
+      "source_location": "L64",
       "weight": 1.0,
       "source": "components_addresses_addressform_addressform",
       "target": "lib_addresses_useupdateaddress"
@@ -12242,7 +12232,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/Addresses/AddressForm.tsx",
-      "source_location": "L76",
+      "source_location": "L62",
       "weight": 1.0,
       "source": "components_addresses_addressform_addressform",
       "target": "lib_app_state_useappstate"
@@ -12253,7 +12243,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/Addresses/AddressForm.tsx",
-      "source_location": "L114",
+      "source_location": "L89",
       "weight": 1.0,
       "source": "components_addresses_addressform_addressform",
       "target": "lib_locations_usecities"
@@ -12264,7 +12254,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/Addresses/AddressForm.tsx",
-      "source_location": "L79",
+      "source_location": "L65",
       "weight": 1.0,
       "source": "components_addresses_addressform_addressform",
       "target": "lib_locations_useprovinces"
@@ -12294,7 +12284,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/Addresses/AddressModal.tsx",
-      "source_location": "L19",
+      "source_location": "L21",
       "weight": 1.0,
       "source": "components_addresses_addressmodal",
       "target": "components_addresses_addressmodal_addressmodal",
@@ -12304,7 +12294,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "components/Addresses/AddressModal.tsx",
-      "source_location": "L17",
+      "source_location": "L19",
       "weight": 1.0,
       "source": "components_addresses_addressmodal",
       "target": "components_addresses_addressmodal_mode",
@@ -12403,7 +12393,29 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "components/Addresses/AddressModal.tsx",
-      "source_location": "L13",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "components_addresses_addressmodal",
+      "target": "components_ui_skeleton",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/Addresses/AddressModal.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "components_addresses_addressmodal",
+      "target": "components_ui_skeleton_skeleton",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/Addresses/AddressModal.tsx",
+      "source_location": "L14",
       "weight": 1.0,
       "source": "components_addresses_addressmodal",
       "target": "lib_addresses",
@@ -12414,7 +12426,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "components/Addresses/AddressModal.tsx",
-      "source_location": "L13",
+      "source_location": "L14",
       "weight": 1.0,
       "source": "components_addresses_addressmodal",
       "target": "lib_addresses_usedeleteaddress",
@@ -12425,7 +12437,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "components/Addresses/AddressModal.tsx",
-      "source_location": "L12",
+      "source_location": "L13",
       "weight": 1.0,
       "source": "components_addresses_addressmodal",
       "target": "lib_app_state",
@@ -12436,10 +12448,43 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "components/Addresses/AddressModal.tsx",
-      "source_location": "L12",
+      "source_location": "L13",
       "weight": 1.0,
       "source": "components_addresses_addressmodal",
       "target": "lib_app_state_useappstate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/Addresses/AddressModal.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "components_addresses_addressmodal",
+      "target": "lib_locations",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/Addresses/AddressModal.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "components_addresses_addressmodal",
+      "target": "lib_locations_usecities",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/Addresses/AddressModal.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "components_addresses_addressmodal",
+      "target": "lib_locations_useprovinces",
       "confidence_score": 1.0
     },
     {
@@ -12459,7 +12504,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/Addresses/AddressModal.tsx",
-      "source_location": "L33",
+      "source_location": "L36",
       "weight": 1.0,
       "source": "components_addresses_addressmodal_addressmodal",
       "target": "lib_addresses_usedeleteaddress"
@@ -12470,10 +12515,32 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/Addresses/AddressModal.tsx",
-      "source_location": "L32",
+      "source_location": "L35",
       "weight": 1.0,
       "source": "components_addresses_addressmodal_addressmodal",
       "target": "lib_app_state_useappstate"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/Addresses/AddressModal.tsx",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "components_addresses_addressmodal_addressmodal",
+      "target": "lib_locations_usecities"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/Addresses/AddressModal.tsx",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "components_addresses_addressmodal_addressmodal",
+      "target": "lib_locations_useprovinces"
     },
     {
       "relation": "contains",
@@ -18075,7 +18142,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/addresses.ts",
-      "source_location": "L57",
+      "source_location": "L76",
       "weight": 1.0,
       "source": "lib_addresses_useaddresses",
       "target": "hooks_useme_useme"
@@ -18224,7 +18291,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/addresses.ts",
-      "source_location": "L27",
+      "source_location": "L44",
       "weight": 1.0,
       "source": "lib_addresses",
       "target": "lib_addresses_createaddress",
@@ -18234,7 +18301,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/addresses.ts",
-      "source_location": "L42",
+      "source_location": "L61",
       "weight": 1.0,
       "source": "lib_addresses",
       "target": "lib_addresses_deleteaddress",
@@ -18244,7 +18311,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/addresses.ts",
-      "source_location": "L23",
+      "source_location": "L39",
       "weight": 1.0,
       "source": "lib_addresses",
       "target": "lib_addresses_getaddresses",
@@ -18254,7 +18321,37 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/addresses.ts",
-      "source_location": "L34",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "lib_addresses",
+      "target": "lib_addresses_normalizeaddress",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/addresses.ts",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "lib_addresses",
+      "target": "lib_addresses_rawaddress",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/addresses.ts",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "lib_addresses",
+      "target": "lib_addresses_toid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/addresses.ts",
+      "source_location": "L52",
       "weight": 1.0,
       "source": "lib_addresses",
       "target": "lib_addresses_updateaddress",
@@ -18264,7 +18361,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/addresses.ts",
-      "source_location": "L56",
+      "source_location": "L75",
       "weight": 1.0,
       "source": "lib_addresses",
       "target": "lib_addresses_useaddresses",
@@ -18274,7 +18371,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/addresses.ts",
-      "source_location": "L69",
+      "source_location": "L88",
       "weight": 1.0,
       "source": "lib_addresses",
       "target": "lib_addresses_usecreateaddress",
@@ -18284,7 +18381,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/addresses.ts",
-      "source_location": "L86",
+      "source_location": "L105",
       "weight": 1.0,
       "source": "lib_addresses",
       "target": "lib_addresses_usedeleteaddress",
@@ -18294,7 +18391,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/addresses.ts",
-      "source_location": "L77",
+      "source_location": "L96",
       "weight": 1.0,
       "source": "lib_addresses",
       "target": "lib_addresses_useupdateaddress",
@@ -18327,10 +18424,21 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "lib/addresses.ts",
-      "source_location": "L28",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "lib_addresses_normalizeaddress",
+      "target": "lib_addresses_toid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/addresses.ts",
+      "source_location": "L49",
       "weight": 1.0,
       "source": "lib_addresses_createaddress",
-      "target": "lib_addresses_addressrequest",
+      "target": "lib_addresses_normalizeaddress",
       "confidence_score": 1.0
     },
     {
@@ -18338,21 +18446,10 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "lib/addresses.ts",
-      "source_location": "L24",
-      "weight": 1.0,
-      "source": "lib_addresses_getaddresses",
-      "target": "lib_addresses_addressrequest",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "lib/addresses.ts",
-      "source_location": "L35",
+      "source_location": "L57",
       "weight": 1.0,
       "source": "lib_addresses_updateaddress",
-      "target": "lib_addresses_addressrequest",
+      "target": "lib_addresses_normalizeaddress",
       "confidence_score": 1.0
     },
     {
@@ -20896,7 +20993,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "types/address.d.ts",
-      "source_location": "L10",
+      "source_location": "L1",
       "weight": 1.0,
       "source": "types_address_d",
       "target": "types_address_d_address",
@@ -20906,41 +21003,10 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "types/address.d.ts",
-      "source_location": "L6",
-      "weight": 1.0,
-      "source": "types_address_d",
-      "target": "types_address_d_addresscityref",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "types/address.d.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "types_address_d",
-      "target": "types_address_d_addresslocationref",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "types/address.d.ts",
-      "source_location": "L24",
+      "source_location": "L15",
       "weight": 1.0,
       "source": "types_address_d",
       "target": "types_address_d_addresspayload",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "inherits",
-      "context": "type",
-      "confidence": "EXTRACTED",
-      "source_file": "types/address.d.ts",
-      "source_location": "L6",
-      "weight": 1.0,
-      "source": "types_address_d_addresscityref",
-      "target": "types_address_d_addresslocationref",
       "confidence_score": 1.0
     },
     {
