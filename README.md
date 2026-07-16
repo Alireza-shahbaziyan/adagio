@@ -30,6 +30,15 @@ Open [http://localhost:3000](http://localhost:3000).
 
 See `.env.exampel` for the full list.
 
+## Docker
+
+```bash
+cp .env.exampel .env   # docker compose reads ./.env for both build args and runtime env
+docker compose up --build
+```
+
+This builds the production image (multi-stage `Dockerfile`, `output: "standalone"` in `next.config.ts`) and runs it on [http://localhost:3000](http://localhost:3000). `NEXT_PUBLIC_*` variables are compiled into the bundle at build time, so changing them requires `docker compose up --build` again, not just a container restart — see the comments in `Dockerfile`/`docker-compose.yml`.
+
 ---
 
 # CODING AGENTS: READ THIS FIRST

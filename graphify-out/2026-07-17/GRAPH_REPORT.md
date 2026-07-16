@@ -1,16 +1,16 @@
-# Graph Report - online-shop  (2026-07-17)
+# Graph Report - online-shop  (2026-07-16)
 
 ## Corpus Check
-- 175 files · ~326,879 words
+- 175 files · ~326,728 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 973 nodes · 1380 edges · 151 communities (49 shown, 102 thin omitted)
+- 972 nodes · 1379 edges · 151 communities (49 shown, 102 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4ecf4e35`
+- Built from commit: `e3285b56`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -281,7 +281,7 @@ Nodes (5): For /graphify explain, For /graphify path, graphify reference: query,
 
 ### Community 42 - "Community 42"
 Cohesion: 0.06
-Nodes (31): 10. Known Gaps, 1. Overview, 2. Tech Stack, 3. High-Level Architecture: BFF Proxy Pattern, 4. Directory Structure, 5. Routing Map, 6. State Management, 7. Authentication & Membership (+23 more)
+Nodes (30): 10. Known Gaps, 1. Overview, 2. Tech Stack, 3. High-Level Architecture: BFF Proxy Pattern, 4. Directory Structure, 5. Routing Map, 6. State Management, 7. Authentication & Membership (+22 more)
 
 ### Community 43 - "Community 43"
 Cohesion: 0.50
@@ -378,7 +378,7 @@ Nodes (4): ProductCard(), Feather Tee Product Image, Cigarettes After Sex Newspr
   project/Home.dc.html · relation: calls
 
 ## Knowledge Gaps
-- **438 isolated node(s):** `metadata`, `values`, `metadata`, `SearchParams`, `metadata` (+433 more)
+- **437 isolated node(s):** `metadata`, `values`, `metadata`, `SearchParams`, `metadata` (+432 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **102 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -396,6 +396,6 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `shadcn/ui` connect `Login Layout` to `Community 126`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **What connects `metadata`, `values`, `metadata` to the rest of the system?**
-  _459 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _458 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `DC Template Runtime (prototype engine)` be split into smaller, more focused modules?**
   _Cohesion score 0.06688311688311688 - nodes in this community are weakly interconnected._

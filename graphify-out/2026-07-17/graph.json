@@ -8372,20 +8372,10 @@
       "norm_label": "environment variables"
     },
     {
-      "label": "Docker",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "readme_docker",
-      "community": 42,
-      "norm_label": "docker"
-    },
-    {
       "label": "CODING AGENTS: READ THIS FIRST",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L44",
+      "source_location": "L35",
       "_origin": "ast",
       "id": "readme_coding_agents_read_this_first",
       "community": 42,
@@ -8395,7 +8385,7 @@
       "label": "What you should do \u2014 IMPORTANT",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L50",
+      "source_location": "L41",
       "_origin": "ast",
       "id": "readme_what_you_should_do_important",
       "community": 42,
@@ -8405,7 +8395,7 @@
       "label": "About the design files",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L58",
+      "source_location": "L49",
       "_origin": "ast",
       "id": "readme_about_the_design_files",
       "community": 42,
@@ -8415,7 +8405,7 @@
       "label": "Bundle contents",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L64",
+      "source_location": "L55",
       "_origin": "ast",
       "id": "readme_bundle_contents",
       "community": 42,
@@ -8425,7 +8415,7 @@
       "label": "Implementation status",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L72",
+      "source_location": "L63",
       "_origin": "ast",
       "id": "readme_implementation_status",
       "community": 42,
@@ -8933,7 +8923,7 @@
       "contributor": null,
       "community": 71,
       "norm_label": "graphify trigger rule (.claude/claude.md)",
-      "id": "claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_graphify_trigger_rule"
+      "id": "claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_graphify_trigger_rule"
     },
     {
       "label": "Apache License 2.0 (frontend-design, .claude)",
@@ -23963,20 +23953,10 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L44",
+      "source_location": "L35",
       "weight": 1.0,
       "source": "readme",
       "target": "readme_coding_agents_read_this_first",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L33",
-      "weight": 1.0,
-      "source": "readme_adagio",
-      "target": "readme_docker",
       "confidence_score": 1.0
     },
     {
@@ -24003,7 +23983,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L58",
+      "source_location": "L49",
       "weight": 1.0,
       "source": "readme_coding_agents_read_this_first",
       "target": "readme_about_the_design_files",
@@ -24013,7 +23993,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L64",
+      "source_location": "L55",
       "weight": 1.0,
       "source": "readme_coding_agents_read_this_first",
       "target": "readme_bundle_contents",
@@ -24023,7 +24003,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L72",
+      "source_location": "L63",
       "weight": 1.0,
       "source": "readme_coding_agents_read_this_first",
       "target": "readme_implementation_status",
@@ -24033,7 +24013,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L50",
+      "source_location": "L41",
       "weight": 1.0,
       "source": "readme_coding_agents_read_this_first",
       "target": "readme_what_you_should_do_important",
@@ -24587,5 +24567,5 @@
       "source_file": "project/Product.dc.html"
     }
   ],
-  "built_at_commit": "4ecf4e35e8058fbb0ceb45b5909a6d2729285505"
+  "built_at_commit": "e3285b5627dacb932613b88166a75a4de783fb29"
 }

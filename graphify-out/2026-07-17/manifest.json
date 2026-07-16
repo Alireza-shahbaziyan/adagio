@@ -20,9 +20,9 @@
     "semantic_hash": ""
   },
   "app/fonts/fontsConfig.ts": {
-    "mtime": 1784235418.2260993,
-    "ast_hash": "edca562dedb541c8a1ddcacd934a7230",
-    "semantic_hash": ""
+    "mtime": 1769346140.0,
+    "ast_hash": "55122a94cfdf1ed7d463a9a45b9c066b",
+    "semantic_hash": "55122a94cfdf1ed7d463a9a45b9c066b"
   },
   "app/layout.tsx": {
     "mtime": 1783714994.2048936,
@@ -140,8 +140,8 @@
     "semantic_hash": ""
   },
   "next.config.ts": {
-    "mtime": 1784234859.1591167,
-    "ast_hash": "a47cec860eeeb8d9f569f510c3d6b9f8",
+    "mtime": 1783410792.8570309,
+    "ast_hash": "a9cb4fdf3a55e37f8bbfab658a2b3f4f",
     "semantic_hash": ""
   },
   "package.json": {
@@ -170,9 +170,9 @@
     "semantic_hash": ""
   },
   "tsconfig.json": {
-    "mtime": 1784235081.9346445,
-    "ast_hash": "c57d9c0fb5baa59b8ff1cb394096f2ca",
-    "semantic_hash": ""
+    "mtime": 1783264493.0,
+    "ast_hash": "48aa7b9610abec84fae07ac52388bb2b",
+    "semantic_hash": "48aa7b9610abec84fae07ac52388bb2b"
   },
   "types/products.d.ts": {
     "mtime": 1783404188.5160315,
@@ -270,8 +270,8 @@
     "semantic_hash": "b0517ee048d45b5cd5463430230eb52f"
   },
   "README.md": {
-    "mtime": 1784235093.6980102,
-    "ast_hash": "36c9b8cb57d7381a687cb96917cbe037",
+    "mtime": 1784225328.7757056,
+    "ast_hash": "8d3c576902bd4b02b0f850741d24a7df",
     "semantic_hash": ""
   },
   "chats/chat1.md": {
@@ -992,11 +992,6 @@
   "ARCHITECTURE.md": {
     "mtime": 1784225206.9907565,
     "ast_hash": "42c81d506c51e3d8c810d17575afaf81",
-    "semantic_hash": ""
-  },
-  "docker-compose.yml": {
-    "mtime": 1784234901.3997948,
-    "ast_hash": "ac38c397bf539c166e8d9d242a7a5faf",
     "semantic_hash": ""
   }
 }
