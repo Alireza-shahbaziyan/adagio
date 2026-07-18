@@ -20,6 +20,7 @@ export default function CollectionsShowcase({
 }) {
   const trimmedSearch = search?.trim();
 
+
   return (
     <section className="mx-auto max-w-350 px-5 pb-24 pt-8 md:px-16 md:pb-40 md:pt-12">
       <div className="mb-14 flex flex-wrap items-end justify-between gap-6 md:mb-20">
@@ -28,7 +29,7 @@ export default function CollectionsShowcase({
             آرشیو
           </p>
           <h1 className="text-[36px] font-black leading-[1.15] text-foreground md:text-[64px]">
-            کالکشن‌ها
+           تیشرت هایی به تم موسیقی 
           </h1>
         </div>
         {totalCount > 0 && (

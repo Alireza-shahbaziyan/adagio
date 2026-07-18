@@ -5,10 +5,47 @@ import ProductCard from "@/components/ProductCard";
 import { getStoreProducts } from "@/lib/store";
 import { CollectionResponse } from "@/types/collections";
 import { Callection } from "@/types/singleCollection";
-import { backend } from "@/utils/getURL";
+import { backend, frontend } from "@/utils/getURL";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+
+type Props = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
+
+export async function generateMetadata({
+  params,
+}: Props): Promise<Metadata> {
+  const { slug } = await params;
+
+  return {
+    title: `خرید تیشرت ${slug} | آداجیو`,
+    description: `خرید انواع تیشرت ${slug} با کیفیت چاپ و پارچه ممتاز از فروشگاه آداجیو. مشاهده جدیدترین مدل‌ها، ارسال سریع و تضمین کیفیت.`,
+    alternates: {
+      canonical: `/collections/${slug}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+    openGraph: {
+      title: `خرید تیشرت ${slug} | آداجیو`,
+      description: `جدیدترین تیشرت‌های ${slug} با طراحی خاص و کیفیت بالا در فروشگاه آداجیو.`,
+      url: `/collections/${slug}`,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `خرید تیشرت ${slug} | آداجیو`,
+      description: `جدیدترین تیشرت‌های ${slug} با طراحی خاص و کیفیت بالا در فروشگاه آداجیو.`,
+    },
+  };
+}
+
 
 export async function generateStaticParams() {
   const res = await fetch(`${backend}/api/collections/?page=1&page_size=100`);
@@ -135,7 +172,8 @@ export default async function Page({
                 <Link
                   key={child.id}
                   href={`/collections/${child.slug}`}
-                  className="group overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] transition-all duration-300 hover:border-white/30 hover:bg-white/6"
+                  className="group overflow-hidden rounded-3xl border border-white/10 bg-white/3 transition-all
+                                 duration-300 hover:border-white/30 hover:bg-white/6"
                 >
                   {child.image ? (
                     <div className="relative h-40 w-full overflow-hidden">
@@ -148,15 +186,17 @@ export default async function Page({
                       />
                     </div>
                   ) : (
-                    <div className="h-40 w-full bg-white/[0.03]" />
+                    <div className="h-40 w-full bg-white/3" />
                   )}
 
                   <div className="p-8">
-                    <h3 className="text-xl font-medium transition group-hover:text-white">
+                    <h3 className="text-xl font-medium transition
+                                       group-hover:text-white">
                       {child.title}
                     </h3>
 
-                    <p className="mt-4 line-clamp-3 text-sm leading-7 text-neutral-400">
+                    <p className="mt-4 line-clamp-3 text-sm   
+                                      leading-7 text-neutral-400">
                       {child.short_description}
                     </p>
                   </div>

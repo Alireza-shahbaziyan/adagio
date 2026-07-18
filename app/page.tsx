@@ -4,14 +4,15 @@ import Navbar from "@/components/Navbar/Navbar";
 import Hero from "@/components/Hero";
 import Reveal from "@/components/Reveal";
 import ProductCard from "@/components/ProductCard";
-import BestSellersCarousel from "@/components/BestSellersCarousel";
+// import BestSellersCarousel from "@/components/BestSellersCarousel";
 import NewsletterForm from "@/components/NewsletterForm";
 import Footer from "@/components/Footer";
 import MobileBottomNav from "@/components/MobileBottomNav";
-import { PRODUCTS } from "@/lib/products";
+// import { PRODUCTS } from "@/lib/products";
 import { ProductsResponse } from "@/types/products";
 import { CustomerGalleryItem, GalleryResponse } from "@/types/gallery";
-import ErrorPage from "./error";
+import { Metadata } from "next";
+// import ErrorPage from "./error";
 
 const REVIEWS = [
   {
@@ -32,6 +33,55 @@ const REVIEWS = [
     name: "پریا س.",
   },
 ];
+
+export const metadata: Metadata = {
+  title: "آداجیو | خرید تیشرت موسیقی و طرح‌های مینیمال هنری",
+
+  description:
+    "فروشگاه آداجیو؛ خرید تیشرت‌های موسیقی با طراحی مینیمال و هنری، الهام گرفته از خوانندگان و گروه‌های محبوب. تیشرت‌های باکیفیت با چاپ ماندگار و ارسال سریع.",
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+  alternates: {
+    canonical: "/",
+  },
+
+  openGraph: {
+    title: "آداجیو | تیشرت‌هایی که موسیقی را می‌پوشید",
+
+    description:
+      "تیشرت‌های مینیمال با الهام از دنیای موسیقی؛ طراحی خاص، کیفیت بالا و سبک متفاوت.",
+
+    url: "/",
+
+    siteName: "Adagio",
+
+    locale: "fa_IR",
+
+    type: "website",
+
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Adagio Music T-Shirts",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+
+    title: "آداجیو | تیشرت‌های موسیقی مینیمال",
+
+    description:
+      "فروش تیشرت‌های هنری و موسیقی با طراحی خاص.",
+  },
+};
 
 export default async function Home() {
   // get products from api

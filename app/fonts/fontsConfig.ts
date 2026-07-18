@@ -8,6 +8,7 @@ export const interFontForEnglishChar = Inter({
 
 
 export const yekanBakhFontForFarsiChar = localFont({
+  
   src: [
     { path: "./Farsinumerals/Webfonts/fonts/Woff2/IRANSansXFaNum-Thin.woff2", weight: "100", style: "normal" },
     { path: "./Farsinumerals/Webfonts/fonts/Woff2/IRANSansXFaNum-Light.woff2", weight: "300", style: "normal" },

@@ -22,6 +22,7 @@ const NAV_LINKS = [
   { href: "/collections", label: "کالکشن‌ها" },
   { href: "/about", label: "درباره" },
   { href: "/#law", label: "قوانین و مقررات" },
+  { href: "/order-guide", label: "راهنمای خرید" },
   { href: "/contact-me", label: "تماس" },
 ];
 

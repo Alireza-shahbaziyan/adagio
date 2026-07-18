@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Vazirmatn, Instrument_Serif, Anton } from "next/font/google";
 import { interFontForEnglishChar, yekanBakhFontForFarsiChar, nastaliq } from "./fonts/fontsConfig";
-import "./globals.css";
 import { Providers } from "@/lib/providers";
 import Toast from "@/components/Toast";
 import { cn } from "@/lib/utils";
+import "./globals.css";
 
 const vazirmatn = Vazirmatn({
   variable: "--font-vazirmatn",
@@ -28,6 +28,7 @@ const anton = Anton({
 export const metadata: Metadata = {
   title: "آداجیو | Adagio",
   description: "فروشگاه لباس آداجیو | Adagio",
+  metadataBase: new URL("https://adagiostyle.ir"),
 };
 
 export default function RootLayout({
@@ -37,9 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="fa"
-      dir="rtl"
-      data-scroll-behavior="smooth"
+      lang="fa" dir="rtl" data-scroll-behavior="smooth"
       className={cn(vazirmatn.variable, instrumentSerif.variable, anton.variable, interFontForEnglishChar.variable, yekanBakhFontForFarsiChar.variable, nastaliq.variable)}
     >
       <body className="bg-background text-foreground antialiased">

@@ -7,7 +7,13 @@ import { frontend } from "@/utils/getURL";
 
 export const metadata: Metadata = {
   title: "سبد خرید | آداجیو",
-  description: "محصولات داخل سبد خریدت را مرور و مدیریت کن.",
+  description: "محصولات انتخاب‌شده خود را بررسی کنید و سفارش خود را ثبت کنید.",
+
+  robots: {
+    index: false,
+    follow: false,
+  },
+
   alternates: {
     canonical: `${frontend}/cart`,
   },
