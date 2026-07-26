@@ -50,7 +50,7 @@ export default function SearchDialog({
 
   function handleSelect(slug: string) {
     onOpenChange(false);
-    router.push(`/product/${slug}`);
+    router.push(`/store/product/${slug}`);
   }
 
   return (

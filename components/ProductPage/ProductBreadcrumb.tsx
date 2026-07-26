@@ -16,8 +16,12 @@ export default function ProductBreadcrumb({
         خانه
       </Link>
       <span>/</span>
+      <Link href="/store" className="text-muted-foreground">
+        فروشگاه
+      </Link>
+      <span>/</span>
       <Link
-        href={`/collections/${collections[0].slug}`}
+        href={`/store/collections/${collections[0].slug}`}
         className="text-muted-foreground"
       >
         {primaryCollection?.title ?? "محصولات"}

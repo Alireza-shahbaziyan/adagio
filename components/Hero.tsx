@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform, useReducedMotion } from "motion/react"
 
 const RANGE = 420;
 import imageperson from '/public/assets/heroPerson-LW.png'
+
 export default function Hero() {
   const reduceMotion = useReducedMotion();
   const { scrollY } = useScroll();
@@ -22,11 +23,11 @@ export default function Hero() {
   const bottomScale = useTransform(scrollY, [0, 500], [1, 1.2]);
   const bottomOpacity = useTransform(scrollY, [0, 500], [0.7, 1]);
 
-  const cueOpacity = useTransform(scrollY, [0, 260], [1, 0]);
+  // const cueOpacity = useTransform(scrollY, [0, 260], [1, 0]);
 
   return (
-    <section dir="ltr" className=" bg-hero
-    relative flex h-[75vh] md:min-h-svh items-center justify-center overflow-hidden bg-[#050505]">
+    <section dir="ltr" className=" bg-hero 
+    relative flex h-[88vh] md:min-h-svh items-center justify-center overflow-hidden bg-[#050505]">
 
       <motion.div
         className="absolute inset-0 flex items-center justify-center"
@@ -36,13 +37,13 @@ export default function Hero() {
         }}
       >
         <motion.div
-          className="absolute inset-x-0 z-10"
+          className="absolute inset-x-0 z-10 "
           style={{
             y: reduceMotion ? 0 : titleY,
           }}
         >
           <h1
-            className="flex font-black  justify-center
+            className="flex font-black justify-center 
              text-[#dcdcdc] text-[20vw] md:text-[24vw] leading-none 
             "
             aria-label="ADAGIO"
@@ -62,7 +63,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          className="relative z-20 h-[92svh] md:h-[min(72vh,620px)]"
+          className="relative z-20  h-[92svh] md:h-[min(72vh,620px)] "
           style={{
             scale: reduceMotion ? 1 : imageScale,
           }}
@@ -79,25 +80,19 @@ export default function Hero() {
       </motion.div>
 
       <motion.div
-        className="absolute bottom-28 z-30 px-6 text-center md:bottom-14"
+        className="absolute bottom-5 z-30 px-6 text-center md:bottom-14"
         style={{
           scale: reduceMotion ? 1 : bottomScale,
           opacity: bottomOpacity,
         }}
       >
-        <p className="mx-auto max-w-64 text-[13px] leading-[1.7] md:max-w-105 md:text-xl">
-          برای شب‌هایی که موسیقی تنها هم‌صحبت توست
-        </p>
+        <p className="mx-auto max-w-72 text-[13px] text-white 
+          shadow-2xl font-bold
+         leading-[1.7] md:max-w-105
+         md:text-xl">
+تیشرت‌هایی که داستان موسیقی را روایت می‌کنند.        </p>
       </motion.div>
 
-      <motion.div
-        className="absolute left-1/2 bottom-8 -translate-x-1/2"
-        style={{ opacity: cueOpacity }}
-      >
-        <span className="text-xs text-neutral-400">
-          اسکرول کن
-        </span>
-      </motion.div>
     </section>
   );
 }

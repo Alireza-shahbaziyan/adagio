@@ -18,12 +18,12 @@ import { useMembership } from "@/hooks/useMembership";
 
 const NAV_LINKS = [
   { href: "/store", label: "فروشگاه" },
-  // { href: "/#dashboard", label: "پنل کاربری" },
-  { href: "/collections", label: "کالکشن‌ها" },
-  { href: "/about", label: "درباره" },
-  { href: "/#law", label: "قوانین و مقررات" },
-  { href: "/order-guide", label: "راهنمای خرید" },
-  { href: "/contact-me", label: "تماس" },
+  { href: "/store/collections", label: "کالکشن‌ها" },
+  { href: "/store/categories", label: "دستبه‌بندی" },
+  { href: "/store/about", label: "درباره" },
+  { href: "/store/terms", label: "قوانین‌و‌مقررات" },
+  { href: "/store/order-guide", label: "راهنمای‌خرید" },
+  { href: "/store/contact-me", label: "تماس" },
 ];
 
 function Badge({ count }: { count: number }) {
@@ -44,7 +44,6 @@ export default function Navbar({
   productWishlisted?: boolean;
   onToggleProductWishlist?: () => void;
 }) {
-  
   const { isMember } = useMembership();
   const wishlistCount = useWishlistCount();
   const cartCount = useCartItemCount();
@@ -119,7 +118,10 @@ export default function Navbar({
               <Badge count={wishlistCount} />
             </Link>
           )}
-          <Link href="/cart" className="relative flex p-2 text-foreground">
+          <Link
+            href="/store/cart"
+            className="relative flex p-2 text-foreground"
+          >
             <BagIcon />
             <Badge count={cartCount} />
           </Link>

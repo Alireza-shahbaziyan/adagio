@@ -15,7 +15,7 @@ export default function WishlistItemCard({ item }: { item: WishlistItem }) {
 
   return (
     <div className="flex items-center gap-4 rounded-[20px] border border-white/8 bg-[#111111] p-5">
-      <Link href={`/product/${item.slug}`} className="min-w-0 flex-1">
+      <Link href={`/store/product/${item.slug}`} className="min-w-0 flex-1">
         <p className="mb-1 truncate text-[15px] text-foreground">
           {item.title}
         </p>

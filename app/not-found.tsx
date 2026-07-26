@@ -4,12 +4,12 @@ import Link from "next/link";
 export default function NotFound() {
   return (
     <main className="bg-light-in-dark flex min-h-screen items-center justify-center px-6">
-      <section className="max-w-xl text-center">
-        <p className="text- uppercase tracking-[0.45em] text-white/40 font-instrument-serif">
-          Error 404
+      <section className="max-w-5xl w-full text-center">
+        <p className="text-2xl pb-5 tracking-[0.2em] text-white/60 font-anton font-bold">
+          404 - Not Found
         </p>
 
-        <h1 className="mt-6 text-6xl  tracking-tight text-white md:text-8xl font-nastaliq">
+        <h1 className="mt-6 text-3xl tracking-tight text-white md:text-8xl font-black w-full mx-auto">
         در تاریکی گم شده.
 
         </h1>

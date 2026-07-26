@@ -26,7 +26,7 @@ export default function ProductCard({
 
   return (
     <Link
-      href={`/product/${product.slug}`}
+      href={`/store/product/${product.slug}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className="block overflow-hidden rounded-[20px] bg-[#181818] hover:bg-zinc-800"

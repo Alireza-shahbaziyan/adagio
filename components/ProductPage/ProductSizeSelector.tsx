@@ -1,5 +1,6 @@
-import Link from "next/link";
+
 import type { ProductVariant } from "@/types/products";
+import { useAppState } from "@/lib/app-state";
 
 export default function ProductSizeSelector({
   variants,
@@ -10,15 +11,18 @@ export default function ProductSizeSelector({
   selectedSize: ProductVariant["size_name"] | null;
   onSelectSize: (size: ProductVariant["size_name"]) => void;
 }) {
+  const { showToast } = useAppState();
   if (variants.length === 0) return null;
-
+  function sizeGuide() {
+    showToast("برای راهنمایی شدن به ادمین اینستاگرام یا تلگرام پیغام بدید.")
+  }
   return (
     <div className="mb-8">
       <div className="mb-3.5 flex items-center justify-between">
         <span className="text-[13px] text-foreground">سایز</span>
-        <Link href="#" className="text-[13px] text-muted-foreground underline">
+        <button onClick={sizeGuide} className="text-[13px] text-muted-foreground underline cursor-pointer hover:text-white">
           راهنمای سایز
-        </Link>
+        </button>
       </div>
       <div className="flex flex-wrap gap-2.5">
         {variants.map((variant) => {

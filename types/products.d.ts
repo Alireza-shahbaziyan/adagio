@@ -1,6 +1,6 @@
 import { PaginatedResponse } from "./response";
   
-  // Shared Image
+
   export interface ProductImage {
     id: number;
     image: string;
@@ -20,7 +20,7 @@ import { PaginatedResponse } from "./response";
     is_active: boolean;
   }
   
-  // Product
+
   export interface Product {
     id: number;
     title: string;
@@ -34,5 +34,5 @@ import { PaginatedResponse } from "./response";
     variants: ProductVariant[];
   }
   
-  // API Response
+
   export type ProductsResponse = PaginatedResponse<Product>;

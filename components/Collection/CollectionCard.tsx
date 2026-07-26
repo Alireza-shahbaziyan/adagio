@@ -12,7 +12,7 @@ function CollectionCard({
 }) {
   return (
     <Link
-      href={`/collections/${collection.slug}`}
+      href={`/store/collections/${collection.slug}`}
       className="group relative flex h-full flex-col overflow-hidden rounded-[20px] border border-white/6 bg-[#181818] transition-all duration-500 ease-[cubic-bezier(.16,.8,.24,1)] hover:-translate-y-1.5 hover:border-white/[0.16] hover:shadow-[0_24px_60px_rgba(0,0,0,0.35)]"
     >
       {/* Image */}

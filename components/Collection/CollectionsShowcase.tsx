@@ -54,7 +54,7 @@ export default function CollectionsShowcase({
           </p>
           {trimmedSearch && (
             <Link
-              href="/collections"
+              href="/store/collections"
               className="inline-block rounded-full border border-white/25 px-7 py-3 text-sm text-foreground 
               transition-colors hover:border-white/60 hover:bg-white/8"
             >

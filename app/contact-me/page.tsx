@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Mail, MapPin, Phone, ArrowUpRight } from "lucide-react";
+import { Mail, MapPin, Phone, ArrowUpRight, ArrowUpLeft } from "lucide-react";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar/Navbar";
+import MobileBottomNav from "@/components/MobileBottomNav";
 
 export const metadata: Metadata = {
   title: "تماس با ما | آداجیو",
@@ -19,8 +20,8 @@ const contactInfo = [
   {
     icon: Mail,
     title: "ایمیل",
-    value: "support@adagio.ir",
-    href: "mailto:support@adagio.ir",
+    value: "support@adagiostyleir",
+    href: "mailto:support@adagiostyleir",
   },
   {
     icon: MapPin,
@@ -31,7 +32,7 @@ const contactInfo = [
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main dir="rtl" lang="fa" className="min-h-screen bg-black text-white">
       <Navbar variant="home" />
 
       {/* Hero */}
@@ -43,7 +44,7 @@ export default function ContactPage() {
             Contact
           </span>
 
-          <h1 className="mt-8 text-5xl font-light tracking-tight md:text-7xl">
+          <h1 className="mt-8 text-5xl font-black tracking-tight md:text-7xl">
             تماس با آداجیو
           </h1>
 
@@ -206,7 +207,7 @@ export default function ContactPage() {
               "
             >
               ارسال پیام
-              <ArrowUpRight
+              <ArrowUpLeft
                 size={16}
                 className="transition group-hover:translate-x-1 group-hover:-translate-y-1"
               />
@@ -214,7 +215,7 @@ export default function ContactPage() {
           </form>
         </div>
       </section>
-
+      <MobileBottomNav />
       <Footer />
     </main>
   );

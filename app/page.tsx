@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import Hero from "@/components/Hero";
 import Reveal from "@/components/Reveal";
 import ProductCard from "@/components/ProductCard";
-// import BestSellersCarousel from "@/components/BestSellersCarousel";
+import BestSellersCarousel from "@/components/BestSellersCarousel";
 import NewsletterForm from "@/components/NewsletterForm";
 import Footer from "@/components/Footer";
 import MobileBottomNav from "@/components/MobileBottomNav";
@@ -13,6 +13,7 @@ import { ProductsResponse } from "@/types/products";
 import { CustomerGalleryItem, GalleryResponse } from "@/types/gallery";
 import { Metadata } from "next";
 // import ErrorPage from "./error";
+export const revalidate = 900; // 15 min;
 
 const REVIEWS = [
   {
@@ -78,22 +79,19 @@ export const metadata: Metadata = {
 
     title: "آداجیو | تیشرت‌های موسیقی مینیمال",
 
-    description:
-      "فروش تیشرت‌های هنری و موسیقی با طراحی خاص.",
+    description: "فروش تیشرت‌های هنری و موسیقی با طراحی خاص.",
   },
 };
 
 export default async function Home() {
   // get products from api
+
   const ProductResponse = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/api/products/?featured=true&page=1&page_size=4`,
     {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-      },
-      next: {
-        revalidate: 60 * 60, // 1 hour
       },
     },
   );
@@ -128,26 +126,28 @@ export default async function Home() {
       <Reveal>
         <section
           id="slogan"
-          className="relative z-1 bg-primary-foreground px-5 py-22.5 text-center md:px-20 md:py-40"
+          className="relative z-1 bg-primary-foreground px-5 py-16 text-center md:px-20 md:py-40"
         >
-          <h1 className="mx-auto mb-7   text-[38px] font-black leading-[1.2] text-foreground md:text-[96px]">
-            موسیقی‌ای که می‌پوشی
-          </h1>
+          <div className="mx-auto mb-7   text-9.5 font-black leading-[1.2] text-foreground md:text-[96px]">
+            <p>پوشیدنِ احساسات، با الهام از موسیقی و هنر</p>
+          </div>
           <p className="mx-auto mb-12 max-w-115 text-base leading-[1.8] text-muted-foreground md:text-xl">
             حال‌وهوای آهنگ‌های موردعلاقه‌ات را بپوش.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="#featured"
-              className="inline-block rounded-full bg-foreground  px-10 py-4.5 text-[15px] font-bold tracking-[0.3px] text-primary-foreground transition-all hover:scale-[1.04] hover:shadow-[0_8px_30px_rgba(243,243,243,0.22)]"
+              href="/store/collections"
+              className="inline-block  bg-foreground md:px-16 md:py-6 px-10 py-4.5 text-[15px] font-bold tracking-[0.3px] text-primary-foreground transition-all hover:scale-[1.04] hover:shadow-[0_8px_30px_rgba(243,243,243,0.22)]"
             >
               مشاهده کالکشن
             </Link>
             <Link
-              href="#story"
-              className="inline-block rounded-full border border-white/35 bg-transparent px-10 py-4.5 text-[15px] font-medium tracking-[0.3px] text-foreground transition-colors hover:border-white/60 hover:bg-white/8"
+              href="/store"
+              className="inline-block  border border-white/35 bg-transparent 
+              px-10 md:px-16 md:py-6 py-4.5 text-[15px] font-medium tracking-[0.3px] text-foreground 
+              transition-colors hover:border-white/60 hover:bg-white/8"
             >
-              کاوش
+              محصولات
             </Link>
           </div>
         </section>
@@ -168,10 +168,10 @@ export default async function Home() {
               </h2>
             </div>
             <Link
-              href="/store"
+              href="/store/categories"
               className="whitespace-nowrap border-b border-white/25 pb-1 text-sm text-muted-foreground"
             >
-              مشاهده همه محصولات
+              مشاهده همه دسته بندی ها
             </Link>
           </div>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -190,13 +190,14 @@ export default async function Home() {
       <Reveal>
         <section id="categories" className="px-5 pb-20 md:px-16 md:pb-40">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <div className="group relative aspect-[3/4] cursor-pointer overflow-hidden rounded-3xl">
+            <div className="group relative aspect-3/4 cursor-pointer max-h-220 w-full  overflow-hidden rounded-3xl">
               <Image
                 src="/assets/img/blackT.jpg"
                 alt="کالکشن مشکی"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover transition-transform duration-[900ms] ease-[cubic-bezier(.16,.8,.24,1)] group-hover:scale-[1.06]"
+                className="object-cover transition-transform duration-900 ease-[cubic-bezier(.16,.8,.24,1)] 
+                group-hover:scale-[1.06]"
                 style={{
                   objectPosition: "center 15%",
                   filter: "grayscale(1) brightness(0.55)",
@@ -219,13 +220,13 @@ export default async function Home() {
               </div>
             </div>
 
-            <div className="group relative aspect-[3/4] cursor-pointer overflow-hidden rounded-3xl">
+            <div className="group relative aspect-3/4 cursor-pointer overflow-hidden rounded-3xl max-h-220 w-full">
               <Image
                 src="/assets/img/whiteT.jpg"
                 alt="کالکشن سفید"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover transition-transform duration-[900ms] ease-[cubic-bezier(.16,.8,.24,1)] group-hover:scale-[1.06]"
+                className="object-cover transition-transform duration-900 ease-[cubic-bezier(.16,.8,.24,1)] group-hover:scale-[1.06]"
                 style={{
                   objectPosition: "center 15%",
                   filter: "grayscale(1) brightness(0.55)",
@@ -256,9 +257,9 @@ export default async function Home() {
           id="story"
           className="grid grid-cols-1 items-center gap-16 px-5 pb-20 md:grid-cols-2 md:px-16 md:pb-40"
         >
-          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl">
+          <div className="relative aspect-4/5 overflow-hidden rounded-3xl">
             <Image
-              src="/assets/tee-collage.avif"
+              src="/assets/cigsaftersecmerch.webp"
               alt=""
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -266,24 +267,27 @@ export default async function Home() {
               style={{ filter: "grayscale(1) contrast(1.05) brightness(0.78)" }}
             />
           </div>
-          <div>
-            <p className="mb-6 text-xs tracking-[1px] text-muted-foreground">
-              داستان ما
-            </p>
-            <h2 className="mb-8   text-[28px] font-black leading-[1.35] text-foreground md:text-[48px]">
-              زاده‌ی ساعت‌های میان نیمه‌شب و خواب.
-            </h2>
-            <p className="max-w-120 text-base leading-loose text-muted-foreground">
-              آداجیو از یک پلی‌لیست برای یک رانندگی طولانی شروع شد. هر طرح از
-              همان حس می‌آید؛ خش‌خش رادیوی ماشین، دانه‌های یک نوار قدیمی، سکوت
-              بعد از تمام‌شدن یک کنسرت. پالت را مشکی و سفید نگه می‌داریم تا
-              حال‌وهوا حرف اول را بزند، نه رنگ.
-            </p>
-          </div>
+      <div>
+  <p className="mb-6 text-xs tracking-[1px] text-muted-foreground">
+    داستان ما
+  </p>
+
+  <h2 className="mb-8 text-[28px] font-black leading-[1.35] text-foreground md:text-[48px]">
+    آداجیو؛ جایی میان موسیقی، خاطره و احساس
+  </h2>
+
+  <p className="max-w-120 text-base leading-loose text-muted-foreground">
+    آداجیو از یک احساس شروع شد؛ از لحظه‌هایی که یک آهنگ می‌تواند تمام یک
+    خاطره را زنده کند. الهام ما از موسیقی‌های آرام، عمیق و ماندگار است؛
+    از نواهایی که در تاریکترین شب ها همراه ما بودند ، فیلم‌های فراموش‌نشدنی و داستان‌هایی که در ذهن باقی
+    می‌مانند. هر طرح روایتی از یک حس است؛ ترکیبی از مینیمالیسم، نوستالژی
+    و زیبایی لحظه‌هایی که دوست داریم دوباره تجربه‌شان کنیم.
+  </p>
+</div>
         </section>
       </Reveal>
 
-      {/* <BestSellersCarousel products={BEST_SELLERS} /> */}
+      <BestSellersCarousel products={products.results} />
 
       <Reveal>
         <section className="bg-[#111111] px-5 py-16 md:px-16 md:py-28">
@@ -370,7 +374,7 @@ export default async function Home() {
             در سکوت شب بمان
           </p>
           <h2 className="mx-auto mb-10 max-w-200   text-[30px] font-black text-foreground md:text-[64px]">
-            انتشار جدید، اولین شنیدن.
+            اطلاع از تخفیف ها
           </h2>
           <NewsletterForm />
         </section>

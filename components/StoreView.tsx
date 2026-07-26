@@ -30,7 +30,9 @@ export default function StoreView({
   const basePath = activeCollectionSlug
     ? `/store/collection/${activeCollectionSlug}`
     : "/store";
+    
   const totalPages = Math.ceil(products.count / PRODUCTS_PAGE_SIZE);
+
   const hasActiveFilters = Boolean(
     queryState.search || queryState.featured || activeCollectionSlug,
   );
@@ -43,7 +45,10 @@ export default function StoreView({
             <span key={item.label}>
               {i > 0 && <span className="mx-2">/</span>}
               {item.href ? (
-                <Link href={item.href} className="transition hover:text-white">
+                <Link
+                  href={`/store/${item.href}`}
+                  className="transition hover:text-white"
+                >
                   {item.label}
                 </Link>
               ) : (

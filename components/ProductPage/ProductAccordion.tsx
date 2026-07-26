@@ -20,7 +20,7 @@ export default function ProductAccordion({
           <div key={a.key} className="border-b border-white/8">
             <button
               onClick={() => setOpenKey(isOpen ? null : a.key)}
-              className="flex w-full items-center justify-between py-5 text-right text-sm text-foreground"
+              className="flex w-full items-center justify-between py-5 text-right text-sm text-foreground font-bold "
             >
               {a.title}
               <span

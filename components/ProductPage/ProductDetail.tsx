@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useMemo, useState } from "react";
 import Navbar from "@/components/Navbar/Navbar";
 import ProductFooter from "@/components/ProductFooter";
@@ -29,6 +28,7 @@ export default function ProductDetail({
   product: Product;
   recommended?: ProductSummary[];
 }) {
+  
   const { showToast } = useAppState();
   const addCartItem = useAddCartItem();
   const {
@@ -47,14 +47,14 @@ export default function ProductDetail({
 
   const variants = product.variants ?? [];
   const primaryCollection = product.collections?.[0];
-  const description = product.description || product.short_description;
-
+  const description = product.description ||"توضیحات این محصول ثبت نشده. ";
+  const short_dec = product.short_description ?? "توضیحاتی برای این محصول ثبت نشده."
   const accordionSections = useMemo(() => {
     const sections: { key: string; title: string; content: string }[] = [];
     if (description) {
       sections.push({
         key: "description",
-        title: "توضیحات",
+        title: "توضیحات کامل محصول",
         content: description,
       });
     }
@@ -138,7 +138,7 @@ export default function ProductDetail({
         onToggleProductWishlist={toggleWishlist}
       />
 
-      <div className="mx-auto max-w-[1400px] px-5 pt-8 md:px-16 md:pt-12">
+      <div className="mx-auto max-w-350 px-5 pt-8 md:px-16 md:pt-12">
         <ProductBreadcrumb
           collections={product.collections}
           productTitle={product.title}
@@ -173,11 +173,11 @@ export default function ProductDetail({
                 "ناموجود"
               )}
             </p>
-            {description && (
+            
               <p className="mb-9 max-w-110 text-[15px] leading-[1.9] text-muted-foreground">
-                {description}
+                {short_dec}
               </p>
-            )}
+          
 
             <ProductSizeSelector
               variants={variants}
