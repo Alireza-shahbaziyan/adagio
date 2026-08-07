@@ -1,7 +1,6 @@
 import localFont from "next/font/local";
-import { Inter } from "next/font/google";
-// Instrument_Serif, Anton
-// use app\fonts\Anton\Anton-Regular.ttf and app\fonts\Instrument_Serif\InstrumentSerif-Regular.ttf
+
+
 
 export const Instrument_Serif = localFont({
   src: [
@@ -19,12 +18,20 @@ export const Anton = localFont({
   display: "swap",
 });
 
+// add local font for Inter font for English characters
+/*
+app\fonts\Inter\Inter-Italic-VariableFont_opsz,wght.ttf
+app\fonts\Inter\Inter-VariableFont_opsz,wght.ttf
 
-export const interFontForEnglishChar = Inter({
-    subsets: ["latin"],
-    variable: "--font-interFontForEnglishChar",
+*/
+
+export const Inter = localFont({
+  src: [
+    { path: "./Inter/Inter-VariableFont_opsz,wght.ttf", weight: "400", style: "normal" },
+  ],
+  variable: "--font-inter",
+  display: "swap",
 });
-
 
 export const yekanBakhFontForFarsiChar = localFont({
   

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 // import {  Instrument_Serif, Anton } from "next/font/google";
-import { interFontForEnglishChar, yekanBakhFontForFarsiChar, nastaliq,Instrument_Serif, Anton } 
+import { Inter as interFontForEnglishChar, yekanBakhFontForFarsiChar, nastaliq, Instrument_Serif, Anton }
 from "./fonts/fontsConfig";
 import { Providers } from "@/lib/providers";
 import Toast from "@/components/Toast";
