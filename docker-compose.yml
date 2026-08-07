@@ -1,25 +1,26 @@
 services:
   adagio-front:
-    container_name: adagio-front
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_BACKEND_BASE_URL: ${NEXT_PUBLIC_BACKEND_BASE_URL}
+        NEXT_PUBLIC_FRONTEND_BASE_URL: ${NEXT_PUBLIC_FRONTEND_BASE_URL}
 
-    restart: unless-stopped
+    container_name: adagio-front
+
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_BACKEND_BASE_URL: ${NEXT_PUBLIC_BACKEND_BASE_URL}
+      NEXT_PUBLIC_FRONTEND_BASE_URL: ${NEXT_PUBLIC_FRONTEND_BASE_URL}
 
     ports:
       - "3000:3000"
 
-    env_file:
-      - .env
-
-    environment:
-      NODE_ENV: production
+    restart: unless-stopped
 
     networks:
       - adagio-network
 
-
 networks:
   adagio-network:
-    driver: bridge
