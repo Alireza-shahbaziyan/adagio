@@ -20,6 +20,8 @@ export default function BestSellersCarousel({products}: BestSellersCarouselProps
   if (!products || products.length === 0) {
     return null;
   }
+ 
+  
   return (
     <section className="relative z-1 pb-20 md:pb-40">
       <div className="mb-10 flex flex-wrap items-end justify-between gap-6 px-5 md:px-16">
@@ -68,7 +70,7 @@ export default function BestSellersCarousel({products}: BestSellersCarouselProps
                 style={{ direction: "ltr", textAlign: "right" }}
                 className="text-sm text-muted-foreground"
               >
-               {p.variants[0].price.toLocaleString("fa-IR")} تومان
+               {p.variants[0].price.toLocaleString("fa-IR")}-404
               </p>
          
             </div>

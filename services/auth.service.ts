@@ -24,7 +24,7 @@ export async function loginApi({ phone }: { phone: string }) {
   if (!res.ok) {
     throw new Error(data?.detail || "Verification failed");
   }
-  console.log(data);
+  // console.log(data);
 
   return data;
 }

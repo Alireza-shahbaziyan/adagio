@@ -5,7 +5,7 @@ import type { WishlistItem } from "@/types/wishlist";
 import { queryKeys } from "@/lib/queryKeys";
 import { useMe } from "@/hooks/useMe";
 import { useAppState } from "@/lib/app-state";
-
+import { useRouter } from "next/navigation";
 async function wishlistRequest(
   path: string,
   init?: RequestInit,
@@ -77,12 +77,13 @@ export function useWishlistToggle(slug: string, title: string) {
   const addItem = useAddWishlistItem();
   const removeItem = useRemoveWishlistItem();
   const { showToast } = useAppState();
-
+  const router =  useRouter();
   const isWishlisted = data?.some((item) => item.slug === slug) ?? false;
 
   const toggle = () => {
     if (!me) {
       showToast("برای افزودن به علاقه‌مندی‌ها ابتدا وارد شو");
+      router.push("/login")
       return;
     }
 

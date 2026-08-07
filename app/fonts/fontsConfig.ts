@@ -1,5 +1,24 @@
 import localFont from "next/font/local";
 import { Inter } from "next/font/google";
+// Instrument_Serif, Anton
+// use app\fonts\Anton\Anton-Regular.ttf and app\fonts\Instrument_Serif\InstrumentSerif-Regular.ttf
+
+export const Instrument_Serif = localFont({
+  src: [
+    { path: "./Instrument_Serif/InstrumentSerif-Regular.ttf", weight: "400", style: "normal" },
+  ],
+  variable: "--font-instrument-serif",
+  display: "swap",
+});
+
+export const Anton = localFont({
+  src: [
+    { path: "./Anton/Anton-Regular.ttf", weight: "400", style: "normal" },
+  ],
+  variable: "--font-anton",
+  display: "swap",
+});
+
 
 export const interFontForEnglishChar = Inter({
     subsets: ["latin"],

@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-vazirmatn: var(--font-vazirmatn);
+  
   --font-instrument-serif: var(--font-instrument-serif);
   --font-anton: var(--font-anton);
   --font-interFontForEnglishChar: var(--font-interFontForEnglishChar);

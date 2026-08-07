@@ -3,7 +3,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar/Navbar";
 import Hero from "@/components/Hero";
 import Reveal from "@/components/Reveal";
-import ProductCard from "@/components/ProductCard";
+import ProductCard from "@/components/ProductCard/ProductCard";
 import BestSellersCarousel from "@/components/BestSellersCarousel";
 import NewsletterForm from "@/components/NewsletterForm";
 import Footer from "@/components/Footer";
@@ -267,23 +267,24 @@ export default async function Home() {
               style={{ filter: "grayscale(1) contrast(1.05) brightness(0.78)" }}
             />
           </div>
-      <div>
-  <p className="mb-6 text-xs tracking-[1px] text-muted-foreground">
-    داستان ما
-  </p>
+          <div>
+            <p className="mb-6 text-xs tracking-[1px] text-muted-foreground">
+              داستان ما
+            </p>
 
-  <h2 className="mb-8 text-[28px] font-black leading-[1.35] text-foreground md:text-[48px]">
-    آداجیو؛ جایی میان موسیقی، خاطره و احساس
-  </h2>
+            <h2 className="mb-8 text-[28px] font-black leading-[1.35] text-foreground md:text-[48px]">
+              آداجیو؛ جایی میان موسیقی، خاطره و احساس
+            </h2>
 
-  <p className="max-w-120 text-base leading-loose text-muted-foreground">
-    آداجیو از یک احساس شروع شد؛ از لحظه‌هایی که یک آهنگ می‌تواند تمام یک
-    خاطره را زنده کند. الهام ما از موسیقی‌های آرام، عمیق و ماندگار است؛
-    از نواهایی که در تاریکترین شب ها همراه ما بودند ، فیلم‌های فراموش‌نشدنی و داستان‌هایی که در ذهن باقی
-    می‌مانند. هر طرح روایتی از یک حس است؛ ترکیبی از مینیمالیسم، نوستالژی
-    و زیبایی لحظه‌هایی که دوست داریم دوباره تجربه‌شان کنیم.
-  </p>
-</div>
+            <p className="max-w-120 text-base leading-loose text-muted-foreground">
+              آداجیو از یک احساس شروع شد؛ از لحظه‌هایی که یک آهنگ می‌تواند تمام
+              یک خاطره را زنده کند. الهام ما از موسیقی‌های آرام، عمیق و ماندگار
+              است؛ از نواهایی که در تاریکترین شب ها همراه ما بودند ، فیلم‌های
+              فراموش‌نشدنی و داستان‌هایی که در ذهن باقی می‌مانند. هر طرح روایتی
+              از یک حس است؛ ترکیبی از مینیمالیسم، نوستالژی و زیبایی لحظه‌هایی که
+              دوست داریم دوباره تجربه‌شان کنیم.
+            </p>
+          </div>
         </section>
       </Reveal>
 

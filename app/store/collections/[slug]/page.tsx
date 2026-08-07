@@ -1,7 +1,7 @@
 import Footer from "@/components/Footer";
 import MobileBottomNav from "@/components/MobileBottomNav";
 import Navbar from "@/components/Navbar/Navbar";
-import ProductCard from "@/components/ProductCard";
+import ProductCard from "@/components/ProductCard/ProductCard";
 import { getStoreProducts } from "@/lib/store";
 import { CollectionResponse } from "@/types/collections";
 import { Callection } from "@/types/singleCollection";
@@ -17,9 +17,7 @@ type Props = {
   }>;
 };
 
-export async function generateMetadata({
-  params,
-}: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
 
   return {
@@ -45,7 +43,6 @@ export async function generateMetadata({
     },
   };
 }
-
 
 export async function generateStaticParams() {
   const res = await fetch(`${backend}/api/collections/?page=1&page_size=100`);
@@ -190,13 +187,17 @@ export default async function Page({
                   )}
 
                   <div className="p-8">
-                    <h3 className="text-xl font-medium transition
-                                       group-hover:text-white">
+                    <h3
+                      className="text-xl font-medium transition
+                                       group-hover:text-white"
+                    >
                       {child.title}
                     </h3>
 
-                    <p className="mt-4 line-clamp-3 text-sm   
-                                      leading-7 text-neutral-400">
+                    <p
+                      className="mt-4 line-clamp-3 text-sm   
+                                      leading-7 text-neutral-400"
+                    >
                       {child.short_description}
                     </p>
                   </div>

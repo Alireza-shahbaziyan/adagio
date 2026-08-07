@@ -111,7 +111,7 @@ export default function Navbar({
             </button>
           ) : (
             <Link
-              href="/wishlist"
+              href="/store/wishlist"
               className="relative flex p-2 text-foreground"
             >
               <HeartIcon />

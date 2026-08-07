@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useWishlistToggle } from "@/lib/wishlist";
 import { HeartIcon } from "@/components/icons";
 import { Product } from "@/types/products";
+import ProductCardDec from "./ProductCardDec";
 
 export default function ProductCard({
   product,
@@ -16,14 +17,13 @@ export default function ProductCard({
   interactive?: boolean;
   priority?: boolean;
 }) {
-  const { isWishlisted: wishlisted, toggle: toggleWishlist } =
-    useWishlistToggle(product.slug, product.title);
+  const { isWishlisted: wishlisted, toggle: toggleWishlist } = useWishlistToggle(product.slug, product.title);
   const [hovered, setHovered] = useState(false);
 
   if (!product) return null;
   const image = product?.images?.[0]?.image || "/placeholder.jpg";
   const imageAlt = product?.images?.[0]?.alt_text || "Image.jpg";
-
+  // console.log(product?.variants[0].size_name)
   return (
     <Link
       href={`/store/product/${product.slug}`}
@@ -56,7 +56,7 @@ export default function ProductCard({
             <HeartIcon size={16} filled={wishlisted} />
           </button>
         )}
-        {interactive && (
+        {/* {interactive && (
           <div
             className="absolute inset-x-3 bottom-3 transition-all duration-300 ease-out"
             style={{
@@ -77,17 +77,9 @@ export default function ProductCard({
               + افزودن سریع
             </button>
           </div>
-        )}
+        )} */}
       </div>
-      <div className="px-1 py-5">
-        <p className="mb-1 text-[15px] text-foreground ">{product?.title}</p>
-        <p
-          style={{ direction: "ltr", textAlign: "right" }}
-          className="text-sm text-muted-foreground"
-        >
-          ${product?.variants?.[0]?.price || 0}
-        </p>
-      </div>
+        <ProductCardDec variant={product.variants} title={product.title??'نامی ثبت نشده'}/>
     </Link>
   );
 }

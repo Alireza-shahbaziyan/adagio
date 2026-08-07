@@ -21,7 +21,7 @@ Key product behaviors that shape the architecture:
 | Server state | TanStack React Query v5 |
 | Forms | react-hook-form + zod |
 | Icons / motion | lucide-react, `motion` |
-| Fonts | Local Farsi/Latin webfonts under `app/fonts/` (Vazirmatn, Yekan Bakh, Nastaliq, Instrument Serif, Anton) |
+| Fonts | Local Farsi/Latin webfonts under `app/fonts/` (Yekan Bakh, Nastaliq, Instrument Serif, Anton) |
 
 ## 3. High-Level Architecture: BFF Proxy Pattern
 
