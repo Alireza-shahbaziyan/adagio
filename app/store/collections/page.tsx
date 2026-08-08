@@ -14,9 +14,9 @@ type SearchParams = Promise<{
 }>;
 
 export const metadata: Metadata = {
-  title: "تیشرت هایی به تم موسیقی",
+  title: "کالکشن‌های خاص هنری آداجیو",
   description:
-    "فروشگاه تخصصی انواع تیشرت های کلاژ با تم موسیقی و هنری | Adagio",
+    "جدیدترین کالکشن‌ها با طراحی خاص و کیفیت بالا در فروشگاه آداجیو | Adagio",
   robots: {
     index: true,
     follow: true,
@@ -25,15 +25,15 @@ export const metadata: Metadata = {
     canonical: `${frontend}/collections`,
   },
   openGraph: {
-    title: `خرید تیشرت | آداجیو`,
-    description: `جدیدترین تیشرت‌ها با طراحی خاص و کیفیت بالا در فروشگاه آداجیو.`,
+    title: `کالکشن‌های خاص هنری آداجیو`,
+    description: `جدیدترین کالکشن‌ها با طراحی خاص و کیفیت بالا در فروشگاه آداجیو.`,
     url: `${frontend}/collections`,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: `خرید تیشرت | آداجیو`,
-    description: `جدیدترین تیشرت‌ها با طراحی خاص و کیفیت بالا در فروشگاه آداجیو.`,
+    title: `کالکشن‌های خاص هنری آداجیو`,
+    description: `جدیدترین کالکشن‌ها با طراحی خاص و کیفیت بالا در فروشگاه آداجیو.`,
   },
 };
 
@@ -62,8 +62,8 @@ export default async function CollectionsPage({
   }
 
   const collectionResponse: CollectionResponse = await res.json();
-  const pageSize = Number(page_size) || 20;
-  const currentPage = Number(page) || 1;
+  // const pageSize = Number(page_size) || 20;
+  // const currentPage = Number(page) || 1;
 
   return (
     <div
@@ -73,9 +73,10 @@ export default async function CollectionsPage({
     >
       <Navbar variant="default" />
       <CollectionsShowcase
+        h1="کالکشن‌های خاص هنری آداجیو"
         collections={collectionResponse.results}
-        totalCount={collectionResponse.count}
-        startIndex={(currentPage - 1) * pageSize}
+        // totalCount={collectionResponse.count}
+        // startIndex={(currentPage - 1) * pageSize}
         search={search}
       />
       <Footer mobileBottomPad />

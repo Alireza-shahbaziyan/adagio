@@ -5,10 +5,10 @@ import Link from "next/link";
 
 function CollectionCard({
   collection,
-  index,
+  
 }: {
   collection: ProductCollection;
-  index: number;
+ 
 }) {
   return (
     <Link
@@ -35,19 +35,19 @@ function CollectionCard({
       </div>
 
       <div className="flex flex-1 flex-col p-8 md:p-9">
-        <span
+        {/* <span
           style={{ direction: "ltr" }}
           className="font-instrument-serif mb-6 block text-lg italic text-[#6b6b6b] transition-colors duration-500 group-hover:text-muted-foreground"
         >
           A{index + 1}
-        </span>
+        </span> */}
 
-        <h2 className="mb-3 text-[26px] font-black leading-tight text-foreground md:text-[30px]">
+        <h2 className="mb-3 text-[26px] font-black leading-tight text-foreground md:text-3xl">
           {collection.title}
         </h2>
 
         {collection.short_description && (
-          <p className="mb-8 line-clamp-2 max-w-[36ch] text-[14px] leading-[1.8] text-muted-foreground">
+          <p className="mb-8 line-clamp-2 text-sm md:text-base leading-[1.8] text-muted-foreground">
             {collection.short_description}
           </p>
         )}

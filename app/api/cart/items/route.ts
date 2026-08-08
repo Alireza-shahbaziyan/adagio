@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { backend } from "@/utils/getURL";
+import { forwardSetCookie } from "@/utils/forwardSetCookie";
 
 export const dynamic = "force-dynamic";
 
@@ -28,8 +29,7 @@ export async function POST(req: NextRequest) {
     }
 
     const response = NextResponse.json(data, { status: 200 });
-    const setCookie = res.headers.get("set-cookie");
-    if (setCookie) response.headers.set("set-cookie", setCookie);
+    forwardSetCookie(res, response);
     return response;
   } catch {
     return NextResponse.json(

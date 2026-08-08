@@ -9,18 +9,18 @@ export const dynamic = "force-dynamic";
 async function safeFetch<T>(
   path: string,
   cookie: string,
-): Promise<{ data: T | null; setCookie: string | null }> {
+): Promise<{ data: T | null; setCookie: string[] }> {
   try {
     const res = await fetch(`${backend}${path}`, {
       headers: { "Content-Type": "application/json", cookie },
       cache: "no-store",
     });
-    const setCookie = res.headers.get("set-cookie");
+    const setCookie = res.headers.getSetCookie?.() ?? [];
     if (!res.ok) return { data: null, setCookie };
     const data = (await res.json().catch(() => null)) as T | null;
     return { data, setCookie };
   } catch {
-    return { data: null, setCookie: null };
+    return { data: null, setCookie: [] };
   }
 }
 
@@ -53,8 +53,11 @@ export async function GET(req: NextRequest) {
     wishlistCount: wishlistResult?.data?.length ?? 0,
   });
 
-  for (const setCookie of [meResult.setCookie, cartResult.setCookie, wishlistResult?.setCookie]) {
-    if (setCookie) response.headers.append("set-cookie", setCookie);
+  for (const result of [meResult, cartResult, wishlistResult]) {
+    if (!result) continue;
+    for (const setCookie of result.setCookie) {
+      response.headers.append("set-cookie", setCookie);
+    }
   }
 
   return response;

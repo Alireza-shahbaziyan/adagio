@@ -12,6 +12,11 @@ export const metadata: Metadata = {
   title: "آداجیو | Adagio",
   description: "فروشگاه لباس آداجیو | Adagio",
   metadataBase: new URL("https://adagiostyle.ir"),
+  robots: {
+    index: false,
+    follow: false,
+  },
+
 };
 
 export default function RootLayout({

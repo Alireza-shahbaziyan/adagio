@@ -86,11 +86,10 @@ export default function Hero() {
           opacity: bottomOpacity,
         }}
       >
-        <p className="mx-auto max-w-72 text-[13px] text-white 
-          shadow-2xl font-bold
+        <p className="mx-auto max-w-72 text-sm text-white 
+          shadow-2xl font-bold text-nowrap
          leading-[1.7] md:max-w-105
-         md:text-xl">
-تیشرت‌هایی که داستان موسیقی را روایت می‌کنند.        </p>
+         md:text-xl">در آداجیو، هر اثر قصه‌ایست که پوشیده می‌شود؛</p>
       </motion.div>
 
     </section>

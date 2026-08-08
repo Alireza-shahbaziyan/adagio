@@ -3,38 +3,45 @@ import Reveal from "@/components/Reveal";
 
 import { ProductCollection } from "@/types/singleProduct";
 import CollectionCard from "./CollectionCard";
+import Image from "next/image";
+import AdagioGirl from "@/public/assets/adagioGirl.webp";
 
 export default function CollectionsShowcase({
   collections,
-  totalCount,
-  startIndex = 0,
   search,
+  h1,
 }: {
   collections: ProductCollection[];
-  totalCount: number;
-  /** Position of `collections[0]` within the full result set — lets the catalog
-   * index stay correct once a future pager passes page > 1. */
-  startIndex?: number;
-  /** Active search term, if any — only used to tailor the empty state copy. */
   search?: string;
+  h1?: string;
 }) {
   const trimmedSearch = search?.trim();
 
-
   return (
     <section className="mx-auto max-w-350 px-5 pb-24 pt-8 md:px-16 md:pb-40 md:pt-12">
-      <div className="mb-14 flex flex-wrap items-end justify-between gap-6 md:mb-20">
-        <div>
+      <div>
+
+      </div>
+      <div className="mb-14 grid grid-cols-1 gap-6 md:mb-20 lg:grid-cols-2 lg:items-center">
+        <div className="order-2 lg:order-1 ">
           <p className="mb-4 text-xs tracking-[1px] text-muted-foreground">
             آرشیو
           </p>
-          <h1 className="text-[36px] font-black leading-[1.15] text-foreground md:text-[64px]">
-           تیشرت هایی به تم موسیقی 
+
+          <h1 className="text-[36px] font-black leading-28 text-foreground md:text-[64px]">
+            {h1 ?? "دسته‌بندی پوشاک و محصولات هنری آداجیو"}
           </h1>
         </div>
-        {totalCount > 0 && (
-          <p className="text-sm text-muted-foreground">{totalCount} - کالکشن</p>
-        )}
+
+        <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
+          <Image
+            src={AdagioGirl}
+            alt="Adagio Girl"
+            width={500}
+            height={500}
+            className="h-auto w-full max-w-87.5 object-contain md:max-w-100 lg:max-w-125 rounded-b-full"
+          />
+        </div>
       </div>
 
       {/* A future filter bar (search / ordering / page_size) mounts here,
@@ -69,7 +76,7 @@ export default function CollectionsShowcase({
               key={collection.id}
               style={{ transitionDelay: `${Math.min(i, 8) * 70}ms` }}
             >
-              <CollectionCard collection={collection} index={startIndex + i} />
+              <CollectionCard collection={collection} />
             </Reveal>
           ))}
         </div>

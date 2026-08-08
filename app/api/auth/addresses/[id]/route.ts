@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { backend } from "@/utils/getURL";
+import { forwardSetCookie } from "@/utils/forwardSetCookie";
 
 export const dynamic = "force-dynamic";
 
@@ -25,15 +26,13 @@ export async function PUT(
     const data = await res.json().catch(() => null);
 
     if (!res.ok) {
-      return NextResponse.json(
-        data ?? { detail: "ویرایش آدرس ناموفق بود" },
-        { status: res.status },
-      );
+      return NextResponse.json(data ?? { detail: "ویرایش آدرس ناموفق بود" }, {
+        status: res.status,
+      });
     }
 
     const response = NextResponse.json(data, { status: 200 });
-    const setCookie = res.headers.get("set-cookie");
-    if (setCookie) response.headers.set("set-cookie", setCookie);
+    forwardSetCookie(res, response);
     return response;
   } catch {
     return NextResponse.json(
@@ -60,25 +59,24 @@ export async function DELETE(
       cache: "no-store",
     });
 
-    const setCookie = res.headers.get("set-cookie");
+    const setCookie = res.headers.getSetCookie?.() ?? [];
 
     if (res.status === 204) {
       const response = new NextResponse(null, { status: 204 });
-      if (setCookie) response.headers.set("set-cookie", setCookie);
+      for (const c of setCookie) response.headers.append("set-cookie", c);
       return response;
     }
 
     const data = await res.json().catch(() => null);
 
     if (!res.ok) {
-      return NextResponse.json(
-        data ?? { detail: "حذف آدرس ناموفق بود" },
-        { status: res.status },
-      );
+      return NextResponse.json(data ?? { detail: "حذف آدرس ناموفق بود" }, {
+        status: res.status,
+      });
     }
 
     const response = NextResponse.json(data, { status: 200 });
-    if (setCookie) response.headers.set("set-cookie", setCookie);
+    for (const c of setCookie) response.headers.append("set-cookie", c);
     return response;
   } catch {
     return NextResponse.json(
