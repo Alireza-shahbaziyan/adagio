@@ -17,10 +17,7 @@ export const metadata: Metadata = {
   title: "دسته‌بندی پوشاک و محصولات هنری آداجیو",
   description:
     "دسته‌بندی پوشاک و محصولات هنری آداجیو | Adagio",
-  robots: {
-    index: true,
-    follow: true,
-  },
+
   alternates: {
     canonical: `${frontend}/collections`,
   },

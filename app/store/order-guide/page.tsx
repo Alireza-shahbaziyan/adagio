@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import MobileBottomNav from "@/components/MobileBottomNav";
 import type { Metadata } from "next";
 
@@ -179,6 +180,7 @@ export default function ShippingGuidePage() {
         </section>
       </main>
       <MobileBottomNav />
+      <Footer mobileBottomPad />
     </>
   );
 }

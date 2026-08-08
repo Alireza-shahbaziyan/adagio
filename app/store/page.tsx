@@ -54,7 +54,7 @@ export default async function StorePage({
       <Navbar variant="default" />
       <StoreView
         eyebrow="آرشیو"
-        title="فروشگاه"
+        title="فروشگاه لباس خاص و مینیمال آداجیو"
         description=" موسیقی را به تن کن "
         breadcrumb={[{ label: "خانه", href: "/" }, { label: "فروشگاه" }]}
         collections={collections}

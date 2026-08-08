@@ -37,10 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!product) {
     return {
       title: "محصول پیدا نشد | آداجیو",
-      robots: {
-        index: false,
-        follow: false,
-      },
+  
     };
   }
   return {
@@ -49,10 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `${frontend}/products/${product.slug}`,
     },
-    robots: {
-      index: true,
-      follow: true,
-    },
+
     openGraph: {
       title: `${product.title} | آداجیو`,
       description: `خرید ${product.title} با طراحی خاص موسیقی از فروشگاه آداجیو.`,

@@ -16,7 +16,7 @@ export default function Footer({
         <section aria-label="درباره آداجیو">
           <p
             style={{ direction: "ltr" }}
-            className="mb-4 font-instrument-serif text-[28px] italic text-foreground"
+            className="text-end mb-4 font-instrument-serif text-[28px] italic text-foreground"
           >
             Adagio
           </p>
@@ -162,8 +162,8 @@ export default function Footer({
           </Link>
 
           <Link
-            href="#"
-            aria-label="TikTok Adagio"
+            href="https://t.me/adagiostyle"
+            aria-label="Telegram Adagio"
             className="  flex h-9.5 w-9.5 items-center justify-center rounded-full border border-white/[0.15] text-[11px] tracking-[0.5px] text-muted-foreground"
           >
             <svg

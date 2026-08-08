@@ -1,10 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useReducedMotion,
+} from "motion/react";
 
 const RANGE = 420;
-import imageperson from '/public/assets/heroPerson-LW.png'
+import imageperson from "/public/assets/heroPerson-LW.png";
 
 export default function Hero() {
   const reduceMotion = useReducedMotion();
@@ -26,9 +31,11 @@ export default function Hero() {
   // const cueOpacity = useTransform(scrollY, [0, 260], [1, 0]);
 
   return (
-    <section dir="ltr" className=" bg-hero 
-    relative flex h-[88vh] md:min-h-svh items-center justify-center overflow-hidden bg-[#050505]">
-
+    <section
+      dir="ltr"
+      className=" bg-hero 
+    relative flex h-[88vh] md:min-h-svh items-center justify-center overflow-hidden bg-[#050505]"
+    >
       <motion.div
         className="absolute inset-0 flex items-center justify-center"
         style={{
@@ -42,24 +49,20 @@ export default function Hero() {
             y: reduceMotion ? 0 : titleY,
           }}
         >
-          <h1
+          <div
             className="flex font-black justify-center 
              text-[#dcdcdc] text-[20vw] md:text-[24vw] leading-none 
             "
             aria-label="ADAGIO"
           >
-            <motion.span
-              style={{ x: reduceMotion ? 0 : leftX }}
-            >
+            <motion.span style={{ x: reduceMotion ? 0 : leftX }}>
               ADA
             </motion.span>
 
-            <motion.span
-              style={{ x: reduceMotion ? 0 : rightX }}
-            >
+            <motion.span style={{ x: reduceMotion ? 0 : rightX }}>
               GIO
             </motion.span>
-          </h1>
+          </div>
         </motion.div>
 
         <motion.div
@@ -86,12 +89,11 @@ export default function Hero() {
           opacity: bottomOpacity,
         }}
       >
-        <p className="mx-auto max-w-72 text-sm text-white 
-          shadow-2xl font-bold text-nowrap
-         leading-[1.7] md:max-w-105
-         md:text-xl">در آداجیو، هر اثر قصه‌ایست که پوشیده می‌شود؛</p>
+        <div className="mx-auto max-w-72 text-sm font-bold leading-[1.7] text-white shadow-2xl flex gap-2  md:max-w-105 md:text-xl">
+          <p>هر اثر قصه‌ایست که پوشیده می‌شود</p>
+          <h1>گالری آداجیو</h1>
+        </div>
       </motion.div>
-
     </section>
   );
 }
@@ -154,7 +156,7 @@ export default function Hero() {
 //   const cueOpacity = useTransform(scrollY, [0, 260], [1, 0]);
 
 //   return (
-//     <section className="relative flex min-h-svh w-full bg-light-in-dark items-center justify-center 
+//     <section className="relative flex min-h-svh w-full bg-light-in-dark items-center justify-center
 //     overflow-hidden bg-[#050505] md:h-screen">
 //       <div className="film-grain" aria-hidden="true" />
 

@@ -9,10 +9,7 @@ export const metadata: Metadata = {
   title: "سبد خرید | آداجیو",
   description: "محصولات انتخاب‌شده خود را بررسی کنید و سفارش خود را ثبت کنید.",
 
-  robots: {
-    index: false,
-    follow: false,
-  },
+
 
   alternates: {
     canonical: `${frontend}/cart`,

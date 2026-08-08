@@ -12,6 +12,8 @@ import MobileBottomNav from "@/components/MobileBottomNav";
 import { ProductsResponse } from "@/types/products";
 import { CustomerGalleryItem, GalleryResponse } from "@/types/gallery";
 import { Metadata } from "next";
+import { Post,  PostsResponse } from "@/types/posts";
+import BlogPostCard from "@/components/blog/BlogPostCard";
 // import ErrorPage from "./error";
 export const revalidate = 900; // 15 min;
 
@@ -41,10 +43,6 @@ export const metadata: Metadata = {
   description:
     "فروشگاه آداجیو؛ خرید تیشرت‌های موسیقی با طراحی مینیمال و هنری، الهام گرفته از خوانندگان و گروه‌های محبوب. تیشرت‌های باکیفیت با چاپ ماندگار و ارسال سریع.",
 
-  robots: {
-    index: true,
-    follow: true,
-  },
 
   alternates: {
     canonical: "/",
@@ -107,11 +105,25 @@ export default async function Home() {
       },
     },
   );
-  if (!ProductResponse.ok || !GalleryResponse.ok) {
+  const getPostsResponse = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/api/blog/posts/?page=1&page_size=4`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      next: {
+        revalidate: 60 * 60, // 1 hour
+      },
+    },
+  );
+
+  if (!ProductResponse.ok || !GalleryResponse.ok || !getPostsResponse.ok) {
     return <div>مشکلی پیش آمده دوباره امتحان کنید . </div>;
   }
   const products: ProductsResponse = await ProductResponse.json();
   const GalleryList: GalleryResponse = await GalleryResponse.json();
+  const posts: PostsResponse = await getPostsResponse.json();
 
   return (
     <div
@@ -182,6 +194,35 @@ export default async function Home() {
                 interactive
                 priority={i === 0}
               />
+            ))}
+          </div>
+        </section>
+      </Reveal>
+
+      <Reveal>
+        <section
+          id="featured"
+          className="relative z-1 bg-primary-foreground  px-5 pb-16 pt-20 md:px-16 md:pb-32 md:pt-40"
+        >
+          <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <p className="mb-4 text-xs tracking-[1px] text-muted-foreground">
+                این بخش
+              </p>
+              <h2 className="  text-[30px] font-black text-foreground md:text-[56px]">
+                آخرین پست های وبلاگ
+              </h2>
+            </div>
+            <Link
+              href="/blog"
+              className="whitespace-nowrap border-b border-white/25 pb-1 text-sm text-muted-foreground"
+            >
+              مشاهده همه پست های وبلاگ
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {posts.results.map((post: Post) => (
+              <BlogPostCard key={post.id} post={post} />
             ))}
           </div>
         </section>
