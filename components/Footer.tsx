@@ -40,7 +40,7 @@ export default function Footer({
           </Link>
 
           <Link
-            href="/store/product"
+            href="/store/products"
             title="مشاهده محصولات آداجیو"
             className="mb-3.5 block text-sm text-muted-foreground"
           >

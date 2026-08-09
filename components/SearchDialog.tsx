@@ -50,7 +50,7 @@ export default function SearchDialog({
 
   function handleSelect(slug: string) {
     onOpenChange(false);
-    router.push(`/store/product/${slug}`);
+    router.push(`/store/products/${slug}`);
   }
 
   return (
@@ -61,7 +61,11 @@ export default function SearchDialog({
       description="نام محصول مورد نظرت را جستجو کن"
     >
       <Command shouldFilter={false}>
-        <CommandInput placeholder="جستجوی محصول…" value={query} onValueChange={setQuery} />
+        <CommandInput
+          placeholder="جستجوی محصول…"
+          value={query}
+          onValueChange={setQuery}
+        />
         <CommandList>
           {debounced.length === 0 ? (
             <CommandEmpty>برای جستجو، نام محصول را تایپ کن…</CommandEmpty>
@@ -72,7 +76,9 @@ export default function SearchDialog({
               ))}
             </div>
           ) : isError ? (
-            <CommandEmpty>مشکلی در جستجو پیش آمد. دوباره امتحان کن.</CommandEmpty>
+            <CommandEmpty>
+              مشکلی در جستجو پیش آمد. دوباره امتحان کن.
+            </CommandEmpty>
           ) : results.length === 0 ? (
             <CommandEmpty>محصولی با این نام پیدا نشد.</CommandEmpty>
           ) : (
@@ -88,13 +94,22 @@ export default function SearchDialog({
                   >
                     <div className="relative size-10 shrink-0 overflow-hidden rounded-md bg-muted">
                       {image && (
-                        <Image src={image} alt={product.title} fill sizes="40px" className="object-cover" />
+                        <Image
+                          src={image}
+                          alt={product.title}
+                          fill
+                          sizes="40px"
+                          className="object-cover"
+                        />
                       )}
                     </div>
                     <div className="flex flex-1 flex-col overflow-hidden">
                       <span className="truncate">{product.title}</span>
                       {price != null && (
-                        <span style={{ direction: "ltr" }} className="text-xs text-muted-foreground">
+                        <span
+                          style={{ direction: "ltr" }}
+                          className="text-xs text-muted-foreground"
+                        >
                           ${price}
                         </span>
                       )}

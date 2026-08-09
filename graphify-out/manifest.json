@@ -50,13 +50,13 @@
     "semantic_hash": ""
   },
   "components/BestSellersCarousel.tsx": {
-    "mtime": 1785234303.9597857,
-    "ast_hash": "dd31ded9be90610fe7ab26360057ced0",
+    "mtime": 1786303006.7541635,
+    "ast_hash": "42981caa6ab84d70fc6b591d99a68a53",
     "semantic_hash": ""
   },
   "components/Footer.tsx": {
-    "mtime": 1786202277.3554702,
-    "ast_hash": "2ffd7ae60c39f7308c3f8c8f7b216b5e",
+    "mtime": 1786303006.898415,
+    "ast_hash": "2632e561ed878432d3c978dfa1549654",
     "semantic_hash": ""
   },
   "components/Hero.tsx": {
@@ -130,13 +130,13 @@
     "semantic_hash": ""
   },
   "next.config.ts": {
-    "mtime": 1785219040.6169696,
-    "ast_hash": "515fba6f176e75582933f74d47b10cc9",
+    "mtime": 1786265243.1275668,
+    "ast_hash": "6c953ecc838c40ffe06ff5c54e5b05cd",
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1784929028.02198,
-    "ast_hash": "b5c1e3618cd3e7673dd5b8241820fd3e",
+    "mtime": 1786310817.318345,
+    "ast_hash": "a56873f0c64bc028d161da8b58c47738",
     "semantic_hash": ""
   },
   "postcss.config.mjs": {
@@ -160,8 +160,8 @@
     "semantic_hash": ""
   },
   "types/products.d.ts": {
-    "mtime": 1784999698.3321474,
-    "ast_hash": "664b32b318f18fb5eb6e780a48fbc44c",
+    "mtime": 1786310281.3575194,
+    "ast_hash": "44c79b187c48f99db794acaf63dba7ec",
     "semantic_hash": ""
   },
   "types/response.d.ts": {
@@ -270,8 +270,8 @@
     "semantic_hash": "20a53415ecd9116cc3f68601207d45e3"
   },
   "types/singleProduct.d.ts": {
-    "mtime": 1783618684.9600384,
-    "ast_hash": "5471987fa21ccfeb8e62e14a1a0cb469",
+    "mtime": 1786310847.9718933,
+    "ast_hash": "6a67b530068b9834dc917cb157511889",
     "semantic_hash": ""
   },
   "types/collections.d.ts": {
@@ -590,8 +590,8 @@
     "semantic_hash": ""
   },
   "components/SearchDialog.tsx": {
-    "mtime": 1785063654.1446035,
-    "ast_hash": "5eca1d67081638c18bebfca9d2377851",
+    "mtime": 1786303006.8134727,
+    "ast_hash": "74abfcde3e36cf8f64d2cddd96e35986",
     "semantic_hash": ""
   },
   "components/ui/field.tsx": {
@@ -645,13 +645,13 @@
     "semantic_hash": ""
   },
   "components/ProductPage/ProductDetail.tsx": {
-    "mtime": 1785067580.7362096,
-    "ast_hash": "6c1eedbca428619e9b4f500473282f4d",
+    "mtime": 1786310892.8209856,
+    "ast_hash": "f6ea0fa46b810ed25b29a5b51ac78c56",
     "semantic_hash": ""
   },
   "components/ProductPage/Recommended.tsx": {
-    "mtime": 1785063661.8379178,
-    "ast_hash": "839f7c96cfc15925bc9ea1e912abe395",
+    "mtime": 1786303006.9745185,
+    "ast_hash": "e251fb5c5cc6f961729e728a03f34b03",
     "semantic_hash": ""
   },
   "hooks/useMe.ts": {
@@ -715,8 +715,8 @@
     "semantic_hash": ""
   },
   "components/ProductPage/ProductBreadcrumb.tsx": {
-    "mtime": 1785064285.0438614,
-    "ast_hash": "f4156712a53842657b264be8e95c5a1a",
+    "mtime": 1786288475.4877481,
+    "ast_hash": "4bf48b5200fccf8bd418009c6a32e6e2",
     "semantic_hash": ""
   },
   "components/ProductPage/ProductGallery.tsx": {
@@ -745,8 +745,8 @@
     "semantic_hash": ""
   },
   "components/Wishlist/WishlistItemCard.tsx": {
-    "mtime": 1785063664.7323046,
-    "ast_hash": "79d2f256b8ac18047f8174ec24a5b45b",
+    "mtime": 1786303006.9344163,
+    "ast_hash": "75ea0cacad740e0f800e6fd0074aaf87",
     "semantic_hash": ""
   },
   "components/Wishlist/WishlistLoginPrompt.tsx": {
@@ -895,8 +895,8 @@
     "semantic_hash": ""
   },
   "app/blog/[slug]/page.tsx": {
-    "mtime": 1786221716.9083898,
-    "ast_hash": "9949181fd6d9723f627af7574188626b",
+    "mtime": 1786221884.535424,
+    "ast_hash": "30c9234a54e25938e6eeefa462f5ce93",
     "semantic_hash": ""
   },
   "app/blog/layout.tsx": {
@@ -934,11 +934,6 @@
     "ast_hash": "9a65a67fa638b6dff8b963d24ac1061b",
     "semantic_hash": ""
   },
-  "app/store/product/[slug]/page.tsx": {
-    "mtime": 1786219034.7517028,
-    "ast_hash": "463eb45a95d1e5867a36d99f522393b6",
-    "semantic_hash": ""
-  },
   "app/store/wishlist/page.tsx": {
     "mtime": 1784031616.7985933,
     "ast_hash": "54514118e79dcf38d38eee2ef8295657",
@@ -950,8 +945,8 @@
     "semantic_hash": ""
   },
   "components/ProductCard/ProductCard.tsx": {
-    "mtime": 1785235829.7532287,
-    "ast_hash": "f8cdf8763446db390a9d1d4312dfe813",
+    "mtime": 1786303006.9745185,
+    "ast_hash": "5c5ef33d36020edd76a1d8144008df18",
     "semantic_hash": ""
   },
   "components/ProductCard/ProductCardDec.tsx": {
@@ -1032,6 +1027,16 @@
   "public/assets/heroPerson-LW.png": {
     "mtime": 1784312429.2241285,
     "ast_hash": "cb6cd13e2fbcbc8ac2fa8f292bf1b985",
+    "semantic_hash": ""
+  },
+  "app/store/products/[slug]/page.tsx": {
+    "mtime": 1786309367.9152584,
+    "ast_hash": "391c5b0c4c6a7405b7a2e8438392a89d",
+    "semantic_hash": ""
+  },
+  "components/ProductPage/ProductAudioTeaser.tsx": {
+    "mtime": 1786310892.9550264,
+    "ast_hash": "c1b171d0100f5c1e59c8f3ca72cfa568",
     "semantic_hash": ""
   }
 }

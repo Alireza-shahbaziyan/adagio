@@ -7,6 +7,7 @@ export default function ProductBreadcrumb({
 }: {
   collections: ProductCollection[];
   productTitle: string;
+  categorys:ProductCollection[];
 }) {
   const primaryCollection = collections?.[0];
 

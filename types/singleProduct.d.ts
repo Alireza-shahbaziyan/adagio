@@ -1,4 +1,4 @@
-import { ProductImage, ProductVariant } from "./products";
+import { Audio, ProductImage, ProductVariant } from "./products";
 
 export interface ProductCollection {
   id: number;
@@ -7,7 +7,7 @@ export interface ProductCollection {
   short_description: string;
   is_active: boolean;
   parent: number | null;
-  image : string |null;
+  image: string | null;
 }
 
 export interface ProductTag {
@@ -28,7 +28,12 @@ export interface Product {
   collections: ProductCollection[];
   tags: ProductTag[];
   images: ProductImage[];
+  audio: Audio | null;
   variants: ProductVariant[];
+  is_in_wishlist: boolean;
+  meta_tag: Record<string, unknown> | null;
+  json_ld: Record<string, unknown>;
+  breadcrumb_ld: Record<string, unknown>;
   created_at: string;
   updated_at: string;
 }

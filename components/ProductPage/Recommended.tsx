@@ -26,7 +26,7 @@ export default function Recommended({
                 return (
                   <Link
                     key={p.id}
-                    href={`/store/product/${p.slug}`}
+                    href={`/store/products/${p.slug}`}
                     className="group block overflow-hidden rounded-[20px] bg-[#181818]"
                   >
                     <div className="relative aspect-4/5 overflow-hidden bg-[#111111]">
@@ -69,7 +69,7 @@ export default function Recommended({
               {recentlyViewed.map((p) => (
                 <Link
                   key={p.id}
-                  href={`/store/product/${p.slug}`}
+                  href={`/store/products/${p.slug}`}
                   className="flex-[0_0_140px]"
                 >
                   <div className="relative mb-2.5 aspect-[4/5] overflow-hidden rounded-[14px] bg-[#111111]">

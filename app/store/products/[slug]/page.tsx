@@ -85,9 +85,7 @@ export default async function ProductPage({
       "Content-Type": "application/json",
       Accept: "application/json",
     },
-    next: {
-      revalidate: 60 * 10, // 10 minutes
-    },
+    cache: "no-store",
   });
   if (!response.ok) notFound();
   const product = (await response.json()) as Product;

@@ -13,6 +13,7 @@ import type {
   ProductVariant,
 } from "@/types/products";
 import Recommended from "./Recommended";
+import ProductAudioTeaser from "./ProductAudioTeaser";
 import ProductBreadcrumb from "./ProductBreadcrumb";
 import ProductGallery from "./ProductGallery";
 import ProductSizeSelector from "./ProductSizeSelector";
@@ -28,7 +29,6 @@ export default function ProductDetail({
   product: Product;
   recommended?: ProductSummary[];
 }) {
-  
   const { showToast } = useAppState();
   const addCartItem = useAddCartItem();
   const {
@@ -47,8 +47,9 @@ export default function ProductDetail({
 
   const variants = product.variants ?? [];
   const primaryCollection = product.collections?.[0];
-  const description = product.description ||"توضیحات این محصول ثبت نشده. ";
-  const short_dec = product.short_description ?? "توضیحاتی برای این محصول ثبت نشده."
+  const description = product.description || "توضیحات این محصول ثبت نشده. ";
+  const short_dec =
+    product.short_description ?? "توضیحاتی برای این محصول ثبت نشده.";
   const accordionSections = useMemo(() => {
     const sections: { key: string; title: string; content: string }[] = [];
     if (description) {
@@ -140,6 +141,7 @@ export default function ProductDetail({
 
       <div className="mx-auto max-w-350 px-5 pt-8 md:px-16 md:pt-12">
         <ProductBreadcrumb
+          categorys={product.collections}
           collections={product.collections}
           productTitle={product.title}
         />
@@ -148,36 +150,44 @@ export default function ProductDetail({
           <ProductGallery images={images} productTitle={product.title} />
 
           {/* Purchase card */}
-          <div className="static md:sticky md:top-[100px]">
+          <div className="static md:sticky md:top-25">
             <p className="mb-4 text-xs tracking-[1px] text-muted-foreground">
               {primaryCollection?.title ?? "محصولات"}
             </p>
             <h1 className="mb-5   text-[28px] font-black leading-[1.3] text-foreground md:text-[44px]">
               {product.title}
             </h1>
-            <p
+            <div
               style={{ direction: "ltr", textAlign: "right" }}
               className="mb-7 text-2xl text-foreground"
             >
               {selectedVariant ? (
                 <>
-                  ${selectedVariant.price}
+                  <p className="flex flex-row-reverse gap-1 ">
+                    <span>{selectedVariant.price.toLocaleString("fa-IR")}</span>
+                    <span> تومان </span>
+                  </p>
                   {selectedVariant.compare_price != null &&
                     selectedVariant.compare_price > selectedVariant.price && (
                       <span className="ms-2 text-base text-[#6b6b6b] line-through">
-                        ${selectedVariant.compare_price}
+                        {/* ${selectedVariant.compare_price} */}
+                        {selectedVariant.compare_price.toLocaleString(
+                          "fa-IR",
+                        )}{" "}
+                        تومان
                       </span>
                     )}
                 </>
               ) : (
                 "ناموجود"
               )}
+            </div>
+
+            <p className="mb-9 max-w-110 text-[15px] leading-[1.9] text-muted-foreground">
+              {short_dec}
             </p>
-            
-              <p className="mb-9 max-w-110 text-[15px] leading-[1.9] text-muted-foreground">
-                {short_dec}
-              </p>
-          
+
+            {product.audio && <ProductAudioTeaser audio={product.audio} />}
 
             <ProductSizeSelector
               variants={variants}
@@ -202,6 +212,66 @@ export default function ProductDetail({
               openKey={openAccordion}
               setOpenKey={setOpenAccordion}
             />
+          </div>
+          <div className="w-full">
+            <div className="mb-5">
+              <h3 className="text-lg font-bold text-foreground">
+                راهنمای سایز
+              </h3>
+
+              <p className="mt-1 text-sm text-muted-foreground">
+                تمام اندازه‌ها بر حسب سانتی‌متر هستند.
+              </p>
+            </div>
+
+            <div className="overflow-hidden rounded-xl border border-border">
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-3xs border-collapse text-sm">
+                  <thead>
+                    <tr className="border-b border-border bg-[#111]">
+                      <th className="px-5 py-4 text-right text-xs font-medium tracking-wide text-muted-foreground">
+                        سایز
+                      </th>
+
+                      {product.variants[0]?.size?.attributes?.map(
+                        (attr, index) => (
+                          <th
+                            key={`${attr.key}-${index}`}
+                            className="px-5 py-4 text-right text-xs font-medium tracking-wide text-muted-foreground"
+                          >
+                            {attr.key}
+                          </th>
+                        ),
+                      )}
+                    </tr>
+                  </thead>
+
+                  <tbody className="divide-y divide-border">
+                    {product.variants.map((variant: ProductVariant) => (
+                      <tr
+                        key={variant.id}
+                        className="group transition-colors hover:bg-white/3"
+                      >
+                        <td className="px-5 py-5 font-bold text-foreground">
+                          <span className="inline-flex min-w-12 items-center justify-center rounded-full border border-border px-3 py-1 text-xs">
+                            {variant.size?.label}
+                          </span>
+                        </td>
+
+                        {variant.size?.attributes?.map((attr, index) => (
+                          <td
+                            key={`${variant.id}-${attr.key}-${index}`}
+                            className="px-5 py-5 text-sm text-muted-foreground transition-colors group-hover:text-foreground"
+                          >
+                            {attr.value}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </div>

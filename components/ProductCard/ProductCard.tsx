@@ -17,7 +17,8 @@ export default function ProductCard({
   interactive?: boolean;
   priority?: boolean;
 }) {
-  const { isWishlisted: wishlisted, toggle: toggleWishlist } = useWishlistToggle(product.slug, product.title);
+  const { isWishlisted: wishlisted, toggle: toggleWishlist } =
+    useWishlistToggle(product.slug, product.title);
   const [hovered, setHovered] = useState(false);
 
   if (!product) return null;
@@ -26,7 +27,7 @@ export default function ProductCard({
   // console.log(product?.variants[0].size_name)
   return (
     <Link
-      href={`/store/product/${product.slug}`}
+      href={`/store/products/${product.slug}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className="block overflow-hidden rounded-[20px] bg-[#181818] hover:bg-zinc-800"
@@ -79,7 +80,10 @@ export default function ProductCard({
           </div>
         )} */}
       </div>
-        <ProductCardDec variant={product.variants} title={product.title??'نامی ثبت نشده'}/>
+      <ProductCardDec
+        variant={product.variants}
+        title={product.title ?? "نامی ثبت نشده"}
+      />
     </Link>
   );
 }

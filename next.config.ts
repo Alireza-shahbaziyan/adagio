@@ -1,7 +1,5 @@
 import type { NextConfig } from "next";
 
-const backendUrl = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
-const backendHostname = backendUrl ? new URL(backendUrl).hostname : "0.0.0.0";
 const nextConfig: NextConfig = {
  async headers() {
     return [
@@ -18,7 +16,22 @@ const nextConfig: NextConfig = {
   },
   output: "standalone",
   images: {
-    domains: ["127.0.0.1", "localhost", backendHostname],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "api.adagiostyle.ir",
+      },
+      {
+        protocol: "http",
+        hostname: "api.adagiostyle.ir",
+      },
+      {
+        protocol: "http",
+        hostname: "185.110.191.14",
+        port: "8008",
+        pathname: "/media/**",
+      },
+    ],
   },
 };
 
