@@ -20,11 +20,17 @@ export default function ProductAudioTeaser({ audio }: { audio: Audio | null }) {
   const [isMuted, setIsMuted] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     if (!audio || !waveformRef.current) return;
 
     let cancelled = false;
+    setHasError(false);
+
+    // Proxy through our own origin: the backend media host doesn't send
+    // CORS headers, which blocks wavesurfer's fetch/decode of the file directly.
+    const proxiedUrl = `/api/audio?src=${encodeURIComponent(audio.url)}`;
 
     import("wavesurfer.js").then(({ default: WaveSurfer }) => {
       if (cancelled || !waveformRef.current) return;
@@ -39,7 +45,7 @@ export default function ProductAudioTeaser({ audio }: { audio: Audio | null }) {
         barRadius: 2,
         height: 40,
         normalize: true,
-        url: audio.url,
+        url: proxiedUrl,
       });
 
       wavesurferRef.current = wavesurfer;
@@ -51,6 +57,9 @@ export default function ProductAudioTeaser({ audio }: { audio: Audio | null }) {
       wavesurfer.on("pause", () => setIsPlaying(false));
       wavesurfer.on("finish", () => setIsPlaying(false));
       wavesurfer.on("timeupdate", (time) => setCurrentTime(time));
+      wavesurfer.on("error", () => {
+        if (!cancelled) setHasError(true);
+      });
     });
 
     return () => {
@@ -125,13 +134,19 @@ export default function ProductAudioTeaser({ audio }: { audio: Audio | null }) {
           </span>
         </p>
         <div ref={waveformRef} className="mt-2 [&_wave]:overflow-visible!" />
-        <div
-          style={{ direction: "ltr" }}
-          className="mt-1.5 flex items-center justify-between text-[11px] tabular-nums text-muted-foreground"
-        >
-          <span>{formatTime(currentTime)}</span>
-          <span>{formatTime(duration)}</span>
-        </div>
+        {hasError ? (
+          <p className="mt-1.5 text-[11px] text-destructive">
+            پخش آهنگ در حال حاضر امکان‌پذیر نیست
+          </p>
+        ) : (
+          <div
+            style={{ direction: "ltr" }}
+            className="mt-1.5 flex items-center justify-between text-[11px] tabular-nums text-muted-foreground"
+          >
+            <span>{formatTime(currentTime)}</span>
+            <span>{formatTime(duration)}</span>
+          </div>
+        )}
       </div>
 
       <button

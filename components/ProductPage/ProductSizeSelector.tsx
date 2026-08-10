@@ -14,14 +14,14 @@ export default function ProductSizeSelector({
   const { showToast } = useAppState();
   if (variants.length === 0) return null;
   function sizeGuide() {
-    showToast("برای راهنمایی شدن به ادمین اینستاگرام یا تلگرام پیغام بدید.")
+    showToast("برای راهنمایی شدن به ادمین اینستاگرام یا تلگرام پیغام بدید. \n برای دیدن سایزبندی اسکرول کتید")
   }
   return (
     <div className="mb-8">
       <div className="mb-3.5 flex items-center justify-between">
         <span className="text-[13px] text-foreground">سایز</span>
         <button onClick={sizeGuide} className="text-[13px] text-muted-foreground underline cursor-pointer hover:text-white">
-          راهنمای سایز
+          نیاز به راهنمایی بیشتر دارم 
         </button>
       </div>
       <div className="flex flex-wrap gap-2.5">

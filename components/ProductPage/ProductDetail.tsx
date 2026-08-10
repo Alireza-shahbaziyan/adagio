@@ -31,6 +31,7 @@ export default function ProductDetail({
 }) {
   const { showToast } = useAppState();
   const addCartItem = useAddCartItem();
+  
   const {
     isWishlisted: wishlisted,
     toggle: toggleWishlist,
@@ -48,8 +49,8 @@ export default function ProductDetail({
   const variants = product.variants ?? [];
   const primaryCollection = product.collections?.[0];
   const description = product.description || "توضیحات این محصول ثبت نشده. ";
-  const short_dec =
-    product.short_description ?? "توضیحاتی برای این محصول ثبت نشده.";
+  const short_dec = product.short_description ?? "توضیحاتی برای این محصول ثبت نشده.";
+
   const accordionSections = useMemo(() => {
     const sections: { key: string; title: string; content: string }[] = [];
     if (description) {
