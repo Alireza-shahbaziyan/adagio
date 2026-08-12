@@ -19,7 +19,7 @@ const RESEND_SECONDS = 2;
 
 export default function OtpForm({ phone }: { phone: string }) {
   const params = useParams<{ phonenumber: string }>();
-  const { sendPhone, isPending } = useSendPhone();
+  const { sendPhone } = useSendPhone();
   const router = useRouter();
   const queryClient = useQueryClient();
   const { showToast } = useAppState();

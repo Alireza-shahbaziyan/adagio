@@ -5,7 +5,7 @@ import ProductCard from "@/components/ProductCard/ProductCard";
 import { getStoreProducts } from "@/lib/store";
 import { CollectionResponse } from "@/types/collections";
 import { Callection } from "@/types/singleCollection";
-import { backend, frontend } from "@/utils/getURL";
+import { backend } from "@/utils/getURL";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";

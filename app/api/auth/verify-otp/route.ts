@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
     forwardSetCookie(res, response);
 
     return response;
-  } catch (error) {
+  } catch  {
     // console.log('----',error);
     return NextResponse.json(
       { detail: "Internal Server Error | Error in send verify OTP" },
