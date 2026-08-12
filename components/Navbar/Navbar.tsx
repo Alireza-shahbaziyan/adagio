@@ -18,11 +18,12 @@ import { useMembership } from "@/hooks/useMembership";
 
 const NAV_LINKS = [
   { href: "/store", label: "فروشگاه" },
+  { href: "/blog", label: "بلاگ" },
   { href: "/store/collections", label: "کالکشن‌ها" },
   { href: "/store/categories", label: "دستبه‌بندی" },
-  { href: "/about", label: "درباره" },
-  { href: "/terms", label: "قوانین‌و‌مقررات" },
+  // { href: "/terms", label: "قوانین‌و‌مقررات" },
   { href: "/store/order-guide", label: "راهنمای‌خرید" },
+  { href: "/about", label: "درباره" },
   { href: "/contact-me", label: "تماس" },
 ];
 

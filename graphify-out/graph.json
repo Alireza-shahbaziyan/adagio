@@ -94,6 +94,36 @@
     {
       "label": "route.ts",
       "file_type": "code",
+      "source_file": "app/api/audio/route.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_api_audio_route",
+      "community": 122,
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "ALLOWED_HOSTS",
+      "file_type": "code",
+      "source_file": "app/api/audio/route.ts",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "app_api_audio_route_allowed_hosts",
+      "community": 122,
+      "norm_label": "allowed_hosts"
+    },
+    {
+      "label": "GET()",
+      "file_type": "code",
+      "source_file": "app/api/audio/route.ts",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "app_api_audio_route_get",
+      "community": 122,
+      "norm_label": "get()"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
       "source_file": "app/api/auth/addresses/[id]/route.ts",
       "source_location": "L1",
       "_origin": "ast",
@@ -778,7 +808,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_login_layout",
-      "community": 39,
+      "community": 1,
       "norm_label": "layout.tsx"
     },
     {
@@ -788,7 +818,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "app_login_layout_loginlayout",
-      "community": 39,
+      "community": 1,
       "norm_label": "loginlayout()"
     },
     {
@@ -872,13 +902,173 @@
       "norm_label": "home()"
     },
     {
+      "label": "robots.ts",
+      "file_type": "code",
+      "source_file": "app/robots.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_robots",
+      "community": 44,
+      "norm_label": "robots.ts"
+    },
+    {
+      "label": "robots()",
+      "file_type": "code",
+      "source_file": "app/robots.ts",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "app_robots_robots",
+      "community": 44,
+      "norm_label": "robots()"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/sitemap-blog.xml/route.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_sitemap_blog_xml_route",
+      "community": 44,
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "GET()",
+      "file_type": "code",
+      "source_file": "app/sitemap-blog.xml/route.ts",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "app_sitemap_blog_xml_route_get",
+      "community": 44,
+      "norm_label": "get()"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/sitemap-categories.xml/route.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_sitemap_categories_xml_route",
+      "community": 44,
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "GET()",
+      "file_type": "code",
+      "source_file": "app/sitemap-categories.xml/route.ts",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "app_sitemap_categories_xml_route_get",
+      "community": 44,
+      "norm_label": "get()"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/sitemap-collections.xml/route.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_sitemap_collections_xml_route",
+      "community": 44,
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "GET()",
+      "file_type": "code",
+      "source_file": "app/sitemap-collections.xml/route.ts",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "app_sitemap_collections_xml_route_get",
+      "community": 44,
+      "norm_label": "get()"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/sitemap-pages.xml/route.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_sitemap_pages_xml_route",
+      "community": 44,
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "STATIC_PAGES",
+      "file_type": "code",
+      "source_file": "app/sitemap-pages.xml/route.ts",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "app_sitemap_pages_xml_route_static_pages",
+      "community": 44,
+      "norm_label": "static_pages"
+    },
+    {
+      "label": "GET()",
+      "file_type": "code",
+      "source_file": "app/sitemap-pages.xml/route.ts",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "app_sitemap_pages_xml_route_get",
+      "community": 44,
+      "norm_label": "get()"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/sitemap-products.xml/route.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_sitemap_products_xml_route",
+      "community": 44,
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "GET()",
+      "file_type": "code",
+      "source_file": "app/sitemap-products.xml/route.ts",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "app_sitemap_products_xml_route_get",
+      "community": 44,
+      "norm_label": "get()"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/sitemap.xml/route.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_sitemap_xml_route",
+      "community": 44,
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "SUB_SITEMAPS",
+      "file_type": "code",
+      "source_file": "app/sitemap.xml/route.ts",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "app_sitemap_xml_route_sub_sitemaps",
+      "community": 44,
+      "norm_label": "sub_sitemaps"
+    },
+    {
+      "label": "GET()",
+      "file_type": "code",
+      "source_file": "app/sitemap.xml/route.ts",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "app_sitemap_xml_route_get",
+      "community": 44,
+      "norm_label": "get()"
+    },
+    {
       "label": "page.tsx",
       "file_type": "code",
       "source_file": "app/store/cart/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_store_cart_page",
-      "community": 1,
+      "community": 123,
       "norm_label": "page.tsx"
     },
     {
@@ -888,7 +1078,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "app_store_cart_page_metadata",
-      "community": 1,
+      "community": 123,
       "norm_label": "metadata"
     },
     {
@@ -898,7 +1088,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "app_store_cart_page_cartpage",
-      "community": 1,
+      "community": 123,
       "norm_label": "cartpage()"
     },
     {
@@ -948,7 +1138,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_store_collections_slug_page",
-      "community": 118,
+      "community": 39,
       "norm_label": "page.tsx"
     },
     {
@@ -958,7 +1148,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_store_collections_slug_page_props",
-      "community": 118,
+      "community": 39,
       "norm_label": "props"
     },
     {
@@ -968,7 +1158,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "app_store_collections_slug_page_generatemetadata",
-      "community": 118,
+      "community": 39,
       "norm_label": "generatemetadata()"
     },
     {
@@ -978,7 +1168,7 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "app_store_collections_slug_page_generatestaticparams",
-      "community": 118,
+      "community": 39,
       "norm_label": "generatestaticparams()"
     },
     {
@@ -1508,7 +1698,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_addresses_addresscard",
-      "community": 128,
+      "community": 117,
       "norm_label": "addresscard.tsx"
     },
     {
@@ -1518,7 +1708,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "components_addresses_addresscard_addresscard",
-      "community": 128,
+      "community": 117,
       "norm_label": "addresscard()"
     },
     {
@@ -1528,7 +1718,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_addresses_addressform",
-      "community": 14,
+      "community": 128,
       "norm_label": "addressform.tsx"
     },
     {
@@ -1538,7 +1728,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "components_addresses_addressform_select",
-      "community": 14,
+      "community": 128,
       "norm_label": "select()"
     },
     {
@@ -1558,7 +1748,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_addresses_addresslist",
-      "community": 128,
+      "community": 117,
       "norm_label": "addresslist.tsx"
     },
     {
@@ -1568,7 +1758,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "components_addresses_addresslist_addresslist",
-      "community": 128,
+      "community": 117,
       "norm_label": "addresslist()"
     },
     {
@@ -1578,7 +1768,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_addresses_addressmodal",
-      "community": 14,
+      "community": 128,
       "norm_label": "addressmodal.tsx"
     },
     {
@@ -1588,7 +1778,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "components_addresses_addressmodal_mode",
-      "community": 14,
+      "community": 128,
       "norm_label": "mode"
     },
     {
@@ -1788,7 +1978,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_checkoutmodal",
-      "community": 14,
+      "community": 128,
       "norm_label": "checkoutmodal.tsx"
     },
     {
@@ -1798,7 +1988,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "components_checkoutmodal_checkoutformvalues",
-      "community": 14,
+      "community": 128,
       "norm_label": "checkoutformvalues"
     },
     {
@@ -1808,7 +1998,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "components_checkoutmodal_checkoutmodal",
-      "community": 2,
+      "community": 128,
       "norm_label": "checkoutmodal()"
     },
     {
@@ -1818,7 +2008,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_collection_collectioncard",
-      "community": 8,
+      "community": 124,
       "norm_label": "collectioncard.tsx"
     },
     {
@@ -1828,7 +2018,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "components_collection_collectioncard_collectioncard",
-      "community": 8,
+      "community": 124,
       "norm_label": "collectioncard()"
     },
     {
@@ -1838,7 +2028,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_collection_collectionsshowcase",
-      "community": 37,
+      "community": 119,
       "norm_label": "collectionsshowcase.tsx"
     },
     {
@@ -1848,7 +2038,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "components_collection_collectionsshowcase_collectionsshowcase",
-      "community": 37,
+      "community": 119,
       "norm_label": "collectionsshowcase()"
     },
     {
@@ -1908,7 +2098,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "components_mobilebottomnav_mobilebottomnav",
-      "community": 39,
+      "community": 8,
       "norm_label": "mobilebottomnav()"
     },
     {
@@ -1918,7 +2108,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_navbar_navbar",
-      "community": 39,
+      "community": 8,
       "norm_label": "navbar.tsx"
     },
     {
@@ -1928,7 +2118,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "components_navbar_navbar_nav_links",
-      "community": 39,
+      "community": 8,
       "norm_label": "nav_links"
     },
     {
@@ -1938,7 +2128,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "components_navbar_navbar_badge",
-      "community": 39,
+      "community": 8,
       "norm_label": "badge()"
     },
     {
@@ -1948,7 +2138,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "components_navbar_navbar_navbar",
-      "community": 39,
+      "community": 8,
       "norm_label": "navbar()"
     },
     {
@@ -1978,7 +2168,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_productcard_productcard",
-      "community": 2,
+      "community": 39,
       "norm_label": "productcard.tsx"
     },
     {
@@ -1988,7 +2178,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "components_productcard_productcard_productcard",
-      "community": 2,
+      "community": 39,
       "norm_label": "productcard()"
     },
     {
@@ -1998,7 +2188,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_productcard_productcarddec",
-      "community": 2,
+      "community": 39,
       "norm_label": "productcarddec.tsx"
     },
     {
@@ -2008,7 +2198,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "components_productcard_productcarddec_productcarddec",
-      "community": 2,
+      "community": 39,
       "norm_label": "productcarddec()"
     },
     {
@@ -2018,7 +2208,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_productfooter",
-      "community": 119,
+      "community": 2,
       "norm_label": "productfooter.tsx"
     },
     {
@@ -2028,7 +2218,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_productfooter_productfooter",
-      "community": 119,
+      "community": 2,
       "norm_label": "productfooter()"
     },
     {
@@ -2038,7 +2228,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_productpage_productaccordion",
-      "community": 8,
+      "community": 2,
       "norm_label": "productaccordion.tsx"
     },
     {
@@ -2048,7 +2238,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "components_productpage_productaccordion_productaccordion",
-      "community": 8,
+      "community": 2,
       "norm_label": "productaccordion()"
     },
     {
@@ -2058,7 +2248,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_productpage_productactions",
-      "community": 119,
+      "community": 2,
       "norm_label": "productactions.tsx"
     },
     {
@@ -2068,7 +2258,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "components_productpage_productactions_productactions",
-      "community": 119,
+      "community": 2,
       "norm_label": "productactions()"
     },
     {
@@ -2078,17 +2268,27 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_productpage_productaudioteaser",
-      "community": 119,
+      "community": 2,
       "norm_label": "productaudioteaser.tsx"
+    },
+    {
+      "label": "formatTime()",
+      "file_type": "code",
+      "source_file": "components/ProductPage/ProductAudioTeaser.tsx",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "components_productpage_productaudioteaser_formattime",
+      "community": 2,
+      "norm_label": "formattime()"
     },
     {
       "label": "ProductAudioTeaser()",
       "file_type": "code",
       "source_file": "components/ProductPage/ProductAudioTeaser.tsx",
-      "source_location": "L8",
+      "source_location": "L15",
       "_origin": "ast",
       "id": "components_productpage_productaudioteaser_productaudioteaser",
-      "community": 119,
+      "community": 2,
       "norm_label": "productaudioteaser()"
     },
     {
@@ -2098,7 +2298,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_productpage_productbreadcrumb",
-      "community": 119,
+      "community": 2,
       "norm_label": "productbreadcrumb.tsx"
     },
     {
@@ -2108,7 +2308,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "components_productpage_productbreadcrumb_productbreadcrumb",
-      "community": 119,
+      "community": 2,
       "norm_label": "productbreadcrumb()"
     },
     {
@@ -2118,7 +2318,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_productpage_productdetail",
-      "community": 119,
+      "community": 2,
       "norm_label": "productdetail.tsx"
     },
     {
@@ -2128,7 +2328,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "components_productpage_productdetail_productdetail",
-      "community": 119,
+      "community": 2,
       "norm_label": "productdetail()"
     },
     {
@@ -2138,7 +2338,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_productpage_productgallery",
-      "community": 119,
+      "community": 2,
       "norm_label": "productgallery.tsx"
     },
     {
@@ -2148,7 +2348,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "components_productpage_productgallery_productgallery",
-      "community": 119,
+      "community": 2,
       "norm_label": "productgallery()"
     },
     {
@@ -2158,7 +2358,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_productpage_productmobilebar",
-      "community": 8,
+      "community": 2,
       "norm_label": "productmobilebar.tsx"
     },
     {
@@ -2168,7 +2368,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "components_productpage_productmobilebar_productmobilebar",
-      "community": 8,
+      "community": 2,
       "norm_label": "productmobilebar()"
     },
     {
@@ -2178,7 +2378,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_productpage_productquantitystepper",
-      "community": 119,
+      "community": 2,
       "norm_label": "productquantitystepper.tsx"
     },
     {
@@ -2188,7 +2388,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "components_productpage_productquantitystepper_productquantitystepper",
-      "community": 119,
+      "community": 2,
       "norm_label": "productquantitystepper()"
     },
     {
@@ -2238,7 +2438,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_reveal",
-      "community": 37,
+      "community": 119,
       "norm_label": "reveal.tsx"
     },
     {
@@ -2248,7 +2448,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "components_reveal_reveal",
-      "community": 37,
+      "community": 119,
       "norm_label": "reveal()"
     },
     {
@@ -2348,7 +2548,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_storeproductgrid",
-      "community": 2,
+      "community": 119,
       "norm_label": "storeproductgrid.tsx"
     },
     {
@@ -2358,7 +2558,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "components_storeproductgrid_storeproductgrid",
-      "community": 2,
+      "community": 119,
       "norm_label": "storeproductgrid()"
     },
     {
@@ -2448,7 +2648,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_wishlist_wishlistloginprompt",
-      "community": 2,
+      "community": 128,
       "norm_label": "wishlistloginprompt.tsx"
     },
     {
@@ -2458,7 +2658,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "components_wishlist_wishlistloginprompt_wishlistloginprompt",
-      "community": 2,
+      "community": 128,
       "norm_label": "wishlistloginprompt()"
     },
     {
@@ -2468,7 +2668,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_wishlist_wishlistview",
-      "community": 2,
+      "community": 128,
       "norm_label": "wishlistview.tsx"
     },
     {
@@ -2478,7 +2678,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "components_wishlist_wishlistview_wishlistskeleton",
-      "community": 2,
+      "community": 128,
       "norm_label": "wishlistskeleton()"
     },
     {
@@ -2488,7 +2688,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "components_wishlist_wishlistview_wishlistview",
-      "community": 2,
+      "community": 128,
       "norm_label": "wishlistview()"
     },
     {
@@ -2498,7 +2698,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "components_wishlist_wishlistview_authedwishlist",
-      "community": 2,
+      "community": 128,
       "norm_label": "authedwishlist()"
     },
     {
@@ -2618,7 +2818,7 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "components_icons_menuicon",
-      "community": 39,
+      "community": 8,
       "norm_label": "menuicon()"
     },
     {
@@ -2638,7 +2838,7 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "components_icons_chevronlefticon",
-      "community": 8,
+      "community": 124,
       "norm_label": "chevronlefticon()"
     },
     {
@@ -2658,7 +2858,7 @@
       "source_location": "L71",
       "_origin": "ast",
       "id": "components_icons_chevrondownicon",
-      "community": 8,
+      "community": 2,
       "norm_label": "chevrondownicon()"
     },
     {
@@ -2698,7 +2898,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_ui_badge",
-      "community": 128,
+      "community": 117,
       "norm_label": "badge.tsx"
     },
     {
@@ -2708,7 +2908,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "components_ui_badge_badgevariants",
-      "community": 128,
+      "community": 117,
       "norm_label": "badgevariants"
     },
     {
@@ -2718,7 +2918,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "components_ui_badge_badge",
-      "community": 128,
+      "community": 117,
       "norm_label": "badge()"
     },
     {
@@ -2728,7 +2928,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_ui_button",
-      "community": 14,
+      "community": 128,
       "norm_label": "button.tsx"
     },
     {
@@ -2738,7 +2938,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "components_ui_button_buttonvariants",
-      "community": 14,
+      "community": 128,
       "norm_label": "buttonvariants"
     },
     {
@@ -2748,7 +2948,7 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "components_ui_button_button",
-      "community": 14,
+      "community": 128,
       "norm_label": "button()"
     },
     {
@@ -2858,7 +3058,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_ui_dialog",
-      "community": 14,
+      "community": 128,
       "norm_label": "dialog.tsx"
     },
     {
@@ -2868,7 +3068,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "components_ui_dialog_dialog",
-      "community": 14,
+      "community": 128,
       "norm_label": "dialog()"
     },
     {
@@ -2878,7 +3078,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "components_ui_dialog_dialogtrigger",
-      "community": 14,
+      "community": 128,
       "norm_label": "dialogtrigger()"
     },
     {
@@ -2888,7 +3088,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "components_ui_dialog_dialogportal",
-      "community": 14,
+      "community": 128,
       "norm_label": "dialogportal()"
     },
     {
@@ -2898,7 +3098,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "components_ui_dialog_dialogclose",
-      "community": 14,
+      "community": 128,
       "norm_label": "dialogclose()"
     },
     {
@@ -2908,7 +3108,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "components_ui_dialog_dialogoverlay",
-      "community": 14,
+      "community": 128,
       "norm_label": "dialogoverlay()"
     },
     {
@@ -2918,7 +3118,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "components_ui_dialog_dialogcontent",
-      "community": 14,
+      "community": 128,
       "norm_label": "dialogcontent()"
     },
     {
@@ -2928,7 +3128,7 @@
       "source_location": "L83",
       "_origin": "ast",
       "id": "components_ui_dialog_dialogheader",
-      "community": 14,
+      "community": 128,
       "norm_label": "dialogheader()"
     },
     {
@@ -2938,7 +3138,7 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "components_ui_dialog_dialogfooter",
-      "community": 14,
+      "community": 128,
       "norm_label": "dialogfooter()"
     },
     {
@@ -2948,7 +3148,7 @@
       "source_location": "L120",
       "_origin": "ast",
       "id": "components_ui_dialog_dialogtitle",
-      "community": 14,
+      "community": 128,
       "norm_label": "dialogtitle()"
     },
     {
@@ -2958,7 +3158,7 @@
       "source_location": "L133",
       "_origin": "ast",
       "id": "components_ui_dialog_dialogdescription",
-      "community": 14,
+      "community": 128,
       "norm_label": "dialogdescription()"
     },
     {
@@ -3198,7 +3398,7 @@
       "source_location": "L101",
       "_origin": "ast",
       "id": "components_ui_field_fieldlabel",
-      "community": 14,
+      "community": 128,
       "norm_label": "fieldlabel()"
     },
     {
@@ -3238,7 +3438,7 @@
       "source_location": "L176",
       "_origin": "ast",
       "id": "components_ui_field_fielderror",
-      "community": 14,
+      "community": 128,
       "norm_label": "fielderror()"
     },
     {
@@ -3558,7 +3758,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_ui_skeleton",
-      "community": 14,
+      "community": 128,
       "norm_label": "skeleton.tsx"
     },
     {
@@ -3568,7 +3768,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "components_ui_skeleton_skeleton",
-      "community": 14,
+      "community": 128,
       "norm_label": "skeleton()"
     },
     {
@@ -4018,7 +4218,7 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "lib_cart_useaddcartitem",
-      "community": 119,
+      "community": 2,
       "norm_label": "useaddcartitem()"
     },
     {
@@ -4048,7 +4248,7 @@
       "source_location": "L74",
       "_origin": "ast",
       "id": "lib_cart_usecartitemcount",
-      "community": 39,
+      "community": 8,
       "norm_label": "usecartitemcount()"
     },
     {
@@ -4078,7 +4278,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "lib_hooks_usescrolly",
-      "community": 39,
+      "community": 119,
       "norm_label": "usescrolly()"
     },
     {
@@ -4098,7 +4298,7 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "lib_hooks_userecentlyviewed",
-      "community": 119,
+      "community": 2,
       "norm_label": "userecentlyviewed()"
     },
     {
@@ -4108,7 +4308,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_locations",
-      "community": 6,
+      "community": 128,
       "norm_label": "locations.ts"
     },
     {
@@ -4118,7 +4318,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "lib_locations_locationrequest",
-      "community": 6,
+      "community": 128,
       "norm_label": "locationrequest()"
     },
     {
@@ -4128,7 +4328,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "lib_locations_getprovinces",
-      "community": 6,
+      "community": 128,
       "norm_label": "getprovinces()"
     },
     {
@@ -4138,7 +4338,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "lib_locations_getcities",
-      "community": 6,
+      "community": 128,
       "norm_label": "getcities()"
     },
     {
@@ -4280,6 +4480,56 @@
       "id": "lib_querykeys_querykeys",
       "community": 6,
       "norm_label": "querykeys"
+    },
+    {
+      "label": "sitemap.ts",
+      "file_type": "code",
+      "source_file": "lib/sitemap.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_sitemap",
+      "community": 44,
+      "norm_label": "sitemap.ts"
+    },
+    {
+      "label": "escapeXml()",
+      "file_type": "code",
+      "source_file": "lib/sitemap.ts",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "lib_sitemap_escapexml",
+      "community": 44,
+      "norm_label": "escapexml()"
+    },
+    {
+      "label": "buildUrlsetXml()",
+      "file_type": "code",
+      "source_file": "lib/sitemap.ts",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "lib_sitemap_buildurlsetxml",
+      "community": 44,
+      "norm_label": "buildurlsetxml()"
+    },
+    {
+      "label": "buildSitemapIndexXml()",
+      "file_type": "code",
+      "source_file": "lib/sitemap.ts",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "lib_sitemap_buildsitemapindexxml",
+      "community": 44,
+      "norm_label": "buildsitemapindexxml()"
+    },
+    {
+      "label": "fetchSitemapItems()",
+      "file_type": "code",
+      "source_file": "lib/sitemap.ts",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "lib_sitemap_fetchsitemapitems",
+      "community": 44,
+      "norm_label": "fetchsitemapitems()"
     },
     {
       "label": "store.ts",
@@ -4478,7 +4728,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "lib_wishlist_usewishlist",
-      "community": 2,
+      "community": 128,
       "norm_label": "usewishlist()"
     },
     {
@@ -4508,7 +4758,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "lib_wishlist_usewishlistcount",
-      "community": 39,
+      "community": 8,
       "norm_label": "usewishlistcount()"
     },
     {
@@ -5652,6 +5902,26 @@
       "norm_label": "product"
     },
     {
+      "label": "sitemap.d.ts",
+      "file_type": "code",
+      "source_file": "types/sitemap.d.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "types_sitemap_d",
+      "community": 125,
+      "norm_label": "sitemap.d.ts"
+    },
+    {
+      "label": "SitemapItem",
+      "file_type": "code",
+      "source_file": "types/sitemap.d.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "types_sitemap_d_sitemapitem",
+      "community": 125,
+      "norm_label": "sitemapitem"
+    },
+    {
       "label": "wishlist.d.ts",
       "file_type": "code",
       "source_file": "types/wishlist.d.ts",
@@ -6422,6 +6692,16 @@
       "norm_label": "assistant"
     },
     {
+      "label": "SITE_URL",
+      "file_type": "code",
+      "source_file": "lib/sitemap.ts",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "lib_sitemap_site_url",
+      "community": 44,
+      "norm_label": "site_url"
+    },
+    {
       "label": "Find Skills Skill",
       "file_type": "concept",
       "source_file": ".agents/skills/find-skills/SKILL.md",
@@ -6593,7 +6873,7 @@
       "contributor": null,
       "community": 71,
       "norm_label": "graphify trigger rule (.claude/claude.md)",
-      "id": "claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_graphify_trigger_rule"
+      "id": "claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_claude_graphify_trigger_rule"
     },
     {
       "label": "Apache License 2.0 (frontend-design, .claude)",
@@ -7820,6 +8100,26 @@
       "weight": 1.0,
       "source": "app_about_page",
       "target": "components_navbar_navbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/audio/route.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_api_audio_route",
+      "target": "app_api_audio_route_allowed_hosts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/audio/route.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_api_audio_route",
+      "target": "app_api_audio_route_get",
       "confidence_score": 1.0
     },
     {
@@ -9343,6 +9643,437 @@
       "source": "app_page",
       "target": "components_reveal_reveal",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/robots.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_robots",
+      "target": "app_robots_robots",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/robots.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "app_robots",
+      "target": "lib_sitemap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/robots.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "app_robots",
+      "target": "lib_sitemap_site_url",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap-blog.xml/route.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_sitemap_blog_xml_route",
+      "target": "app_sitemap_blog_xml_route_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap-blog.xml/route.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "app_sitemap_blog_xml_route",
+      "target": "lib_sitemap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap-blog.xml/route.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "app_sitemap_blog_xml_route",
+      "target": "lib_sitemap_buildurlsetxml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap-blog.xml/route.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "app_sitemap_blog_xml_route",
+      "target": "lib_sitemap_fetchsitemapitems",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap-blog.xml/route.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "app_sitemap_blog_xml_route",
+      "target": "lib_sitemap_site_url",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/sitemap-blog.xml/route.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "app_sitemap_blog_xml_route_get",
+      "target": "lib_sitemap_buildurlsetxml"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/sitemap-blog.xml/route.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "app_sitemap_blog_xml_route_get",
+      "target": "lib_sitemap_fetchsitemapitems"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap-categories.xml/route.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "app_sitemap_categories_xml_route",
+      "target": "app_sitemap_categories_xml_route_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap-categories.xml/route.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "app_sitemap_categories_xml_route",
+      "target": "lib_sitemap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap-categories.xml/route.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "app_sitemap_categories_xml_route",
+      "target": "lib_sitemap_buildurlsetxml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/sitemap-categories.xml/route.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "app_sitemap_categories_xml_route_get",
+      "target": "lib_sitemap_buildurlsetxml"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap-collections.xml/route.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_sitemap_collections_xml_route",
+      "target": "app_sitemap_collections_xml_route_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap-collections.xml/route.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "app_sitemap_collections_xml_route",
+      "target": "lib_sitemap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap-collections.xml/route.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "app_sitemap_collections_xml_route",
+      "target": "lib_sitemap_buildurlsetxml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap-collections.xml/route.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "app_sitemap_collections_xml_route",
+      "target": "lib_sitemap_fetchsitemapitems",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap-collections.xml/route.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "app_sitemap_collections_xml_route",
+      "target": "lib_sitemap_site_url",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/sitemap-collections.xml/route.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "app_sitemap_collections_xml_route_get",
+      "target": "lib_sitemap_buildurlsetxml"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/sitemap-collections.xml/route.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "app_sitemap_collections_xml_route_get",
+      "target": "lib_sitemap_fetchsitemapitems"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap-pages.xml/route.ts",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "app_sitemap_pages_xml_route",
+      "target": "app_sitemap_pages_xml_route_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap-pages.xml/route.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_sitemap_pages_xml_route",
+      "target": "app_sitemap_pages_xml_route_static_pages",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap-pages.xml/route.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "app_sitemap_pages_xml_route",
+      "target": "lib_sitemap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap-pages.xml/route.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "app_sitemap_pages_xml_route",
+      "target": "lib_sitemap_buildurlsetxml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap-pages.xml/route.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "app_sitemap_pages_xml_route",
+      "target": "lib_sitemap_site_url",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/sitemap-pages.xml/route.ts",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "app_sitemap_pages_xml_route_get",
+      "target": "lib_sitemap_buildurlsetxml"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap-products.xml/route.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_sitemap_products_xml_route",
+      "target": "app_sitemap_products_xml_route_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap-products.xml/route.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "app_sitemap_products_xml_route",
+      "target": "lib_sitemap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap-products.xml/route.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "app_sitemap_products_xml_route",
+      "target": "lib_sitemap_buildurlsetxml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap-products.xml/route.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "app_sitemap_products_xml_route",
+      "target": "lib_sitemap_fetchsitemapitems",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap-products.xml/route.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "app_sitemap_products_xml_route",
+      "target": "lib_sitemap_site_url",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/sitemap-products.xml/route.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "app_sitemap_products_xml_route_get",
+      "target": "lib_sitemap_buildurlsetxml"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/sitemap-products.xml/route.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "app_sitemap_products_xml_route_get",
+      "target": "lib_sitemap_fetchsitemapitems"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap.xml/route.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "app_sitemap_xml_route",
+      "target": "app_sitemap_xml_route_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap.xml/route.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_sitemap_xml_route",
+      "target": "app_sitemap_xml_route_sub_sitemaps",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap.xml/route.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "app_sitemap_xml_route",
+      "target": "lib_sitemap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap.xml/route.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "app_sitemap_xml_route",
+      "target": "lib_sitemap_buildsitemapindexxml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/sitemap.xml/route.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "app_sitemap_xml_route",
+      "target": "lib_sitemap_site_url",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/sitemap.xml/route.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "app_sitemap_xml_route_get",
+      "target": "lib_sitemap_buildsitemapindexxml"
     },
     {
       "relation": "contains",
@@ -12742,6 +13473,16 @@
       "source_location": "L8",
       "weight": 1.0,
       "source": "components_productpage_productaudioteaser",
+      "target": "components_productpage_productaudioteaser_formattime",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ProductPage/ProductAudioTeaser.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "components_productpage_productaudioteaser",
       "target": "components_productpage_productaudioteaser_productaudioteaser",
       "confidence_score": 1.0
     },
@@ -12754,6 +13495,17 @@
       "weight": 1.0,
       "source": "components_productpage_productdetail",
       "target": "components_productpage_productaudioteaser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ProductPage/ProductAudioTeaser.tsx",
+      "source_location": "L146",
+      "weight": 1.0,
+      "source": "components_productpage_productaudioteaser_productaudioteaser",
+      "target": "components_productpage_productaudioteaser_formattime",
       "confidence_score": 1.0
     },
     {
@@ -12991,7 +13743,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/ProductPage/ProductDetail.tsx",
-      "source_location": "L93",
+      "source_location": "L94",
       "weight": 1.0,
       "source": "components_productpage_productdetail_productdetail",
       "target": "lib_hooks_userecentlyviewed"
@@ -13002,7 +13754,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/ProductPage/ProductDetail.tsx",
-      "source_location": "L38",
+      "source_location": "L39",
       "weight": 1.0,
       "source": "components_productpage_productdetail_productdetail",
       "target": "lib_wishlist_usewishlisttoggle"
@@ -17529,6 +18281,79 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "lib/sitemap.ts",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "lib_sitemap",
+      "target": "lib_sitemap_buildsitemapindexxml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/sitemap.ts",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "lib_sitemap",
+      "target": "lib_sitemap_buildurlsetxml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/sitemap.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "lib_sitemap",
+      "target": "lib_sitemap_escapexml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/sitemap.ts",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "lib_sitemap",
+      "target": "lib_sitemap_fetchsitemapitems",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/sitemap.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "lib_sitemap",
+      "target": "services_fetcher",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/sitemap.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "lib_sitemap",
+      "target": "services_fetcher_fetcher",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/sitemap.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "lib_sitemap",
+      "target": "utils_geturl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "lib/store.ts",
       "source_location": "L102",
       "weight": 1.0,
@@ -18790,6 +19615,16 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "types/sitemap.d.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "types_sitemap_d",
+      "target": "types_sitemap_d_sitemapitem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "types/wishlist.d.ts",
       "source_location": "L1",
       "weight": 1.0,
@@ -19735,5 +20570,5 @@
       "source_file": "project/Product.dc.html"
     }
   ],
-  "built_at_commit": "dd92439bd4dc6b934116607e8dc3ea7eb217f2b3"
+  "built_at_commit": "0e181406ef238c11a0e9c871fbe97cf650a88fb8"
 }

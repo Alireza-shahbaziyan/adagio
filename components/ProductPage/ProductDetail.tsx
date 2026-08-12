@@ -149,7 +149,6 @@ export default function ProductDetail({
 
         <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-18">
           <ProductGallery images={images} productTitle={product.title} />
-
           {/* Purchase card */}
           <div className="static md:sticky md:top-25">
             <p className="mb-4 text-xs tracking-[1px] text-muted-foreground">
@@ -213,8 +212,9 @@ export default function ProductDetail({
               openKey={openAccordion}
               setOpenKey={setOpenAccordion}
             />
+            
           </div>
-          <div className="w-full">
+          <div className="w-full ">
             <div className="mb-5">
               <h3 className="text-lg font-bold text-foreground">
                 راهنمای سایز

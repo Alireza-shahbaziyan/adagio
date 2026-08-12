@@ -1,3 +1,5 @@
+
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer({
@@ -98,7 +100,7 @@ export default function Footer({
           <p className="mb-5 text-[13px] text-foreground">راهنما</p>
 
           <Link
-            href="/shipping"
+            href="/order-guide"
             title="شرایط ارسال سفارش"
             className="mb-3.5 block text-sm text-muted-foreground"
           >
@@ -106,12 +108,27 @@ export default function Footer({
           </Link>
 
           <Link
-            href="/returns"
+            href="/terms"
             title="شرایط بازگشت کالا"
             className="block text-sm text-muted-foreground"
           >
             مرجوعی کالا
           </Link>
+              <a
+            referrerPolicy="origin"
+            target="_blank"
+            href="https://trustseal.enamad.ir/?id=7276644&Code=VOfqVN0wuHU960NvnRnlN7H6Wndv5BEg"
+            className="flex items-center justify-center"
+          >
+            <Image
+              width={90}
+              height={40}
+              referrerPolicy="origin"
+              src="https://trustseal.enamad.ir/logo.aspx?id=7276644&Code=VOfqVN0wuHU960NvnRnlN7H6Wndv5BEg"
+              alt="enamad trust seal"
+              style={{ cursor: "pointer" }}
+            />
+          </a>
         </nav>
       </div>
 
@@ -160,7 +177,7 @@ export default function Footer({
               </g>
             </svg>
           </Link>
-
+     
           <Link
             href="https://t.me/adagiostyle"
             aria-label="Telegram Adagio"

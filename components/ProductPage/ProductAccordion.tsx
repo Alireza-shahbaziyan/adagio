@@ -15,7 +15,7 @@ export default function ProductAccordion({
   return (
     <div className="border-t border-white/8">
       {sections.map((a) => {
-        const isOpen = openKey === a.key;
+        const isOpen = openKey == a.key;
         return (
           <div key={a.key} className="border-b border-white/8">
             <button

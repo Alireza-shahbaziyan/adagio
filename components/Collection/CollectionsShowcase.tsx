@@ -18,22 +18,22 @@ export default function CollectionsShowcase({
   const trimmedSearch = search?.trim();
 
   return (
-    <section className="mx-auto max-w-350 px-5 pb-24 pt-8 md:px-16 md:pb-40 md:pt-12">
+    <section className="mx-auto max-w-350 px-5 pb-24 md:px-16 md:pb-40 pt-12">
       <div>
 
       </div>
-      <div className="mb-14 grid grid-cols-1 gap-6 md:mb-20 lg:grid-cols-2 lg:items-center">
+      <div className="grid grid-cols-1 gap-6 mb-20 lg:grid-cols-2 lg:items-center">
         <div className="order-2 lg:order-1 ">
           <p className="mb-4 text-xs tracking-[1px] text-muted-foreground">
             آرشیو
           </p>
 
-          <h1 className="text-[36px] font-black leading-28 text-foreground md:text-[64px]">
+          <h1 className="text-5xl font-black leading-18 md:leading-28 py-4 text-foreground md:text-7xl">
             {h1 ?? "دسته‌بندی پوشاک و محصولات هنری آداجیو"}
           </h1>
         </div>
 
-        <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
+        <div className="order-1 hidden md:flex justify-center lg:order-2 lg:justify-end ">
           <Image
             src={AdagioGirl}
             alt="Adagio Girl"
