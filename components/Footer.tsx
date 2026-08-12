@@ -1,5 +1,3 @@
-
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer({
@@ -98,6 +96,13 @@ export default function Footer({
         {/* Customer */}
         <nav aria-label="راهنمای خرید">
           <p className="mb-5 text-[13px] text-foreground">راهنما</p>
+          <Link
+            href="/blog"
+            title="محصولات ویژه آداجیو"
+            className="mb-3.5 block text-sm text-muted-foreground"
+          >
+            بلاگ
+          </Link>
 
           <Link
             href="/order-guide"
@@ -114,21 +119,15 @@ export default function Footer({
           >
             مرجوعی کالا
           </Link>
-              <a
-            referrerPolicy="origin"
-            target="_blank"
-            href="https://trustseal.enamad.ir/?id=7276644&Code=VOfqVN0wuHU960NvnRnlN7H6Wndv5BEg"
-            className="flex items-center justify-center"
-          >
-            <Image
-              width={90}
-              height={40}
-              referrerPolicy="origin"
-              src="https://trustseal.enamad.ir/logo.aspx?id=7276644&Code=VOfqVN0wuHU960NvnRnlN7H6Wndv5BEg"
-              alt="enamad trust seal"
-              style={{ cursor: "pointer" }}
-            />
-          </a>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: `
+      <a referrerpolicy='origin' target='_blank' href='https://trustseal.enamad.ir/?id=7276644&Code=VOfqVN0wuHU960NvnRnlN7H6Wndv5BEg' alt='نماد اعتماد الکترونیکی'>
+        <img referrerpolicy='origin' src='https://trustseal.enamad.ir/logo.aspx?id=7276644&Code=VOfqVN0wuHU960NvnRnlN7H6Wndv5BEg' alt='' style='cursor:pointer' code='VOfqVN0wuHU960NvnRnlN7H6Wndv5BEg'>
+      </a>
+    `,
+            }}
+          />
         </nav>
       </div>
 
@@ -143,7 +142,7 @@ export default function Footer({
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram Adagio"
-            className="flex h-9.5 w-9.5 items-center justify-center rounded-full border border-white/[0.15] text-[11px] tracking-[0.5px] text-muted-foreground"
+            className="flex h-9.5 w-9.5 items-center justify-center rounded-full border border-white/15 text-[11px] tracking-[0.5px] text-muted-foreground"
           >
             <svg
               viewBox="0 0 24 24"
@@ -177,11 +176,11 @@ export default function Footer({
               </g>
             </svg>
           </Link>
-     
+
           <Link
             href="https://t.me/adagiostyle"
             aria-label="Telegram Adagio"
-            className="  flex h-9.5 w-9.5 items-center justify-center rounded-full border border-white/[0.15] text-[11px] tracking-[0.5px] text-muted-foreground"
+            className="  flex h-9.5 w-9.5 items-center justify-center rounded-full border border-white/15 text-[11px] tracking-[0.5px] text-muted-foreground"
           >
             <svg
               viewBox="0 0 24 24"

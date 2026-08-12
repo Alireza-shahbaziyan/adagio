@@ -197,7 +197,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
           {/* Excerpt */}
           {post.excerpt && (
-            <p className="mt-6 max-w-3xl text-base leading-[2] text-muted-foreground md:text-lg">
+            <p className="mt-6 max-w-3xl text-base leading-loose text-muted-foreground md:text-lg">
               {post.excerpt}
             </p>
           )}
@@ -243,7 +243,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {/* Featured Image */}
         {post.featured_image && (
           <div className="mx-auto max-w-7xl px-5 md:px-8">
-            <div className="relative aspect-[16/9] overflow-hidden rounded-[var(--radius-2xl)] border border-border bg-card">
+            <div className="relative aspect-video overflow-hidden rounded-2xl border border-border bg-card">
               <Image
                 src={post.featured_image}
                 alt={post.title}
@@ -321,7 +321,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                       key={media.id}
                       controls
                       preload="metadata"
-                      className="w-full rounded-[var(--radius-xl)] border border-border"
+                      className="w-full rounded-xl border border-border"
                     >
                       <source src={media.file} />
                     </video>
@@ -331,7 +331,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 return (
                   <div
                     key={media.id}
-                    className="relative aspect-[4/3] overflow-hidden rounded-[var(--radius-xl)] border border-border bg-card"
+                    className="relative aspect-4/3 overflow-hidden rounded-xl border border-border bg-card"
                   >
                     <Image
                       src={media.file}
@@ -358,7 +358,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             <Link
               href="/blog"
-              className="inline-flex w-fit items-center gap-3 rounded-full border border-border px-5 py-3 text-sm transition-colors hover:bg-white/[0.04]"
+              className="inline-flex w-fit items-center gap-3 rounded-full border border-border px-5 py-3 text-sm transition-colors hover:bg-white/4"
             >
               <span>بازگشت به مجله</span>
 
