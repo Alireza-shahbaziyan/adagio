@@ -40,7 +40,10 @@ export interface PostDetail {
   content_html: string;
   featured_image: string;
   category: string;
-  author: string;
+  author: {
+    full_name: string;
+    avatar: string;
+  };
   view_count: number;
   allow_comments: boolean;
   media: PostMedia[];

@@ -118,7 +118,7 @@ export async function generateMetadata({
       publishedTime: post.published_at,
       modifiedTime: post.updated_at,
 
-      authors: [post.author],
+      authors: [post.author.full_name ?? "نویسنده نامشخص"],
     },
 
     twitter: {
@@ -207,7 +207,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <span>
               نویسنده:{" "}
               <strong className="font-medium text-foreground">
-                {post.author}
+                {post.author.full_name??"نویسنده نامشخص"}
               </strong>
             </span>
 
