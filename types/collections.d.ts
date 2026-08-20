@@ -1,4 +1,4 @@
 import { PaginatedResponse } from "./response";
-import { ProductCollection } from "./singleProduct";
+import { Collection } from "./singleProduct";
 
-export type CollectionResponse = PaginatedResponse<ProductCollection>;
+export type CollectionResponse = PaginatedResponse<Collection>;

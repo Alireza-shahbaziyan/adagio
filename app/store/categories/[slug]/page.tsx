@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `خرید تیشرت ${slug} | آداجیو`,
     description: `خرید انواع تیشرت ${slug} با کیفیت چاپ و پارچه ممتاز از فروشگاه آداجیو. مشاهده جدیدترین مدل‌ها، ارسال سریع و تضمین کیفیت.`,
     alternates: {
-      canonical: `/collections/${slug}`,
+      canonical: `/categories/${slug}`,
     },
     robots: {
       index: true,
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `خرید تیشرت ${slug} | آداجیو`,
       description: `جدیدترین تیشرت‌های ${slug} با طراحی خاص و کیفیت بالا در فروشگاه آداجیو.`,
-      url: `/collections/${slug}`,
+      url: `/categories/${slug}`,
       type: "website",
     },
     twitter: {
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export async function generateStaticParams() {
   
-  const res = await fetch(`${backend}/api/collections/?page=1&page_size=100`);
+  const res = await fetch(`${backend}/api/categories/?page=1&page_size=100`);
 
   if (!res.ok) return [];
 
@@ -63,15 +63,15 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-
+  
   const [collection, products] = await Promise.all([
-    fetch(`${backend}/api/collections/${slug}`, {
+    fetch(`${backend}/api/categories/${slug}`, {
       next: { revalidate: 300 },
     }).then((res) => {
       if (!res.ok) notFound();
       return res.json() as Promise<Callection>;
     }),
-    getStoreProducts({ collectionSlug: slug, page: "1", pageSize: 6 }).catch(
+    getStoreProducts({ category: slug, page: "1", pageSize: 6 }).catch(
       () => null,
     ),
   ]);
@@ -95,8 +95,8 @@ export default async function Page({
 
           <span className="mx-2">/</span>
 
-          <Link href="/sotre/collections" className="transition hover:text-white">
-            کالکشن ها
+          <Link href="/sotre/categories" className="transition hover:text-white">
+            دسته بندی ها
           </Link>
 
           <span className="mx-2">/</span>
@@ -108,7 +108,7 @@ export default async function Page({
 
         <section className="max-w-4xl">
           <p className="mb-4 text-end uppercase tracking-[0.45em] text-neutral-500">
-            Collection
+            categories
           </p>
 
           <h1 className="text-4xl font-semibold leading-14 tracking-tight md:text-7xl">

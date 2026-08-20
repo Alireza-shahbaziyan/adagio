@@ -30,7 +30,7 @@ import {
   buildStoreQuery,
   type StoreQueryState,
 } from "@/lib/store";
-import type { ProductCollection } from "@/types/singleProduct";
+import type { Collection } from "@/types/singleProduct";
 
 const FEATURED_OPTIONS: { value: "" | "true" | "false"; label: string }[] = [
   { value: "", label: "همه" },
@@ -53,7 +53,7 @@ export default function StoreFilters({
   queryState,
   resultCount,
 }: {
-  collections: ProductCollection[];
+  collections: Collection[];
   activeCollectionSlug?: string;
   queryState: StoreQueryState;
   resultCount: number;
@@ -120,7 +120,7 @@ export default function StoreFilters({
             }}
             placeholder="جستجوی محصول…"
             aria-label="جستجوی محصول"
-            className="h-12 w-full rounded-full border border-white/[0.12] bg-[#111111] py-2 pr-11 pl-5 text-sm text-foreground outline-none transition-colors placeholder:text-[#6b6b6b] focus:border-white/40"
+            className="h-12 w-full rounded-full border border-white/12 bg-[#111111] py-2 pr-11 pl-5 text-sm text-foreground outline-none transition-colors placeholder:text-[#6b6b6b] focus:border-white/40"
           />
         </div>
 

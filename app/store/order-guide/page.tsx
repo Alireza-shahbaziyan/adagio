@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import MobileBottomNav from "@/components/MobileBottomNav";
+import Navbar from "@/components/Navbar/Navbar";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -70,6 +71,7 @@ const warrantyItems = [
 export default function ShippingGuidePage() {
   return (
     <>
+    <Navbar variant="default"/>
       <main className="container mx-auto max-w-5xl px-4 py-12 mt-5">
         <header className="mb-12 text-center">
           <h1 className="text-3xl font-bold md:text-4xl">
@@ -143,13 +145,12 @@ export default function ShippingGuidePage() {
 
             <ul className="list-disc space-y-2 pr-5 leading-8 text-muted-foreground">
               <li>ارسال از طریق پست پیشتاز.</li>
-              <li>ارسال با تیپاکس در شهرهای تحت پوشش.</li>
               <li>ارسال با باربری یا روش توافقی برای سفارش‌های خاص.</li>
             </ul>
           </div>
 
           <div className="mt-10">
-            <h4 className="mb-3 text-xl font-semibold">نکات قانونی:</h4>
+            <h4 className="mb-3 text-xl font-semibold text-yellow-400">نکات قانونی:</h4>
 
             <ul className="list-disc space-y-2 pr-5 leading-8 text-muted-foreground">
               <li>
@@ -166,7 +167,35 @@ export default function ShippingGuidePage() {
               </li>
             </ul>
           </div>
+            <div className="mt-10">
+  <h4 id="wash-and-maintain-T-shirts" className="mb-3 text-xl font-semibold text-blue-400">
+    روش شستشو و نگهداری تیشرت
+  </h4>
 
+  <ul className="list-disc space-y-2 pr-5 leading-8 text-muted-foreground">
+    <li>
+      تیشرت را قبل از شستشو پشت‌ورو کنید تا از چاپ DTF محافظت شود.
+    </li>
+    <li>
+      شستشو را با آب سرد یا حداکثر ۳۰ درجه سانتی‌گراد انجام دهید.
+    </li>
+    <li>
+      از سفیدکننده، مواد شوینده قوی و مواد حاوی کلر روی تیشرت استفاده نکنید.
+    </li>
+    <li>
+      برای حفظ کیفیت چاپ، تیشرت را با دور ملایم ماشین لباسشویی بشویید و از
+      چنگ زدن یا سابیدن مستقیم قسمت چاپ‌شده خودداری کنید.
+    </li>
+    <li>
+      اتو را مستقیماً روی چاپ قرار ندهید؛ در صورت نیاز، تیشرت را پشت‌ورو کرده
+      و با حرارت ملایم اتو کنید.
+    </li>
+    <li>
+      برای افزایش عمر چاپ DTF، تیشرت را در معرض حرارت مستقیم و طولانی
+      خشک‌کن قرار ندهید و ترجیحاً در هوای آزاد خشک کنید.
+    </li>
+  </ul>
+</div>
           <div className="mt-10 rounded-xl border bg-muted/30 p-6">
             <h4 className="mb-3 text-xl font-semibold">پاسخگوی شما هستیم</h4>
 

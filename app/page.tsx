@@ -336,7 +336,7 @@ export default async function Home() {
           <h2 className="mb-14 text-center   text-[28px] font-black text-foreground md:text-[48px]">
             چه کسانی آن را پوشیده‌اند
           </h2>
-          <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="mx-auto grid max-w-300 grid-cols-1 gap-6 md:grid-cols-3">
             {REVIEWS.map((r) => (
               <div key={r.name} className="rounded-[20px] bg-[#181818] p-8">
                 <div
@@ -354,7 +354,7 @@ export default async function Home() {
           </div>
         </section>
       </Reveal>
-
+{/* 
       <Reveal>
         <section className="px-5 py-20 md:px-16 md:py-40">
           <div className="mb-14 text-center">
@@ -362,7 +362,7 @@ export default async function Home() {
               style={{ direction: "ltr" }}
               className="mb-4 text-xs tracking-[1px] text-muted-foreground"
             >
-              @adagio.wear
+              @adagio-style
             </p>
             <h2 className="  text-[28px] font-black text-foreground md:text-[48px]">
               از میان مخاطبان
@@ -388,7 +388,7 @@ export default async function Home() {
                   sizes="(max-width: 768px) 100vw, 25vw"
                 />
 
-                {/* overlay */}
+           
                 <div
                   className="absolute inset-0"
                   style={{
@@ -397,7 +397,6 @@ export default async function Home() {
                   }}
                 />
 
-                {/* caption */}
                 <p className="absolute bottom-3 right-3 z-1 text-xs text-white">
                   {item.customer_name}
                 </p>
@@ -405,7 +404,7 @@ export default async function Home() {
             ))}
           </div>
         </section>
-      </Reveal>
+      </Reveal> */}
 
       <Reveal>
         <section

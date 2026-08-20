@@ -67,6 +67,7 @@ export default async function CategoriesPage({
     >
       <Navbar variant="default" />
       <CollectionsShowcase
+      typeCard="categories"
       h1="دسته‌بندی پوشاک و محصولات هنری آداجیو"
         collections={CategoriesResponse.results}
         // totalCount={CategoriesResponse.count}

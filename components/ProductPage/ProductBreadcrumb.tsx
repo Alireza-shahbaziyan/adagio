@@ -1,13 +1,13 @@
 import Link from "next/link";
-import type { ProductCollection } from "@/types/singleProduct";
+import type { Collection } from "@/types/singleProduct";
 
 export default function ProductBreadcrumb({
   collections,
   productTitle,
 }: {
-  collections: ProductCollection[];
+  collections: Collection[];
   productTitle: string;
-  categorys:ProductCollection[];
+  categorys:Collection[];
 }) {
   const primaryCollection = collections?.[0];
 

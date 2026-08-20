@@ -67,10 +67,10 @@ The development server runs on [http://localhost:3030](http://localhost:3030).
 
 | Command         | Description                                           |
 | --------------- | ----------------------------------------------------- |
-| `npm run dev`   | Start the development server on port 3030.            |
+| `bun dev`   | Start the development server on port 3030.            |
 | `npm run lint`  | Run ESLint.                                           |
-| `npm run build` | Create a production build.                            |
-| `npm run start` | Start the production server after a successful build. |
+| `bun run build` | Create a production build.                            |
+| `bun start` | Start the production server after a successful build. |
 
 ## Backend and session requirements
 

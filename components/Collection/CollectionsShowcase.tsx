@@ -1,18 +1,20 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 
-import { ProductCollection } from "@/types/singleProduct";
+import { Collection } from "@/types/singleProduct";
 import CollectionCard from "./CollectionCard";
-import Image from "next/image";
-import AdagioGirl from "@/public/assets/adagioGirl.webp";
+
+
 
 export default function CollectionsShowcase({
   collections,
+  typeCard="collections",
   search,
   h1,
 }: {
-  collections: ProductCollection[];
+  collections: Collection[];
   search?: string;
+  typeCard?:"collections"|"categories";
   h1?: string;
 }) {
   const trimmedSearch = search?.trim();
@@ -29,10 +31,10 @@ export default function CollectionsShowcase({
           </p>
 
           <h1 className="text-5xl font-black leading-18 md:leading-28 py-4 text-foreground md:text-7xl">
-            {h1 ?? "دسته‌بندی پوشاک و محصولات هنری آداجیو"}
+            {h1 ?? "کالکشن پوشاک و محصولات هنری آداجیو"}
           </h1>
         </div>
-
+{/* 
         <div className="order-1 hidden md:flex justify-center lg:order-2 lg:justify-end ">
           <Image
             src={AdagioGirl}
@@ -41,7 +43,7 @@ export default function CollectionsShowcase({
             height={500}
             className="h-auto w-full max-w-87.5 object-contain md:max-w-100 lg:max-w-125 rounded-b-full"
           />
-        </div>
+        </div> */}
       </div>
 
       {/* A future filter bar (search / ordering / page_size) mounts here,
@@ -61,7 +63,7 @@ export default function CollectionsShowcase({
           </p>
           {trimmedSearch && (
             <Link
-              href="/store/collections"
+              href={`/store/${typeCard}`}
               className="inline-block rounded-full border border-white/25 px-7 py-3 text-sm text-foreground 
               transition-colors hover:border-white/60 hover:bg-white/8"
             >
@@ -76,7 +78,7 @@ export default function CollectionsShowcase({
               key={collection.id}
               style={{ transitionDelay: `${Math.min(i, 8) * 70}ms` }}
             >
-              <CollectionCard collection={collection} />
+              <CollectionCard link={`/store/${typeCard}/${collection.slug}`} collection={collection} />
             </Reveal>
           ))}
         </div>

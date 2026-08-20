@@ -241,7 +241,7 @@ export default function AboutPage() {
           </p>
 
           <Link
-            href="/collections"
+            href="/store/collections"
             className="
             mt-10
             inline-flex

@@ -14,18 +14,18 @@ const contactInfo = [
   {
     icon: Phone,
     title: "تلفن",
-    value: "۰۹۱۲ ۳۴۵ ۶۷۸۹",
-    href: "tel:+989123456789",
+    value: "09392622300",
+    href: "tel:+989392622300",
   },
   {
     icon: Mail,
     title: "ایمیل",
-    value: "support@adagiostyleir",
-    href: "mailto:support@adagiostyleir",
+    value: "info@adagiostyle.ir",
+    href: "mailto:info@adagiostyle.ir",
   },
   {
     icon: MapPin,
-    title: "موقعیت",
+    title: "اصفهان - شاهین شهر",
     value: "ایران",
   },
 ] as const;
@@ -67,7 +67,7 @@ export default function ContactPage() {
                 className="
                 group
                 border border-white/10
-                bg-white/[0.02]
+                bg-white/2
                 p-8
                 transition-all
                 duration-500
@@ -117,7 +117,7 @@ export default function ContactPage() {
           className="
           border
           border-white/10
-          bg-white/[0.02]
+          bg-white/2
           p-8
           md:p-12
           "

@@ -6,7 +6,7 @@ import type {
   ProductsResponse,
 } from "@/types/products";
 import { Metadata } from "next";
-import { frontend } from "@/utils/getURL";
+import { ProductJsonLd } from "@/components/seo/ProductJsonLd";
 
 type Props = {
   params: Promise<{
@@ -32,45 +32,54 @@ async function getProduct(slug: string) {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
 
-  const product:Product = await getProduct(slug);
-
+  const product: Product = await getProduct(slug);
+  const meta = product.meta_tag;
   if (!product) {
     return {
       title: "محصول پیدا نشد | آداجیو",
-  
     };
   }
   return {
-    title: `${product.title} | خرید تیشرت آداجیو`,
-    description: `خرید ${product.title} با طراحی مینیمال، پارچه نخی باکیفیت و چاپ ماندگار از فروشگاه آداجیو. مشاهده جزئیات محصول و ثبت سفارش.`,
+    title: meta.title ?? "تیشرت باکسی اورسایز | ADAGIO",
+
+    description: meta.description??"تیشرت باکسی اورسایز | ADAGIO",
+
     alternates: {
-      canonical: `${frontend}/products/${product.slug}`,
+      canonical: meta.canonical_url??`https://adagiostyle.ir/store/products/${product.slug}`,
+    },
+
+    robots: {
+      index: meta.is_indexable??false,
+      follow: meta.is_indexable ??false,
     },
 
     openGraph: {
-      title: `${product.title} | آداجیو`,
-      description: `خرید ${product.title} با طراحی خاص موسیقی از فروشگاه آداجیو.`,
-      url: `/products/${product.slug}`,
-      // sitetitle: "Adagio",
+      title: meta.og_title??"تیشرت باکسی اورسایز | ADAGIO",
+      description: meta.og_description??"تیشرت باکسی اورسایز | ADAGIO",
+      url: meta.canonical_url??`https://adagiostyle.ir/store/products/${product.slug}`,
       type: "website",
+
       images: [
         {
-          url: product.images[0].image,
-          width: 1200,
-          height: 630,
-          alt: product.title,
+          url: meta.og_image??null,
+          alt: product.title ??null,
         },
       ],
     },
+
     twitter: {
-      card: "summary_large_image",
-      title: `${product.title} | آداجیو`,
-      description: `تیشرت‌های موسیقی مینیمال با کیفیت بالا.`,
-      images: [product.images[0].image],
+      card:
+        meta.twitter_card === "summary_large_image"
+          ? "summary_large_image"
+          : "summary",
+
+      title: meta.og_title,
+      description: meta.og_description,
+
+      images: [meta.og_image],
     },
   };
 }
-
 
 export default async function ProductPage({
   params,
@@ -116,5 +125,10 @@ export default async function ProductPage({
     recommended = [];
   }
 
-  return <ProductDetail product={product} recommended={recommended} />;
+  return (
+    <>
+      <ProductJsonLd product={product} />
+      <ProductDetail product={product} recommended={recommended} />;
+    </>
+  );
 }

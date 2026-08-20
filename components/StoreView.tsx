@@ -4,7 +4,7 @@ import StoreProductGrid from "@/components/StoreProductGrid";
 import StorePagination from "@/components/StorePagination";
 import { PRODUCTS_PAGE_SIZE, type StoreQueryState } from "@/lib/store";
 import type { ProductsResponse } from "@/types/products";
-import type { ProductCollection } from "@/types/singleProduct";
+import type { Collection } from "@/types/singleProduct";
 
 export default function StoreView({
   eyebrow,
@@ -21,7 +21,7 @@ export default function StoreView({
   title: string;
   description?: string;
   breadcrumb: { label: string; href?: string }[];
-  collections: ProductCollection[];
+  collections: Collection[];
   activeCollectionSlug?: string;
   products: ProductsResponse;
   currentPage: number;

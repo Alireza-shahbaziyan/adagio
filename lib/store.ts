@@ -1,6 +1,6 @@
 import { ProductsResponse } from "@/types/products";
 import { CollectionResponse } from "@/types/collections";
-import { ProductCollection } from "@/types/singleProduct";
+import { Collection } from "@/types/singleProduct";
 import { Callection } from "@/types/singleCollection";
 import { backend } from "@/utils/getURL";
 
@@ -36,6 +36,7 @@ export async function getStoreProducts({
   ordering,
   page,
   pageSize,
+  category,
 }: {
   collectionSlug?: string;
   featured?: string;
@@ -43,10 +44,12 @@ export async function getStoreProducts({
   ordering?: string;
   page?: string;
   pageSize?: number;
+  category?:string
 }): Promise<ProductsResponse> {
   const query = new URLSearchParams();
 
-  if (collectionSlug) query.set("collections__slug", collectionSlug);
+  if (collectionSlug) query.set("collections", collectionSlug);
+  if (category) query.set("category", category);
 
   const featuredValue = parseFeaturedParam(featured);
   if (featuredValue) query.set("featured", featuredValue);
@@ -67,7 +70,7 @@ export async function getStoreProducts({
   return res.json();
 }
 
-export async function getStoreCollections(): Promise<ProductCollection[]> {
+export async function getStoreCollections(): Promise<Collection[]> {
   const res = await fetch(
     `${backend}/api/collections/?ordering=slug&page=1&page_size=100`,
     { next: { revalidate: 60 * 60 } },

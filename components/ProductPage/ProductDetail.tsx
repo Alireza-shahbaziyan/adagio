@@ -21,6 +21,8 @@ import ProductQuantityStepper from "./ProductQuantityStepper";
 import ProductActions from "./ProductActions";
 import ProductAccordion from "./ProductAccordion";
 import ProductMobileBar from "./ProductMobileBar";
+import Link from "next/link";
+
 
 export default function ProductDetail({
   product,
@@ -31,7 +33,7 @@ export default function ProductDetail({
 }) {
   const { showToast } = useAppState();
   const addCartItem = useAddCartItem();
-  
+
   const {
     isWishlisted: wishlisted,
     toggle: toggleWishlist,
@@ -49,7 +51,8 @@ export default function ProductDetail({
   const variants = product.variants ?? [];
   const primaryCollection = product.collections?.[0];
   const description = product.description || "توضیحات این محصول ثبت نشده. ";
-  const short_dec = product.short_description ?? "توضیحاتی برای این محصول ثبت نشده.";
+  const short_dec =
+    product.short_description ?? "توضیحاتی برای این محصول ثبت نشده.";
 
   const accordionSections = useMemo(() => {
     const sections: { key: string; title: string; content: string }[] = [];
@@ -60,15 +63,15 @@ export default function ProductDetail({
         content: description,
       });
     }
-    if (product.tags?.length) {
-      sections.push({
-        key: "tags",
-        title: "برچسب‌ها",
-        content: product.tags.map((t) => t.title).join("، "),
-      });
-    }
+    // if (product.tags?.length) {
+    //   sections.push({
+    //     key: "tags",
+    //     title: "برچسب‌ها",
+    //     content: product.tags.map((t) => t.title).join("، "),
+    //   });
+    // }
     return sections;
-  }, [description, product.tags]);
+  }, [description]);
 
   const [selectedSize, setSelectedSize] = useState<
     ProductVariant["size_name"] | null
@@ -196,7 +199,6 @@ export default function ProductDetail({
             />
 
             <ProductQuantityStepper qty={qty} maxQty={maxQty} setQty={setQty} />
-
             <ProductActions
               selectedVariant={selectedVariant}
               addToCartPending={addCartItem.isPending}
@@ -206,13 +208,12 @@ export default function ProductDetail({
               onToggleWishlist={toggleWishlist}
               onBuyNow={handleBuyNow}
             />
-
+            
             <ProductAccordion
               sections={accordionSections}
               openKey={openAccordion}
               setOpenKey={setOpenAccordion}
             />
-            
           </div>
           <div className="w-full ">
             <div className="mb-5">

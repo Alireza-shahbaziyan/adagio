@@ -48,7 +48,7 @@ export default function Footer({
           </Link>
 
           <Link
-            href="/collections"
+            href="/store/collections"
             title="کالکشن های آداجیو"
             className="mb-3.5 block text-sm text-muted-foreground"
           >
@@ -56,7 +56,7 @@ export default function Footer({
           </Link>
 
           <Link
-            href="/category"
+            href="/store/category"
             title="دسته بندی محصولات"
             className="block text-sm text-muted-foreground"
           >

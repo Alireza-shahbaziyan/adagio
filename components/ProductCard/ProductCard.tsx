@@ -7,6 +7,7 @@ import { useWishlistToggle } from "@/lib/wishlist";
 import { HeartIcon } from "@/components/icons";
 import { Product } from "@/types/products";
 import ProductCardDec from "./ProductCardDec";
+import checkAvailable from "@/utils/availbleProduct";
 
 export default function ProductCard({
   product,
@@ -25,6 +26,8 @@ export default function ProductCard({
   const image = product?.images?.[0]?.image || "/placeholder.jpg";
   const imageAlt = product?.images?.[0]?.alt_text || "Image.jpg";
   // console.log(product?.variants[0].size_name)
+
+  const invalidProduct = !checkAvailable(product?.variants);
   return (
     <Link
       href={`/store/products/${product.slug}`}
@@ -82,6 +85,7 @@ export default function ProductCard({
       </div>
       <ProductCardDec
         variant={product.variants}
+        isvalid={invalidProduct}
         title={product.title ?? "نامی ثبت نشده"}
       />
     </Link>

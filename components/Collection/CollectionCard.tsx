@@ -1,29 +1,29 @@
 import Image from "next/image";
-import { ProductCollection } from "@/types/singleProduct";
+import { Collection } from "@/types/singleProduct";
 import { ChevronLeftIcon } from "../icons";
 import Link from "next/link";
 
 function CollectionCard({
   collection,
-  
+  link
 }: {
-  collection: ProductCollection;
- 
+  collection: Collection;
+  link:string
 }) {
   return (
     <Link
-      href={`/store/collections/${collection.slug}`}
+      href={`${link}`}
       className="group relative flex h-full flex-col overflow-hidden rounded-[20px] border border-white/6 bg-[#181818] transition-all duration-500 ease-[cubic-bezier(.16,.8,.24,1)] hover:-translate-y-1.5 hover:border-white/[0.16] hover:shadow-[0_24px_60px_rgba(0,0,0,0.35)]"
     >
       {/* Image */}
-      <div className="relative h-48 md:h-96 w-full overflow-hidden">
+      <div className="relative h-80 md:h-96 w-full overflow-hidden">
         {collection.image ? (
           <>
             <Image
               src={collection.image}
               alt={collection.title}
               fill
-              className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+              className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
             />
 
             {/* Dark overlay */}
