@@ -1,21 +1,41 @@
 import { User } from "@/types/auth";
 
 export async function verifyOtpApi(data: { phone: string; code: string }) {
-  const res = await fetch("/api/auth/verify-otp", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    credentials: "include",
-    body: JSON.stringify({ phone: data.phone, code: data.code }),
-  });
-  if (!res.ok) throw new Error("Verification failed");
+  try {
+    await fetch("/api/auth/csrf", {
+      method: "GET",
+      credentials: "include",
+    });
 
-  return res.json();
+    const res = await fetch("/api/auth/verify-otp", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({
+        phone: data.phone,
+        code: data.code,
+      }),
+    });
+
+    if (!res.ok) throw new Error("Verification failed");
+
+    return res.json();
+  } catch (error) {
+    console.error(error);
+    throw new Error("Verification failed");
+  }
 }
 
 export async function loginApi({ phone }: { phone: string }) {
+  await fetch("/api/auth/csrf", {
+    method: "GET",
+    credentials: "include",
+  });
+
   const res = await fetch("/api/auth/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
+    credentials: "include",
     body: JSON.stringify({ phone }),
   });
 
@@ -24,26 +44,29 @@ export async function loginApi({ phone }: { phone: string }) {
   if (!res.ok) {
     throw new Error(data?.detail || "Verification failed");
   }
-  // console.log(data);
 
   return data;
 }
 
-
-
 export async function getMe(): Promise<User | null> {
-  const response = await fetch("/api/auth/me", {
+  await fetch("/api/auth/csrf", {
     method: "GET",
-    headers: { "Content-Type": "application/json" },
     credentials: "include",
   });
 
-  if (!response.ok) return null;
+  const response = await fetch("/api/auth/me", {
+    method: "GET",
+    credentials: "include",
+  });
 
-  const rawText = await response.text();
+  if (!response.ok) {
+    return null;
+  }
+
   try {
-    return JSON.parse(rawText) as User;
-  } catch {
+    return (await response.json()) as User;
+  } catch (error) {
+    console.error("Error in getMe:", error);
     return null;
   }
 }

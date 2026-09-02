@@ -40,43 +40,43 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
   return {
-    title: meta.title ?? "تیشرت باکسی اورسایز | ADAGIO",
+    title: meta?.title ?? "تیشرت باکسی اورسایز | ADAGIO",
 
-    description: meta.description??"تیشرت باکسی اورسایز | ADAGIO",
+    description: meta?.description??"تیشرت باکسی اورسایز | ADAGIO",
 
     alternates: {
-      canonical: meta.canonical_url??`https://adagiostyle.ir/store/products/${product.slug}`,
+      canonical: meta?.canonical_url??`https://adagiostyle.ir/store/products/${product.slug}`,
     },
 
     robots: {
-      index: meta.is_indexable??false,
-      follow: meta.is_indexable ??false,
+      index: meta?.is_indexable??false,
+      follow: meta?.is_indexable ??false,
     },
 
     openGraph: {
-      title: meta.og_title??"تیشرت باکسی اورسایز | ADAGIO",
-      description: meta.og_description??"تیشرت باکسی اورسایز | ADAGIO",
-      url: meta.canonical_url??`https://adagiostyle.ir/store/products/${product.slug}`,
+      title: meta?.og_title??"تیشرت باکسی اورسایز | ADAGIO",
+      description: meta?.og_description??"تیشرت باکسی اورسایز | ADAGIO",
+      url: meta?.canonical_url??`https://adagiostyle.ir/store/products/${product.slug}`,
       type: "website",
 
       images: [
         {
-          url: meta.og_image??null,
-          alt: product.title ??null,
+          url: meta?.og_image??null,
+          alt: product?.title ??null,
         },
       ],
     },
 
     twitter: {
       card:
-        meta.twitter_card === "summary_large_image"
+        meta?.twitter_card === "summary_large_image"
           ? "summary_large_image"
           : "summary",
 
-      title: meta.og_title,
-      description: meta.og_description,
+      title: meta?.og_title,
+      description: meta?.og_description,
 
-      images: [meta.og_image],
+      images: [meta?.og_image],
     },
   };
 }

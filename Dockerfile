@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY package.json bun.lock ./
 
-RUN bun config set registry https://mirror.abrha.net/repository/npm/
+# RUN bun config set registry https://mirror.abrha.net/repository/npm/
 
 RUN bun install --frozen-lockfile
 

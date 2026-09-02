@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
     const response = NextResponse.json(data, {
       status: 200,
     });
-
+    
     forwardSetCookie(res, response);
 
     return response;

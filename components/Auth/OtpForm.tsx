@@ -15,7 +15,7 @@ const DIGIT_KEYS = ["d0", "d1", "d2", "d3", "d4"] as const;
 type DigitKey = (typeof DIGIT_KEYS)[number];
 type OtpFormValues = Record<DigitKey, string>;
 
-const RESEND_SECONDS = 2;
+const RESEND_SECONDS = 60;
 
 export default function OtpForm({ phone }: { phone: string }) {
   const params = useParams<{ phonenumber: string }>();

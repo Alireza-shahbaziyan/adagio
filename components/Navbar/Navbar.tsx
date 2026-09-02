@@ -15,6 +15,7 @@ import {
 } from "@/components/icons";
 import SearchDialog from "@/components/SearchDialog";
 import { useMembership } from "@/hooks/useMembership";
+import { useMe } from "@/hooks/useMe";
 
 const NAV_LINKS = [
   { href: "/store", label: "فروشگاه" },

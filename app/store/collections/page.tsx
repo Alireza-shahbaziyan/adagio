@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: `${frontend}/collections`,
+    canonical: `${frontend}/store/collections`,
   },
   openGraph: {
     title: `کالکشن‌های خاص هنری آداجیو`,

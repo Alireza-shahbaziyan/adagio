@@ -18,8 +18,8 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  
   const { slug } = await params;
-
   return {
     title: `خرید تیشرت ${slug} | آداجیو`,
     description: `خرید انواع تیشرت ${slug} با کیفیت چاپ و پارچه ممتاز از فروشگاه آداجیو. مشاهده جدیدترین مدل‌ها، ارسال سریع و تضمین کیفیت.`,
@@ -42,6 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: `جدیدترین تیشرت‌های ${slug} با طراحی خاص و کیفیت بالا در فروشگاه آداجیو.`,
     },
   };
+  
 }
 
 export async function generateStaticParams() {
@@ -105,7 +106,6 @@ export default async function Page({
         </div>
 
         {/* Hero */}
-
         <section className="max-w-4xl">
           <p className="mb-4 text-end uppercase tracking-[0.45em] text-neutral-500">
             Collection
@@ -123,7 +123,6 @@ export default async function Page({
         </section>
 
         {/* Hero image */}
-
         {collection.image && (
           <section className="mt-12 md:mt-16">
             <div className="relative aspect-21/9 w-full overflow-hidden rounded-3xl border border-white/10">
@@ -164,7 +163,6 @@ export default async function Page({
         {collection.children.length > 0 && (
           <section className="mt-24">
             <h2 className="mb-8 text-2xl font-semibold">Categories</h2>
-
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {collection.children.map((child) => (
                 <Link
@@ -209,7 +207,6 @@ export default async function Page({
         )}
 
         {/* Products */}
-
         {products && products.results.length > 0 && (
           <section className="mt-24">
             <h2 className="mb-8 text-2xl font-semibold">محصولات</h2>

@@ -19,12 +19,12 @@ export const metadata: Metadata = {
     "دسته‌بندی پوشاک و محصولات هنری آداجیو | Adagio",
 
   alternates: {
-    canonical: `${frontend}/collections`,
+    canonical: `${frontend}/store/categories`,
   },
   openGraph: {
     title: `دسته‌بندی پوشاک و محصولات هنری آداجیو`,
     description: `جدیدترین پوشاک و محصولات هنری با طراحی خاص و کیفیت بالا در فروشگاه آداجیو.`,
-    url: `${frontend}/collections`,
+    url: `${frontend}/store/categories`,
     type: "website",
   },
   twitter: {
@@ -52,10 +52,10 @@ export default async function CategoriesPage({
   });
 
   if (!res.ok) {
-    throw new Error("Failed to fetch collections");
+    throw new Error("Failed to fetch categories");
   }
 
-  const CategoriesResponse: CollectionResponse = await res.json();
+  const categoriesResponse: CollectionResponse = await res.json();
   // const pageSize = Number(page_size) || 20;
   // const currentPage = Number(page) || 1;
 
@@ -69,8 +69,8 @@ export default async function CategoriesPage({
       <CollectionsShowcase
       typeCard="categories"
       h1="دسته‌بندی پوشاک و محصولات هنری آداجیو"
-        collections={CategoriesResponse.results}
-        // totalCount={CategoriesResponse.count}
+        collections={categoriesResponse.results}
+        // totalCount={categoriesResponse.count}
         // startIndex={(currentPage - 1) * pageSize}
         search={search}
       />
