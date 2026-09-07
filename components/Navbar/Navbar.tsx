@@ -5,37 +5,21 @@ import { useState } from "react";
 import { useCartItemCount } from "@/lib/cart";
 import { useWishlistCount } from "@/lib/wishlist";
 import { useScrollY } from "@/lib/hooks";
-import {
-  BagIcon,
-  CloseIcon,
-  HeartIcon,
-  MenuIcon,
-  SearchIcon,
-  UserIcon,
-} from "@/components/icons";
 import SearchDialog from "@/components/SearchDialog";
 import { useMembership } from "@/hooks/useMembership";
-import { useMe } from "@/hooks/useMe";
+import { NavbarDesktopActions } from "./NavbarDesktopActions";
+import { NavbarMobileActions } from "./NavbarMobileActions";
+import { MobileMenu } from "./MobileMenu";
 
 const NAV_LINKS = [
   { href: "/store", label: "فروشگاه" },
   { href: "/blog", label: "بلاگ" },
   { href: "/store/collections", label: "کالکشن‌ها" },
   { href: "/store/categories", label: "دستبه‌بندی" },
-  // { href: "/terms", label: "قوانین‌و‌مقررات" },
   { href: "/store/order-guide", label: "راهنمای‌خرید" },
   { href: "/about", label: "درباره" },
   { href: "/contact-me", label: "تماس" },
 ];
-
-function Badge({ count }: { count: number }) {
-  if (!count) return null;
-  return (
-    <span className="absolute -top-0.5 -left-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-[9px] font-semibold text-primary-foreground">
-      {count}
-    </span>
-  );
-}
 
 export default function Navbar({
   variant,
@@ -46,10 +30,9 @@ export default function Navbar({
   productWishlisted?: boolean;
   onToggleProductWishlist?: () => void;
 }) {
-  const { isMember } = useMembership();
+  const { user, isMember, isLoading } = useMembership();
   const wishlistCount = useWishlistCount();
   const cartCount = useCartItemCount();
-
   const scrollY = useScrollY();
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -57,7 +40,19 @@ export default function Navbar({
 
   const navSolid = variant !== "home" || scrollY > 40;
   const position = variant === "home" ? "fixed" : "sticky";
+  if (isLoading)
+    return (
+  
+      <div className="w-full h-20 flex justify-center items-center py-4">
+        <div className="relative mx-auto flex h-16 w-16 items-center justify-center ">
+          <div className="absolute inset-0 animate-ping rounded-full border border-white/20" />
 
+          <div className="h-12 w-12 animate-spin rounded-full border border-white/20 border-t-white" />
+
+          <div className="absolute h-2 w-2 animate-pulse rounded-full bg-white" />
+        </div>
+      </div>
+    );
   return (
     <>
       <nav
@@ -85,7 +80,6 @@ export default function Navbar({
           Adagio
         </Link>
 
-        {/* Desktop */}
         <div className="hidden items-center gap-10 md:flex">
           {NAV_LINKS.map((l) => (
             <Link
@@ -97,133 +91,30 @@ export default function Navbar({
             </Link>
           ))}
         </div>
-        <div className="hidden items-center gap-6 md:flex">
-          <button
-            onClick={() => setSearchOpen(true)}
-            className="flex p-2 text-foreground"
-          >
-            <SearchIcon />
-          </button>
-          {variant === "product" ? (
-            <button
-              onClick={onToggleProductWishlist}
-              className="relative flex p-2 text-foreground"
-            >
-              <HeartIcon filled={productWishlisted} />
-            </button>
-          ) : (
-            <Link
-              href="/store/wishlist"
-              className="relative flex p-2 text-foreground"
-            >
-              <HeartIcon />
-              <Badge count={wishlistCount} />
-            </Link>
-          )}
-          <Link
-            href="/store/cart"
-            className="relative flex p-2 text-foreground"
-          >
-            <BagIcon />
-            <Badge count={cartCount} />
-          </Link>
-          {isMember ? (
-            <p>خوش آمدید</p>
-          ) : (
-            <Link href="/login" className="flex p-2 text-foreground">
-              <UserIcon />
-            </Link>
-          )}
-        </div>
 
-        {/* Mobile */}
-        {variant !== "product" && (
-          <div className="flex items-center gap-4 md:hidden">
-            <button
-              onClick={() => setSearchOpen(true)}
-              className="flex p-2 text-foreground"
-            >
-              <SearchIcon />
-            </button>
-            <Link href="/cart" className="relative flex p-2 text-foreground">
-              <BagIcon />
-              <Badge count={cartCount} />
-            </Link>
+        <NavbarDesktopActions
+          user={user ?? null}
+          variant={variant}
+          isMember={isMember}
+          wishlistCount={wishlistCount}
+          cartCount={cartCount}
+          productWishlisted={productWishlisted}
+          onToggleProductWishlist={onToggleProductWishlist}
+          onSearchOpen={() => setSearchOpen(true)}
+        />
 
-            <button
-              onClick={() => setMenuOpen(true)}
-              className="flex p-2 text-foreground"
-            >
-              <MenuIcon />
-            </button>
-          </div>
-        )}
-        {variant === "product" && (
-          <div className="flex items-center gap-4 md:hidden">
-            <button
-              onClick={onToggleProductWishlist}
-              className="relative flex p-2 text-foreground"
-            >
-              <HeartIcon filled={productWishlisted} />
-            </button>
-            <Link href="/cart" className="relative flex p-2 text-foreground">
-              <BagIcon />
-              <Badge count={cartCount} />
-            </Link>
-          </div>
-        )}
+        <NavbarMobileActions
+          variant={variant}
+          cartCount={cartCount}
+          productWishlisted={productWishlisted}
+          onToggleProductWishlist={onToggleProductWishlist}
+          onSearchOpen={() => setSearchOpen(true)}
+          onMenuOpen={() => setMenuOpen(true)}
+        />
       </nav>
 
       {variant !== "product" && menuOpen && (
-        <div
-          style={{ animation: "fadeInSoft 0.3s ease" }}
-          className="fixed inset-0 z-[5000] flex flex-col bg-primary-foreground p-6 md:hidden"
-        >
-          <div className="mb-12 flex items-center justify-between">
-            <span
-              style={{ direction: "ltr" }}
-              className="font-instrument-serif text-[26px] italic text-foreground"
-            >
-              Adagio
-            </span>
-            <button
-              onClick={() => setMenuOpen(false)}
-              className="flex p-2 text-foreground"
-            >
-              <CloseIcon />
-            </button>
-          </div>
-          {NAV_LINKS.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              onClick={() => setMenuOpen(false)}
-              className="border-b border-white/8 py-4.5 text-[28px] font-bold text-foreground"
-            >
-              {l.label}
-            </Link>
-          ))}
-          {isMember && (
-            <Link
-              key={"AS"}
-              href={"#"}
-              onClick={() => setMenuOpen(false)}
-              className="border-b border-white/8 py-4.5 text-[28px] font-bold text-foreground"
-            >
-              AAA
-            </Link>
-          )}
-          {!isMember && (
-            <Link
-              href="/login"
-              onClick={() => setMenuOpen(false)}
-              className="pt-6 text-base text-muted-foreground  border-b border-white
-               pb-2 w-fit hover:text-primary focus:text-white focus:border-muted-foreground"
-            >
-              ورود / حساب کاربری
-            </Link>
-          )}
-        </div>
+        <MobileMenu isMember={isMember} onClose={() => setMenuOpen(false)} />
       )}
 
       <SearchDialog open={searchOpen} onOpenChange={setSearchOpen} />

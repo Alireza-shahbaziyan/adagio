@@ -1,5 +1,6 @@
 import { HeartIcon } from "@/components/icons";
 import type { ProductVariant } from "@/types/products";
+import { formatPrice } from "@/lib/utils";
 
 export default function ProductMobileBar({
   wishlisted,
@@ -41,7 +42,7 @@ export default function ProductMobileBar({
         className="flex-1 rounded-full bg-foreground text-[15px] font-bold text-primary-foreground"
       >
         افزودن به سبد ·{" "}
-        {selectedVariant ? `$${selectedVariant.price}` : "ناموجود"}
+        {selectedVariant ? formatPrice(selectedVariant.price) : "ناموجود"}
       </button>
     </div>
   );

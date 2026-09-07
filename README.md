@@ -16,10 +16,12 @@ This repository is the **frontend and backend-for-frontend (BFF) layer**. It doe
 - Session-aware account state
 - Saved delivery addresses with province and city selection
 - Checkout information flow
+- Order creation, listing, and detail pages
+- Payment gateway selection and payment redirect
 - Static blog and informational pages
 - Persian (`fa`) and RTL interface with local fonts
 
-> **Current status:** The checkout user interface is available, but a payment gateway is not connected. The UI is currently Persian-only; it does not implement a general internationalization system.
+> **Current status:** The checkout and payment flow is implemented. The UI is currently Persian-only; it does not implement a general internationalization system.
 
 ## Technology stack
 
@@ -82,7 +84,9 @@ The backend owns all business data and authentication. At minimum, it must provi
 - The current authenticated user/session
 - Wishlist and saved addresses for authenticated users
 - Provinces and cities used by address forms
-- Order and payment processing when payment is implemented
+- Order creation, listing, detail, address update, cancellation, and item management
+- Payment gateway listing and payment initiation
+- Payment callback handling and order status resolution
 
 ### How sessions work
 
@@ -119,10 +123,10 @@ docker compose up --build
 | Path          | Purpose                                                                   |
 | ------------- | ------------------------------------------------------------------------- |
 | `app/`        | App Router pages, layouts, and same-origin API route handlers.            |
-| `components/` | Storefront, authentication, cart, checkout, and shared UI components.     |
-| `hooks/`      | Client hooks for account, cart, wishlist, and bootstrap data.             |
+| `components/` | Storefront, authentication, cart, checkout, orders, and shared UI components. |
+| `hooks/`      | Client hooks for account, cart, wishlist, orders, and bootstrap data.     |
 | `lib/`        | Data access, application state, React Query configuration, and utilities. |
-| `services/`   | Client-facing API service functions.                                      |
+| `services/`   | Client-facing API service functions (auth, orders).                       |
 | `types/`      | TypeScript declarations for backend domain data.                          |
 | `utils/`      | Server utilities, including safe forwarding of backend session cookies.   |
 

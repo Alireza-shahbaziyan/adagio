@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import type { Province, City } from "@/types/location";
+import type {  CityResponse, ProvinceResponse } from "@/types/location";
 import { queryKeys } from "@/lib/queryKeys";
 import { useMe } from "@/hooks/useMe";
 
@@ -16,11 +16,11 @@ async function locationRequest<T>(path: string): Promise<T> {
   return res.json();
 }
 
-export function getProvinces(): Promise<Province[]> {
+export function getProvinces(): Promise<ProvinceResponse> {
   return locationRequest("/api/auth/provinces");
 }
 
-export function getCities(provinceId: number): Promise<City[]> {
+export function getCities(provinceId: number): Promise<CityResponse> {
   return locationRequest(`/api/auth/provinces/${provinceId}/cities`);
 }
 

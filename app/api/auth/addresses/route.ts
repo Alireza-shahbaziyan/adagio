@@ -9,20 +9,20 @@ export async function GET(req: NextRequest) {
     const res = await fetch(`${backend}/api/auth/addresses/`, {
       headers: {
         "Content-Type": "application/json",
-        cookie: req.headers.get("cookie") ?? "",
+        Cookie: req.headers.get("cookie") ?? "",
       },
       cache: "no-store",
     });
 
-    const rawText = await res.text();
+    const rawData = await res.json();
     let data: unknown = null;
     try {
-      data = JSON.parse(rawText);
+      data = rawData;
     } catch {
       if (!res.ok) {
         console.error(
           "addresses GET — non-JSON error body from backend:",
-          rawText.replace(/<style>[\s\S]*?<\/style>/, "").slice(0, 4000),
+          JSON.stringify(rawData).replace(/<style>[\s\S]*?<\/style>/, "").slice(0, 4000),
         );
       }
     }
@@ -35,6 +35,7 @@ export async function GET(req: NextRequest) {
     }
 
     const response = NextResponse.json(data, { status: 200 });
+   
     forwardSetCookie(res, response);
     return response;
   } catch {
@@ -54,22 +55,23 @@ export async function POST(req: NextRequest) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        cookie: req.headers.get("cookie") ?? "",
+        Cookie: req.headers.get("cookie") ?? "",
         ...(csrfToken ? { "X-CSRFToken": csrfToken } : {}),
       },
       body,
       cache: "no-store",
     });
 
-    const rawText = await res.text();
+    const rawData = await res.json();
+    console.log("-----rawData POST:", rawData);
     let data: unknown = null;
     try {
-      data = JSON.parse(rawText);
+      data = rawData;
     } catch {
       if (!res.ok) {
         console.error(
           "addresses POST — non-JSON error body from backend:",
-          rawText.replace(/<style>[\s\S]*?<\/style>/, "").slice(0, 4000),
+          JSON.stringify(rawData).replace(/<style>[\s\S]*?<\/style>/, "").slice(0, 4000),
         );
       }
     }

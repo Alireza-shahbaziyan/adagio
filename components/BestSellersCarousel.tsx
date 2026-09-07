@@ -6,6 +6,7 @@ import Link from "next/link";
 // import { Product } from "@/lib/products";
 // import { ChevronLeftIcon, ChevronRightIcon } from "@/components/icons";
 import { Product } from "@/types/products";
+import { formatPrice } from "@/lib/utils";
 
 type BestSellersCarouselProps = {
   products: Product[];
@@ -68,10 +69,9 @@ export default function BestSellersCarousel({
             <div className="p-4.5">
               <p className="mb-1 text-[15px] text-foreground">{p.title}</p>
               <p
-                style={{ direction: "ltr", textAlign: "right" }}
                 className="text-sm text-muted-foreground"
               >
-                {p.variants[0].price.toLocaleString("fa-IR")}-404
+                {formatPrice(p.variants[0].price)}
               </p>
             </div>
           </Link>

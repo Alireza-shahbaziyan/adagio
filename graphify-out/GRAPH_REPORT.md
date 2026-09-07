@@ -1,56 +1,51 @@
-# Graph Report - online-shop  (2026-08-11)
+# Graph Report - .  (2026-09-04)
 
 ## Corpus Check
-- 156 files · ~81,247 words
+- 192 files · ~87,863 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 767 nodes · 1182 edges · 138 communities (30 shown, 108 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.85)
+- 221 nodes · 0 edges · 221 communities (0 shown, 221 thin omitted)
+- Extraction: 0% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
-## Graph Freshness
-- Built from commit: `0e181406`
-- Run `git rev-parse HEAD` and compare to check if the graph is stale.
-- Run `graphify update .` after code changes (no API cost).
-
 ## Community Hubs (Navigation)
-- [[_COMMUNITY_DC Template Runtime (prototype engine)|DC Template Runtime (prototype engine)]]
-- [[_COMMUNITY_Storefront UI Components|Storefront UI Components]]
-- [[_COMMUNITY_Graphify Skill & Agent Docs|Graphify Skill & Agent Docs]]
-- [[_COMMUNITY_Package Dependencies (package.json)|Package Dependencies (package.json)]]
-- [[_COMMUNITY_App Layout & Global State|App Layout & Global State]]
-- [[_COMMUNITY_TypeScript Config|TypeScript Config]]
-- [[_COMMUNITY_Login & OTP Auth Flow|Login & OTP Auth Flow]]
-- [[_COMMUNITY_Brand Design Brief (Adagio)|Brand Design Brief (Adagio)]]
-- [[_COMMUNITY_Frontend Design Principles|Frontend Design Principles]]
-- [[_COMMUNITY_DC Prototype Actions (cartwishlisttoast)|DC Prototype Actions (cart/wishlist/toast)]]
-- [[_COMMUNITY_Skill Discovery Sources|Skill Discovery Sources]]
-- [[_COMMUNITY_ESLint Config|ESLint Config]]
-- [[_COMMUNITY_Product Type Definitions|Product Type Definitions]]
-- [[_COMMUNITY_Frontend Design License|Frontend Design License]]
-- [[_COMMUNITY_Login API Route|Login API Route]]
-- [[_COMMUNITY_Verify OTP API Route|Verify OTP API Route]]
-- [[_COMMUNITY_Login Layout|Login Layout]]
-- [[_COMMUNITY_Cigarettes After Sex Tee|Cigarettes After Sex Tee]]
-- [[_COMMUNITY_React Query Keys|React Query Keys]]
-- [[_COMMUNITY_Next.js Config|Next.js Config]]
-- [[_COMMUNITY_PostCSS Config|PostCSS Config]]
-- [[_COMMUNITY_DC Home Reveal Setup|DC Home Reveal Setup]]
-- [[_COMMUNITY_DC Home Hover Rendering|DC Home Hover Rendering]]
-- [[_COMMUNITY_API Response Types|API Response Types]]
-- [[_COMMUNITY_App Favicon|App Favicon]]
-- [[_COMMUNITY_Hyperedge Extraction Rule|Hyperedge Extraction Rule]]
-- [[_COMMUNITY_Semantic Similarity Rule|Semantic Similarity Rule]]
-- [[_COMMUNITY_Newsprint Tee Image|Newsprint Tee Image]]
-- [[_COMMUNITY_Silhouette Tee Image (Lana Del Rey)|Silhouette Tee Image (Lana Del Rey)]]
-- [[_COMMUNITY_Carousel Next Control|Carousel Next Control]]
-- [[_COMMUNITY_Carousel Prev Control|Carousel Prev Control]]
-- [[_COMMUNITY_Login Mode Switch|Login Mode Switch]]
-- [[_COMMUNITY_Password Visibility Toggle|Password Visibility Toggle]]
-- [[_COMMUNITY_Product Zoom Interaction|Product Zoom Interaction]]
-- [[_COMMUNITY_Hero Background Theme Image|Hero Background Theme Image]]
-- [[_COMMUNITY_Hero Person Image|Hero Person Image]]
+- [[_COMMUNITY_Community 0|Community 0]]
+- [[_COMMUNITY_Community 1|Community 1]]
+- [[_COMMUNITY_Community 2|Community 2]]
+- [[_COMMUNITY_Community 3|Community 3]]
+- [[_COMMUNITY_Community 4|Community 4]]
+- [[_COMMUNITY_Community 5|Community 5]]
+- [[_COMMUNITY_Community 6|Community 6]]
+- [[_COMMUNITY_Community 7|Community 7]]
+- [[_COMMUNITY_Community 8|Community 8]]
+- [[_COMMUNITY_Community 9|Community 9]]
+- [[_COMMUNITY_Community 10|Community 10]]
+- [[_COMMUNITY_Community 11|Community 11]]
+- [[_COMMUNITY_Community 12|Community 12]]
+- [[_COMMUNITY_Community 13|Community 13]]
+- [[_COMMUNITY_Community 14|Community 14]]
+- [[_COMMUNITY_Community 15|Community 15]]
+- [[_COMMUNITY_Community 16|Community 16]]
+- [[_COMMUNITY_Community 17|Community 17]]
+- [[_COMMUNITY_Community 18|Community 18]]
+- [[_COMMUNITY_Community 19|Community 19]]
+- [[_COMMUNITY_Community 20|Community 20]]
+- [[_COMMUNITY_Community 21|Community 21]]
+- [[_COMMUNITY_Community 22|Community 22]]
+- [[_COMMUNITY_Community 23|Community 23]]
+- [[_COMMUNITY_Community 24|Community 24]]
+- [[_COMMUNITY_Community 25|Community 25]]
+- [[_COMMUNITY_Community 26|Community 26]]
+- [[_COMMUNITY_Community 27|Community 27]]
+- [[_COMMUNITY_Community 28|Community 28]]
+- [[_COMMUNITY_Community 29|Community 29]]
+- [[_COMMUNITY_Community 30|Community 30]]
+- [[_COMMUNITY_Community 31|Community 31]]
+- [[_COMMUNITY_Community 32|Community 32]]
+- [[_COMMUNITY_Community 33|Community 33]]
+- [[_COMMUNITY_Community 34|Community 34]]
+- [[_COMMUNITY_Community 35|Community 35]]
 - [[_COMMUNITY_Community 36|Community 36]]
 - [[_COMMUNITY_Community 37|Community 37]]
 - [[_COMMUNITY_Community 38|Community 38]]
@@ -95,6 +90,7 @@
 - [[_COMMUNITY_Community 77|Community 77]]
 - [[_COMMUNITY_Community 78|Community 78]]
 - [[_COMMUNITY_Community 79|Community 79]]
+- [[_COMMUNITY_Community 80|Community 80]]
 - [[_COMMUNITY_Community 81|Community 81]]
 - [[_COMMUNITY_Community 82|Community 82]]
 - [[_COMMUNITY_Community 83|Community 83]]
@@ -135,186 +131,134 @@
 - [[_COMMUNITY_Community 118|Community 118]]
 - [[_COMMUNITY_Community 119|Community 119]]
 - [[_COMMUNITY_Community 120|Community 120]]
+- [[_COMMUNITY_Community 121|Community 121]]
 - [[_COMMUNITY_Community 122|Community 122]]
 - [[_COMMUNITY_Community 123|Community 123]]
 - [[_COMMUNITY_Community 124|Community 124]]
 - [[_COMMUNITY_Community 125|Community 125]]
+- [[_COMMUNITY_Community 126|Community 126]]
+- [[_COMMUNITY_Community 127|Community 127]]
 - [[_COMMUNITY_Community 128|Community 128]]
+- [[_COMMUNITY_Community 129|Community 129]]
+- [[_COMMUNITY_Community 130|Community 130]]
+- [[_COMMUNITY_Community 131|Community 131]]
+- [[_COMMUNITY_Community 132|Community 132]]
 - [[_COMMUNITY_Community 133|Community 133]]
+- [[_COMMUNITY_Community 134|Community 134]]
+- [[_COMMUNITY_Community 135|Community 135]]
+- [[_COMMUNITY_Community 136|Community 136]]
+- [[_COMMUNITY_Community 137|Community 137]]
 - [[_COMMUNITY_Community 138|Community 138]]
+- [[_COMMUNITY_Community 139|Community 139]]
+- [[_COMMUNITY_Community 140|Community 140]]
+- [[_COMMUNITY_Community 141|Community 141]]
 - [[_COMMUNITY_Community 142|Community 142]]
+- [[_COMMUNITY_Community 143|Community 143]]
+- [[_COMMUNITY_Community 144|Community 144]]
+- [[_COMMUNITY_Community 145|Community 145]]
+- [[_COMMUNITY_Community 146|Community 146]]
 - [[_COMMUNITY_Community 147|Community 147]]
+- [[_COMMUNITY_Community 148|Community 148]]
+- [[_COMMUNITY_Community 149|Community 149]]
 - [[_COMMUNITY_Community 150|Community 150]]
+- [[_COMMUNITY_Community 151|Community 151]]
+- [[_COMMUNITY_Community 152|Community 152]]
 - [[_COMMUNITY_Community 153|Community 153]]
+- [[_COMMUNITY_Community 154|Community 154]]
+- [[_COMMUNITY_Community 155|Community 155]]
 - [[_COMMUNITY_Community 156|Community 156]]
 - [[_COMMUNITY_Community 157|Community 157]]
 - [[_COMMUNITY_Community 158|Community 158]]
+- [[_COMMUNITY_Community 159|Community 159]]
+- [[_COMMUNITY_Community 160|Community 160]]
+- [[_COMMUNITY_Community 161|Community 161]]
+- [[_COMMUNITY_Community 162|Community 162]]
+- [[_COMMUNITY_Community 163|Community 163]]
+- [[_COMMUNITY_Community 164|Community 164]]
+- [[_COMMUNITY_Community 165|Community 165]]
+- [[_COMMUNITY_Community 166|Community 166]]
+- [[_COMMUNITY_Community 167|Community 167]]
+- [[_COMMUNITY_Community 168|Community 168]]
+- [[_COMMUNITY_Community 169|Community 169]]
+- [[_COMMUNITY_Community 170|Community 170]]
+- [[_COMMUNITY_Community 171|Community 171]]
+- [[_COMMUNITY_Community 172|Community 172]]
+- [[_COMMUNITY_Community 173|Community 173]]
+- [[_COMMUNITY_Community 174|Community 174]]
+- [[_COMMUNITY_Community 175|Community 175]]
+- [[_COMMUNITY_Community 176|Community 176]]
+- [[_COMMUNITY_Community 177|Community 177]]
+- [[_COMMUNITY_Community 178|Community 178]]
+- [[_COMMUNITY_Community 179|Community 179]]
+- [[_COMMUNITY_Community 180|Community 180]]
+- [[_COMMUNITY_Community 181|Community 181]]
+- [[_COMMUNITY_Community 182|Community 182]]
+- [[_COMMUNITY_Community 183|Community 183]]
+- [[_COMMUNITY_Community 184|Community 184]]
+- [[_COMMUNITY_Community 185|Community 185]]
+- [[_COMMUNITY_Community 186|Community 186]]
+- [[_COMMUNITY_Community 187|Community 187]]
+- [[_COMMUNITY_Community 188|Community 188]]
+- [[_COMMUNITY_Community 189|Community 189]]
+- [[_COMMUNITY_Community 190|Community 190]]
+- [[_COMMUNITY_Community 191|Community 191]]
+- [[_COMMUNITY_Community 192|Community 192]]
+- [[_COMMUNITY_Community 193|Community 193]]
+- [[_COMMUNITY_Community 194|Community 194]]
+- [[_COMMUNITY_Community 195|Community 195]]
+- [[_COMMUNITY_Community 196|Community 196]]
+- [[_COMMUNITY_Community 197|Community 197]]
+- [[_COMMUNITY_Community 198|Community 198]]
+- [[_COMMUNITY_Community 199|Community 199]]
+- [[_COMMUNITY_Community 200|Community 200]]
+- [[_COMMUNITY_Community 201|Community 201]]
+- [[_COMMUNITY_Community 202|Community 202]]
+- [[_COMMUNITY_Community 203|Community 203]]
+- [[_COMMUNITY_Community 204|Community 204]]
+- [[_COMMUNITY_Community 205|Community 205]]
+- [[_COMMUNITY_Community 206|Community 206]]
+- [[_COMMUNITY_Community 207|Community 207]]
+- [[_COMMUNITY_Community 208|Community 208]]
+- [[_COMMUNITY_Community 209|Community 209]]
+- [[_COMMUNITY_Community 210|Community 210]]
+- [[_COMMUNITY_Community 211|Community 211]]
+- [[_COMMUNITY_Community 212|Community 212]]
+- [[_COMMUNITY_Community 213|Community 213]]
+- [[_COMMUNITY_Community 214|Community 214]]
+- [[_COMMUNITY_Community 215|Community 215]]
+- [[_COMMUNITY_Community 216|Community 216]]
+- [[_COMMUNITY_Community 217|Community 217]]
+- [[_COMMUNITY_Community 218|Community 218]]
+- [[_COMMUNITY_Community 219|Community 219]]
+- [[_COMMUNITY_Community 220|Community 220]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `cn()` - 76 edges
-2. `useAppState()` - 21 edges
-3. `forwardSetCookie()` - 20 edges
-4. `compilerOptions` - 16 edges
-5. `useMe()` - 15 edges
-6. `Button()` - 11 edges
-7. `buildUrlsetXml()` - 11 edges
-8. `آداجیو (Adagio) — معماری پروژه` - 11 edges
-9. `Adagio — Architecture` - 11 edges
-10. `Adagio` - 11 edges
+1. `GET` - 0 edges
+2. `PUT` - 0 edges
+3. `DELETE` - 0 edges
+4. `GET` - 0 edges
+5. `POST` - 0 edges
+6. `GET` - 0 edges
+7. `GET` - 0 edges
+8. `POST` - 0 edges
+9. `GET` - 0 edges
+10. `GET` - 0 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `RootLayout()` --calls--> `cn()`  [EXTRACTED]
-  app/layout.tsx → lib/utils.ts
-- `DialogOverlay()` --calls--> `cn()`  [EXTRACTED]
-  components/ui/dialog.tsx → lib/utils.ts
-- `DialogFooter()` --calls--> `cn()`  [EXTRACTED]
-  components/ui/dialog.tsx → lib/utils.ts
-- `PUT()` --calls--> `forwardSetCookie()`  [EXTRACTED]
-  app/api/auth/addresses/[id]/route.ts → utils/forwardSetCookie.ts
-- `GET()` --calls--> `forwardSetCookie()`  [EXTRACTED]
-  app/api/auth/addresses/route.ts → utils/forwardSetCookie.ts
+- None detected - all connections are within the same source files.
 
 ## Import Cycles
-- 1-file cycle: `components/ui/button.tsx -> components/ui/button.tsx`
-- 1-file cycle: `components/ui/input.tsx -> components/ui/input.tsx`
-- 1-file cycle: `components/ui/dialog.tsx -> components/ui/dialog.tsx`
-- 1-file cycle: `components/ui/popover.tsx -> components/ui/popover.tsx`
-- 1-file cycle: `components/ui/separator.tsx -> components/ui/separator.tsx`
+- None detected.
 
-## Hyperedges (group relationships)
-- **graphify skill + its reference-file pipeline** — claude_skills_graphify_skill_graphify, claude_skills_graphify_references_add_watch_graphify_add, claude_skills_graphify_references_exports_neo4j_export, claude_skills_graphify_references_extraction_spec_node_id_format_rule, claude_skills_graphify_references_github_and_merge_graphify_clone, claude_skills_graphify_references_hooks_git_commit_hook, claude_skills_graphify_references_query_bfs_dfs_traversal, claude_skills_graphify_references_transcribe_whisper_transcription, claude_skills_graphify_references_update_incremental_update [EXTRACTED 1.00]
-- **Adagio site: Home, Login, Product pages form one navigable site** — project_home_dc_component, project_login_dc_component, project_product_dc_component [EXTRACTED 1.00]
-- **Shared toast-notification pattern across Home/Login/Product** — project_home_dc_showtoast, project_login_dc_showtoast, project_product_dc_showtoast [INFERRED 0.85]
-
-## Communities (138 total, 108 thin omitted)
-
-### Community 0 - "DC Template Runtime (prototype engine)"
-Cohesion: 0.17
-Nodes (12): BlogPostPage(), BlogPostPageProps, formatDate(), generateMetadata(), generateStaticParams(), getPost(), getPostSlugs(), NotFound() (+4 more)
-
-### Community 1 - "Storefront UI Components"
-Cohesion: 0.12
-Nodes (5): metadata, values, contactInfo, metadata, metadata
-
-### Community 2 - "Graphify Skill & Agent Docs"
-Cohesion: 0.06
-Nodes (35): Anton, Instrument_Serif, Inter, nastaliq, yekanBakhFontForFarsiChar, metadata, RootLayout(), ChevronDownIcon() (+27 more)
-
-### Community 3 - "Package Dependencies (package.json)"
-Cohesion: 0.06
-Nodes (35): dependencies, @base-ui/react, class-variance-authority, clsx, cmdk, lucide-react, motion, next (+27 more)
-
-### Community 4 - "App Layout & Global State"
-Cohesion: 0.10
-Nodes (15): PUT(), GET(), POST(), GET(), safeFetch(), POST(), POST(), DELETE() (+7 more)
-
-### Community 5 - "TypeScript Config"
-Cohesion: 0.10
-Nodes (19): compilerOptions, allowJs, esModuleInterop, incremental, isolatedModules, jsx, lib, module (+11 more)
-
-### Community 6 - "Login & OTP Auth Flow"
-Cohesion: 0.10
-Nodes (15): CheckoutFormValues, checkoutSchema, LoginForm(), PhoneFormValues, DIGIT_KEYS, DigitKey, OtpForm(), OtpFormValues (+7 more)
-
-### Community 7 - "Brand Design Brief (Adagio)"
-Cohesion: 1.00
-Nodes (3): Adagio Home Page Component (Home.dc.html), Adagio Login Page Component (Login.dc.html), Adagio Product Page Component (Product.dc.html)
-
-### Community 8 - "Frontend Design Principles"
-Cohesion: 0.22
-Nodes (12): BagIcon(), CloseIcon(), HeartIcon(), HomeIcon(), MenuIcon(), SearchIcon(), UserIcon(), MobileBottomNav() (+4 more)
-
-### Community 9 - "DC Prototype Actions (cart/wishlist/toast)"
-Cohesion: 0.20
-Nodes (11): addToCart, onSubscribe, _showToast, toggleWishlist, onGoogleClick, onSubmit, _showToast, addToCart (+3 more)
-
-### Community 11 - "ESLint Config"
-Cohesion: 0.40
-Nodes (4): compat, __dirname, eslintConfig, __filename
-
-### Community 12 - "Product Type Definitions"
-Cohesion: 0.25
-Nodes (7): Audio, Product, ProductImage, ProductsResponse, ProductVariant, Size, SizeAttribute
-
-### Community 14 - "Login API Route"
-Cohesion: 0.07
-Nodes (51): FEATURED_OPTIONS, pillClass(), Command(), CommandDialog(), CommandEmpty(), CommandGroup(), CommandInput(), CommandItem() (+43 more)
-
-### Community 15 - "Verify OTP API Route"
-Cohesion: 0.09
-Nodes (21): aliases, components, hooks, lib, ui, utils, iconLibrary, menuAccent (+13 more)
-
-### Community 16 - "Login Layout"
-Cohesion: 0.27
-Nodes (5): BlogPage(), getPosts(), metadata, EmptyState(), SectionHeader()
-
-### Community 36 - "Community 36"
-Cohesion: 0.06
-Nodes (32): Animations, Assistant, Assistant, Assistant, Assistant, Assistant, Best Sellers, Brand Identity (+24 more)
-
-### Community 37 - "Community 37"
-Cohesion: 0.22
-Nodes (3): metadata, REVIEWS, BestSellersCarouselProps
-
-### Community 40 - "Community 40"
-Cohesion: 0.33
-Nodes (5): Post, PostDetail, PostMedia, PostMetaTag, PostsResponse
-
-### Community 42 - "Community 42"
-Cohesion: 0.06
-Nodes (34): 10. Known Gaps, 1. Overview, 2. Tech Stack, 3. High-Level Architecture: BFF Proxy Pattern, 4. Directory Structure, 5. Routing Map, 6. State Management, 7. Authentication & Membership (+26 more)
-
-### Community 43 - "Community 43"
-Cohesion: 0.40
-Nodes (3): metadata, orderSteps, warrantyItems
-
-### Community 44 - "Community 44"
-Cohesion: 0.16
-Nodes (14): GET(), GET(), GET(), GET(), STATIC_PAGES, GET(), GET(), SUB_SITEMAPS (+6 more)
-
-### Community 46 - "Community 46"
-Cohesion: 0.50
-Nodes (3): Product, ProductCollection, ProductTag
-
-### Community 118 - "Community 118"
-Cohesion: 0.11
-Nodes (24): Page(), metadata, SearchParams, StorePage(), getPageNumbers(), StorePagination(), Pagination(), PaginationContent() (+16 more)
-
-### Community 119 - "Community 119"
-Cohesion: 0.23
-Nodes (3): Reveal(), RecentlyViewedItem, useScrollY()
-
-### Community 128 - "Community 128"
-Cohesion: 0.07
-Nodes (47): AddressForm(), AddressModal(), Mode, AddressSection(), CartView(), CheckoutFormValues, CheckoutModal(), Button() (+39 more)
-
-### Community 150 - "Community 150"
-Cohesion: 0.25
-Nodes (5): COLLECTION_LABEL, Product, PRODUCT_ACCORDION, PRODUCTS, SIZES
-
-## Ambiguous Edges - Review These
-- `_showToast` → `onSubscribe`  [AMBIGUOUS]
-  project/Home.dc.html · relation: calls
+## Communities (221 total, 221 thin omitted)
 
 ## Knowledge Gaps
-- **292 isolated node(s):** `metadata`, `values`, `ALLOWED_HOSTS`, `BlogPostPageProps`, `metadata` (+287 more)
+- **221 isolated node(s):** `GET`, `PUT`, `DELETE`, `GET`, `POST` (+216 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **108 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **221 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **What is the exact relationship between `_showToast` and `onSubscribe`?**
-  _Edge tagged AMBIGUOUS (relation: calls) - confidence is low._
-- **Why does `cn()` connect `Login API Route` to `Community 128`, `Graphify Skill & Agent Docs`, `Community 117`, `Community 118`?**
-  _High betweenness centrality (0.055) - this node is a cross-community bridge._
-- **Why does `useAppState()` connect `Graphify Skill & Agent Docs` to `Community 128`, `Login & OTP Auth Flow`?**
-  _High betweenness centrality (0.020) - this node is a cross-community bridge._
-- **What connects `metadata`, `values`, `ALLOWED_HOSTS` to the rest of the system?**
-  _313 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `Storefront UI Components` be split into smaller, more focused modules?**
-  _Cohesion score 0.11764705882352941 - nodes in this community are weakly interconnected._
-- **Should `Graphify Skill & Agent Docs` be split into smaller, more focused modules?**
-  _Cohesion score 0.06298701298701298 - nodes in this community are weakly interconnected._
-- **Should `Package Dependencies (package.json)` be split into smaller, more focused modules?**
-  _Cohesion score 0.05555555555555555 - nodes in this community are weakly interconnected._
+- **What connects `GET`, `PUT`, `DELETE` to the rest of the system?**
+  _221 weakly-connected nodes found - possible documentation gaps or missing edges._

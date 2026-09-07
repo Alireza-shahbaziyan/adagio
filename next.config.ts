@@ -24,6 +24,10 @@ const nextConfig: NextConfig = {
       { source: "/wishlist", destination: "/store/wishlist" },
       { source: "/cart", destination: "/store/cart" },
       { source: "/categories", destination: "/store/categories" },
+      { source: "/orders", destination: "/store/orders" },
+      { source: "/orders/result", destination: "/store/orders/result" },
+      { source: "/orders/:token", destination: "/store/orders/:token" },
+      { source: "/orders/:token/result", destination: "/store/orders/:token/result" },
     ];
   },
   output: "standalone",

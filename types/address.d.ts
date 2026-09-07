@@ -1,3 +1,5 @@
+import { PaginatedResponse } from "./response";
+
 export interface Address {
   id: number;
   title: string;
@@ -13,3 +15,4 @@ export interface Address {
 }
 
 export type AddressPayload = Omit<Address, "id" | "created_at" | "updated_at">;
+export type AddressResponse = PaginatedResponse<Address>;

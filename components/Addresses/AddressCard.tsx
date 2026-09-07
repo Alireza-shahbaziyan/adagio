@@ -2,6 +2,7 @@
 
 import { Badge } from "@/components/ui/badge";
 import type { Address } from "@/types/address";
+import { Button } from "../ui/button";
 
 export default function AddressCard({
   address,
@@ -14,16 +15,17 @@ export default function AddressCard({
   onSelect: () => void;
   onOpen: () => void;
 }) {
+
   return (
     <div
-      onClick={onOpen}
+   
       className={`flex cursor-pointer flex-col gap-3 rounded-[20px] border p-5 transition-colors ${
         selected
           ? "border-foreground/60 bg-[#111111] ring-1 ring-foreground/30"
           : "border-white/8 bg-[#111111] hover:border-white/20"
       }`}
     >
-      <div className="flex items-start justify-between gap-3">
+      <div className="flex items-start justify-between gap-3"  onClick={onSelect}>
         <label
           className="flex items-center gap-2"
           onClick={(e) => e.stopPropagation()}
@@ -42,13 +44,14 @@ export default function AddressCard({
         {address.is_default && <Badge variant="secondary">پیش‌فرض</Badge>}
       </div>
 
-      <div className="text-sm leading-[1.8] text-muted-foreground">
+      <div className="text-sm leading-[1.8] text-muted-foreground"    onClick={onSelect}>
         <p>{address.recipient_name}</p>
         <p style={{ direction: "ltr" }} className="text-left">
           {address.phone}
         </p>
         <p className="truncate">{address.address_line}</p>
       </div>
+      <Button onClick={onOpen}>ویرایش</Button>
     </div>
   );
 }

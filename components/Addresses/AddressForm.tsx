@@ -123,7 +123,6 @@ export default function AddressForm({
       });
     }
   });
-
   return (
     <form onSubmit={onSubmit}>
       <FieldGroup>
@@ -191,7 +190,7 @@ export default function AddressForm({
               <option value={0} disabled>
                 انتخاب کن
               </option>
-              {provinces?.map((p) => (
+              {provinces?.results?.map((p) => (
                 <option key={p.id} value={p.id}>
                   {p.name}
                 </option>
@@ -211,7 +210,7 @@ export default function AddressForm({
               <option value={0} disabled>
                 {provinceId ? "انتخاب کن" : "ابتدا استان"}
               </option>
-              {cities?.map((c) => (
+              {cities?.results?.map((c) => (
                 <option key={c.id} value={c.id}>
                   {c.name}
                 </option>

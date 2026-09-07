@@ -22,6 +22,7 @@ import ProductActions from "./ProductActions";
 import ProductAccordion from "./ProductAccordion";
 import ProductMobileBar from "./ProductMobileBar";
 import Link from "next/link";
+import { formatPrice } from "@/lib/utils";
 
 
 export default function ProductDetail({
@@ -167,17 +168,12 @@ export default function ProductDetail({
               {selectedVariant ? (
                 <>
                   <p className="flex flex-row-reverse gap-1 ">
-                    <span>{selectedVariant.price.toLocaleString("fa-IR")}</span>
-                    <span> تومان </span>
+                    <span>{formatPrice(selectedVariant.price)}</span>
                   </p>
                   {selectedVariant.compare_price != null &&
                     selectedVariant.compare_price > selectedVariant.price && (
                       <span className="ms-2 text-base text-[#6b6b6b] line-through">
-                        {/* ${selectedVariant.compare_price} */}
-                        {selectedVariant.compare_price.toLocaleString(
-                          "fa-IR",
-                        )}{" "}
-                        تومان
+                        {formatPrice(selectedVariant.compare_price)}
                       </span>
                     )}
                 </>

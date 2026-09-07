@@ -1,4 +1,5 @@
 import { ProductVariant } from "@/types/products";
+import { formatPrice } from "@/lib/utils";
 function ProductCardDec({
   title,
   isvalid,
@@ -17,7 +18,7 @@ function ProductCardDec({
         </p>
         {isvalid && (
           <p className="text-muted-foreground text-base">
-            {variant[0].price.toLocaleString("fa-IR")} تومان
+            {formatPrice(variant[0].price)}
           </p>
         )}
       </div>

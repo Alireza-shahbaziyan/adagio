@@ -1,24 +1,11 @@
 "use client";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/api-client";
 import type { Address, AddressPayload } from "@/types/address";
+import type { PaginatedResponse } from "@/types/response";
 import { queryKeys } from "@/lib/queryKeys";
-import { useMe } from "@/hooks/useMe";
-
-async function addressRequest<T>(path: string, init?: RequestInit): Promise<T> {
-  const res = await fetch(path, {
-    ...init,
-    credentials: "include",
-    headers: { "Content-Type": "application/json", ...init?.headers },
-  });
-
-  if (!res.ok) {
-    const data = await res.json().catch(() => null);
-    throw new Error(data?.detail || "درخواست آدرس‌ها ناموفق بود");
-  }
-
-  return res.json();
-}
+import { useMembership } from "@/hooks/useMembership";
 
 // Some backend responses nest province/city as the related object ({id, name})
 // instead of the plain id the rest of the app expects — normalize both shapes
@@ -27,6 +14,8 @@ type RawAddress = Omit<Address, "province" | "city"> & {
   province: number | { id: number };
   city: number | { id: number };
 };
+
+type RawAddressResponse = PaginatedResponse<RawAddress>;
 
 function toId(value: number | { id: number }): number {
   return typeof value === "object" && value !== null ? value.id : value;
@@ -37,12 +26,12 @@ function normalizeAddress(raw: RawAddress): Address {
 }
 
 export async function getAddresses(): Promise<Address[]> {
-  const data = await addressRequest<RawAddress[]>("/api/auth/addresses");
-  return data.map(normalizeAddress);
+  const data = await apiRequest<RawAddressResponse>("/api/auth/addresses");
+  return data.results.map(normalizeAddress);
 }
 
 export async function createAddress(payload: AddressPayload): Promise<Address> {
-  const data = await addressRequest<RawAddress>("/api/auth/addresses", {
+  const data = await apiRequest<RawAddress>("/api/auth/addresses", {
     method: "POST",
     body: JSON.stringify(payload),
   });
@@ -50,35 +39,26 @@ export async function createAddress(payload: AddressPayload): Promise<Address> {
 }
 
 export async function updateAddress(id: number, payload: AddressPayload): Promise<Address> {
-  const data = await addressRequest<RawAddress>(`/api/auth/addresses/${id}`, {
+  const data = await apiRequest<RawAddress>(`/api/auth/addresses/${id}`, {
     method: "PUT",
     body: JSON.stringify(payload),
   });
   return normalizeAddress(data);
 }
 
-/** DELETE responds 204 with no body — bypasses addressRequest's JSON parsing. */
 export async function deleteAddress(id: number): Promise<void> {
-  const res = await fetch(`/api/auth/addresses/${id}`, {
+  await apiRequest<void>(`/api/auth/addresses/${id}`, {
     method: "DELETE",
-    credentials: "include",
   });
-
-  if (res.status === 204) return;
-
-  if (!res.ok) {
-    const data = await res.json().catch(() => null);
-    throw new Error(data?.detail || "حذف آدرس ناموفق بود");
-  }
 }
 
 export function useAddresses() {
-  const { data: me } = useMe();
+  const { isMember } = useMembership();
   return useQuery({
     queryKey: queryKeys.addresses,
     queryFn: getAddresses,
-    enabled: !!me,
-    staleTime: 5 * 60_000, // changes rarely — an occasional add/edit, not per-navigation
+    enabled: isMember,
+    staleTime: 5 * 60_000,
   });
 }
 

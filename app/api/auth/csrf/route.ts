@@ -1,34 +1,42 @@
-import { backend } from "@/utils/getURL";
-import { NextResponse } from "next/server";
 
-export async function GET() {
+import { NextRequest, NextResponse } from "next/server";
+
+import { backend } from "@/utils/getURL";
+import { forwardSetCookie } from "@/utils/forwardSetCookie";
+
+export const dynamic = "force-dynamic";
+
+export async function GET(req: NextRequest) {
   try {
-    const response = await fetch(`${backend}/api/auth/csrf/`, {
+    const res = await fetch(`${backend}/api/auth/csrf/`, {
       method: "GET",
-      headers:{
-              "Content-Type": "application/json",
-              
+      headers: {
+        Cookie: req.headers.get("cookie") ?? "",
       },
       cache: "no-store",
     });
 
-    const nextResponse = new NextResponse(null, {
-      status: response.status,
-    });
+    const data = await res.json().catch(() => null);
 
-    const setCookie = response.headers.get("set-cookie");
+    const response = NextResponse.json(
+      data ?? { success: res.ok },
+      {
+        status: res.status,
+      },
+    );
 
-    if (setCookie) {
-      nextResponse.headers.set("set-cookie", setCookie);
-    }
+    forwardSetCookie(res, response);
 
-    return nextResponse;
-  } catch (error) {
-    console.error(error);
-
+    return response;
+  } catch {
     return NextResponse.json(
-      { detail: "Internal Server Error" },
-      { status: 500 },
+      {
+        detail: "دریافت CSRF token ناموفق بود",
+      },
+      {
+        status: 500,
+      },
     );
   }
 }
+

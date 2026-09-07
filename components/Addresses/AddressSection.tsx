@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useMe } from "@/hooks/useMe";
+import { useMembership } from "@/hooks/useMembership";
 import { useAddresses } from "@/lib/addresses";
 import { Skeleton } from "@/components/ui/skeleton";
 import AddressList from "@/components/Addresses/AddressList";
 import type { Address } from "@/types/address";
+import { findDefault } from "@/utils/findDefault";
+import { useEffect } from "react";
 
 export default function AddressSection({
   selectedId,
@@ -18,10 +20,15 @@ export default function AddressSection({
   onCardClick: (address: Address) => void;
   onAddClick: () => void;
 }) {
-  const { data: me, isLoading: meLoading } = useMe();
+  const { isMember, isLoading: memberLoading } = useMembership();
   const { data: addresses, isLoading: addressesLoading } = useAddresses();
-
-  if (meLoading || (me && addressesLoading)) {
+  const defaultAddress = addresses ? findDefault(addresses) : null;
+  useEffect(() => {
+    if (defaultAddress) {
+      onSelectAddress(defaultAddress.id);
+    }
+  }, [defaultAddress, onSelectAddress]);
+  if (memberLoading || (isMember && addressesLoading)) {
     return (
       <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
         <Skeleton className="h-33 w-full rounded-[20px] bg-[#181818]" />
@@ -29,8 +36,7 @@ export default function AddressSection({
       </div>
     );
   }
-
-  if (!me) {
+  if (!isMember) {
     return (
       <div className="mb-8 rounded-[20px] border border-white/8 bg-[#111111] px-8 py-10 text-center">
         <p className="mb-2 text-[15px] font-bold text-foreground">

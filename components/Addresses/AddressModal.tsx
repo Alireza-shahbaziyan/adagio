@@ -67,9 +67,8 @@ export default function AddressModal({
       },
     });
   }
-
-  const provinceName = provinces?.find((p) => p.id === address?.province)?.name;
-  const cityName = cities?.find((c) => c.id === address?.city)?.id;
+  const provinceName = provinces?.results?.find((p) => p.id === address?.province)?.name;
+  const cityName = cities?.results?.find((c) => c.id === address?.city)?.name;
 
   // const titles: Record<Mode, string> = {
   //   create: "افزودن آدرس جدید",

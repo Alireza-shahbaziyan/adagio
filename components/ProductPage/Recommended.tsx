@@ -3,6 +3,7 @@ import Reveal from "../Reveal";
 import Image from "next/image";
 import { RecentlyViewedItem } from "@/lib/hooks";
 import { Product } from "@/types/products";
+import { formatPrice } from "@/lib/utils";
 
 export default function Recommended({
   recommended,
@@ -45,10 +46,9 @@ export default function Recommended({
                         {p.title}
                       </p>
                       <p
-                        style={{ direction: "ltr", textAlign: "right" }}
                         className="text-sm text-muted-foreground"
                       >
-                        {price != null ? `$${price}` : ""}
+                        {price != null ? formatPrice(price) : ""}
                       </p>
                     </div>
                   </Link>

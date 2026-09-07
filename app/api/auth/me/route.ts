@@ -8,19 +8,19 @@ export async function GET(req: NextRequest) {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        cookie: cookie || "",
+        "Cookie": cookie || "",
       },
+      
       cache: "no-store",
     });
 
     const data = await response.json();
-    console.log(data);
-
+    
     const nextResponse = NextResponse.json(data, {
       status: response.status,
     });
-
     return nextResponse;
+
   } catch (error) {
     console.error(error);
     return NextResponse.json(

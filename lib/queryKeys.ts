@@ -10,4 +10,7 @@ export const queryKeys = {
   addresses: ["addresses"] as const,
   provinces: ["provinces"] as const,
   cities: (provinceId: number) => ["cities", provinceId] as const,
+  gateways: ["gateways"] as const,
+  orders: ["orders"] as const,
+  order: (token: string) => ["orders", token] as const,
 };

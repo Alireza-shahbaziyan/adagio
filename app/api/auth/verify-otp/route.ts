@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
 
     const res = await fetch(`${backend}/api/auth/verify/`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "Cookie": req.headers.get("cookie") || "" },
       body: JSON.stringify({ phone: formattedPhone, code }),
     });
 

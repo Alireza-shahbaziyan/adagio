@@ -16,8 +16,7 @@ export default function Footer({
         <section aria-label="درباره آداجیو">
           <p
             style={{ direction: "ltr" }}
-            className="text-end mb-4 font-instrument-serif text-[28px] italic text-foreground"
-          >
+            className="text-end mb-4 font-instrument-serif text-[28px] italic text-foreground" >
             Adagio
           </p>
 

@@ -1,42 +1,26 @@
 "use client";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/api-client";
 import type { WishlistItem } from "@/types/wishlist";
 import { queryKeys } from "@/lib/queryKeys";
 import { useMe } from "@/hooks/useMe";
 import { useAppState } from "@/lib/app-state";
 import { useRouter } from "next/navigation";
-async function wishlistRequest(
-  path: string,
-  init?: RequestInit,
-): Promise<WishlistItem[]> {
-  const res = await fetch(path, {
-    ...init,
-    credentials: "include",
-    headers: { "Content-Type": "application/json", ...init?.headers },
-  });
-
-  if (!res.ok) {
-    const data = await res.json().catch(() => null);
-    throw new Error(data?.detail || "درخواست علاقه‌مندی‌ها ناموفق بود");
-  }
-
-  return res.json();
-}
 
 export function getWishlist(): Promise<WishlistItem[]> {
-  return wishlistRequest("/api/wishlist");
+  return apiRequest<WishlistItem[]>("/api/wishlist");
 }
 
 export function addWishlistItem(slug: string): Promise<WishlistItem[]> {
-  return wishlistRequest("/api/wishlist/items", {
+  return apiRequest<WishlistItem[]>("/api/wishlist/items", {
     method: "POST",
     body: JSON.stringify({ slug }),
   });
 }
 
 export function removeWishlistItem(slug: string): Promise<WishlistItem[]> {
-  return wishlistRequest(`/api/wishlist/items/${slug}`, { method: "DELETE" });
+  return apiRequest<WishlistItem[]>(`/api/wishlist/items/${slug}`, { method: "DELETE" });
 }
 
 export function useWishlist() {

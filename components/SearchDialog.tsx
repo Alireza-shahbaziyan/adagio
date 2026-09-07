@@ -16,6 +16,7 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import { getStoreProducts } from "@/lib/store";
 import { queryKeys } from "@/lib/queryKeys";
+import { formatPrice } from "@/lib/utils";
 
 export default function SearchDialog({
   open,
@@ -107,10 +108,9 @@ export default function SearchDialog({
                       <span className="truncate">{product.title}</span>
                       {price != null && (
                         <span
-                          style={{ direction: "ltr" }}
                           className="text-xs text-muted-foreground"
                         >
-                          ${price}
+                          {formatPrice(price)}
                         </span>
                       )}
                     </div>
