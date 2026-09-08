@@ -10,7 +10,7 @@ import Footer from "@/components/Footer";
 import MobileBottomNav from "@/components/MobileBottomNav";
 // import { PRODUCTS } from "@/lib/products";
 import { ProductsResponse } from "@/types/products";
-import { CustomerGalleryItem, GalleryResponse } from "@/types/gallery";
+import { GalleryResponse } from "@/types/gallery";
 import { Metadata } from "next";
 import { Post,  PostsResponse } from "@/types/posts";
 import BlogPostCard from "@/components/blog/BlogPostCard";
@@ -122,7 +122,7 @@ export default async function Home() {
     return <div>مشکلی پیش آمده دوباره امتحان کنید . </div>;
   }
   const products: ProductsResponse = await ProductResponse.json();
-  const GalleryList: GalleryResponse = await GalleryResponse.json();
+  // const GalleryList: GalleryResponse = await GalleryResponse.json();
   const posts: PostsResponse = await getPostsResponse.json();
 
   return (

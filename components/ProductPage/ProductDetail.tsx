@@ -21,7 +21,7 @@ import ProductQuantityStepper from "./ProductQuantityStepper";
 import ProductActions from "./ProductActions";
 import ProductAccordion from "./ProductAccordion";
 import ProductMobileBar from "./ProductMobileBar";
-import Link from "next/link";
+
 import { formatPrice } from "@/lib/utils";
 
 
