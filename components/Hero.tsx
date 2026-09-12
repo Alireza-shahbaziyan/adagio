@@ -1,290 +1,323 @@
 "use client";
 
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
+import { useRef } from "react";
 import {
-  motion,
-  useScroll,
-  useTransform,
-  useReducedMotion,
-} from "motion/react";
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpLeft,
+} from "lucide-react";
 
-const RANGE = 420;
-import imageperson from "/public/assets/heroPerson-LW.png";
+import { A11y, Autoplay, EffectFade, Keyboard } from "swiper/modules";
+import {
+  Swiper,
+  SwiperSlide,
+  type SwiperRef,
+} from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/effect-fade";
+
+import heroImage from "/public/assets/cigsaftersecmerch.webp";
+import lanaGirl from "/public/assets/adagioGirl.webp";
+import stargirl from "/public/assets/stargirl.jpg";
+
+interface HeroSlide {
+  id: number;
+  image: StaticImageData;
+  eyebrow: string;
+  title: string;
+  description: string;
+  product: string;
+}
+
+const slides: HeroSlide[] = [
+  {
+    id: 1,
+    image: heroImage,
+    eyebrow: "آداجیو / ۰۱",
+    title: "موسیقی‌ات\nرو بپوش",
+    description: "هر اثر، داستانی‌ست که پوشیده می‌شود.",
+    product: "کالکشن سیگرتس اَفتر سکس",
+  },
+  {
+    id: 2,
+    image: lanaGirl,
+    eyebrow: "آداجیو / ۰۲",
+    title: "هنر رو\nبپوش",
+    description:
+      "طراحی‌هایی برای کسانی که موسیقی را زندگی می‌کنند.",
+    product: "کالکشن موسیقی",
+  },
+  {
+    id: 3,
+    image: stargirl,
+    eyebrow: "آداجیو / ۰۳",
+    title: "آروم\nماندگار.",
+    description: "استایل مینیمال، موسیقی ماندگار.",
+    product: "کالکشن ویژه",
+  },
+];
+
+const AUTOPLAY_DELAY = 5500;
 
 export default function Hero() {
-  const reduceMotion = useReducedMotion();
-  const { scrollY } = useScroll();
+  const swiperRef = useRef<SwiperRef | null>(null);
 
-  const heroY = useTransform(scrollY, [0, RANGE], [0, -70]);
-  const heroOpacity = useTransform(scrollY, [0, RANGE], [1, 0]);
+  const handlePrevious = () => {
+    swiperRef.current?.swiper.slidePrev();
+  };
 
-  const imageScale = useTransform(scrollY, [0, RANGE], [1, 1.05]);
-
-  const titleY = useTransform(scrollY, [0, RANGE], [0, -24]);
-
-  const leftX = useTransform(scrollY, [0, RANGE], [0, -220]);
-  const rightX = useTransform(scrollY, [0, RANGE], [0, 220]);
-
-  const bottomScale = useTransform(scrollY, [0, 500], [1, 1.2]);
-  const bottomOpacity = useTransform(scrollY, [0, 500], [0.7, 1]);
-
-  // const cueOpacity = useTransform(scrollY, [0, 260], [1, 0]);
+  const handleNext = () => {
+    swiperRef.current?.swiper.slideNext();
+  };
 
   return (
     <section
-      dir="ltr"
-      className=" bg-hero 
-    relative flex h-[88vh] md:min-h-svh items-center justify-center overflow-hidden bg-[#050505]"
+      dir="rtl"
+      aria-label="محصولات ویژه آداجیو"
+      className="relative h-[75vh] min-h-140 w-full overflow-hidden bg-black text-white md:h-[80vh] lg:h-[90vh]"
     >
-      <motion.div
-        className="absolute inset-0 flex items-center justify-center"
-        style={{
-          y: reduceMotion ? 0 : heroY,
-          opacity: heroOpacity,
+      <Swiper
+        ref={swiperRef}
+        modules={[
+          Autoplay,
+          EffectFade,
+          Keyboard,
+          A11y,
+        ]}
+        dir="rtl"
+        effect="fade"
+        fadeEffect={{
+          crossFade: true,
+        }}
+        speed={1200}
+        loop
+        autoplay={{
+          delay: AUTOPLAY_DELAY,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }}
+        keyboard={{
+          enabled: true,
+          onlyInViewport: true,
+        }}
+        grabCursor
+        allowTouchMove
+        watchSlidesProgress
+        className="hero-swiper h-full w-full"
+        a11y={{
+          enabled: true,
+          prevSlideMessage: "اسلاید قبلی",
+          nextSlideMessage: "اسلاید بعدی",
+          firstSlideMessage: "این اولین اسلاید است",
+          lastSlideMessage: "این آخرین اسلاید است",
         }}
       >
-        <motion.div
-          className="absolute inset-x-0 z-10 "
-          style={{
-            y: reduceMotion ? 0 : titleY,
-          }}
-        >
-          <div
-            className="flex font-black justify-center 
-             text-[#dcdcdc] text-[20vw] md:text-[24vw] leading-none 
-            "
-            aria-label="ADAGIO"
-          >
-            <motion.span style={{ x: reduceMotion ? 0 : leftX }}>
-              ADA
-            </motion.span>
+        {slides.map((slide, index) => (
+          <SwiperSlide key={slide.id}>
+            <HeroSlide
+              slide={slide}
+              index={index}
+              onPrevious={handlePrevious}
+              onNext={handleNext}
+            />
+          </SwiperSlide>
+        ))}
 
-            <motion.span style={{ x: reduceMotion ? 0 : rightX }}>
-              GIO
-            </motion.span>
+        {/* Progress */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 h-1">
+          <div className="hero-progress h-full w-full origin-right bg-white/20">
+            <div className="hero-progress-bar h-full origin-right bg-white" />
           </div>
-        </motion.div>
-
-        <motion.div
-          className="relative z-20  h-[92svh] md:h-[min(72vh,620px)] "
-          style={{
-            scale: reduceMotion ? 1 : imageScale,
-          }}
-        >
-          <Image
-            src={imageperson}
-            alt=""
-            width={620}
-            height={775}
-            priority
-            className="h-full w-auto object-contain select-none"
-          />
-        </motion.div>
-      </motion.div>
-
-      <motion.div
-        className="absolute bottom-5 z-30 px-6 text-center md:bottom-14"
-        style={{
-          scale: reduceMotion ? 1 : bottomScale,
-          opacity: bottomOpacity,
-        }}
-      >
-        <div className="mx-auto max-w-72 text-sm font-bold leading-[1.7] text-white shadow-2xl flex gap-2  md:max-w-105 md:text-xl">
-          <p>هر اثر قصه‌ایست که پوشیده می‌شود</p>
-          <h1>گالری آداجیو</h1>
         </div>
-      </motion.div>
+      </Swiper>
+
+      {/* Mobile navigation */}
+      <div className="absolute bottom-7 left-6 z-40 flex items-center gap-2 md:hidden">
+        <button
+          type="button"
+          onClick={handlePrevious}
+          aria-label="اسلاید قبلی"
+          className="flex h-10 w-10 items-center justify-center border border-white/20 bg-black/20 text-white backdrop-blur-sm transition-colors hover:bg-white hover:text-black"
+        >
+          <ArrowRight
+            size={15}
+            strokeWidth={1.5}
+          />
+        </button>
+
+        <button
+          type="button"
+          onClick={handleNext}
+          aria-label="اسلاید بعدی"
+          className="flex h-10 w-10 items-center justify-center border border-white/20 bg-black/20 text-white backdrop-blur-sm transition-colors hover:bg-white hover:text-black"
+        >
+          <ArrowLeft
+            size={15}
+            strokeWidth={1.5}
+          />
+        </button>
+      </div>
+
+      {/* Scroll hint */}
+      <div className="pointer-events-none absolute bottom-10 right-1/2 z-40 hidden translate-x-1/2 flex-col items-center gap-3 text-[9px] tracking-[0.25em] text-white/35 lg:flex">
+        <span>پایین برو</span>
+
+        <span className="h-10 w-px bg-linear-to-b from-white/70 to-transparent" />
+      </div>
     </section>
   );
 }
 
-// "use client";
+interface HeroSlideProps {
+  slide: HeroSlide;
+  index: number;
+  onPrevious: () => void;
+  onNext: () => void;
+}
 
-// import Image from "next/image";
-// import {
-//   motion,
-//   useScroll,
-//   useTransform,
-//   useSpring,
-//   useReducedMotion,
-// } from "motion/react";
+function HeroSlide({
+  slide,
+  index,
+  onPrevious,
+  onNext,
+}: HeroSlideProps) {
+  return (
+    <article className="relative h-full w-full overflow-hidden">
+      {/* Image */}
+      <Image
+        src={slide.image}
+        alt={slide.product}
+        fill
+        priority={index === 0}
+        sizes="100vw"
+        className="hero-image object-cover object-center"
+      />
 
-// // Same easing as the original component
-// const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
+      {/* Base overlay */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-black/25"
+      />
 
-// export default function Hero() {
-//   const reduceMotion = useReducedMotion();
-//   const { scrollY } = useScroll();
+      {/* Text readability */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-linear-to-l from-black via-black/55 to-transparent"
+      />
 
-//   // Physics-based smoothing — all scroll-linked transforms read from this
-//   const smoothY = useSpring(scrollY, {
-//     stiffness: 140,
-//     damping: 26,
-//     mass: 0.4,
-//   });
+      {/* Bottom fade */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 h-[45%] bg-linear-to-t from-black via-black/35 to-transparent"
+      />
 
-//   // Hero (image + title container)
-//   const heroY = useTransform(smoothY, [0, 420], [0, -70], {
-//     ease: easeOutCubic,
-//   });
-//   const heroScale = useTransform(smoothY, [0, 420], [1, 1.1], {
-//     ease: easeOutCubic,
-//   });
-//   const heroOpacity = useTransform(smoothY, [0, 420], [1, 0], {
-//     ease: easeOutCubic,
-//   });
+      {/* Grain */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.045)_1px,transparent_1px)] bg-size-[4px_4px] opacity-20 mix-blend-overlay"
+      />
 
-//   // Title: slight upward parallax + the two halves splitting apart.
-//   // vw units keep the split proportional on every screen size.
-//   const titleY = useTransform(smoothY, [0, 420], [0, -30], {
-//     ease: easeOutCubic,
-//   });
-//   const titleLeftX = useTransform(smoothY, [0, 420], ["0vw", "-48vw"], {
-//     ease: easeOutCubic,
-//   });
-//   const titleRightX = useTransform(smoothY, [0, 420], ["0vw", "48vw"], {
-//     ease: easeOutCubic,
-//   });
+      {/* Content */}
+      <div className="relative z-10 flex h-full w-full items-end">
+        <div className="mx-auto flex w-full max-w-[1600px] items-end justify-between px-6 pb-12 sm:px-8 md:px-12 md:pb-16 lg:px-16 lg:pb-20 xl:px-20">
 
-//   // Bottom text
-//   const bottomScale = useTransform(smoothY, [0, 500], [1, 1.35], {
-//     ease: easeOutCubic,
-//   });
-//   const bottomOpacity = useTransform(scrollY, [0, 500], [0.7, 1]);
+          {/* Content */}
+          <div className="hero-content max-w-170 text-right">
+            {/* Eyebrow */}
+            <div className="mb-5 flex items-center justify-start gap-3 text-[10px] font-medium tracking-[0.2em] text-white/55 md:text-xs">
+              <span className="h-px w-8 bg-white/50" />
 
-//   // Scroll cue — tied to raw scroll so it reacts instantly
-//   const cueOpacity = useTransform(scrollY, [0, 260], [1, 0]);
+              <span>{slide.eyebrow}</span>
+            </div>
 
-//   return (
-//     <section className="relative flex min-h-svh w-full bg-light-in-dark items-center justify-center
-//     overflow-hidden bg-[#050505] md:h-screen">
-//       <div className="film-grain" aria-hidden="true" />
+            {/* Title */}
+            <h1 className="whitespace-pre-line text-[clamp(3.5rem,10vw,9rem)] font-extrabold leading-[0.9] tracking-[-0.035em] text-white md:text-8xl md:leading-36">
+              {slide.title}
+            </h1>
 
-//       {/* Spotlight */}
-//       <div
-//         className="pointer-events-none absolute inset-0 "
-//         aria-hidden="true"
-//         style={{
-//           background:
-//             "radial-gradient(circle at 50% 72%, rgba(243,243,243,.14), transparent 55%)",
-//         }}
-//       />
+            {/* Description */}
+            <div className="mt-7 flex max-w-107.5 items-start gap-4 md:mt-9">
+              <p className="font-sans text-sm leading-7 text-white/65 md:text-base">
+                {slide.description}
+              </p>
 
-//       {/* Mountains */}
-//       <div
-//         className="pointer-events-none absolute inset-x-0 bottom-0 h-[28%] bg-[#151515]"
-//         aria-hidden="true"
-//         style={{
-//           clipPath:
-//             "polygon(0% 100%,0% 55%,6% 70%,14% 40%,24% 62%,34% 35%,44% 58%,54% 30%,64% 55%,74% 38%,84% 60%,92% 42%,100% 58%,100% 100%)",
-//         }}
-//       />
+              <div className="mt-3 h-px w-7 shrink-0 bg-white/40" />
+            </div>
 
-//       <div
-//         className="pointer-events-none  absolute inset-x-0 bottom-0 h-[17%] bg-[#080808]"
-//         aria-hidden="true"
-//         style={{
-//           clipPath:
-//             "polygon(0% 100%,0% 70%,10% 82%,20% 60%,32% 78%,44% 55%,56% 75%,68% 58%,80% 78%,90% 62%,100% 75%,100% 100%)",
-//         }}
-//       />
+            {/* CTA */}
+            <button
+              type="button"
+              className="group mt-7 inline-flex items-center gap-3 border border-white/25 bg-white px-5 py-3 text-xs font-medium tracking-[0.12em] text-black transition-all duration-300 hover:bg-white/90 md:mt-9 md:px-6 md:py-3.5"
+            >
+              <span>مشاهده کالکشن</span>
 
-//       {/* Hero */}
-//       <motion.div
-//         className="pointer-events-none absolute inset-0 flex items-center justify-center bg-hero"
-//         style={{
-//           y: reduceMotion ? 0 : heroY,
-//           scale: reduceMotion ? 1 : heroScale,
-//           opacity: heroOpacity,
-//         }}
-//       >
-//         {/* Title — two halves that slide apart on scroll */}
-//         <motion.div
-//           dir="ltr"
-//           className="absolute inset-x-0 z-10"
-//           style={{ y: reduceMotion ? 0 : titleY }}
-//         >
-//           <h1
-//             aria-label="ADAGIO"
-//             className="flex items-center justify-center md:font-anton font-black text-[20vw] leading-[0.85]
-//              text-[#dcdcdc] sm:text-[20vw] md:text-[26vw]"
-//           >
-//             <motion.span
-//               aria-hidden="true"
-//               className="inline-block will-change-transform "
-//               style={{ x: reduceMotion ? 0 : titleLeftX }}
-//             >
-//               ADA
-//             </motion.span>
-//             <motion.span
-//               aria-hidden="true"
-//               className="inline-block will-change-transform"
-//               style={{ x: reduceMotion ? 0 : titleRightX }}
-//             >
-//               GIO
-//             </motion.span>
-//           </h1>
-//         </motion.div>
+              <ArrowUpLeft
+                size={15}
+                strokeWidth={1.7}
+                className="transition-transform duration-300 group-hover:-translate-x-1 group-hover:-translate-y-1"
+              />
+            </button>
+          </div>
 
-//         {/* Person — taller and more dominant on mobile */}
-//         <div className="relative z-20 h-[92svh] w-auto md:h-[min(72vh,620px)]">
-//           <Image
-//             src="/assets/heroPerson.png"
-//             alt=""
-//             width={620}
-//             height={775}
-//             priority
-//             className="pointer-events-none h-full w-auto object-contain select-none"
-//             style={{
-//               filter:
-//                 "grayscale(1) contrast(1.12) brightness(.92) drop-shadow(0 30px 60px rgba(0,0,0,.6))",
-//               maskImage:
-//                 "radial-gradient(ellipse 58% 74% at 50% 46%, black 55%, transparent 100%)",
-//               WebkitMaskImage:
-//                 "radial-gradient(ellipse 58% 74% at 50% 46%, black 55%, transparent 100%)",
-//             }}
-//           />
-//         </div>
-//       </motion.div>
+          {/* Desktop controls */}
+          <div className="hidden w-47.5 flex-col items-start gap-6 md:flex">
 
-//       {/* Bottom Text */}
-//       <motion.div
-//         dir="rtl"
-//         lang="fa"
-//         className="pointer-events-none absolute inset-x-0 bottom-28 z-30 px-6 text-center font-thin md:bottom-14"
-//         style={{
-//           scale: reduceMotion ? 1 : bottomScale,
-//           opacity: bottomOpacity,
-//         }}
-//       >
-//         <p className="mx-auto max-w-64 text-[13px] leading-[1.7] sm:max-w-72 md:max-w-105 md:text-xl">
-//           برای شب‌هایی که موسیقی تنها هم‌صحبت توست
-//         </p>
-//       </motion.div>
+            {/* Counter */}
+            <div className="flex items-center gap-3 font-mono text-[10px] tracking-[0.2em] text-white/50">
+              <span className="hero-current text-white">
+                ۰۱
+              </span>
 
-//       {/* Scroll Hint */}
-//       <motion.div
-//         dir="rtl"
-//         lang="fa"
-//         aria-hidden="true"
-//         className="pointer-events-none absolute left-1/2 z-30 flex -translate-x-1/2 flex-col items-center gap-2.5 bottom-[max(2rem,calc(env(safe-area-inset-bottom)+1rem))]"
-//         style={{ opacity: cueOpacity }}
-//       >
-//         <span className="text-[10px] tracking-[1px] text-muted-foreground">
-//           اسکرول کن
-//         </span>
+              <span>/</span>
 
-//         <motion.div
-//           className="h-8 w-px"
-//           style={{
-//             background: "linear-gradient(180deg,#A8A8A8,transparent)",
-//           }}
-//           animate={
-//             reduceMotion ? undefined : { y: [0, 6, 0], opacity: [1, 0.4, 1] }
-//           }
-//           transition={{ duration: 2, ease: "easeInOut", repeat: Infinity }}
-//         />
-//       </motion.div>
-//     </section>
-//   );
-// }
+              <span>
+                {toPersianNumber(slides.length)}
+              </span>
+            </div>
+
+            {/* Progress */}
+            <div className="h-px w-full overflow-hidden bg-white/20">
+              <div className="hero-progress-desktop h-full w-full origin-right bg-white" />
+            </div>
+
+            {/* Navigation */}
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={onPrevious}
+                aria-label="اسلاید قبلی"
+                className="flex h-11 w-11 items-center justify-center border border-white/20 text-white/70 transition-all duration-300 hover:border-white/60 hover:bg-white hover:text-black"
+              >
+                <ArrowRight
+                  size={16}
+                  strokeWidth={1.5}
+                />
+              </button>
+
+              <button
+                type="button"
+                onClick={onNext}
+                aria-label="اسلاید بعدی"
+                className="flex h-11 w-11 items-center justify-center border border-white/20 text-white/70 transition-all duration-300 hover:border-white/60 hover:bg-white hover:text-black"
+              >
+                <ArrowLeft
+                  size={16}
+                  strokeWidth={1.5}
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function toPersianNumber(value: number) {
+  return value
+    .toString()
+    .padStart(2, "0")
+    .replace(/\d/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[Number(digit)]);
+}
