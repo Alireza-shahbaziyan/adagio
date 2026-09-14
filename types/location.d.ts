@@ -1,4 +1,4 @@
-import { PaginatedResponse } from "./response";
+// import { PaginatedResponse } from "./response";
 
 export interface Province {
   id: number;
@@ -11,5 +11,5 @@ export interface City {
   province_id: number;
 }
 
-export type ProvinceResponse = PaginatedResponse<Province>;
-export type CityResponse = PaginatedResponse<City>;
+export type ProvinceResponse = Province[];
+export type CityResponse =City[];

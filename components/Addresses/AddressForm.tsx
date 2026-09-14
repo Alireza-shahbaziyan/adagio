@@ -1,70 +1,58 @@
+
 "use client";
 
 import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
+
 import {
   Field,
   FieldError,
   FieldGroup,
   FieldLabel,
-  // FieldSeparator,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { ChevronDownIcon } from "@/components/icons";
+
 import { useAppState } from "@/lib/app-state";
 import { IRAN_PHONE_PATTERN } from "@/lib/auth";
 import { useCreateAddress, useUpdateAddress } from "@/lib/addresses";
-import { useProvinces, useCities } from "@/lib/locations";
+import { useCities, useProvinces } from "@/lib/locations";
+
 import type { Address, AddressPayload } from "@/types/address";
 
-// Solid (non-transparent) background is deliberate: Chrome/Edge render a native
-// <select>'s popup list using its own background-color, and "transparent" falls
-// back to a white popup even though the closed control looks dark.
-const selectClassName =
-  "h-8 w-full min-w-0 appearance-none rounded-lg border border-input bg-[#111111] px-2.5 py-1 text-base text-foreground transition-colors outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm";
+import Select from "./Select";
 
-function Select({
-  className,
-  children,
-  disabled,
-  ...props
-}: React.SelectHTMLAttributes<HTMLSelectElement>) {
-  return (
-    <div className="relative">
-      <select
-        disabled={disabled}
-        className={selectClassName + " " + (className ?? "")}
-        {...props}
-      >
-        {children}
-      </select>
-      <span
-        className={
-          "pointer-events-none absolute inset-y-0 left-2.5 flex items-center text-muted-foreground" +
-          (disabled ? " opacity-50" : "")
-        }
-      >
-        <ChevronDownIcon size={14} />
-      </span>
-    </div>
-  );
+interface AddressFormProps {
+  address?: Address;
+  onSuccess: () => void;
 }
+
+const EMPTY_ADDRESS: AddressPayload = {
+  title: "",
+  recipient_name: "",
+  phone: "",
+  province: 0,
+  city: 0,
+  postal_code: "",
+  address_line: "",
+  is_default: false,
+};
 
 export default function AddressForm({
   address,
   onSuccess,
-}: {
-  address?: Address;
-  onSuccess: () => void;
-}) {
+}: AddressFormProps) {
   const { showToast } = useAppState();
+
   const createAddress = useCreateAddress();
   const updateAddress = useUpdateAddress();
+
   const { data: provinces } = useProvinces();
-  const isEdit = !!address;
-  const isPending = createAddress.isPending || updateAddress.isPending;
+
+  const isEdit = Boolean(address);
+  const isPending =
+    createAddress.isPending || updateAddress.isPending;
 
   const {
     register,
@@ -73,103 +61,135 @@ export default function AddressForm({
     setValue,
     formState: { errors },
   } = useForm<AddressPayload>({
-    defaultValues: address ?? {
-      title: "",
-      recipient_name: "",
-      phone: "",
-      province: 0,
-      city: 0,
-      postal_code: "",
-      address_line: "",
-      is_default: false,
-    },
+    defaultValues: address ?? EMPTY_ADDRESS,
   });
 
   const provinceId = watch("province");
-  const { data: cities, isLoading: citiesLoading } = useCities(
-    provinceId || null,
-  );
-  // watch() can report `undefined` for one tick before settling on the real
-  // defaultValue on mount, which fires this effect twice — comparing against
-  // the true initial province (rather than "is this the first run") stops
-  // that phantom transition from wiping out a prefilled edit-mode city.
+
+  const {
+    data: cities,
+    isLoading: citiesLoading,
+  } = useCities(provinceId || null);
+
+  /**
+   * Keeps the original province so changing the province after
+   * initialization resets the city, while edit mode keeps its
+   * existing city during the initial render.
+   */
   const initialProvinceId = useRef(address?.province ?? 0);
 
   useEffect(() => {
-    if (!provinceId || provinceId === initialProvinceId.current) return;
+    if (!provinceId) {
+      setValue("city", 0);
+      return;
+    }
+
+    if (provinceId === initialProvinceId.current) {
+      return;
+    }
+
     setValue("city", 0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [provinceId]);
+  }, [provinceId, setValue]);
 
   const onSubmit = handleSubmit((data) => {
-    if (isEdit) {
+    if (isEdit && address) {
       updateAddress.mutate(
-        { id: address.id, payload: data },
+        {
+          id: address.id,
+          payload: data,
+        },
         {
           onSuccess: () => {
             showToast("آدرس ذخیره شد");
             onSuccess();
           },
-          onError: (err) => showToast(err.message),
+          onError: (error) => {
+            showToast(error.message);
+          },
         },
       );
-    } else {
-      createAddress.mutate(data, {
-        onSuccess: () => {
-          showToast("آدرس اضافه شد");
-          onSuccess();
-        },
-        onError: (err) => showToast(err.message),
-      });
+
+      return;
     }
+
+    createAddress.mutate(data, {
+      onSuccess: () => {
+        showToast("آدرس اضافه شد");
+        onSuccess();
+      },
+      onError: (error) => {
+        showToast(error.message);
+      },
+    });
   });
+
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} noValidate>
       <FieldGroup>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <Field data-invalid={!!errors.title}>
-            <FieldLabel htmlFor="address-title">عنوان آدرس</FieldLabel>
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 pt-5">
+          <Field data-invalid={Boolean(errors.title)}>
+            <FieldLabel htmlFor="address-title">
+              عنوان آدرس
+            </FieldLabel>
+
             <Input
               id="address-title"
               autoComplete="off"
               placeholder="خانه، محل کار…"
-              aria-invalid={!!errors.title}
-              {...register("title", { required: true })}
+              aria-invalid={Boolean(errors.title)}
+              {...register("title", {
+                required: true,
+              })}
             />
-            {errors.title && <FieldError>عنوان را وارد کن.</FieldError>}
+
+            {errors.title && (
+              <FieldError>
+                عنوان را وارد کن.
+              </FieldError>
+            )}
           </Field>
 
-          <Field data-invalid={!!errors.recipient_name}>
+          <Field data-invalid={Boolean(errors.recipient_name)}>
             <FieldLabel htmlFor="address-recipient">
               نام تحویل‌گیرنده
             </FieldLabel>
+
             <Input
-            autoComplete="off"
               id="address-recipient"
-              aria-invalid={!!errors.recipient_name}
-              {...register("recipient_name", { required: true })}
+              autoComplete="name"
+              aria-invalid={Boolean(errors.recipient_name)}
+              {...register("recipient_name", {
+                required: true,
+              })}
             />
+
             {errors.recipient_name && (
-              <FieldError>نام تحویل‌گیرنده را وارد کن.</FieldError>
+              <FieldError>
+                نام تحویل‌گیرنده را وارد کن.
+              </FieldError>
             )}
           </Field>
         </div>
 
-        <Field data-invalid={!!errors.phone}>
-          <FieldLabel htmlFor="address-phone">شماره موبایل</FieldLabel>
+        <Field data-invalid={Boolean(errors.phone)}>
+          <FieldLabel htmlFor="address-phone">
+            شماره موبایل
+          </FieldLabel>
+
           <Input
-          autoComplete="off"
             id="address-phone"
             dir="ltr"
             inputMode="numeric"
+            autoComplete="tel"
             placeholder="۰۹۱۲۳۴۵۶۷۸۹"
-            aria-invalid={!!errors.phone}
+            aria-invalid={Boolean(errors.phone)}
             className="font-yekanBakhFontForFarsiChar tracking-[0.5px]"
             {...register("phone", {
               required: true,
               pattern: IRAN_PHONE_PATTERN,
             })}
           />
+
           {errors.phone && (
             <FieldError>
               شماره موبایل را درست وارد کن، مثلاً ۰۹۱۲۳۴۵۶۷۸۹.
@@ -177,79 +197,136 @@ export default function AddressForm({
           )}
         </Field>
 
-        {/* <FieldSeparator /> */}
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-2">
+          <Field data-invalid={Boolean(errors.province)}>
+            <FieldLabel htmlFor="address-province">
+              استان
+            </FieldLabel>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <Field data-invalid={!!errors.province}>
-            <FieldLabel htmlFor="address-province">استان</FieldLabel>
             <Select
               id="address-province"
-              aria-invalid={!!errors.province}
-              {...register("province", { required: true, valueAsNumber: true })}
+              aria-invalid={Boolean(errors.province)}
+              {...register("province", {
+                required: true,
+                valueAsNumber: true,
+                validate: (value) =>
+                  value > 0 || "استان را انتخاب کن.",
+              })}
             >
-              <option value={0} disabled>
+              <option className="pb-2 pt-1 px-0.5" value={0} disabled>
                 انتخاب کن
               </option>
-              {provinces?.results?.map((p) => (
-                <option key={p.id} value={p.id}>
-                  {p.name}
+
+              {provinces?.map((province) => (
+                <option
+                    className="py-1 p-0.5 text-xs md:text-sm"
+                  key={province.id}
+                  value={province.id}
+                >
+                  {province.name}
                 </option>
               ))}
             </Select>
-            {errors.province && <FieldError>استان را انتخاب کن.</FieldError>}
+
+            {errors.province && (
+              <FieldError>
+                {errors.province.message ?? "استان را انتخاب کن."}
+              </FieldError>
+            )}
           </Field>
 
-          <Field data-invalid={!!errors.city}>
-            <FieldLabel htmlFor="address-city">شهر</FieldLabel>
+          <Field data-invalid={Boolean(errors.city)}>
+            <FieldLabel htmlFor="address-city">
+              شهر
+            </FieldLabel>
+
             <Select
               id="address-city"
-              aria-invalid={!!errors.city}
               disabled={!provinceId || citiesLoading}
-              {...register("city", { required: true, valueAsNumber: true })}
+              aria-invalid={Boolean(errors.city)}
+              {...register("city", {
+                required: true,
+                valueAsNumber: true,
+                validate: (value) =>
+                  value > 0 || "شهر را انتخاب کن.",
+              })}
             >
               <option value={0} disabled>
-                {provinceId ? "انتخاب کن" : "ابتدا استان"}
+                {!provinceId
+                  ? "ابتدا استان"
+                  : citiesLoading
+                    ? "در حال دریافت شهرها…"
+                    : "انتخاب کن"}
               </option>
-              {cities?.results?.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.name}
+
+              {cities?.map((city) => (
+                <option
+                  key={city.id}
+                  value={city.id}
+                >
+                  {city.name}
                 </option>
               ))}
             </Select>
-            {errors.city && <FieldError>شهر را انتخاب کن.</FieldError>}
+
+            {errors.city && (
+              <FieldError>
+                {errors.city.message ?? "شهر را انتخاب کن."}
+              </FieldError>
+            )}
           </Field>
         </div>
 
-        <Field data-invalid={!!errors.postal_code}>
-          <FieldLabel htmlFor="address-postal">کد پستی</FieldLabel>
+        <Field data-invalid={Boolean(errors.postal_code)}>
+          <FieldLabel htmlFor="address-postal">
+            کد پستی
+          </FieldLabel>
+
           <Input
             id="address-postal"
             dir="ltr"
             inputMode="numeric"
-            aria-invalid={!!errors.postal_code}
+            autoComplete="postal-code"
+            aria-invalid={Boolean(errors.postal_code)}
             className="font-yekanBakhFontForFarsiChar tracking-[0.5px]"
             {...register("postal_code", {
               required: true,
-              pattern: /^\d{10}$/,
+              pattern: {
+                value: /^\d{10}$/,
+                message: "کد پستی باید ۱۰ رقم باشد.",
+              },
             })}
           />
+
           {errors.postal_code && (
-            <FieldError>کد پستی باید ۱۰ رقم باشد.</FieldError>
+            <FieldError>
+              {errors.postal_code.message ??
+                "کد پستی باید ۱۰ رقم باشد."}
+            </FieldError>
           )}
         </Field>
 
-        <Field data-invalid={!!errors.address_line}>
-          <FieldLabel htmlFor="address-line">آدرس کامل</FieldLabel>
+        <Field data-invalid={Boolean(errors.address_line)}>
+          <FieldLabel htmlFor="address-line">
+            آدرس کامل
+          </FieldLabel>
+
           <Textarea
             id="address-line"
-            aria-invalid={!!errors.address_line}
-            {...register("address_line", { required: true })}
+            autoComplete="street-address"
+            aria-invalid={Boolean(errors.address_line)}
+            {...register("address_line", {
+              required: true,
+            })}
           />
+
           {errors.address_line && (
-            <FieldError>آدرس کامل را وارد کن.</FieldError>
+            <FieldError>
+              آدرس کامل را وارد کن.
+            </FieldError>
           )}
         </Field>
-
+{/* 
         <label
           htmlFor="address-default"
           className="flex cursor-pointer items-center gap-2.5 rounded-lg border border-input px-3 py-2.5 has-checked:border-ring has-checked:bg-ring/5"
@@ -260,8 +337,11 @@ export default function AddressForm({
             className="h-4 w-4 accent-foreground"
             {...register("is_default")}
           />
-          <span className="text-sm">به‌عنوان آدرس پیش‌فرض ذخیره شود</span>
-        </label>
+
+          <span className="text-sm">
+            به‌عنوان آدرس پیش‌فرض ذخیره شود
+          </span>
+        </label> */}
       </FieldGroup>
 
       <Button
@@ -274,3 +354,4 @@ export default function AddressForm({
     </form>
   );
 }
+

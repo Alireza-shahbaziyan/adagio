@@ -13,8 +13,8 @@ export const metadata: Metadata = {
   description: "فروشگاه لباس آداجیو | Adagio",
   metadataBase: new URL("https://adagiostyle.ir"),
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
   },
 
 };

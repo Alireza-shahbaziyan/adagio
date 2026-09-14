@@ -22,7 +22,7 @@ export default function ProductBreadcrumb({
       </Link>
       <span>/</span>
       <Link
-        href={`/store/collections/${collections[0].slug}`}
+        href={`/store/collections/${collections[0]?.slug}`}
         className="text-muted-foreground"
       >
         {primaryCollection?.title ?? "محصولات"}

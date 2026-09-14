@@ -285,7 +285,7 @@ export default function OrderCheckout({ token }: { token: string }) {
                   </p>
                 </div>
                 <div className="text-sm text-foreground">
-                  {formatPrice(item.price * item.quantity)}
+                  {item.price}
                 </div>
               </div>
             ))}

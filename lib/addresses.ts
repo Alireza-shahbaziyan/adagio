@@ -26,12 +26,12 @@ function normalizeAddress(raw: RawAddress): Address {
 }
 
 export async function getAddresses(): Promise<Address[]> {
-  const data = await apiRequest<RawAddressResponse>("/api/auth/addresses");
+  const data = await apiRequest<RawAddressResponse>("/api/auth/addresses/get");
   return data.results.map(normalizeAddress);
 }
 
 export async function createAddress(payload: AddressPayload): Promise<Address> {
-  const data = await apiRequest<RawAddress>("/api/auth/addresses", {
+  const data = await apiRequest<RawAddress>("/api/auth/addresses/post", {
     method: "POST",
     body: JSON.stringify(payload),
   });
