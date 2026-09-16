@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer";
-import MobileBottomNav from "@/components/MobileBottomNav";
+import MobileBottomNav from "@/components/MobileNavBottom/MobileBottomNav";
 import CartView from "@/components/CartView";
 import { frontend } from "@/utils/getURL";
 

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer";
-import MobileBottomNav from "@/components/MobileBottomNav";
+import MobileBottomNav from "@/components/MobileNavBottom/MobileBottomNav";
 import { useMembership } from "@/hooks/useMembership";
 import { useOrders } from "@/lib/checkout";
 import OrderStatusBadge from "@/components/Orders/OrderStatusBadge";
@@ -97,7 +97,10 @@ function OrdersContent() {
           <Skeleton className="mb-8 h-10 w-48 rounded-lg bg-[#181818]" />
           <div className="flex gap-2 mb-6">
             {[0, 1, 2, 3, 4].map((i) => (
-              <Skeleton key={i} className="h-8 w-20 rounded-full bg-[#181818]" />
+              <Skeleton
+                key={i}
+                className="h-8 w-20 rounded-full bg-[#181818]"
+              />
             ))}
           </div>
           <div className="flex flex-col gap-4">
@@ -161,7 +164,10 @@ function OrdersContent() {
           fallback={
             <div className="mb-6 flex gap-2">
               {[0, 1, 2, 3, 4].map((i) => (
-                <Skeleton key={i} className="h-8 w-20 rounded-full bg-[#181818]" />
+                <Skeleton
+                  key={i}
+                  className="h-8 w-20 rounded-full bg-[#181818]"
+                />
               ))}
             </div>
           }

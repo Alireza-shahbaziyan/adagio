@@ -7,12 +7,12 @@ import ProductCard from "@/components/ProductCard/ProductCard";
 import BestSellersCarousel from "@/components/BestSellersCarousel";
 import NewsletterForm from "@/components/NewsletterForm";
 import Footer from "@/components/Footer";
-import MobileBottomNav from "@/components/MobileBottomNav";
+import MobileBottomNav from "@/components/MobileNavBottom/MobileBottomNav";
 // import { PRODUCTS } from "@/lib/products";
 import { ProductsResponse } from "@/types/products";
 import { GalleryResponse } from "@/types/gallery";
 import { Metadata } from "next";
-import { Post,  PostsResponse } from "@/types/posts";
+import { Post, PostsResponse } from "@/types/posts";
 import BlogPostCard from "@/components/blog/BlogPostCard";
 // import ErrorPage from "./error";
 export const revalidate = 900; // 15 min;
@@ -42,7 +42,6 @@ export const metadata: Metadata = {
 
   description:
     "فروشگاه آداجیو؛ خرید تیشرت‌های موسیقی با طراحی مینیمال و هنری، الهام گرفته از خوانندگان و گروه‌های محبوب. تیشرت‌های باکیفیت با چاپ ماندگار و ارسال سریع.",
-
 
   alternates: {
     canonical: "/",
@@ -354,7 +353,7 @@ export default async function Home() {
           </div>
         </section>
       </Reveal>
-{/* 
+      {/* 
       <Reveal>
         <section className="px-5 py-20 md:px-16 md:py-40">
           <div className="mb-14 text-center">

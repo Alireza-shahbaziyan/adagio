@@ -1,12 +1,11 @@
 import Footer from "@/components/Footer";
-import MobileBottomNav from "@/components/MobileBottomNav";
+import MobileBottomNav from "@/components/MobileNavBottom/MobileBottomNav";
 import Navbar from "@/components/Navbar/Navbar";
 
 export const metadata = {
   title: "قوانین و مقررات | ADAGIO",
   description:
     "مطالعه قوانین و مقررات استفاده از فروشگاه اینترنتی ADAGIO، شرایط خرید، ارسال، مرجوعی و حفظ حریم مشتریان.",
-
 };
 
 export default function TermsPage() {

@@ -82,11 +82,11 @@ export default function HeroSlide({
             </div>
 
             {/* CTA */}
-            <Link href="/store/collections"
+            <Link href="/store/"
               type="button"
               className="group mt-7 inline-flex items-center gap-3 border border-white/25 bg-white px-5 py-3 text-xs font-medium tracking-[0.12em] text-black transition-all duration-300 hover:bg-white/90 md:mt-9 md:px-6 md:py-3.5"
             >
-              <span>مشاهده کالکشن</span>
+              <span>فروشگاه</span>
 
               <ArrowUpLeft
                 size={15}

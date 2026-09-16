@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer";
-import MobileBottomNav from "@/components/MobileBottomNav";
+import MobileBottomNav from "@/components/MobileNavBottom/MobileBottomNav";
 import CollectionsShowcase from "@/components/Collection/CollectionsShowcase";
 import { CollectionResponse } from "@/types/collections";
 import { backend, frontend } from "@/utils/getURL";

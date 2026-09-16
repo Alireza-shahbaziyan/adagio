@@ -48,14 +48,7 @@ export function MobileMenu({ isMember, onClose }: MobileMenuProps) {
         </Link>
       ))}
       {isMember ? (
-        <Link
-          key={"AS"}
-          href={"#"}
-          onClick={onClose}
-          className="border-b border-white/8 py-4.5 text-[28px] font-bold text-foreground"
-        >
-          AAA
-        </Link>
+        null
       ) : (
         <Link
           href="/login"

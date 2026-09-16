@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Mail, MapPin, Phone, ArrowUpRight, ArrowUpLeft } from "lucide-react";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar/Navbar";
-import MobileBottomNav from "@/components/MobileBottomNav";
+import MobileBottomNav from "@/components/MobileNavBottom/MobileBottomNav";
 
 export const metadata: Metadata = {
   title: "تماس با ما | آداجیو",

@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer";
-import MobileBottomNav from "@/components/MobileBottomNav";
+import MobileBottomNav from "@/components/MobileNavBottom/MobileBottomNav";
 import CollectionsShowcase from "@/components/Collection/CollectionsShowcase";
 import { CollectionResponse } from "@/types/collections";
 import { backend, frontend } from "@/utils/getURL";
@@ -15,8 +15,7 @@ type SearchParams = Promise<{
 
 export const metadata: Metadata = {
   title: "دسته‌بندی پوشاک و محصولات هنری آداجیو",
-  description:
-    "دسته‌بندی پوشاک و محصولات هنری آداجیو | Adagio",
+  description: "دسته‌بندی پوشاک و محصولات هنری آداجیو | Adagio",
 
   alternates: {
     canonical: `${frontend}/store/categories`,
@@ -48,8 +47,7 @@ export default async function CategoriesPage({
   });
   if (search) query.set("search", search);
 
-  const res = await fetch(`${backend}/api/categories/?${query.toString()}`, {
-  });
+  const res = await fetch(`${backend}/api/categories/?${query.toString()}`, {});
 
   if (!res.ok) {
     throw new Error("Failed to fetch categories");
@@ -67,8 +65,8 @@ export default async function CategoriesPage({
     >
       <Navbar variant="default" />
       <CollectionsShowcase
-      typeCard="categories"
-      h1="دسته‌بندی پوشاک و محصولات هنری آداجیو"
+        typeCard="categories"
+        h1="دسته‌بندی پوشاک و محصولات هنری آداجیو"
         collections={categoriesResponse.results}
         // totalCount={categoriesResponse.count}
         // startIndex={(currentPage - 1) * pageSize}

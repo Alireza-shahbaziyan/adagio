@@ -1,5 +1,5 @@
 import Footer from "@/components/Footer";
-import MobileBottomNav from "@/components/MobileBottomNav";
+import MobileBottomNav from "@/components/MobileNavBottom/MobileBottomNav";
 import Navbar from "@/components/Navbar/Navbar";
 import ProductCard from "@/components/ProductCard/ProductCard";
 import { getStoreProducts } from "@/lib/store";
@@ -18,7 +18,6 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  
   const { slug } = await params;
   return {
     title: `خرید تیشرت ${slug} | آداجیو`,
@@ -42,11 +41,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: `جدیدترین تیشرت‌های ${slug} با طراحی خاص و کیفیت بالا در فروشگاه آداجیو.`,
     },
   };
-  
 }
 
 export async function generateStaticParams() {
-  
   const res = await fetch(`${backend}/api/collections/?page=1&page_size=100`);
 
   if (!res.ok) return [];
@@ -96,7 +93,10 @@ export default async function Page({
 
           <span className="mx-2">/</span>
 
-          <Link href="/sotre/collections" className="transition hover:text-white">
+          <Link
+            href="/sotre/collections"
+            className="transition hover:text-white"
+          >
             کالکشن ها
           </Link>
 

@@ -1,5 +1,5 @@
 import Footer from "@/components/Footer";
-import MobileBottomNav from "@/components/MobileBottomNav";
+import MobileBottomNav from "@/components/MobileNavBottom/MobileBottomNav";
 import Navbar from "@/components/Navbar/Navbar";
 import ProductCard from "@/components/ProductCard/ProductCard";
 import { getStoreProducts } from "@/lib/store";
@@ -45,7 +45,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  
   const res = await fetch(`${backend}/api/categories/?page=1&page_size=100`);
 
   if (!res.ok) return [];
@@ -63,7 +62,7 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  
+
   const [collection, products] = await Promise.all([
     fetch(`${backend}/api/categories/${slug}`, {
       next: { revalidate: 300 },
@@ -95,7 +94,10 @@ export default async function Page({
 
           <span className="mx-2">/</span>
 
-          <Link href="/sotre/categories" className="transition hover:text-white">
+          <Link
+            href="/sotre/categories"
+            className="transition hover:text-white"
+          >
             دسته بندی ها
           </Link>
 
