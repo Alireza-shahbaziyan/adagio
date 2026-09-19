@@ -33,6 +33,8 @@ export default function CartView() {
   function handleContinuePurchase() {
     if (selectedAddressId) {
       setOrdersOpen(true);
+    }else if (selectedAddressId===null){
+      setAddressModal({ mode: "create" })
     }
   }
 
@@ -109,7 +111,7 @@ export default function CartView() {
 
   return (
     <div className="mx-auto max-w-3xl px-5 pb-20 pt-6 md:px-16 md:pt-20">
-
+{/* 
 
       <div className="mb-6 flex items-center gap-3">
         <Link
@@ -118,7 +120,7 @@ export default function CartView() {
         >
           سفارش‌های من
         </Link>
-      </div>
+      </div> */}
 
       <h2 className="mb-4 text-lg font-bold text-foreground">آدرس ارسال</h2>
       <AddressSection

@@ -12,5 +12,6 @@ export const queryKeys = {
   cities: (provinceId: number) => ["cities", provinceId] as const,
   gateways: ["gateways"] as const,
   orders: ["orders"] as const,
+  logout:["logout-in-navbar"] as const,
   order: (token: string) => ["orders", token] as const,
 };

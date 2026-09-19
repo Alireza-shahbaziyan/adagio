@@ -28,6 +28,7 @@ export default function ProductCard({
   // console.log(product?.variants[0].size_name)
 
   const invalidProduct = !checkAvailable(product?.variants);
+  
   return (
     <Link
       href={`/store/products/${product.slug}`}

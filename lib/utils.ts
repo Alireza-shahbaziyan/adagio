@@ -6,6 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function formatPrice(amount: number): string {
+
   const formatted = amount.toLocaleString("fa-IR");
   return `${formatted} تومان`;
 }

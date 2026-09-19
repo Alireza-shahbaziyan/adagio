@@ -10,6 +10,7 @@ import { useMembership } from "@/hooks/useMembership";
 import { NavbarDesktopActions } from "./NavbarDesktopActions";
 import { NavbarMobileActions } from "./NavbarMobileActions";
 import { MobileMenu } from "./MobileMenu";
+import { useLogout } from "@/hooks/useLogout";
 
 const NAV_LINKS = [
   { href: "/store", label: "فروشگاه" },
@@ -31,6 +32,7 @@ export default function Navbar({
   onToggleProductWishlist?: () => void;
 }) {
   const { user, isMember, isLoading } = useMembership();
+  const { mutate: logout } = useLogout();
   const wishlistCount = useWishlistCount();
   const cartCount = useCartItemCount();
   const scrollY = useScrollY();
@@ -42,7 +44,6 @@ export default function Navbar({
   const position = variant === "home" ? "fixed" : "sticky";
   if (isLoading)
     return (
-  
       <div className="w-full h-20 flex justify-center items-center py-4">
         <div className="relative mx-auto flex h-16 w-16 items-center justify-center ">
           <div className="absolute inset-0 animate-ping rounded-full border border-white/20" />
@@ -114,7 +115,7 @@ export default function Navbar({
       </nav>
 
       {variant !== "product" && menuOpen && (
-        <MobileMenu isMember={isMember} onClose={() => setMenuOpen(false)} />
+        <MobileMenu logout={logout} isMember={isMember} onClose={() => setMenuOpen(false)} />
       )}
 
       <SearchDialog open={searchOpen} onOpenChange={setSearchOpen} />

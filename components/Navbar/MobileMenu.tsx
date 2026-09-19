@@ -1,5 +1,9 @@
+"use client";
 import Link from "next/link";
 import { CloseIcon } from "@/components/icons";
+import { logoutResponse } from "@/types/auth";
+import { UseMutateFunction } from "@tanstack/react-query";
+import { useAppState } from "@/lib/app-state";
 
 const NAV_LINKS = [
   { href: "/store", label: "فروشگاه" },
@@ -14,9 +18,22 @@ const NAV_LINKS = [
 interface MobileMenuProps {
   isMember: boolean;
   onClose: () => void;
+  logout: UseMutateFunction<logoutResponse, Error, void, unknown>;
 }
 
-export function MobileMenu({ isMember, onClose }: MobileMenuProps) {
+export function MobileMenu({ isMember, onClose, logout }: MobileMenuProps) {
+  const { showToast } = useAppState();
+  function handleLogoutButton() {
+    logout(undefined, {
+      onSuccess: () => {
+        showToast("شما با موفقیت خارج شدید");
+        onClose();
+      },
+      onError: () => {
+        showToast("با خطا مواجه شد خروج شما");
+      },
+    });
+  }
   return (
     <div
       style={{ animation: "fadeInSoft 0.3s ease" }}
@@ -48,13 +65,18 @@ export function MobileMenu({ isMember, onClose }: MobileMenuProps) {
         </Link>
       ))}
       {isMember ? (
-        null
+        <button
+          type="button"
+          onClick={handleLogoutButton}
+          className="w-fit border-b border-white pb-2 pt-6 text-base text-muted-foreground hover:text-primary focus:border-muted-foreground focus:text-white"
+        >
+          خروج از حساب کاربری
+        </button>
       ) : (
         <Link
           href="/login"
           onClick={onClose}
-          className="pt-6 text-base text-muted-foreground  border-b border-white
-               pb-2 w-fit hover:text-primary focus:text-white focus:border-muted-foreground"
+          className="w-fit border-b border-white pb-2 pt-6 text-base text-muted-foreground hover:text-primary focus:border-muted-foreground focus:text-white"
         >
           ورود / حساب کاربری
         </Link>

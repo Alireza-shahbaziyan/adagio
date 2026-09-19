@@ -1,6 +1,7 @@
 
 import { NextRequest } from "next/server";
 import { backendFetch } from "@/lib/backend-client";
+import { backend } from "@/utils/getURL";
 
 export const dynamic = "force-dynamic";
 
@@ -14,7 +15,8 @@ export async function POST(req: NextRequest) {
 }
 
 export async function GET(req: NextRequest) {
-  return backendFetch(req, "/api/orders/", {
+const path = `/api/orders/${req.nextUrl.search}`;
+  return backendFetch(req, path.toString(), {
     method: "GET",
   });
 }

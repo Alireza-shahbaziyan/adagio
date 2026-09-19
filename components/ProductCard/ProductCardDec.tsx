@@ -9,6 +9,7 @@ function ProductCardDec({
   title: string;
   variant: ProductVariant[];
 }) {
+  
   return (
     <div className="px-1 py-5 min-h-32">
       <p className="mb-1 text-foreground text-lg font-semibold">{title}</p>
@@ -16,7 +17,7 @@ function ProductCardDec({
         <p className="text-muted-foreground text-sm py-2 px-3 ">
           {isvalid ? "قیمت از" : "ناموجود"}
         </p>
-        {isvalid && (
+        {isvalid && variant[0].price && (
           <p className="text-muted-foreground text-base">
             {formatPrice(variant[0].price)}
           </p>

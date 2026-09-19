@@ -75,7 +75,7 @@ async function ensureCsrf(
 
   // 2. Ask Django for a CSRF cookie
   const csrfResponse = await fetch(
-    `${backend}/auth/csrf/`,
+    `${backend}/api/auth/csrf/`,
     {
       method: "GET",
       headers: {

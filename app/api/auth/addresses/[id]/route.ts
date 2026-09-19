@@ -59,11 +59,9 @@ export async function DELETE(
       cache: "no-store",
     });
 
-    const setCookie = res.headers.getSetCookie?.() ?? [];
-
     if (res.status === 204) {
       const response = new NextResponse(null, { status: 204 });
-      for (const c of setCookie) response.headers.append("set-cookie", c);
+      forwardSetCookie(res, response);
       return response;
     }
 
@@ -76,7 +74,7 @@ export async function DELETE(
     }
 
     const response = NextResponse.json(data, { status: 200 });
-    for (const c of setCookie) response.headers.append("set-cookie", c);
+    forwardSetCookie(res, response);
     return response;
   } catch {
     return NextResponse.json(
