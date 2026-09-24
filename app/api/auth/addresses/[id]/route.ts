@@ -32,7 +32,7 @@ export async function PUT(
     }
 
     const response = NextResponse.json(data, { status: 200 });
-    forwardSetCookie(res, response);
+    forwardSetCookie(res, response, req);
     return response;
   } catch {
     return NextResponse.json(
@@ -61,7 +61,7 @@ export async function DELETE(
 
     if (res.status === 204) {
       const response = new NextResponse(null, { status: 204 });
-      forwardSetCookie(res, response);
+      forwardSetCookie(res, response, req);
       return response;
     }
 
@@ -74,7 +74,7 @@ export async function DELETE(
     }
 
     const response = NextResponse.json(data, { status: 200 });
-    forwardSetCookie(res, response);
+    forwardSetCookie(res, response, req);
     return response;
   } catch {
     return NextResponse.json(

@@ -92,7 +92,7 @@ The backend owns all business data and authentication. At minimum, it must provi
 
 The browser calls same-origin Next.js route handlers under `/api/*` for session-sensitive operations. These handlers forward requests and the incoming `Cookie` header to the external backend. This BFF pattern allows the storefront to work with cookie-based sessions without exposing cross-origin session handling to client components.
 
-After successful OTP verification, the backend **must set session cookies** in its `Set-Cookie` response headers. The proxy forwards every cookie individually to the browser, including multi-cookie responses such as access and refresh sessions. On later requests, the browser sends the session cookie to the same-origin `/api/*` route, and the route forwards it to the backend.
+After successful OTP verification, the backend **must set session cookies** in its `Set-Cookie` response headers. The proxy forwards every cookie individually to the browser, including multi-cookie responses such as access and refresh sessions. On later requests, the browser sends the session cookie to the same-origin `/api/*` route, and the route forwards it to the backend. The `csrftoken` cookie is normalised during forwarding (`utils/forwardSetCookie.ts`): exactly one `csrftoken` identity is kept and any duplicate is collapsed, so CSRF verification never depends on which of two cookies the browser happens to send first.
 
 For a reliable deployment, configure the backend cookie attributes and origin policy for the frontend's public URL. In particular:
 

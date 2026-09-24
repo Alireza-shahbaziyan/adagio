@@ -172,6 +172,7 @@ export async function backendFetch(
           forwardSetCookie(
             csrfResponse,
             response,
+            req,
           );
 
           return response;
@@ -292,6 +293,7 @@ export async function backendFetch(
       forwardSetCookie(
         csrfResponse,
         nextResponse,
+        req,
       );
     }
 
@@ -299,6 +301,7 @@ export async function backendFetch(
     forwardSetCookie(
       response,
       nextResponse,
+      req,
     );
 
     return nextResponse;

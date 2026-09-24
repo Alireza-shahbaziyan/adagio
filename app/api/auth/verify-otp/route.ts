@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
       status: 200,
     });
 
-    forwardSetCookie(res, response);
+    forwardSetCookie(res, response, req);
 
     return response;
   } catch {

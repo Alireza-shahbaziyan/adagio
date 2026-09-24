@@ -21,7 +21,7 @@ export async function GET(req: NextRequest) {
       status: res.status,
     });
 
-    forwardSetCookie(res, nextResponse);
+    forwardSetCookie(res, nextResponse, req);
 
     return nextResponse;
   } catch {

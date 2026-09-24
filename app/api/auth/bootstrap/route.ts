@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { backend } from "@/utils/getURL";
+import { forwardSetCookie } from "@/utils/forwardSetCookie";
 import type { Cart } from "@/types/cart";
 import type { WishlistItem } from "@/types/wishlist";
 import type { User } from "@/types/auth";
@@ -9,18 +10,17 @@ export const dynamic = "force-dynamic";
 async function safeFetch<T>(
   path: string,
   cookie: string,
-): Promise<{ data: T | null; setCookie: string[] }> {
+): Promise<{ data: T | null; res: Response | null }> {
   try {
     const res = await fetch(`${backend}${path}`, {
       headers: { "Content-Type": "application/json", cookie },
       cache: "no-store",
     });
-    const setCookie = res.headers.getSetCookie?.() ?? [];
-    if (!res.ok) return { data: null, setCookie };
+    if (!res.ok) return { data: null, res };
     const data = (await res.json().catch(() => null)) as T | null;
-    return { data, setCookie };
+    return { data, res };
   } catch {
-    return { data: null, setCookie: [] };
+    return { data: null, res: null };
   }
 }
 
@@ -54,10 +54,8 @@ export async function GET(req: NextRequest) {
   });
 
   for (const result of [meResult, cartResult, wishlistResult]) {
-    if (!result) continue;
-    for (const setCookie of result.setCookie) {
-      response.headers.append("set-cookie", setCookie);
-    }
+    if (!result?.res) continue;
+    forwardSetCookie(result.res, response, req);
   }
 
   return response;

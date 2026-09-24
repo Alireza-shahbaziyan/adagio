@@ -35,6 +35,8 @@ flowchart LR
 
 All authenticated or stateful traffic (auth, cart, wishlist, addresses, locations) goes through same-origin Route Handlers under `app/api/`, which proxy to `NEXT_PUBLIC_BACKEND_BASE_URL` (`utils/getURL.ts`). This exists **specifically to make cookies work**: the backend's session/cart cookies are `SameSite=Lax`, which cross-origin `fetch()` from the browser can't reliably send/receive. Route Handlers forward the incoming `cookie` header to the backend and copy any `set-cookie` response header back onto the Next.js response, so the cookie is always set same-origin from the browser's point of view.
 
+`utils/forwardSetCookie.ts` is the single choke point for that copy step and normalises the `csrftoken` cookie: only the backend's freshest `csrftoken` is forwarded, the opposite cookie identity (host-only vs `Domain=<frontend host>`) is deleted so exactly one `csrftoken` can exist, and when an incoming request already carries duplicate `csrftoken` values both identities are collapsed into one using the first value the browser sent. This keeps CSRF verification order-independent (`backendFetch`'s `getCookieValue` and the `X-CSRFToken` header always read the same cookie the backend ends up validating).
+
 Public, non-personalized catalog data (products, collections) skips this proxy and is fetched **directly from the backend inside Server Components / server functions** (`lib/store.ts`), using Next.js's fetch cache (`next: { revalidate }`) instead of cookies.
 
 ## 4. Directory Structure

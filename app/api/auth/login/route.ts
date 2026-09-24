@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
       status: res.status,
     });
 
-    forwardSetCookie(res, response);
+    forwardSetCookie(res, response, req);
 
     return response;
   } catch {

@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
     }
 
     const response = NextResponse.json(data, { status: 200 });
-    forwardSetCookie(res, response);
+    forwardSetCookie(res, response, req);
     return response;
   } catch {
     return NextResponse.json(

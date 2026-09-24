@@ -25,7 +25,7 @@ export async function GET(req: NextRequest) {
       },
     );
 
-    forwardSetCookie(res, response);
+    forwardSetCookie(res, response, req);
 
     return response;
   } catch {
