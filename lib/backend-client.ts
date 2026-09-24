@@ -194,7 +194,11 @@ export async function backendFetch(
     const headers = new Headers(
       options.headers,
     );
+    const referer = process.env.NEXT_PUBLIC_REFERER;
 
+  if (referer) {
+    headers.set("Referer", referer);
+  }
     if (cookieHeader) {
       headers.set("Cookie", cookieHeader);
     }
