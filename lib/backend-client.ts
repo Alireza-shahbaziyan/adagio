@@ -238,7 +238,17 @@ export async function backendFetch(
     // ----------------------------------------
     // Backend request
     // ----------------------------------------
-
+    console.log("--[CSRF DEBUG] :=> ", {
+  method,
+  path,
+  csrfToken,
+  cookieHeader,
+  hasCsrfCookie: cookieHeader.includes("csrftoken="),
+  csrfCookie: getCookieValue(
+    cookieHeader,
+    "csrftoken",
+  ),
+});
     const response = await fetch(
       `${backend}${path}`,
       {

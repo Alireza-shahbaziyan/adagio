@@ -23,7 +23,7 @@ export default function CartPage() {
       className="relative min-h-screen bg-primary-foreground pb-24 text-white md:pb-0"
     >
       <Navbar variant="default" />
-      <h1 className="mb-4 text-[28px] font-black leading-[1.15] text-foreground md:text-6xl md:px-16 w-full text-center pt-4">
+      <h1 className="mb-4  text-[28px] font-black leading-[1.15] text-green-500 md:text-6xl md:px-16 w-full text-center pt-4">
         سبد خرید
       </h1>
       <CartNavigation

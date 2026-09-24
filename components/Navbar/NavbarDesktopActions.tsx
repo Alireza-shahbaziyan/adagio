@@ -32,7 +32,7 @@ export function NavbarDesktopActions({
         className="flex p-2 text-foreground"
         type="button"
       >
-        <SearchIcon />
+        <SearchIcon size={28} />
       </button>
       {variant === "product" ? (
         <button
@@ -40,20 +40,20 @@ export function NavbarDesktopActions({
           className="relative flex p-2 text-foreground"
           type="button"
         >
-          <HeartIcon filled={productWishlisted} />
+          <HeartIcon size={28} filled={productWishlisted} />
         </button>
       ) : (
         <Link
           href="/store/wishlist"
           className="relative flex p-2 text-foreground"
         >
-          <HeartIcon />
+          <HeartIcon size={28} />
           <Badge count={wishlistCount} />
         </Link>
       )}
       <Link href="/store/cart" className="relative flex p-2 text-foreground">
-        <BagIcon />
-        <Badge count={cartCount} />
+        <BagIcon size={28} />
+        <Badge  count={cartCount} />
       </Link>
       {isMember ? (
         <Link href="/profile" className="flex p-2 text-foreground">
@@ -72,7 +72,7 @@ export function NavbarDesktopActions({
         </Link>
       ) : (
         <Link href="/login" className="flex p-2 text-foreground">
-          <UserIcon />
+          <UserIcon size={28} />
         </Link>
       )}
     </div>
