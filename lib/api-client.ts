@@ -130,7 +130,7 @@ export async function apiRequest<T>(
   if (referer) {
     headers.set("Referer", referer);
   }
-  // فقط اگر caller خودش Content-Type نداده باشد
+
   if (!headers.has("Content-Type")) {
     headers.set("Content-Type", "application/json");
   }
