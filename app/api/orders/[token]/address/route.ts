@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { backend } from "@/utils/getURL";
-import { forwardSetCookie } from "@/utils/forwardSetCookie";
+
+import { backendFetch } from "@/lib/backend-client";
 
 export const dynamic = "force-dynamic";
 
@@ -24,33 +24,22 @@ export async function PATCH(
       );
     }
 
-    const csrfToken = req.cookies.get("csrftoken")?.value;
-    const res = await fetch(`${backend}/api/orders/${token}/address/`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        cookie: req.headers.get("cookie") ?? "",
-        ...(csrfToken ? { "X-CSRFToken": csrfToken } : {}),
+    return backendFetch(
+      req,
+      `/api/orders/${token}/address/`,
+      {
+        method: "PATCH",
+        body: {
+          address_id: body.address_id,
+        },
       },
-      body: JSON.stringify({ address_id: body.address_id }),
-      cache: "no-store",
-    });
-
-    const data = await res.json().catch(() => null);
-
-    if (!res.ok) {
-      return NextResponse.json(
-        data ?? { detail: "بروزرسانی آدرس ناموفق بود" },
-        { status: res.status },
-      );
-    }
-
-    const response = NextResponse.json(data, { status: 200 });
-    forwardSetCookie(res, response, req);
-    return response;
+    );
   } catch {
     return NextResponse.json(
-      { detail: "Internal Server Error | Error updating order address" },
+      {
+        detail:
+          "Internal Server Error | Error updating order address",
+      },
       { status: 500 },
     );
   }

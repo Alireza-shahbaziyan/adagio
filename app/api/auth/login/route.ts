@@ -1,6 +1,6 @@
-import { backend } from "@/utils/getURL";
-import { forwardSetCookie } from "@/utils/forwardSetCookie";
 import { NextRequest, NextResponse } from "next/server";
+
+import { backendFetch } from "@/lib/backend-client";
 
 export const dynamic = "force-dynamic";
 
@@ -16,30 +16,16 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const csrfToken = req.cookies.get("csrftoken")?.value;
-
-    const res = await fetch(`${backend}/api/auth/login/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Cookie: req.headers.get("cookie") ?? "",
-        ...(csrfToken ? { "X-CSRFToken": csrfToken } : {}),
+    return backendFetch(
+      req,
+      "/api/auth/login/",
+      {
+        method: "POST",
+        body: {
+          phone: phone.replace(/^0/, ""),
+        },
       },
-      body: JSON.stringify({
-        phone: phone.replace(/^0/, ""),
-      }),
-      cache: "no-store",
-    });
-
-    const data = await res.json().catch(() => null);
-
-    const response = NextResponse.json(data, {
-      status: res.status,
-    });
-
-    forwardSetCookie(res, response, req);
-
-    return response;
+    );
   } catch {
     return NextResponse.json(
       { detail: "Internal Server Error" },

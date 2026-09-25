@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { backend } from "@/utils/getURL";
-import { forwardSetCookie } from "@/utils/forwardSetCookie";
+
+import { backendFetch } from "@/lib/backend-client";
 
 export const dynamic = "force-dynamic";
 
@@ -25,30 +25,17 @@ export async function POST(
       );
     }
 
-    const csrfToken = req.cookies.get("csrftoken")?.value;
-    const res = await fetch(`${backend}/api/orders/${token}/items/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        cookie: req.headers.get("cookie") ?? "",
-        ...(csrfToken ? { "X-CSRFToken": csrfToken } : {}),
+    return backendFetch(
+      req,
+      `/api/orders/${token}/items/`,
+      {
+        method: "POST",
+        body: {
+          sku: body.sku,
+          quantity: body.quantity,
+        },
       },
-      body: JSON.stringify({ sku: body.sku, quantity: body.quantity }),
-      cache: "no-store",
-    });
-
-    const data = await res.json().catch(() => null);
-
-    if (!res.ok) {
-      return NextResponse.json(
-        data ?? { detail: "افزودن آیتم ناموفق بود" },
-        { status: res.status },
-      );
-    }
-
-    const response = NextResponse.json(data, { status: 201 });
-    forwardSetCookie(res, response, req);
-    return response;
+    );
   } catch {
     return NextResponse.json(
       { detail: "Internal Server Error | Error adding order item" },
