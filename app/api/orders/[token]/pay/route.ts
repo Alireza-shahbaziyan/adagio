@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { backend } from "@/utils/getURL";
-import { forwardSetCookie } from "@/utils/forwardSetCookie";
+
 import { backendFetch } from "@/lib/backend-client";
 
 export const dynamic = "force-dynamic";
