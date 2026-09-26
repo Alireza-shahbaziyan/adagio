@@ -11,6 +11,13 @@ import { NavbarDesktopActions } from "./NavbarDesktopActions";
 import { NavbarMobileActions } from "./NavbarMobileActions";
 import { MobileMenu } from "./MobileMenu";
 import { useLogout } from "@/hooks/useLogout";
+import { useAppState } from "@/lib/app-state";
+import {
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
 
 const NAV_LINKS = [
   { href: "/store", label: "فروشگاه" },
@@ -39,6 +46,53 @@ export default function Navbar({
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const { showToast } = useAppState();
+
+  function handleLogout() {
+    logout(undefined, {
+      onSuccess: () => {
+        showToast("شما با موفقیت خارج شدید");
+      },
+      onError: () => {
+        showToast("با خطا مواجه شد خروج شما");
+      },
+    });
+  }
+
+  const accountMenu = user ? (
+    <>
+      <DropdownMenuGroup>
+        <DropdownMenuLabel className="max-w-48 truncate">
+          {user.full_name || `0${user.phone}`}
+        </DropdownMenuLabel>
+      </DropdownMenuGroup>
+      <DropdownMenuSeparator />
+      {/* <DropdownMenuItem render={<Link href="/profile" />}>پروفایل</DropdownMenuItem> */}
+      <DropdownMenuItem render={<Link href="/store/orders" />}>
+        سفارش‌های من
+      </DropdownMenuItem>
+      <DropdownMenuItem render={<Link href="/store/wishlist" />}>
+        علاقه‌مندی‌ها
+      </DropdownMenuItem>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem variant="destructive" onClick={handleLogout}>
+        خروج از حساب کاربری
+      </DropdownMenuItem>
+    </>
+  ) : (
+    <>
+      <DropdownMenuItem render={<Link href="/login" />}>
+        ورود / حساب کاربری
+      </DropdownMenuItem>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem render={<Link href="/store/orders" />}>
+        سفارش‌های من
+      </DropdownMenuItem>
+      <DropdownMenuItem render={<Link href="/store/wishlist" />}>
+        علاقه‌مندی‌ها
+      </DropdownMenuItem>
+    </>
+  );
 
   const navSolid = variant !== "home" || scrollY > 40;
   const position = variant === "home" ? "fixed" : "sticky";
@@ -62,7 +116,7 @@ export default function Navbar({
           top: 0,
           left: 0,
           right: 0,
-          zIndex: 1000,
+          zIndex: 50,
           background: navSolid ? "rgba(9,9,9,0.78)" : "transparent",
           borderBottom: navSolid
             ? "1px solid rgba(255,255,255,0.08)"
@@ -96,7 +150,7 @@ export default function Navbar({
         <NavbarDesktopActions
           user={user ?? null}
           variant={variant}
-          isMember={isMember}
+          accountMenu={accountMenu}
           wishlistCount={wishlistCount}
           cartCount={cartCount}
           productWishlisted={productWishlisted}
@@ -106,6 +160,8 @@ export default function Navbar({
 
         <NavbarMobileActions
           variant={variant}
+          user={user ?? null}
+          accountMenu={accountMenu}
           cartCount={cartCount}
           productWishlisted={productWishlisted}
           onToggleProductWishlist={onToggleProductWishlist}

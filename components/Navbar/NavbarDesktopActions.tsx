@@ -1,26 +1,43 @@
+"use client";
+
 import Link from "next/link";
-import { BagIcon, HeartIcon, SearchIcon, UserIcon } from "@/components/icons";
+import Image from "next/image";
+import type { ReactNode } from "react";
+import {
+  BagIcon,
+  ChevronDownIcon,
+  HeartIcon,
+  SearchIcon,
+  UserIcon,
+} from "@/components/icons";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Badge } from "./Badge";
 import { User } from "@/types/auth";
-import Image from "next/image";
 
 interface NavbarDesktopActionsProps {
   variant: "home" | "product" | "default";
-  isMember: boolean;
   wishlistCount: number;
   cartCount: number;
   user: User | null;
+  accountMenu: ReactNode;
   productWishlisted?: boolean;
   onToggleProductWishlist?: () => void;
   onSearchOpen: () => void;
 }
 
+const ACCOUNT_TRIGGER_CLASS =
+  "flex items-center gap-2 rounded-full p-2 text-foreground outline-none transition-colors hover:bg-white/8 focus-visible:ring-2 focus-visible:ring-ring/50 data-popup-open:bg-white/10";
+
 export function NavbarDesktopActions({
   user,
   variant,
-  isMember,
   wishlistCount,
   cartCount,
+  accountMenu,
   productWishlisted,
   onToggleProductWishlist,
   onSearchOpen,
@@ -53,30 +70,49 @@ export function NavbarDesktopActions({
       )}
       <Link href="/store/cart" className="relative flex p-2 text-foreground">
         <BagIcon size={28} />
-        <Badge  count={cartCount} />
+        <Badge count={cartCount} />
       </Link>
-      {isMember ? (
-        <Link href="/profile" className="flex p-2 text-foreground">
-          <span className="mr-2 text-sm text-white">
-            {user?.full_name || `0${user?.phone}` || "پروفایل"}
-          </span>
-          {user?.avatar && (
-            <Image
-              src={user.avatar}
-              alt={user.full_name ?? "Profile"}
-              width={24}
-              height={24}
-              className="rounded-full object-cover"
-            />
+      <DropdownMenu modal={false}>
+        <DropdownMenuTrigger
+          openOnHover
+          delay={100}
+          closeDelay={100}
+          aria-label={user ? undefined : "منوی حساب کاربری"}
+          className={ACCOUNT_TRIGGER_CLASS}
+        >
+          {user ? (
+            <>
+              {user.avatar && (
+                <Image
+                  src={user.avatar}
+                  alt=""
+                  width={32}
+                  height={32}
+                  className="rounded-full object-cover"
+                />
+              )}
+              <span className="max-w-36 truncate text-sm text-white">
+                {user.full_name || `0${user.phone}`}
+              </span>
+            </>
+          ) : (
+            <UserIcon size={28} />
           )}
-        </Link>
-      ) : (
-        <Link href="/login" className="flex p-2 text-foreground">
-          <UserIcon size={28} />
-        </Link>
-      )}
+          <span
+            aria-hidden="true"
+            className="ms-auto flex text-foreground/60 transition-transform duration-200 data-popup-open:rotate-180"
+          >
+            <ChevronDownIcon size={14} />
+          </span>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent
+          align="end"
+          sideOffset={8}
+          className="min-w-52"
+        >
+          {accountMenu}
+        </DropdownMenuContent>
+      </DropdownMenu>
     </div>
   );
 }
-
-
