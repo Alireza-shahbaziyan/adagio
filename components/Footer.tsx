@@ -88,7 +88,7 @@ export default function Footer({
             title="قوانین و مقررات خرید"
             className="block text-sm text-muted-foreground"
           >
-            قوانین و مقررات
+            قوانین و مقررات مرجوعی
           </Link>
         </nav>
 
@@ -104,21 +104,15 @@ export default function Footer({
           </Link>
 
           <Link
-            href="/order-guide"
+            href="/store/order-guide"
             title="شرایط ارسال سفارش"
             className="mb-3.5 block text-sm text-muted-foreground"
           >
             ارسال سفارش
           </Link>
 
-          <Link
-            href="/terms"
-            title="شرایط بازگشت کالا"
-            className="block text-sm text-muted-foreground"
-          >
-            مرجوعی کالا
-          </Link>
-          <div
+      
+          <div className=""
             dangerouslySetInnerHTML={{
               __html: `
       <a referrerpolicy='origin' target='_blank' href='https://trustseal.enamad.ir/?id=7276644&Code=VOfqVN0wuHU960NvnRnlN7H6Wndv5BEg' alt='نماد اعتماد الکترونیکی'>

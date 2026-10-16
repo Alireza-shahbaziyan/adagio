@@ -4,13 +4,13 @@ import Navbar from "@/components/Navbar/Navbar";
 import Hero from "@/components/Hero/Hero";
 import Reveal from "@/components/Reveal";
 import ProductCard from "@/components/ProductCard/ProductCard";
-import BestSellersCarousel from "@/components/BestSellersCarousel";
+// import BestSellersCarousel from "@/components/BestSellersCarousel";
 import NewsletterForm from "@/components/NewsletterForm";
 import Footer from "@/components/Footer";
 import MobileBottomNav from "@/components/MobileNavBottom/MobileBottomNav";
 // import { PRODUCTS } from "@/lib/products";
 import { ProductsResponse } from "@/types/products";
-import { GalleryResponse } from "@/types/gallery";
+import { CustomerGalleryItem, GalleryResponse } from "@/types/gallery";
 import { Metadata } from "next";
 import { Post, PostsResponse } from "@/types/posts";
 import BlogPostCard from "@/components/blog/BlogPostCard";
@@ -21,19 +21,19 @@ const REVIEWS = [
   {
     stars: "★★★★★",
     quote:
-      "«کیفیت پارچه به‌تنهایی می‌ارزد. سایز اورسایز عالیه و طرح بعد از ماه‌ها هنوز رنگش نرفته.»",
+      "«کیفیت پارچه به‌تنهایی میارزه. سایز  عالیه و طرح بعد از ماه‌ها هنوز رنگش نرفته.»",
     name: "مانا ت.",
   },
   {
     stars: "★★★★★",
-    quote: "«انگار مرچ گروهی‌ست که هنوز وجود نداره. مدام می‌پوشمش.»",
+    quote: "«ممنونم ازتون که راهنمایی سایز کردید خیلی راضیم.»",
     name: "دنیز ک.",
   },
   {
     stars: "★★★★★",
     quote:
-      "«تیشرت کلاژ رو سفارش دادم، فکر کردم فقط یه تیشرته. یه اثر هنری تحویل گرفتم.»",
-    name: "پریا س.",
+      "این تیشرت خیلیییییی خوشگله 💕😭.»",
+    name: "Mooni-P.",
   },
 ];
 
@@ -90,6 +90,9 @@ export default async function Home() {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
+       next: {
+        revalidate: 60 * 60, // 1 hour
+      },
     },
   );
   const GalleryResponse = await fetch(
@@ -117,11 +120,31 @@ export default async function Home() {
     },
   );
 
-  if (!ProductResponse.ok || !GalleryResponse.ok || !getPostsResponse.ok) {
+    const lastestProductResponse = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/api/products/?featured=falsepage=1&page_size=4`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+       next: {
+        revalidate: 60 * 60, // 1 hour
+      },
+    },
+  );
+  if (!ProductResponse.ok || !getPostsResponse.ok||!lastestProductResponse.ok) {
+    console.log(
+      `
+      ${ProductResponse.ok}   -
+      ${getPostsResponse.ok}  - 
+      ${lastestProductResponse.ok}   -
+      `
+    )
     return <div>مشکلی پیش آمده دوباره امتحان کنید . </div>;
   }
   const products: ProductsResponse = await ProductResponse.json();
-  // const GalleryList: GalleryResponse = await GalleryResponse.json();
+  const lastestProducts: ProductsResponse = await lastestProductResponse.json();
+  const GalleryList: GalleryResponse = await GalleryResponse.json();
   const posts: PostsResponse = await getPostsResponse.json();
 
   return (
@@ -179,7 +202,7 @@ export default async function Home() {
               </h2>
             </div>
             <Link
-              href="/store/categories"
+              href="/store?featured=true#featured"
               className="whitespace-nowrap border-b border-white/25 pb-1 text-sm text-muted-foreground"
             >
               مشاهده همه دسته بندی ها
@@ -226,7 +249,38 @@ export default async function Home() {
           </div>
         </section>
       </Reveal>
-
+             <Reveal>
+        <section
+          id="featured"
+          className="relative z-1 bg-primary-foreground  px-5 pb-16 pt-20 md:px-16 md:pb-32 md:pt-40"
+        >
+          <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <p className="mb-4 text-xs tracking-[1px] text-muted-foreground">
+                این بخش
+              </p>
+              <h2 className="  text-[30px] font-black text-foreground md:text-[56px]">
+                جدیدترین محصولات              </h2>
+            </div>
+            <Link
+              href="/store/categories"
+              className="whitespace-nowrap border-b border-white/25 pb-1 text-sm text-muted-foreground"
+            >
+              مشاهده همه دسته بندی ها
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {lastestProducts.results.map((p, i) => (
+              <ProductCard
+                key={p.id}
+                product={p}
+                interactive
+                priority={i === 0}
+              />
+            ))}
+          </div>
+        </section>
+      </Reveal>
       <Reveal>
         <section id="categories" className="px-5 pb-20 md:px-16 md:pb-40">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -328,7 +382,7 @@ export default async function Home() {
         </section>
       </Reveal>
 
-      <BestSellersCarousel products={products.results} />
+      {/* <BestSellersCarousel products={products.results} /> */}
 
       <Reveal>
         <section className="bg-[#111111] px-5 py-16 md:px-16 md:py-28">
@@ -353,7 +407,7 @@ export default async function Home() {
           </div>
         </section>
       </Reveal>
-      {/* 
+      
       <Reveal>
         <section className="px-5 py-20 md:px-16 md:py-40">
           <div className="mb-14 text-center">
@@ -403,7 +457,7 @@ export default async function Home() {
             ))}
           </div>
         </section>
-      </Reveal> */}
+      </Reveal>
 
       <Reveal>
         <section

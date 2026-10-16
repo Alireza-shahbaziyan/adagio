@@ -18,6 +18,7 @@ type OtpFormValues = Record<DigitKey, string>;
 const RESEND_SECONDS = 60;
 
 export default function OtpForm({ phone }: { phone: string }) {
+
   const params = useParams<{ phonenumber: string }>();
   const { sendPhone } = useSendPhone();
   const router = useRouter();
@@ -33,6 +34,7 @@ export default function OtpForm({ phone }: { phone: string }) {
     });
   const values = watch();
   const code = DIGIT_KEYS.map((k) => values[k]).join("");
+
 
   const verifyOtp = useMutation({
     mutationFn: verifyOtpApi,
@@ -59,7 +61,7 @@ export default function OtpForm({ phone }: { phone: string }) {
     const fullCode = DIGIT_KEYS.map((k) => data[k]).join("");
     if (fullCode.length < 5 || submittedCode.current === fullCode) return;
     submittedCode.current = fullCode;
-    verifyOtp.mutate({ phone, code: fullCode });
+    verifyOtp.mutate({ phone, code: fullCode  });
   });
 
   useEffect(() => {
