@@ -56,8 +56,8 @@ export function NavbarDesktopActions({
         <Badge count={cartCount} />
       </Link>
       {isMember ? (
-        <Link href="/profile" className="flex p-2 text-foreground">
-          <span className="mr-2 text-sm text-white">
+        <button className="flex p-2 text-foreground">
+          <span className="mx-2 text-sm text-white">
             {user?.full_name || `0${user?.phone}` || "پروفایل"}
           </span>
           {user?.avatar && (
@@ -69,7 +69,7 @@ export function NavbarDesktopActions({
               className="rounded-full object-cover"
             />
           )}
-        </Link>
+        </button>
       ) : (
         <Link href="/login" className="flex p-2 text-foreground">
           <UserIcon />

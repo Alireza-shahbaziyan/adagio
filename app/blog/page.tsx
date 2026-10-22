@@ -60,7 +60,13 @@ async function getPosts(
 }
 
 export default async function BlogPage() {
-  const [latestPosts, popularPosts, tshirtPosts] = await Promise.all([
+  const [
+    latestPosts,
+    popularPosts,
+    tshirtPosts,
+    featuredPosts,
+    weeklyBestPosts,
+  ] = await Promise.all([
     getPosts({
       ordering: "-published_at",
     }),
@@ -73,12 +79,22 @@ export default async function BlogPage() {
       category: "تیشرت",
       ordering: "-published_at",
     }),
+
+    getPosts({
+      featured: "true",
+    }),
+
+    getPosts({
+      period: "week",
+    }),
   ]);
 
   const allPosts = [
     ...latestPosts,
     ...popularPosts,
     ...tshirtPosts,
+    ...featuredPosts,
+    ...weeklyBestPosts,
   ];
 
   const uniquePosts = Array.from(
@@ -157,6 +173,48 @@ export default async function BlogPage() {
           className="pointer-events-none absolute -bottom-40 right-0 h-96 w-96 rounded-full bg-white/[0.02] blur-3xl"
         />
       </section>
+
+      {/* Featured Posts */}
+      {featuredPosts.length > 0 && (
+        <section
+          aria-labelledby="featured-posts-title"
+          className="border-b border-border bg-card/30"
+        >
+          <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
+            <SectionHeader
+              eyebrow="EDITOR'S PICKS"
+              title="پست‌های ویژه"
+              description="منتخب مقالات مجله آداجیو؛ مطالبی که برای کشف موسیقی، هنرمندان و فرهنگ پاپ پیشنهاد می‌کنیم."
+            />
+
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {featuredPosts.slice(0, 6).map((post) => (
+                <BlogPostCard key={post.id} post={post} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Weekly Best */}
+      {weeklyBestPosts.length > 0 && (
+        <section
+          aria-labelledby="weekly-best-posts-title"
+          className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24"
+        >
+          <SectionHeader
+            eyebrow="BEST OF THE WEEK"
+            title="بهترین‌های هفته"
+            description="مقالاتی که در این هفته ارزش خواندن دارند؛ از داستان هنرمندان تا موسیقی و فرهنگ پاپ."
+          />
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {weeklyBestPosts.slice(0, 6).map((post) => (
+              <BlogPostCard key={post.id} post={post} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Latest */}
       <section
@@ -274,6 +332,3 @@ export default async function BlogPage() {
     </main>
   );
 }
-
-
-
