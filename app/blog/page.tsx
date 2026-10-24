@@ -5,6 +5,7 @@ import BlogPostCard from "@/components/blog/BlogPostCard";
 import { Post, PostsResponse } from "@/types/posts";
 import SectionHeader from "@/components/blog/SectionHeader";
 import EmptyState from "@/components/blog/EmptyState";
+import { referer } from "@/utils/getURL";
 
 const API_URL = `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/api/blog/posts/`;
 
@@ -16,13 +17,13 @@ export const metadata: Metadata = {
   description:
     "مجله آداجیو؛ مجموعه‌ای از مقالات درباره موسیقی، هنرمندان، فرهنگ پاپ، استایل و داستان پشت محصولات آداجیو.",
   alternates: {
-    canonical: "https://adagiostyle.ir/blog",
+    canonical: `${referer}/blog`,
   },
   openGraph: {
     title: "مجله آداجیو | موسیقی، مد و فرهنگ پاپ",
     description:
       "مقالات آداجیو درباره موسیقی، هنرمندان، فرهنگ پاپ و استایل.",
-    url: "https://adagiostyle.ir/blog",
+    url: `${referer}/blog`,
     siteName: "ADAGIO",
     type: "website",
   },
@@ -107,17 +108,17 @@ export default async function BlogPage() {
     name: "مجله آداجیو",
     description:
       "مجله آداجیو درباره موسیقی، فرهنگ پاپ، هنرمندان، استایل و داستان محصولات.",
-    url: "https://adagiostyle.ir/blog",
+    url: `${referer}/blog`,
     publisher: {
       "@type": "Organization",
       name: "ADAGIO",
-      url: "https://adagiostyle.ir",
+      url: referer,
     },
     blogPost: uniquePosts.slice(0, 20).map((post) => ({
       "@type": "BlogPosting",
       headline: post.title,
       description: post.excerpt,
-      url: `https://adagiostyle.ir/blog/${post.slug}`,
+      url: `${referer}/blog/${post.slug}`,
       image: post.featured_image,
       datePublished: post.published_at,
       author: {

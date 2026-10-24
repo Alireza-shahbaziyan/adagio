@@ -1,6 +1,6 @@
 
 import { NextRequest, NextResponse } from "next/server";
-import { backend } from "@/utils/getURL";
+import { backend, frontend, referer } from "@/utils/getURL";
 import { forwardSetCookie } from "@/utils/forwardSetCookie";
 
 const MUTATING_METHODS = new Set([
@@ -194,6 +194,8 @@ export async function backendFetch(
     const headers = new Headers(
       options.headers,
     );
+
+    headers.set("Referer", referer ?? frontend ?? "");
 
     if (cookieHeader) {
       headers.set("Cookie", cookieHeader);

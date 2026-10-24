@@ -54,6 +54,7 @@ cp .env.exampel .env.local
 | ------------------------------- | -------- | --------------------------------------------------------------------------------------- |
 | `NEXT_PUBLIC_BACKEND_BASE_URL`  | Yes      | Base URL of the backend that serves catalog, cart, wishlist, account, and address APIs. |
 | `NEXT_PUBLIC_FRONTEND_BASE_URL` | Yes      | Public URL of this Next.js storefront.                                                  |
+| `NEXT_PUBLIC_REFERER`          | Yes      | Canonical frontend origin sent as the `Referer` header to the backend (e.g. `https://adagiostyle.ir`). |
 | `NODE_ENV`                      | No       | Environment mode: `development` or `production`.                                        |
 
 `NEXT_PUBLIC_*` values are exposed to the browser and are embedded at build time. Do not place secrets in them. Changing either value requires a new production build.

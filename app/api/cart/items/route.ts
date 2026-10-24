@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { backend } from "@/utils/getURL";
+import { backend, frontend, referer } from "@/utils/getURL";
 import { forwardSetCookie } from "@/utils/forwardSetCookie";
 
 export const dynamic = "force-dynamic";
@@ -13,11 +13,12 @@ export async function POST(req: NextRequest) {
       headers: {
         "Content-Type": "application/json",
         cookie: req.headers.get("cookie") ?? "",
+        Referer: referer ?? frontend ?? "",
         ...(csrfToken ? { "X-CSRFToken": csrfToken } : {}),
       },
       body,
       cache: "no-store",
-    });
+    }); 
 
     const data = await res.json().catch(() => null);
 
@@ -27,7 +28,6 @@ export async function POST(req: NextRequest) {
         { status: res.status },
       );
     }
-
     const response = NextResponse.json(data, { status: 200 });
     forwardSetCookie(res, response);
     return response;

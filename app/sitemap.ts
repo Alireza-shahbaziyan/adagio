@@ -1,5 +1,5 @@
 
-import { backend } from "@/utils/getURL";
+import { backend, referer } from "@/utils/getURL";
 import type { MetadataRoute } from "next";
 
 interface SitemapItem {
@@ -8,7 +8,7 @@ interface SitemapItem {
 }
 
 const API_URL = backend;
-const SITE_URL = "https://adagiostyle.ir";
+const SITE_URL = referer;
 
 async function fetchSitemapItems(
   endpoint: string,

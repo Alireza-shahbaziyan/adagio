@@ -59,7 +59,7 @@ lib/                   Client-side data layer: one file per domain, each exporti
 hooks/                 Cross-cutting hooks (useMe, useMembership, useBootstrap, useSendPhone, useOrders)
 services/              auth.service.ts, orders.service.ts — API functions used by hooks and lib/
 types/                 Shared TypeScript types, one file per domain, mirroring lib/
-utils/getURL.ts        Reads NEXT_PUBLIC_BACKEND_BASE_URL / _FRONTEND_BASE_URL
+utils/getURL.ts        Reads NEXT_PUBLIC_BACKEND_BASE_URL / _FRONTEND_BASE_URL / _REFERER
 ```
 
 The pattern repeats per feature: `types/<domain>.d.ts` (shape) → `lib/<domain>.ts` (fetch + React Query hooks) → `app/api/<domain>/route.ts` (proxy) → `components/<Domain>/*` (UI). When working on a feature, expect to touch all four.
@@ -190,6 +190,7 @@ External JSON is trusted only up to the module boundary. Where backend responses
 |---|---|
 | `NEXT_PUBLIC_BACKEND_BASE_URL` | Base URL of the external backend; used by `utils/getURL.ts` (server-side proxy target) and `next.config.ts` (allowed image host) |
 | `NEXT_PUBLIC_FRONTEND_BASE_URL` | This app's own base URL, exported alongside the backend URL for code that needs to build absolute links back to itself |
+| `NEXT_PUBLIC_REFERER` | Canonical frontend origin (e.g. `https://adagiostyle.ir`); sent as the `Referer` header on backend proxy requests and used for canonical URLs |
 
 ## 11. Error Handling & Security
 

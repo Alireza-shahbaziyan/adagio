@@ -5,13 +5,16 @@ from "./fonts/fontsConfig";
 import { Providers } from "@/lib/providers";
 import Toast from "@/components/Toast";
 import { cn } from "@/lib/utils";
+import { frontend, referer } from "@/utils/getURL";
 import "./globals.css";
 
+
+const metadataBaseUrl = referer ?? frontend;
 
 export const metadata: Metadata = {
   title: "آداجیو | Adagio",
   description: "فروشگاه لباس آداجیو | Adagio",
-  metadataBase: new URL("https://adagiostyle.ir"),
+  metadataBase: metadataBaseUrl ? new URL(metadataBaseUrl) : undefined,
   robots: {
     index: true,
     follow: true,

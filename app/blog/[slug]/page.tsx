@@ -3,11 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Post, PostDetail, PostsResponse } from "@/types/posts";
+import { referer } from "@/utils/getURL";
 
 export const revalidate = 1800;
 
 const API_URL = "https://api.adagiostyle.ir/api/blog/posts";
-const SITE_URL = "https://adagiostyle.ir";
+const SITE_URL = referer;
 
 interface BlogPostPageProps {
   params: Promise<{

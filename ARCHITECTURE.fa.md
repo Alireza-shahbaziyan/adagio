@@ -59,7 +59,7 @@ lib/                   لایه‌ی داده‌ی سمت کلاینت: یک ف�
 hooks/                 هوک‌های عمومی (useMe، useMembership، useBootstrap، useSendPhone، useOrders)
 services/              auth.service.ts، orders.service.ts — توابع API استفاده‌شده در hooks و lib/
 types/                 تایپ‌های مشترک TypeScript، یک فایل به‌ازای هر دامنه، هم‌راستا با lib/
-utils/getURL.ts        خواندن NEXT_PUBLIC_BACKEND_BASE_URL / _FRONTEND_BASE_URL
+utils/getURL.ts        خواندن NEXT_PUBLIC_BACKEND_BASE_URL / _FRONTEND_BASE_URL / _REFERER
 ```
 
 این الگو برای هر فیچر تکرار می‌شود: `types/<domain>.d.ts` (شکل داده) ← `lib/<domain>.ts` (fetch + هوک‌های React Query) ← `app/api/<domain>/route.ts` (پراکسی) ← `components/<Domain>/*` (رابط کاربری). هنگام کار روی یک فیچر، معمولاً هر چهار مورد باید تغییر کنند.
@@ -190,6 +190,7 @@ const { user, isMember, isGuest, isLoading, isError } = useMembership();
 |---|---|
 | `NEXT_PUBLIC_BACKEND_BASE_URL` | آدرس پایه‌ی بک‌اند خارجی؛ استفاده‌شده در `utils/getURL.ts` (مقصد پراکسی سمت سرور) و `next.config.ts` (میزبان مجاز تصویر) |
 | `NEXT_PUBLIC_FRONTEND_BASE_URL` | آدرس پایه‌ی خودِ این برنامه، در کنار آدرس بک‌اند export می‌شود برای کدی که نیاز به ساخت لینک مطلق به خودش دارد |
+| `NEXT_PUBLIC_REFERER` | آدرس پایه‌ی canonical فرودمگاهی (مثل `https://adagiostyle.ir`); به‌عنوان هدر `Referer` در برخورد با بک‌اند و برای URLهای canonical استفاده می‌شود |
 
 ## ۱۱. مدیریت خطا و امنیت
 

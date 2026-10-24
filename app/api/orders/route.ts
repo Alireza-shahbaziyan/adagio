@@ -1,7 +1,7 @@
 
 import { NextRequest } from "next/server";
 import { backendFetch } from "@/lib/backend-client";
-import { backend } from "@/utils/getURL";
+// import { backend } from "@/utils/getURL";
 
 export const dynamic = "force-dynamic";
 

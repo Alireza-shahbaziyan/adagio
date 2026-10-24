@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { referer } from "@/utils/getURL";
 import ProductDetail from "@/components/ProductPage/ProductDetail";
 import { Product } from "@/types/singleProduct";
 import type {
@@ -45,7 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: meta?.description??"تیشرت باکسی اورسایز | ADAGIO",
 
     alternates: {
-      canonical: meta?.canonical_url??`https://adagiostyle.ir/store/products/${product.slug}`,
+      canonical: meta?.canonical_url??`${referer}/store/products/${product.slug}`,
     },
 
     robots: {
@@ -56,7 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: meta?.og_title??"تیشرت باکسی اورسایز | ADAGIO",
       description: meta?.og_description??"تیشرت باکسی اورسایز | ADAGIO",
-      url: meta?.canonical_url??`https://adagiostyle.ir/store/products/${product.slug}`,
+      url: meta?.canonical_url??`${referer}/store/products/${product.slug}`,
       type: "website",
 
       images: [

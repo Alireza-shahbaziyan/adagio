@@ -1,5 +1,6 @@
 
 import type { Product } from "@/types/singleProduct";
+import { referer } from "@/utils/getURL";
 
 interface ProductJsonLdProps {
   product: Product;
@@ -16,7 +17,7 @@ export function ProductJsonLd({
 
     description: product.description,
 
-    url: `https://adagiostyle.ir/store/products/${product.slug}`,
+    url: `${referer}/store/products/${product.slug}`,
 
     image: product.images
       .filter((image) => image.is_primary || image.media_kind === "gallery")
@@ -32,7 +33,7 @@ export function ProductJsonLd({
     offers: {
       "@type": "AggregateOffer",
 
-      url: `https://adagiostyle.ir/store/products/${product.slug}`,
+      url: `${referer}/store/products/${product.slug}`,
 
       priceCurrency: "IRR",
 
