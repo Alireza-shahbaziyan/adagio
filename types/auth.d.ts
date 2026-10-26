@@ -4,6 +4,12 @@ export interface User {
   full_name: string;
   avatar: string;
 }
+
+export interface UpdateProfilePayload {
+  full_name: string;
+  avatar: string;
+}
+
 export interface logoutResponse {
  detail: string;
 }

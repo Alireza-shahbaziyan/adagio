@@ -17,7 +17,13 @@ type OtpFormValues = Record<DigitKey, string>;
 
 const RESEND_SECONDS = 60;
 
-export default function OtpForm({ phone }: { phone: string }) {
+export default function OtpForm({
+  phone,
+  next,
+}: {
+  phone: string;
+  next?: string | null;
+}) {
 
   const params = useParams<{ phonenumber: string }>();
   const { sendPhone } = useSendPhone();
@@ -38,11 +44,16 @@ export default function OtpForm({ phone }: { phone: string }) {
 
   const verifyOtp = useMutation({
     mutationFn: verifyOtpApi,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: queryKeys.checkAuth });
-      queryClient.invalidateQueries({ queryKey: queryKeys.cart });
+    onSuccess: async () => {
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: queryKeys.checkAuth }),
+        queryClient.invalidateQueries({ queryKey: queryKeys.cart }),
+        queryClient.invalidateQueries({ queryKey: queryKeys.addresses }),
+        queryClient.invalidateQueries({ queryKey: queryKeys.wishlist }),
+        queryClient.invalidateQueries({ queryKey: queryKeys.bootstrap }),
+      ]);
       showToast("وارد شدی. خوش آمدی.");
-      router.push("/");
+      router.replace(next ?? "/");
     },
     onError: () => {
       reset();
@@ -85,7 +96,7 @@ export default function OtpForm({ phone }: { phone: string }) {
   const handleResend = () => {
     try {
       if (secondsLeft > 0) return;
-      sendPhone({ phone: params.phonenumber });
+      sendPhone({ phone: params.phonenumber, next });
       showToast("کد دوباره ارسال شد.");
       setSecondsLeft(RESEND_SECONDS);
     } catch (error) {
@@ -98,7 +109,7 @@ export default function OtpForm({ phone }: { phone: string }) {
   return (
     <>
       <Link
-        href="/login"
+        href={next ? `/login?next=${encodeURIComponent(next)}` : "/login"}
         className="mb-6 inline-flex items-center gap-1.5 text-[13px] text-muted-foreground transition-colors hover:text-foreground"
       >
         <ChevronRightIcon size={14} />

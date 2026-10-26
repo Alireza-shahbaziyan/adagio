@@ -14,9 +14,7 @@ export async function GET(
 ) {
   const { token } = await params;
 
-  return backendFetch(
-    req,
-    `/api/orders/${token}/`,
+  return backendFetch(req,`/api/orders/${token}/`,
     {
       method: "GET",
     },

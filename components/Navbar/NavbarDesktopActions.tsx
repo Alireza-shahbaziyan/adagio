@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { BagIcon, HeartIcon, SearchIcon, UserIcon } from "@/components/icons";
 import { Badge } from "./Badge";
-import { User } from "@/types/auth";
-import Image from "next/image";
+import { NavActionButton, NavActionLink } from "./NavAction";
+import { ProfileMenu } from "./ProfileMenu";
+import type { User } from "@/types/auth";
 
 interface NavbarDesktopActionsProps {
   variant: "home" | "product" | "default";
@@ -10,9 +10,12 @@ interface NavbarDesktopActionsProps {
   wishlistCount: number;
   cartCount: number;
   user: User | null;
+  isLoading: boolean;
   productWishlisted?: boolean;
   onToggleProductWishlist?: () => void;
   onSearchOpen: () => void;
+  onLogout: () => void;
+  logoutPending: boolean;
 }
 
 export function NavbarDesktopActions({
@@ -21,62 +24,51 @@ export function NavbarDesktopActions({
   isMember,
   wishlistCount,
   cartCount,
+  isLoading,
   productWishlisted,
   onToggleProductWishlist,
   onSearchOpen,
+  onLogout,
+  logoutPending,
 }: NavbarDesktopActionsProps) {
   return (
-    <div className="hidden items-center gap-6 md:flex">
-      <button
-        onClick={onSearchOpen}
-        className="flex p-2 text-foreground"
-        type="button"
-      >
+    <div className="hidden items-center gap-1 md:flex lg:gap-2">
+      <NavActionButton label="جستجو" onClick={onSearchOpen}>
         <SearchIcon />
-      </button>
+      </NavActionButton>
+
       {variant === "product" ? (
-        <button
+        <NavActionButton
+          label={productWishlisted ? "حذف از علاقه‌مندی‌ها" : "افزودن به علاقه‌مندی‌ها"}
+          aria-pressed={productWishlisted}
           onClick={onToggleProductWishlist}
-          className="relative flex p-2 text-foreground"
-          type="button"
         >
           <HeartIcon filled={productWishlisted} />
-        </button>
+        </NavActionButton>
       ) : (
-        <Link
-          href="/store/wishlist"
-          className="relative flex p-2 text-foreground"
-        >
+        <NavActionLink href="/store/wishlist" label="علاقه‌مندی‌ها">
           <HeartIcon />
           <Badge count={wishlistCount} />
-        </Link>
+        </NavActionLink>
       )}
-      <Link href="/store/cart" className="relative flex p-2 text-foreground">
+
+      <NavActionLink href="/store/cart" label="سبد خرید">
         <BagIcon />
         <Badge count={cartCount} />
-      </Link>
-      {isMember ? (
-        <button className="flex p-2 text-foreground">
-          <span className="mx-2 text-sm text-white">
-            {user?.full_name || `0${user?.phone}` || "پروفایل"}
-          </span>
-          {user?.avatar && (
-            <Image
-              src={user.avatar}
-              alt={user.full_name ?? "Profile"}
-              width={24}
-              height={24}
-              className="rounded-full object-cover"
-            />
-          )}
-        </button>
+      </NavActionLink>
+
+      {isMember || isLoading ? (
+        <ProfileMenu
+          user={user}
+          isLoading={isLoading}
+          onLogout={onLogout}
+          logoutPending={logoutPending}
+        />
       ) : (
-        <Link href="/login" className="flex p-2 text-foreground">
+        <NavActionLink href="/login" label="ورود به حساب کاربری">
           <UserIcon />
-        </Link>
+        </NavActionLink>
       )}
     </div>
   );
 }
-
-

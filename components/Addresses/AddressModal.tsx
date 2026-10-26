@@ -24,12 +24,14 @@ export default function AddressModal({
   address,
   onOpenChange,
   onModeChange,
+  onSaved,
 }: {
   open: boolean;
   mode: Mode;
   address?: Address;
   onOpenChange: (open: boolean) => void;
   onModeChange: (mode: Mode) => void;
+  onSaved?: (address: Address) => void;
 }) {
   
   const { showToast } = useAppState();
@@ -138,7 +140,10 @@ export default function AddressModal({
         ) : (
           <AddressForm
             address={mode === "edit" ? address : undefined}
-            onSuccess={() => handleOpenChange(false)}
+            onSuccess={(savedAddress) => {
+              onSaved?.(savedAddress);
+              handleOpenChange(false);
+            }}
           />
         )}
       </DialogContent>

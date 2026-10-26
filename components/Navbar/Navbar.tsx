@@ -2,25 +2,18 @@
 
 import Link from "next/link";
 import { useState } from "react";
+
 import { useCartItemCount } from "@/lib/cart";
 import { useWishlistCount } from "@/lib/wishlist";
 import { useScrollY } from "@/lib/hooks";
+import { useAppState } from "@/lib/app-state";
 import SearchDialog from "@/components/SearchDialog";
 import { useMembership } from "@/hooks/useMembership";
+import { useLogout } from "@/hooks/useLogout";
 import { NavbarDesktopActions } from "./NavbarDesktopActions";
 import { NavbarMobileActions } from "./NavbarMobileActions";
 import { MobileMenu } from "./MobileMenu";
-import { useLogout } from "@/hooks/useLogout";
-
-const NAV_LINKS = [
-  { href: "/store", label: "فروشگاه" },
-  { href: "/blog", label: "بلاگ" },
-  { href: "/store/collections", label: "کالکشن‌ها" },
-  { href: "/store/categories", label: "دستبه‌بندی" },
-  { href: "/store/order-guide", label: "راهنمای‌خرید" },
-  { href: "/about", label: "درباره" },
-  { href: "/contact-me", label: "تماس" },
-];
+import { NAV_LINKS } from "./navLinks";
 
 export default function Navbar({
   variant,
@@ -32,7 +25,8 @@ export default function Navbar({
   onToggleProductWishlist?: () => void;
 }) {
   const { user, isMember, isLoading } = useMembership();
-  const { mutate: logout } = useLogout();
+  const { mutate: logout, isPending: logoutPending } = useLogout();
+  const { showToast } = useAppState();
   const wishlistCount = useWishlistCount();
   const cartCount = useCartItemCount();
   const scrollY = useScrollY();
@@ -42,18 +36,26 @@ export default function Navbar({
 
   const navSolid = variant !== "home" || scrollY > 40;
   const position = variant === "home" ? "fixed" : "sticky";
-  if (isLoading)
-    return (
-      <div className="w-full h-20 flex justify-center items-center py-4">
-        <div className="relative mx-auto flex h-16 w-16 items-center justify-center ">
-          <div className="absolute inset-0 animate-ping rounded-full border border-white/20" />
 
-          <div className="h-12 w-12 animate-spin rounded-full border border-white/20 border-t-white" />
+  function handleLogout() {
+    logout(undefined, {
+      onSuccess: () => showToast("شما با موفقیت خارج شدید"),
+      onError: () => showToast("خروج از حساب کاربری ناموفق بود"),
+    });
+  }
 
-          <div className="absolute h-2 w-2 animate-pulse rounded-full bg-white" />
-        </div>
-      </div>
-    );
+  const actionProps = {
+    user: user ?? null,
+    isMember,
+    isLoading,
+    cartCount,
+    productWishlisted,
+    onToggleProductWishlist,
+    onSearchOpen: () => setSearchOpen(true),
+    onLogout: handleLogout,
+    logoutPending,
+  };
+
   return (
     <>
       <nav
@@ -71,51 +73,49 @@ export default function Navbar({
           transition:
             "background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease",
         }}
-        className="flex items-center justify-between px-5 py-5 md:px-16"
+        className="flex h-16 items-center justify-between gap-3 px-4 md:h-20 md:px-10 lg:px-16"
       >
         <Link
           href="/"
           style={{ direction: "ltr" }}
-          className="font-instrument-serif text-[26px] italic text-foreground tracking-[0.3px]"
+          className="shrink-0 rounded-sm font-instrument-serif text-[24px] italic tracking-[0.3px] text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 md:text-[26px]"
         >
           Adagio
         </Link>
 
-        <div className="hidden items-center gap-10 md:flex">
-          {NAV_LINKS.map((l) => (
+        <div className="hidden flex-1 items-center justify-center gap-7 md:flex lg:gap-9">
+          {NAV_LINKS.map((link) => (
             <Link
-              key={l.href}
-              href={l.href}
-              className="text-sm tracking-[0.2px] text-foreground"
+              key={link.href}
+              href={link.href}
+              className="whitespace-nowrap text-sm tracking-[0.2px] text-foreground/85 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
             >
-              {l.label}
+              {link.label}
             </Link>
           ))}
         </div>
 
         <NavbarDesktopActions
-          user={user ?? null}
+          {...actionProps}
           variant={variant}
-          isMember={isMember}
           wishlistCount={wishlistCount}
-          cartCount={cartCount}
-          productWishlisted={productWishlisted}
-          onToggleProductWishlist={onToggleProductWishlist}
-          onSearchOpen={() => setSearchOpen(true)}
         />
 
         <NavbarMobileActions
+          {...actionProps}
           variant={variant}
-          cartCount={cartCount}
-          productWishlisted={productWishlisted}
-          onToggleProductWishlist={onToggleProductWishlist}
-          onSearchOpen={() => setSearchOpen(true)}
           onMenuOpen={() => setMenuOpen(true)}
         />
       </nav>
 
       {variant !== "product" && menuOpen && (
-        <MobileMenu logout={logout} isMember={isMember} onClose={() => setMenuOpen(false)} />
+        <MobileMenu
+          user={user ?? null}
+          isMember={isMember}
+          logoutPending={logoutPending}
+          onLogout={handleLogout}
+          onClose={() => setMenuOpen(false)}
+        />
       )}
 
       <SearchDialog open={searchOpen} onOpenChange={setSearchOpen} />

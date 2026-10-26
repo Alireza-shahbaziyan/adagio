@@ -5,6 +5,7 @@ import { forwardSetCookie } from "@/utils/forwardSetCookie";
 export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
+  
   try {
     const body = await req.text();
     const csrfToken = req.cookies.get("csrftoken")?.value;

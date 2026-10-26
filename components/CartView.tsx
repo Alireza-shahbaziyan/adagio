@@ -8,20 +8,43 @@ import { useCart, useRemoveCartItem, useUpdateCartItem } from "@/lib/cart";
 import { formatPrice } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { useMembership } from "@/hooks/useMembership";
+import { useAddresses } from "@/lib/addresses";
 
 import AddressSection from "@/components/Addresses/AddressSection";
 import AddressModal from "@/components/Addresses/AddressModal";
 import type { Address } from "@/types/address";
 import CreateOrderModal from "./Orders/CreateOrderModal";
 
+const CART_LOGIN_HREF = `/login?next=${encodeURIComponent("/store/cart")}`;
+
+type AddressNotice = "select" | "error";
+
 export default function CartView() {
   const router = useRouter();
   const { data: cart, isLoading, isError, refetch } = useCart();
+  const { isMember, isLoading: memberLoading } = useMembership();
+  const {
+    data: addresses,
+    isLoading: addressesLoading,
+    isError: addressesError,
+    refetch: refetchAddresses,
+  } = useAddresses();
 
   const updateItem = useUpdateCartItem();
   const removeItem = useRemoveCartItem();
 
   const [ordersOpen, setOrdersOpen] = useState(false);
+  const [addressNotice, setAddressNotice] = useState<AddressNotice | null>(
+    null,
+  );
   const [selectedAddressId, setSelectedAddressId] = useState<number | null>(
     null,
   );
@@ -30,12 +53,58 @@ export default function CartView() {
     address?: Address;
   } | null>(null);
 
+  const addressesPending = memberLoading || (isMember && addressesLoading);
+
   function handleContinuePurchase() {
-    if (selectedAddressId) {
-      setOrdersOpen(true);
-    }else if (selectedAddressId===null){
-      setAddressModal({ mode: "create" })
+    if (memberLoading) return;
+
+    if (!isMember) {
+      router.push(CART_LOGIN_HREF);
+      return;
     }
+
+    // Wait for the address query instead of guessing; an error is distinct
+    // from an empty list and must never open the "create address" flow.
+    if (addressesLoading) return;
+
+    if (addressesError) {
+      setAddressNotice("error");
+      return;
+    }
+
+    const addressList = addresses ?? [];
+
+    if (addressList.length === 0) {
+      setAddressModal({ mode: "create" });
+      return;
+    }
+
+    const hasSelectedAddress =
+      selectedAddressId !== null &&
+      addressList.some((address) => address.id === selectedAddressId);
+
+    if (!hasSelectedAddress) {
+      setAddressNotice("select");
+      return;
+    }
+
+    setOrdersOpen(true);
+  }
+
+  function focusAddressSection() {
+    setAddressNotice(null);
+
+    requestAnimationFrame(() => {
+      const section = document.getElementById("shipping-address");
+      section?.scrollIntoView({ behavior: "smooth", block: "start" });
+      section
+        ?.querySelector<HTMLInputElement>('input[name="shipping-address"]')
+        ?.focus({ preventScroll: true });
+    });
+  }
+
+  function handleAddressSaved(address: Address) {
+    setSelectedAddressId(address.id);
   }
 
   function handleOrderSuccess(orderToken: string) {
@@ -124,6 +193,8 @@ export default function CartView() {
 
       <h2 className="mb-4 text-lg font-bold text-foreground">آدرس ارسال</h2>
       <AddressSection
+        id="shipping-address"
+        loginHref={CART_LOGIN_HREF}
         selectedId={selectedAddressId}
         onSelectAddress={setSelectedAddressId}
         onCardClick={(address) => setAddressModal({ mode: "view", address })}
@@ -138,7 +209,7 @@ export default function CartView() {
             key={item.sku}
             className="flex flex-wrap items-center gap-4 rounded-[20px] border border-white/8 bg-[#111111] p-5"
           >
-            <div className="min-w-[140px] flex-1">
+            <div className="min-w-35 flex-1">
               <p className="mb-1 text-[15px] text-foreground">
                 {item.product_title}
               </p>
@@ -197,15 +268,68 @@ export default function CartView() {
 
       <Button
         onClick={handleContinuePurchase}
+        disabled={addressesPending}
         className="mt-6 w-full rounded-full py-6 text-[15px] font-bold"
       >
         ادامه فرآیند خرید
       </Button>
 
+      <Dialog
+        open={addressNotice !== null}
+        onOpenChange={(open) => !open && setAddressNotice(null)}
+      >
+        <DialogContent dir="rtl" className="sm:max-w-md">
+          <DialogHeader className="text-right">
+            <DialogTitle className="text-lg font-bold">
+              {addressNotice === "error"
+                ? "دریافت آدرس‌ها ناموفق بود"
+                : "آدرس ارسال را انتخاب کن"}
+            </DialogTitle>
+            <DialogDescription className="text-sm leading-6">
+              {addressNotice === "error"
+                ? "ارتباط با سرور برای دریافت آدرس‌ها برقرار نشد. برای ادامه، دوباره تلاش کن. این خطا به معنی نداشتن آدرس نیست."
+                : "برای ادامه فرآیند خرید، یکی از آدرس‌های ذخیره‌شده را انتخاب کن."}
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="mt-2 flex flex-col-reverse gap-3 sm:flex-row">
+            {addressNotice === "error" ? (
+              <Button
+                type="button"
+                onClick={() => {
+                  setAddressNotice(null);
+                  refetchAddresses();
+                }}
+                className="h-11 flex-1 rounded-full text-sm font-bold"
+              >
+                تلاش دوباره
+              </Button>
+            ) : (
+              <Button
+                type="button"
+                onClick={focusAddressSection}
+                className="h-11 flex-1 rounded-full text-sm font-bold"
+              >
+                انتخاب آدرس
+              </Button>
+            )}
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => setAddressNotice(null)}
+              className="h-11 flex-1 rounded-full text-sm"
+            >
+              بستن
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
       <AddressModal
         open={addressModal !== null}
         mode={addressModal?.mode ?? "create"}
         address={addressModal?.address}
+        onSaved={handleAddressSaved}
         onOpenChange={(open) => !open && setAddressModal(null)}
         onModeChange={(mode) =>
           setAddressModal((m) => (m ? { ...m, mode } : m))

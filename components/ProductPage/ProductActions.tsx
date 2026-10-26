@@ -3,6 +3,7 @@ import type { ProductVariant } from "@/types/products";
 
 export default function ProductActions({
   selectedVariant,
+  hasAvailableVariant,
   addToCartPending,
   onAddToCart,
   wishlisted,
@@ -11,6 +12,7 @@ export default function ProductActions({
   onBuyNow,
 }: {
   selectedVariant: ProductVariant | undefined;
+  hasAvailableVariant: boolean;
   addToCartPending: boolean;
   onAddToCart: () => void;
   wishlisted: boolean;
@@ -30,7 +32,7 @@ export default function ProductActions({
           }}
           className="min-w-[180px] flex-1 rounded-full bg-foreground px-7 py-4.5 text-[15px] font-bold text-primary-foreground transition-transform hover:scale-[1.02]"
         >
-          افزودن به سبد خرید
+          {hasAvailableVariant ? "افزودن به سبد خرید" : "ناموجود"}
         </button>
         <button
           onClick={onToggleWishlist}
@@ -49,7 +51,7 @@ export default function ProductActions({
         }}
         className="mb-10 w-full rounded-full border border-white/30 bg-transparent px-7 py-4.5 text-[15px] font-bold text-foreground transition-colors hover:border-white/60 hover:bg-white/8"
       >
-        همین حالا بخرید
+        {hasAvailableVariant ? "همین حالا بخرید" : "ناموجود"}
       </button>
     </>
   );

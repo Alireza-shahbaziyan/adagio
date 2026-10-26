@@ -1,33 +1,31 @@
-import { backend } from "@/utils/getURL";
-import { forwardSetCookie } from "@/utils/forwardSetCookie";
+
 import { NextRequest, NextResponse } from "next/server";
+import { backendFetch } from "@/lib/backend-client";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(req: NextRequest) {
-  try {
-    const res = await fetch(`${backend}/api/auth/me/`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Cookie: req.headers.get("cookie") ?? "",
+  return backendFetch(
+      req,
+      `/api/auth/me/`,
+      {
+        method: "GET",
       },
-      cache: "no-store",
-    });
+    );
+}
 
-    const data = await res.json().catch(() => null);
+export async function PATCH(req: NextRequest) {
+  const body = await req.json().catch(() => null);
 
-    const nextResponse = NextResponse.json(data, {
-      status: res.status,
-    });
-
-    forwardSetCookie(res, nextResponse);
-
-    return nextResponse;
-  } catch {
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
     return NextResponse.json(
-      { detail: "Internal Server Error" },
-      { status: 500 },
+      { detail: "داده‌های پروفایل معتبر نیست" },
+      { status: 400 },
     );
   }
+
+  return backendFetch(req, "/api/auth/me/", {
+    method: "PATCH",
+    body,
+  });
 }

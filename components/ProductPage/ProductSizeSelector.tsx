@@ -1,6 +1,7 @@
 
 import type { ProductVariant } from "@/types/products";
 import { useAppState } from "@/lib/app-state";
+import { isVariantInStock } from "@/utils/variant";
 
 export default function ProductSizeSelector({
   variants,
@@ -27,12 +28,23 @@ export default function ProductSizeSelector({
       <div className="flex flex-wrap gap-2.5">
         {variants.map((variant) => {
           const active = selectedSize === variant.size_name;
-          const disabled = !variant.is_active || variant.stock <= 0;
+          const disabled = !isVariantInStock(variant);
           return (
             <button
               key={variant.id}
+              type="button"
               disabled={disabled}
-              onClick={() => onSelectSize(variant.size_name)}
+              aria-label={
+                disabled
+                  ? `${variant.size_name} - ناموجود`
+                  : variant.size_name
+              }
+              aria-pressed={active}
+              title={disabled ? "این سایز موجود نیست" : undefined}
+              onClick={() => {
+                if (disabled) return;
+                onSelectSize(variant.size_name);
+              }}
               style={{
                 direction: "ltr",
                 background: active ? "#F3F3F3" : "transparent",
@@ -40,6 +52,7 @@ export default function ProductSizeSelector({
                 borderColor: active ? "#F3F3F3" : "rgba(255,255,255,0.25)",
                 opacity: disabled ? 0.5 : 1,
                 cursor: disabled ? "not-allowed" : "pointer",
+                textDecoration: disabled ? "line-through" : "none",
               }}
               className="min-w-12 rounded-full border px-4 py-3 text-sm transition-colors"
             >

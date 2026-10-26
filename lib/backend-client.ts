@@ -131,6 +131,7 @@ export async function backendFetch(
   options: BackendFetchOptions = {},
 ): Promise<NextResponse> {
   try {
+
     const method = (
       options.method ?? "GET"
     ).toString().toUpperCase();
@@ -179,8 +180,7 @@ export async function backendFetch(
 
         return NextResponse.json(
           {
-            detail:
-              "Unable to initialize CSRF token",
+            detail: "Unable to initialize CSRF token",
           },
           { status: 500 },
         );
@@ -194,7 +194,7 @@ export async function backendFetch(
     const headers = new Headers(
       options.headers,
     );
-
+    
     headers.set("Referer", referer ?? frontend ?? "");
 
     if (cookieHeader) {

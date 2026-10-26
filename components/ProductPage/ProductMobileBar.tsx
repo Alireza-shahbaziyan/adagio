@@ -7,6 +7,7 @@ export default function ProductMobileBar({
   wishlistPending,
   onToggleWishlist,
   selectedVariant,
+  hasAvailableVariant,
   addToCartPending,
   onAddToCart,
 }: {
@@ -14,6 +15,7 @@ export default function ProductMobileBar({
   wishlistPending: boolean;
   onToggleWishlist: () => void;
   selectedVariant: ProductVariant | undefined;
+  hasAvailableVariant: boolean;
   addToCartPending: boolean;
   onAddToCart: () => void;
 }) {
@@ -42,7 +44,11 @@ export default function ProductMobileBar({
         className="flex-1 rounded-full bg-foreground text-[15px] font-bold text-primary-foreground"
       >
         افزودن به سبد ·{" "}
-        {selectedVariant ? formatPrice(selectedVariant.price) : "ناموجود"}
+        {selectedVariant
+          ? formatPrice(selectedVariant.price)
+          : hasAvailableVariant
+            ? "انتخاب سایز"
+            : "ناموجود"}
       </button>
     </div>
   );

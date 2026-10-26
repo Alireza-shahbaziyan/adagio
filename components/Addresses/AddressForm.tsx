@@ -25,7 +25,7 @@ import Select from "./Select";
 
 interface AddressFormProps {
   address?: Address;
-  onSuccess: () => void;
+  onSuccess: (address: Address) => void;
 }
 
 const EMPTY_ADDRESS: AddressPayload = {
@@ -99,9 +99,9 @@ export default function AddressForm({
           payload: data,
         },
         {
-          onSuccess: () => {
+          onSuccess: (savedAddress) => {
             showToast("آدرس ذخیره شد");
-            onSuccess();
+            onSuccess(savedAddress);
           },
           onError: (error) => {
             showToast(error.message);
@@ -113,9 +113,9 @@ export default function AddressForm({
     }
 
     createAddress.mutate(data, {
-      onSuccess: () => {
+      onSuccess: (savedAddress) => {
         showToast("آدرس اضافه شد");
-        onSuccess();
+        onSuccess(savedAddress);
       },
       onError: (error) => {
         showToast(error.message);

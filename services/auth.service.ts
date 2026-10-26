@@ -1,5 +1,9 @@
 import { apiRequest } from "@/lib/api-client";
-import { logoutResponse, User } from "@/types/auth";
+import {
+  logoutResponse,
+  UpdateProfilePayload,
+  User,
+} from "@/types/auth";
 
 export async function verifyOtpApi(data: {
   phone: string;
@@ -44,5 +48,14 @@ export async function getMe(): Promise<User | null> {
 export async function logout(): Promise<logoutResponse> {
   return apiRequest<logoutResponse>("/api/auth/logout", {
     method: "POST",
+  });
+}
+
+export async function updateMe(
+  payload: UpdateProfilePayload,
+): Promise<User> {
+  return apiRequest<User>("/api/auth/me", {
+    method: "PATCH",
+    body: JSON.stringify(payload),
   });
 }

@@ -43,6 +43,20 @@ function normalizeError(status: number, data: unknown): ApiError {
       }
     }
 
+    // DRF validation errors commonly arrive as top-level field keys
+    // (`{ full_name: ["..."], avatar: ["..."] }`) rather than inside
+    // `errors`. Collect those too so forms can show the backend messages.
+    const RESERVED_KEYS = new Set(["detail", "message", "code", "errors"]);
+    for (const [key, val] of Object.entries(data)) {
+      if (RESERVED_KEYS.has(key) || fieldErrors[key]) continue;
+
+      if (Array.isArray(val)) {
+        fieldErrors[key] = val.map(String);
+      } else if (typeof val === "string") {
+        fieldErrors[key] = [val];
+      }
+    }
+
     return {
       status,
       message,
@@ -162,7 +176,7 @@ export async function apiRequest<T>(
       normalizeError(res.status, data),
     );
   }
-
+  console.log("api-client : ",data)
   return data as T;
 }
 

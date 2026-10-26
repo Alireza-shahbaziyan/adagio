@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { backend } from "@/utils/getURL";
 import { forwardSetCookie } from "@/utils/forwardSetCookie";
+import { backend, frontend, referer } from "@/utils/getURL";
 
 export const dynamic = "force-dynamic";
 
@@ -30,6 +30,7 @@ export async function POST(
       headers: {
         "Content-Type": "application/json",
         cookie: req.headers.get("cookie") ?? "",
+        Referer: referer ?? frontend ?? "",
         ...(csrfToken ? { "X-CSRFToken": csrfToken } : {}),
       },
       body: JSON.stringify({ gateway_id: body.gateway_id }),
@@ -42,12 +43,15 @@ export async function POST(
       return NextResponse.json(
         data ?? { detail: "شروع پرداخت ناموفق بود" },
         { status: res.status },
+        
       );
     }
 
     const response = NextResponse.json(data, { status: 200 });
     forwardSetCookie(res, response);
+
     return response;
+    
   } catch {
     return NextResponse.json(
       { detail: "Internal Server Error | Error initiating payment" },

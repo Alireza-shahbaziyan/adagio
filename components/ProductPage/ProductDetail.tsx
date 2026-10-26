@@ -1,8 +1,10 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar/Navbar";
 import ProductFooter from "@/components/ProductFooter";
 import { useAppState } from "@/lib/app-state";
+import { ApiClientError } from "@/lib/api-client";
 import { useAddCartItem } from "@/lib/cart";
 import { useWishlistToggle } from "@/lib/wishlist";
 import { useRecentlyViewed } from "@/lib/hooks";
@@ -12,6 +14,7 @@ import type {
   ProductImage,
   ProductVariant,
 } from "@/types/products";
+import { findFirstAvailableVariant, isVariantInStock } from "@/utils/variant";
 import Recommended from "./Recommended";
 import ProductAudioTeaser from "./ProductAudioTeaser";
 import ProductBreadcrumb from "./ProductBreadcrumb";
@@ -33,6 +36,7 @@ export default function ProductDetail({
   recommended?: ProductSummary[];
 }) {
   const { showToast } = useAppState();
+  const router = useRouter();
   const addCartItem = useAddCartItem();
 
   const {
@@ -49,7 +53,7 @@ export default function ProductDetail({
     [product.images],
   );
 
-  const variants = product.variants ?? [];
+  const variants = useMemo(() => product.variants ?? [], [product.variants]);
   const primaryCollection = product.collections?.[0];
   const description = product.description || "توضیحات این محصول ثبت نشده. ";
   const short_dec =
@@ -76,24 +80,51 @@ export default function ProductDetail({
 
   const [selectedSize, setSelectedSize] = useState<
     ProductVariant["size_name"] | null
-  >(
-    () =>
-      variants.find((v) => v.is_active && v.stock > 0)?.size_name ??
-      variants[0]?.size_name ??
-      null,
-  );
+  >(() => findFirstAvailableVariant(variants)?.size_name ?? null);
   const [qty, setQty] = useState(1);
+  const [stockMessage, setStockMessage] = useState<string | null>(null);
   const [openAccordion, setOpenAccordion] = useState<string | null>(
     accordionSections[0]?.key ?? null,
   );
 
-  const selectedVariant =
-    variants.find((v) => v.size_name === selectedSize) ?? variants[0];
-  const maxQty = selectedVariant ? Math.max(1, selectedVariant.stock) : 1;
+  const selectedVariant = selectedSize
+    ? variants.find((v) => v.size_name === selectedSize)
+    : undefined;
+  const purchasableVariant = isVariantInStock(selectedVariant)
+    ? selectedVariant
+    : undefined;
+  const hasAvailableVariant = variants.some(isVariantInStock);
+  const maxQty = purchasableVariant
+    ? Math.max(1, purchasableVariant.stock)
+    : 1;
 
   useEffect(() => {
     setQty((q) => Math.min(q, maxQty));
   }, [maxQty]);
+
+  // If fresh product data shows that the selected size sold out (or was
+  // deactivated), drop the selection instead of keeping a stale variant.
+  useEffect(() => {
+    if (selectedSize === null) return;
+
+    const variant = variants.find((v) => v.size_name === selectedSize);
+
+    if (!isVariantInStock(variant)) {
+      setSelectedSize(null);
+      setStockMessage(
+        "موجودی سایز انتخاب‌شده تمام شد. لطفاً سایز دیگری انتخاب کن.",
+      );
+    }
+  }, [selectedSize, variants]);
+
+  const handleSelectSize = (size: ProductVariant["size_name"]) => {
+    const variant = variants.find((v) => v.size_name === size);
+    if (!isVariantInStock(variant)) return;
+
+    setSelectedSize(size);
+    setStockMessage(null);
+    setQty(1);
+  };
 
   const recentlyViewed = useRecentlyViewed(
     useMemo(
@@ -108,27 +139,73 @@ export default function ProductDetail({
   );
 
   const handleAddToCart = () => {
-    if (!selectedVariant) {
+    if (!hasAvailableVariant) {
       showToast("این محصول موجود نیست");
       return;
     }
+
+    if (!selectedSize) {
+      showToast("لطفاً سایز را انتخاب کن");
+      return;
+    }
+
+    if (!purchasableVariant) {
+      setStockMessage("این سایز موجود نیست. لطفاً سایز دیگری انتخاب کن.");
+      setSelectedSize(null);
+      return;
+    }
+
+    const quantity = Math.max(1, Math.min(qty, purchasableVariant.stock));
+
+    setStockMessage(null);
     addCartItem.mutate(
-      { sku: selectedVariant.sku, quantity: qty },
+      { sku: purchasableVariant.sku, quantity },
       {
         onSuccess: () =>
           showToast(
-            `${qty} عدد اضافه شد — ${product.title}، سایز ${selectedVariant.size_name}`,
+            `${quantity} عدد اضافه شد — ${product.title}، سایز ${purchasableVariant.size_name}`,
           ),
-        onError: () => showToast("افزودن به سبد خرید ناموفق بود"),
+        onError: (error) => {
+          if (
+            error instanceof ApiClientError &&
+            [400, 404, 409].includes(error.status)
+          ) {
+            setStockMessage(
+              error.message ||
+                "موجودی این محصول تغییر کرده است. لطفاً سایز را دوباره انتخاب کن.",
+            );
+            setSelectedSize(null);
+            router.refresh();
+            return;
+          }
+
+          showToast(
+            error instanceof Error
+              ? error.message
+              : "افزودن به سبد خرید ناموفق بود",
+          );
+        },
       },
     );
   };
 
   const handleBuyNow = () => {
-    if (!selectedVariant) {
+    if (!hasAvailableVariant) {
       showToast("این محصول موجود نیست");
       return;
     }
+
+    if (!selectedSize) {
+      showToast("لطفاً سایز را انتخاب کن");
+      return;
+    }
+
+    if (!purchasableVariant) {
+      setStockMessage("این سایز موجود نیست. لطفاً سایز دیگری انتخاب کن.");
+      setSelectedSize(null);
+      return;
+    }
+
     showToast("این بخش کامل نیست . لطفا از سبد خرید استفاده کنید");
   };
 
@@ -178,7 +255,7 @@ export default function ProductDetail({
                     )}
                 </>
               ) : (
-                "ناموجود"
+                hasAvailableVariant ? "انتخاب سایز" : "ناموجود"
               )}
             </div>
 
@@ -191,12 +268,30 @@ export default function ProductDetail({
             <ProductSizeSelector
               variants={variants}
               selectedSize={selectedSize}
-              onSelectSize={setSelectedSize}
+              onSelectSize={handleSelectSize}
             />
+
+            {stockMessage && (
+              <div
+                role="alert"
+                className="mb-6 flex items-start justify-between gap-3 rounded-xl border border-destructive/20 bg-destructive/5 px-4 py-3 text-sm leading-6 text-destructive"
+              >
+                <p>{stockMessage}</p>
+                <button
+                  type="button"
+                  onClick={() => setStockMessage(null)}
+                  aria-label="بستن پیام موجودی"
+                  className="shrink-0 text-base leading-none opacity-70 transition-opacity hover:opacity-100"
+                >
+                  ×
+                </button>
+              </div>
+            )}
 
             <ProductQuantityStepper qty={qty} maxQty={maxQty} setQty={setQty} />
             <ProductActions
-              selectedVariant={selectedVariant}
+              selectedVariant={purchasableVariant}
+              hasAvailableVariant={hasAvailableVariant}
               addToCartPending={addCartItem.isPending}
               onAddToCart={handleAddToCart}
               wishlisted={wishlisted}
@@ -282,7 +377,8 @@ export default function ProductDetail({
         wishlisted={wishlisted}
         wishlistPending={wishlistPending}
         onToggleWishlist={toggleWishlist}
-        selectedVariant={selectedVariant}
+        selectedVariant={purchasableVariant}
+        hasAvailableVariant={hasAvailableVariant}
         addToCartPending={addCartItem.isPending}
         onAddToCart={handleAddToCart}
       />

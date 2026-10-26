@@ -13,13 +13,17 @@ export function useSendPhone() {
   const [isNavigating, startTransition] = useTransition();
 
   const mutation = useMutation({
-    mutationFn: loginApi,
+    mutationFn: ({ phone }: { phone: string; next?: string | null }) =>
+      loginApi({ phone }),
 
     onSuccess: (_, variables) => {
       savePhoneNumber(variables.phone);
 
+      const next = variables.next;
+      const query = next ? `?next=${encodeURIComponent(next)}` : "";
+
       startTransition(() => {
-        router.push(`/login/${variables.phone}`);
+        router.push(`/login/${variables.phone}${query}`);
       });
     },
 

@@ -1,3 +1,4 @@
+
 import { ArrowLeft, ArrowRight, ArrowUpLeft } from "lucide-react";
 import Image from "next/image";
 import { HeroSlideItem } from "./Hero";

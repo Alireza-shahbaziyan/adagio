@@ -7,7 +7,7 @@ type PhoneFormValues = {
   phone: string;
 };
 
-export default function LoginForm() {
+export default function LoginForm({ next }: { next?: string | null }) {
   const { sendPhone, isPending } = useSendPhone();
   const {
     register,
@@ -18,7 +18,7 @@ export default function LoginForm() {
   });
 
   const onSubmit = handleSubmit(({ phone }) => {
-    sendPhone({ phone });
+    sendPhone({ phone, next });
   });
 
   return (

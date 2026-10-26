@@ -13,6 +13,7 @@ import OrderStatusBadge from "@/components/Orders/OrderStatusBadge";
 import AddressCard from "@/components/Addresses/AddressCard";
 import AddressModal from "@/components/Addresses/AddressModal";
 import type { Address } from "@/types/address";
+import Image from "next/image";
 
 function formatDate(iso: string) {
   try {
@@ -353,6 +354,11 @@ export default function OrderCheckout({ token }: { token: string }) {
                         : "border-white/8 hover:border-white/20"
                     }`}
                   >
+                    {gw.badge && (
+                        <span className="relative w-10 h-10 rounded-full">
+                          <Image src={gw.badge} alt={gw.title} fill className="rounded-md object-cover object-center" />
+                        </span>
+                      )}
                     <input
                       type="radio"
                       name="order-gateway"
@@ -364,11 +370,7 @@ export default function OrderCheckout({ token }: { token: string }) {
                       <span className="text-sm font-bold text-foreground">
                         {gw.title}
                       </span>
-                      {gw.badge && (
-                        <span className="mr-2 rounded-full bg-white/10 px-2 py-0.5 text-xs text-muted-foreground">
-                          {gw.badge}
-                        </span>
-                      )}
+                      
                     </div>
                   </label>
                 ))}

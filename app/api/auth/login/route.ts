@@ -1,4 +1,4 @@
-import { backend } from "@/utils/getURL";
+import { backend, frontend, referer } from "@/utils/getURL";
 import { forwardSetCookie } from "@/utils/forwardSetCookie";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -23,6 +23,7 @@ export async function POST(req: NextRequest) {
       headers: {
         "Content-Type": "application/json",
         Cookie: req.headers.get("cookie") ?? "",
+         Referer: referer ?? frontend ?? "",
         ...(csrfToken ? { "X-CSRFToken": csrfToken } : {}),
       },
       body: JSON.stringify({

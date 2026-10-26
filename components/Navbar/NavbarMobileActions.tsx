@@ -1,62 +1,86 @@
-import Link from "next/link";
 import { BagIcon, HeartIcon, MenuIcon, SearchIcon } from "@/components/icons";
 import { Badge } from "./Badge";
+import { NavActionButton, NavActionLink } from "./NavAction";
+import { ProfileMenu } from "./ProfileMenu";
+import type { User } from "@/types/auth";
 
 interface NavbarMobileActionsProps {
   variant: "home" | "product" | "default";
   cartCount: number;
+  user: User | null;
+  isMember: boolean;
+  isLoading: boolean;
   productWishlisted?: boolean;
   onToggleProductWishlist?: () => void;
   onSearchOpen: () => void;
   onMenuOpen: () => void;
+  onLogout: () => void;
+  logoutPending: boolean;
 }
 
 export function NavbarMobileActions({
   variant,
   cartCount,
+  user,
+  isMember,
+  isLoading,
   productWishlisted,
   onToggleProductWishlist,
   onSearchOpen,
   onMenuOpen,
+  onLogout,
+  logoutPending,
 }: NavbarMobileActionsProps) {
   if (variant === "product") {
     return (
-      <div className="flex items-center gap-4 md:hidden">
-        <button
+      <div className="flex items-center gap-0.5 md:hidden">
+        <NavActionButton
+          label={
+            productWishlisted
+              ? "حذف از علاقه‌مندی‌ها"
+              : "افزودن به علاقه‌مندی‌ها"
+          }
+          aria-pressed={productWishlisted}
           onClick={onToggleProductWishlist}
-          className="relative flex p-2 text-foreground"
-          type="button"
         >
           <HeartIcon filled={productWishlisted} />
-        </button>
-        <Link href="/cart" className="relative flex p-2 text-foreground">
+        </NavActionButton>
+        <NavActionLink href="/store/cart" label="سبد خرید">
           <BagIcon />
           <Badge count={cartCount} />
-        </Link>
+        </NavActionLink>
+        {(isMember || isLoading) && (
+          <ProfileMenu
+            user={user}
+            isLoading={isLoading}
+            onLogout={onLogout}
+            logoutPending={logoutPending}
+            compact
+          />
+        )}
       </div>
     );
   }
 
   return (
-    <div className="flex items-center gap-4 md:hidden">
-      <button
-        onClick={onSearchOpen}
-        className="flex p-2 text-foreground"
-        type="button"
-      >
+    <div className="flex items-center gap-0.5 md:hidden">
+      <NavActionButton label="جستجو" onClick={onSearchOpen}>
         <SearchIcon />
-      </button>
-      <Link href="/cart" className="relative flex p-2 text-foreground">
+      </NavActionButton>
+      <NavActionLink href="/store/cart" label="سبد خرید">
         <BagIcon />
         <Badge count={cartCount} />
-      </Link>
-      <button
-        onClick={onMenuOpen}
-        className="flex p-2 text-foreground"
-        type="button"
-      >
+      </NavActionLink>
+      <ProfileMenu
+        user={user}
+        isLoading={isLoading}
+        onLogout={onLogout}
+        logoutPending={logoutPending}
+        compact
+      />
+      <NavActionButton label="باز کردن منو" onClick={onMenuOpen}>
         <MenuIcon />
-      </button>
+      </NavActionButton>
     </div>
   );
 }
