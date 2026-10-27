@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { backend } from "@/utils/getURL";
+import { backend, frontend, referer } from "@/utils/getURL";
 import { forwardSetCookie } from "@/utils/forwardSetCookie";
 
 export const dynamic = "force-dynamic";
@@ -10,6 +10,7 @@ export async function GET(req: NextRequest) {
       headers: {
         "Content-Type": "application/json",
         cookie: req.headers.get("cookie") ?? "",
+         Referer: referer ?? frontend ?? "",
       },
       cache: "no-store",
     });

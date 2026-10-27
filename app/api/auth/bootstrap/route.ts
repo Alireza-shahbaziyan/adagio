@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { backend } from "@/utils/getURL";
+import { backend, frontend, referer } from "@/utils/getURL";
 import type { Cart } from "@/types/cart";
 import type { WishlistItem } from "@/types/wishlist";
 import type { User } from "@/types/auth";
@@ -12,7 +12,7 @@ async function safeFetch<T>(
 ): Promise<{ data: T | null; setCookie: string[] }> {
   try {
     const res = await fetch(`${backend}${path}`, {
-      headers: { "Content-Type": "application/json", cookie },
+      headers: { "Content-Type": "application/json", cookie, Referer: referer ?? frontend ?? "", },
       cache: "no-store",
     });
     const setCookie = res.headers.getSetCookie?.() ?? [];
