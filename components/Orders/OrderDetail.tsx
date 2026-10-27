@@ -151,9 +151,7 @@ export default function OrderDetail({ order }: { order: Order }) {
           </div>
         )}
 
-        {order.is_payable && !order.paid_at && (
-          <PaymentAction order={order} />
-        )}
+        {!order.paid_at && <PaymentAction order={order} />}
       </div>
     </div>
   );

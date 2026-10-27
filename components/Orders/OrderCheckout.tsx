@@ -1,12 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useOrder, useCancelOrder, useUpdateOrderAddress, usePaymentGateways, usePayOrder } from "@/lib/checkout";
 import { useAddresses } from "@/lib/addresses";
 import { useAppState } from "@/lib/app-state";
 import { ApiClientError } from "@/lib/api-client";
 import { formatPrice } from "@/lib/utils";
+import {
+  findSelectedGateway,
+  getSafePaymentRedirectUrl,
+  isOrderExpired,
+} from "@/utils/payment";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import OrderStatusBadge from "@/components/Orders/OrderStatusBadge";
@@ -46,6 +51,16 @@ export default function OrderCheckout({ token }: { token: string }) {
   } | null>(null);
   const [confirmingCancel, setConfirmingCancel] = useState(false);
 
+  // The gateway list can change while this page is open. Drop a selection
+  // that no longer exists instead of sending a stale id to the backend.
+  useEffect(() => {
+    if (!gateways || selectedGatewayId === null) return;
+
+    if (!gateways.some((gateway) => gateway.id === selectedGatewayId)) {
+      setSelectedGatewayId(null);
+    }
+  }, [gateways, selectedGatewayId]);
+
   const isMutating = updateAddress.isPending || cancelOrder.isPending || payOrder.isPending;
 
   if (orderLoading) {
@@ -84,6 +99,8 @@ export default function OrderCheckout({ token }: { token: string }) {
     );
   }
 
+  const expired = isOrderExpired(order);
+
   function handleAddressChange() {
     if (selectedAddressId == null || selectedAddressId === order!.address.id) return;
     updateAddress.mutate(
@@ -119,17 +136,30 @@ export default function OrderCheckout({ token }: { token: string }) {
   }
 
   function handlePay() {
-    if (selectedGatewayId == null) {
-      showToast("یک درگاه پرداخت انتخاب کن");
+    if (expired || !order!.is_payable) {
+      showToast("این سفارش قابل پرداخت نیست");
       return;
     }
+
+    const gateway = findSelectedGateway(gateways, selectedGatewayId);
+
+    if (!gateway) {
+      showToast("یک درگاه پرداخت معتبر انتخاب کن");
+      return;
+    }
+
     payOrder.mutate(
-      { token: order!.token, gateway_id: selectedGatewayId },
+      { token: order!.token, gateway_id: gateway.id },
       {
         onSuccess: (data) => {
-          if (data.redirect_url) {
-            window.location.href = data.redirect_url;
+          const redirectUrl = getSafePaymentRedirectUrl(data?.redirect_url);
+
+          if (!redirectUrl) {
+            showToast("آدرس درگاه پرداخت معتبر نیست");
+            return;
           }
+
+          window.location.href = redirectUrl;
         },
         onError: (err) => {
           const message = err instanceof ApiClientError ? err.message : "شروع پرداخت ناموفق بود";
@@ -192,7 +222,7 @@ export default function OrderCheckout({ token }: { token: string }) {
             <h2 className="text-sm font-bold text-foreground">
               آدرس ارسال
             </h2>
-            {order.is_payable && !order.is_expired && (
+            {order.is_payable && !expired && (
               <button
                 type="button"
                 onClick={() => {
@@ -217,7 +247,7 @@ export default function OrderCheckout({ token }: { token: string }) {
         </div>
 
         {/* Address Selection (shown when changing address) */}
-        {selectedAddressId !== null && order.is_payable && !order.is_expired && (
+        {selectedAddressId !== null && order.is_payable && !expired && (
           <div className="rounded-[20px] border border-white/8 bg-[#111111] p-5">
             <h2 className="mb-3 text-sm font-bold text-foreground">
               انتخاب آدرس جدید
@@ -333,7 +363,7 @@ export default function OrderCheckout({ token }: { token: string }) {
         )}
 
         {/* Payment Section */}
-        {order.is_payable && !order.is_expired && !order.paid_at && (
+        {order.is_payable && !expired && !order.paid_at && (
           <div className="rounded-[20px] border border-white/8 bg-[#111111] p-5">
             <p className="mb-3 text-sm font-bold text-foreground">
               انتخاب درگاه پرداخت
@@ -391,7 +421,7 @@ export default function OrderCheckout({ token }: { token: string }) {
         )}
 
         {/* Expired Notice */}
-        {order.is_expired && (
+        {expired && (
           <div className="rounded-xl border border-white/8 bg-[#111111] p-4 text-center">
             <p className="text-sm text-muted-foreground">
               این سفارش منقضی شده و قابل پرداخت نیست.
@@ -406,7 +436,7 @@ export default function OrderCheckout({ token }: { token: string }) {
         )}
 
         {/* Cancel Button */}
-        {order.is_payable && !order.is_expired && (
+        {order.is_payable && !expired && (
           <div className="flex justify-center">
             <Button
               variant="destructive"

@@ -37,17 +37,44 @@ export async function POST(
       cache: "no-store",
     });
 
-    const data = await res.json().catch(() => null);
+    const data = await res.text();
 
-    if (!res.ok) {
-      return NextResponse.json(
-        data ?? { detail: "شروع پرداخت ناموفق بود" },
-        { status: res.status },
-        
-      );
+    let parsed: unknown;
+    let isJson = false;
+
+    if (data) {
+      try {
+        parsed = JSON.parse(data);
+        isJson = true;
+      } catch {
+        // Keep the raw body below if the backend did not return JSON.
+      }
     }
 
-    const response = NextResponse.json(data, { status: 200 });
+    if (!res.ok) {
+      if (isJson) {
+        return NextResponse.json(parsed, { status: res.status });
+      }
+
+      return new NextResponse(data || null, {
+        status: res.status,
+        headers: {
+          "Content-Type":
+            res.headers.get("content-type") ?? "text/plain; charset=utf-8",
+        },
+      });
+    }
+
+    const response = isJson
+      ? NextResponse.json(parsed, { status: 200 })
+      : new NextResponse(data || null, {
+          status: 200,
+          headers: {
+            "Content-Type":
+              res.headers.get("content-type") ?? "text/plain; charset=utf-8",
+          },
+        });
+
     forwardSetCookie(res, response);
 
     return response;

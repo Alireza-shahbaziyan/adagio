@@ -28,20 +28,20 @@ export default function HeroSlide({
       fill
       priority={index === 0}
       sizes="100vw"
-      className="hero-image block h-full w-full object-cover object-center"
+      className="block h-full w-full object-cover  object-left"
     />
   </div>
 
   {/* Base overlay */}
-  <div
+  {/* <div
     aria-hidden="true"
     className="absolute inset-0 bg-black/25"
-  />
+  /> */}
 
   {/* Text readability */}
   <div
     aria-hidden="true"
-    className="absolute inset-0 bg-linear-to-l from-black via-black/40 to-transparent"
+    className="absolute inset-0 bg-linear-to-l from-black via-black/40 to-transparent hidden md:block"
   />
 
   {/* Bottom fade */}
@@ -51,10 +51,10 @@ export default function HeroSlide({
   />
 
   {/* Grain */}
-  <div
+  {/* <div
     aria-hidden="true"
     className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.045)_1px,transparent_1px)] bg-size-[4px_4px] opacity-20 mix-blend-overlay"
-  />
+  /> */}
       {/* Content */}
       <div className="relative z-10 flex h-full w-full items-end">
         <div className="mx-auto flex w-full max-w-[1600px] items-end justify-between px-6 pb-12 sm:px-8 md:px-12 md:pb-16 lg:px-16 lg:pb-20 xl:px-20">
@@ -62,36 +62,36 @@ export default function HeroSlide({
           {/* Content */}
           <div className="hero-content max-w-170 text-right">
             {/* Eyebrow */}
-            <div className="mb-5 flex items-center justify-start gap-3 text-[10px] font-medium tracking-[0.2em] text-white/55 md:text-xs">
+            <div className="mb-5 flex items-center justify-start gap-3 text-xs font-medium tracking-[0.2em] text-white/55 md:text-xs">
               <span className="h-px w-8 bg-white/50" />
               <span>{slide.eyebrow}</span>
             </div>
 
             {/* Title */}
-            <h1 className="whitespace-pre-line text-[clamp(3.5rem,10vw,9rem)] md:text-nowrap font-extrabold leading-20
+            {/* <h1 className="whitespace-pre-line text-[clamp(3.5rem,10vw,9rem)] md:text-nowrap font-extrabold leading-20
                            tracking-[-0.035em] text-white md:text-8xl md:leading-36">
               {slide.title}
-            </h1>
+            </h1> */}
 
             {/* Description */}
-            <div className="mt-7 flex max-w-107.5 items-start gap-4 md:mt-9">
+            {/* <div className="mt-7 flex max-w-107.5 items-start gap-4 md:mt-9">
               <p className="font-sans text-sm leading-7 text-white/65 md:text-base">
                 {slide.description}
               </p>
 
               <div className="mt-3 h-px w-7 shrink-0 bg-white/40" />
-            </div>
+            </div> */}
 
             {/* CTA */}
             <Link href="/store/"
               type="button"
-              className="group mt-7 inline-flex items-center gap-3 border border-white/25 bg-white px-5 py-3 text-xs font-medium tracking-[0.12em] text-black transition-all duration-300 hover:bg-white/90 md:mt-9 md:px-6 md:py-3.5"
+              className="group mt-7 inline-flex items-center gap-3 border border-white/25 bg-white px-5 py-3 text-base md:text-lg font-semibold tracking-[0.12em] text-black transition-all duration-300 hover:bg-white/90 md:mt-9 md:px-6 md:py-3.5"
             >
               <span>فروشگاه</span>
 
               <ArrowUpLeft
-                size={15}
-                strokeWidth={1.7}
+                size={20}
+                strokeWidth={2}
                 className="transition-transform duration-300 group-hover:-translate-x-1 group-hover:-translate-y-1"
               />
             </Link>

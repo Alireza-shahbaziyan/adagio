@@ -112,6 +112,8 @@ export function usePaymentGateways() {
 }
 
 export function usePayOrder() {
+  const queryClient = useQueryClient();
+
   return useMutation({
     mutationFn: ({
       token,
@@ -120,5 +122,11 @@ export function usePayOrder() {
       token: string;
       gateway_id: number;
     }) => payOrder(token, gateway_id),
+    onError: (_error, { token }) => {
+      // A rejected payment attempt can mean the order stopped being payable
+      // (expired, paid in another tab, ...). Refresh the server's state so the
+      // UI stops offering payment instead of acting on a stale `is_payable`.
+      queryClient.invalidateQueries({ queryKey: queryKeys.order(token) });
+    },
   });
 }

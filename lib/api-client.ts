@@ -19,15 +19,28 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
+function messageFromDetail(value: unknown): string | null {
+  if (typeof value === "string" && value.trim().length > 0) {
+    return value;
+  }
+
+  // DRF can return `detail` as a list of validation messages.
+  if (Array.isArray(value)) {
+    const messages = value.filter(
+      (item): item is string =>
+        typeof item === "string" && item.trim().length > 0,
+    );
+
+    if (messages.length > 0) {
+      return messages.join(" ");
+    }
+  }
+
+  return null;
+}
+
 function normalizeError(status: number, data: unknown): ApiError {
   if (isRecord(data)) {
-    const message =
-      typeof data.detail === "string"
-        ? data.detail
-        : typeof data.message === "string"
-          ? data.message
-          : "درخواست ناموفق بود";
-
     const code =
       typeof data.code === "string" ? data.code : undefined;
 
@@ -56,6 +69,19 @@ function normalizeError(status: number, data: unknown): ApiError {
         fieldErrors[key] = [val];
       }
     }
+
+    // Keep the backend's own message whenever it exists. If the error only
+    // contains field errors (`{ gateway_id: ["..."] }`), surface that first
+    // message instead of replacing it with a generic one.
+    const message =
+      messageFromDetail(data.detail) ??
+      (typeof data.message === "string" && data.message.trim().length > 0
+        ? data.message
+        : null) ??
+      Object.values(fieldErrors)
+        .flat()
+        .find((item) => item.trim().length > 0) ??
+      "درخواست ناموفق بود";
 
     return {
       status,

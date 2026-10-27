@@ -6,6 +6,11 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { usePaymentGateways, usePayOrder } from "@/lib/checkout";
 import { useAppState } from "@/lib/app-state";
 import { ApiClientError } from "@/lib/api-client";
+import {
+  findSelectedGateway,
+  getSafePaymentRedirectUrl,
+  isOrderExpired,
+} from "@/utils/payment";
 import type { Order } from "@/types/checkout";
 
 export default function PaymentAction({ order }: { order: Order }) {
@@ -17,24 +22,48 @@ export default function PaymentAction({ order }: { order: Order }) {
   );
 
   useEffect(() => {
-    if (gateways && gateways.length > 0 && selectedGatewayId === null) {
+    if (!gateways) return;
+
+    if (
+      selectedGatewayId !== null &&
+      !gateways.some((gateway) => gateway.id === selectedGatewayId)
+    ) {
+      setSelectedGatewayId(null);
+      return;
+    }
+
+    if (gateways.length > 0 && selectedGatewayId === null) {
       setSelectedGatewayId(gateways[0].id);
     }
   }, [gateways, selectedGatewayId]);
 
+  const expired = isOrderExpired(order);
+
   function handlePay() {
-    if (selectedGatewayId == null) {
-      showToast("یک درگاه پرداخت انتخاب کن");
+    if (expired || !order.is_payable) {
+      showToast("این سفارش قابل پرداخت نیست");
+      return;
+    }
+
+    const gateway = findSelectedGateway(gateways, selectedGatewayId);
+
+    if (!gateway) {
+      showToast("یک درگاه پرداخت معتبر انتخاب کن");
       return;
     }
 
     payOrder.mutate(
-      { token: order.token, gateway_id: selectedGatewayId },
+      { token: order.token, gateway_id: gateway.id },
       {
         onSuccess: (data) => {
-          if (data.redirect_url) {
-            window.location.href = data.redirect_url;
+          const redirectUrl = getSafePaymentRedirectUrl(data?.redirect_url);
+
+          if (!redirectUrl) {
+            showToast("آدرس درگاه پرداخت معتبر نیست");
+            return;
           }
+
+          window.location.href = redirectUrl;
         },
         onError: (err) => {
           const message =
@@ -47,11 +76,7 @@ export default function PaymentAction({ order }: { order: Order }) {
     );
   }
 
-  if (!order.is_payable) {
-    return null;
-  }
-
-  if (order.is_expired) {
+  if (expired) {
     return (
       <div className="rounded-xl border border-white/8 bg-[#111111] p-4 text-center">
         <p className="text-sm text-muted-foreground">
@@ -59,6 +84,10 @@ export default function PaymentAction({ order }: { order: Order }) {
         </p>
       </div>
     );
+  }
+
+  if (!order.is_payable) {
+    return null;
   }
 
   return (

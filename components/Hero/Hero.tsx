@@ -10,8 +10,8 @@ import { Swiper, SwiperSlide, type SwiperRef } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-fade";
 
-import heroImage from "/public/assets/slider/cas.jpg";
-import lanaGirl from "/public/assets/slider/eminem.jpg";
+import heroImage from "/public/assets/slider/s_1.webp";
+import lanaGirl from "/public/assets/slider/s_2.webp";
 
 
 import HeroSlide from "./HeroSlide";
@@ -112,7 +112,7 @@ export default function Hero() {
         ))}
 
         {/* Progress */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 h-1">
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 h-1 hidden md:block">
           <div className="hero-progress h-full w-full origin-right bg-white/20">
             <div className="hero-progress-bar h-full origin-right bg-white" />
           </div>

@@ -81,14 +81,10 @@ body {
   background-attachment: fixed;
 }
 
-.hero-image {
-  filter: grayscale(100%) contrast(1.08) brightness(.95);
-}
+
 
 @media (max-width: 767px) {
-   .hero-image {
-    filter: grayscale(100%);
-  }
+ 
   .bg-hero {
     /* background-attachment: fixed renders unreliably on mobile browsers (notably iOS Safari) */
     background-attachment: scroll;
