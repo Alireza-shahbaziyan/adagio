@@ -30,7 +30,7 @@ export default function ProductActions({
             opacity: selectedVariant ? 1 : 0.5,
             cursor: selectedVariant ? "pointer" : "not-allowed",
           }}
-          className="min-w-[180px] flex-1 rounded-full bg-foreground px-7 py-4.5 text-[15px] font-bold text-primary-foreground transition-transform hover:scale-[1.02]"
+          className="min-w-45 flex-1 rounded-full bg-foreground px-7 py-4.5 text-[15px] font-bold text-primary-foreground transition-transform hover:scale-[1.02]"
         >
           {hasAvailableVariant ? "افزودن به سبد خرید" : "ناموجود"}
         </button>

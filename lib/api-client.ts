@@ -202,7 +202,7 @@ export async function apiRequest<T>(
       normalizeError(res.status, data),
     );
   }
-  console.log("api-client : ",data)
+
   return data as T;
 }
 

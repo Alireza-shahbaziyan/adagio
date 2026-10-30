@@ -11,7 +11,7 @@ import checkAvailable from "@/utils/availbleProduct";
 
 export default function ProductCard({
   product,
-  interactive = false,
+
   priority = false,
 }: {
   product: Product;
@@ -20,7 +20,7 @@ export default function ProductCard({
 }) {
   const { isWishlisted: wishlisted, toggle: toggleWishlist } =
     useWishlistToggle(product.slug, product.title);
-  const [hovered, setHovered] = useState(false);
+
 
   if (!product) return null;
   const image = product?.images?.[0]?.image || "/placeholder.jpg";
@@ -32,9 +32,7 @@ export default function ProductCard({
   return (
     <Link
       href={`/store/products/${product.slug}`}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className="block overflow-hidden rounded-[20px] bg-[#181818] hover:bg-zinc-800"
+      className="block overflow-hidden rounded-[20px] bg-card hover:bg-zinc-800"
     >
       <div className="relative aspect-4/5 overflow-hidden bg-[#111111]">
         <Image
@@ -43,13 +41,10 @@ export default function ProductCard({
           fill
           sizes="(max-width: 768px) 90vw, 320px"
           priority={priority}
-          className="object-cover transition-transform duration-500 ease-[cubic-bezier(.16,.8,.24,1)]"
-          style={{
-            transform: hovered ? "scale(1.06)" : "scale(1)",
-            filter: "grayscale(0.15)",
-          }}
+          className="object-cover scale(1.06) transition-transform duration-500 ease-[cubic-bezier(.16,.8,.24,1)]"
+   
         />
-        {interactive && (
+       
           <button
             onClick={(e) => {
               e.preventDefault();
@@ -60,29 +55,9 @@ export default function ProductCard({
           >
             <HeartIcon size={16} filled={wishlisted} />
           </button>
-        )}
-        {/* {interactive && (
-          <div
-            className="absolute inset-x-3 bottom-3 transition-all duration-300 ease-out"
-            style={{
-              opacity: hovered ? 1 : 0,
-              transform: hovered ? "translateY(0)" : "translateY(12px)",
-              pointerEvents: hovered ? "auto" : "none",
-            }}
-          >
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                // addToCart(product?.title || "");
-                console.log(e);
-              }}
-              className="w-full rounded-full bg-foreground py-3 text-[13px] font-bold tracking-[0.3px] text-primary-foreground"
-            >
-              + افزودن سریع
-            </button>
-          </div>
-        )} */}
+        
+        
+       
       </div>
       <ProductCardDec
         variant={product.variants}

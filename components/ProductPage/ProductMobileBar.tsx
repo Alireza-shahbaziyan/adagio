@@ -21,7 +21,7 @@ export default function ProductMobileBar({
 }) {
   return (
     <div
-      className="fixed inset-x-0 bottom-0 z-[1000] flex gap-3 border-t border-white/8 bg-[#111111]/95 px-4 backdrop-blur-xl md:hidden"
+      className="fixed inset-x-0 bottom-0 z-1000 flex gap-3 border-t border-white/8 bg-[#111111]/95 px-4 backdrop-blur-xl md:hidden"
       style={{
         paddingTop: 12,
         paddingBottom: "calc(12px + env(safe-area-inset-bottom))",
@@ -30,7 +30,7 @@ export default function ProductMobileBar({
       <button
         onClick={onToggleWishlist}
         disabled={wishlistPending}
-        className="flex h-[52px] w-[52px] items-center justify-center rounded-full border border-white/20 bg-transparent text-foreground disabled:opacity-50"
+        className="flex h-13 w-13 items-center justify-center rounded-full border border-white/20 bg-transparent text-foreground disabled:opacity-50"
       >
         <HeartIcon size={18} filled={wishlisted} />
       </button>

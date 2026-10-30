@@ -1,5 +1,7 @@
 // @/types/posts.d.ts
 import PaginatedResponse from "@/types/response";
+import { Collection } from "./singleProduct";
+import { Product } from "./products";
 export interface Post {
   id: number;
   title: string;
@@ -52,4 +54,5 @@ export interface PostDetail {
   breadcrumb_ld: Record<string, unknown>;
   published_at: string;
   updated_at: string;
+  related_products:Product[];
 }

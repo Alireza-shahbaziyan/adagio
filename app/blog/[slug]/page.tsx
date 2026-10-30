@@ -4,8 +4,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Post, PostDetail, PostsResponse } from "@/types/posts";
 import { referer } from "@/utils/getURL";
+import { StructuredData } from "@/components/blog/StructuredData";
+import { formatDate } from "@/components/blog/formatDate";
+import ProductCard from "@/components/ProductCard/ProductCard";
 
-export const revalidate = 1800;
+
+export const revalidate = 3600;
 
 const API_URL = "https://api.adagiostyle.ir/api/blog/posts";
 const SITE_URL = referer;
@@ -18,9 +22,12 @@ interface BlogPostPageProps {
 
 async function getPost(slug: string): Promise<PostDetail | null> {
   try {
-    const response = await fetch(`${API_URL}/${slug}/`, {
-      cache: "force-cache",
-    });
+    const response = await fetch(
+      `${API_URL}/${slug}/`,
+         {
+        cache: "force-cache",
+      }
+    );
 
     if (response.status === 404) {
       return null;
@@ -79,7 +86,7 @@ export async function generateMetadata({
     };
   }
 
-  const meta = post.meta_tag??null;
+  const meta = post.meta_tag ?? null;
   if (!meta) {
     return {
       title: post.title,
@@ -138,13 +145,13 @@ export async function generateMetadata({
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-
   const post = await getPost(slug);
 
   if (!post) {
     notFound();
   }
 
+  const relatedProducts = post?.related_products ?? null;
   return (
     <main className="min-h-screen bg-background text-foreground">
       {/* JSON-LD */}
@@ -208,7 +215,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <span>
               نویسنده:{" "}
               <strong className="font-medium text-foreground">
-                {post.author.full_name??"نویسنده نامشخص"}
+                {post.author.full_name ?? "نویسنده نامشخص"}
               </strong>
             </span>
 
@@ -303,7 +310,36 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             }}
           />
         </div>
-
+          {relatedProducts && (
+          <section
+            id="featured"
+            className="relative z-1 bg-primary-foreground  px-5 pb-16 pt-20 md:px-16 md:pb-32 md:pt-40"
+          >
+            <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
+              <div>
+                <p className="mb-4 text-xs tracking-[1px] text-muted-foreground">
+                  این بخش
+                </p>
+                <h2 className="text-2xl font-black text-foreground md:text-[56px]">
+                 محصولات مرتبط{" "}
+                </h2>
+              </div>
+              <Link
+                href="/store/collections"
+                className="whitespace-nowrap border-b border-white/25 pb-1 text-sm text-muted-foreground"
+              >مشاهده کالکشن های دیگر</Link>
+            </div>
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 p-2">
+              {relatedProducts.map((p, i) => (
+                <ProductCard
+                  key={p.id}
+                  product={p}
+                  priority={i === 0}
+                />
+              ))}
+            </div>
+          </section>
+        )}
         {/* Media */}
         {post.media?.length > 0 && (
           <section
@@ -347,7 +383,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
           </section>
         )}
-
+  
         {/* Footer */}
         <footer className="border-t border-border">
           <div className="mx-auto flex max-w-3xl flex-col gap-6 px-5 py-12 md:flex-row md:items-center md:justify-between md:px-8">
@@ -370,33 +406,4 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </article>
     </main>
   );
-}
-
-function StructuredData({ data }: { data: Record<string, unknown> }) {
-  if (!data || Object.keys(data).length === 0) {
-    return null;
-  }
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify(data),
-      }}
-    />
-  );
-}
-
-function formatDate(date: string | null | undefined) {
-  const parsedDate = date ? new Date(date) : null;
-
-  if (!parsedDate || Number.isNaN(parsedDate.getTime())) {
-    return "تاریخ نامشخص";
-  }
-
-  return new Intl.DateTimeFormat("fa-IR", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }).format(parsedDate);
 }

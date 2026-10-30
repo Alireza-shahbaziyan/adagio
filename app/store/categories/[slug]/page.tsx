@@ -221,7 +221,7 @@ export default async function Page({
                 <ProductCard
                   key={product.id}
                   product={product}
-                  interactive
+                  
                   priority={i === 0}
                 />
               ))}

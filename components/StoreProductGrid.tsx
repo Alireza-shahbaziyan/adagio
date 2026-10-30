@@ -45,7 +45,7 @@ export default function StoreProductGrid({
               key={product.id}
               style={{ transitionDelay: `${Math.min(i, 8) * 60}ms` }}
             >
-              <ProductCard product={product} interactive priority={i === 0} />
+              <ProductCard product={product} priority={i === 0} />
             </Reveal>
           ))}
         </div>

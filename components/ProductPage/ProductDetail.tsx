@@ -138,7 +138,7 @@ export default function ProductDetail({
     ),
   );
 
-  const handleAddToCart = () => {
+const handleAddToCart = () => {
     if (!hasAvailableVariant) {
       showToast("این محصول موجود نیست");
       return;
@@ -158,6 +158,7 @@ export default function ProductDetail({
     const quantity = Math.max(1, Math.min(qty, purchasableVariant.stock));
 
     setStockMessage(null);
+
     addCartItem.mutate(
       { sku: purchasableVariant.sku, quantity },
       {
