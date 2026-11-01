@@ -97,15 +97,17 @@ export default async function ProductPage({
     },
     cache: "no-store",
   });
+
   if (!response.ok) notFound();
   const product = (await response.json()) as Product;
   if (!product) notFound();
 
   let recommended: ProductSummary[] = [];
-
+  const urlForRecommendedProducts = product.collections?
+  `${baseUrl}/api/products/?collections=${product.collections[0].slug}&page=1&page_size=4`
+  :`${baseUrl}/api/products/?page=1&page_size=4`
   try {
-    const listResponse = await fetch(
-      `${baseUrl}/api/products/?page=1&page_size=4`,
+    const listResponse = await fetch(urlForRecommendedProducts,
       {
         headers: {
           "Content-Type": "application/json",
