@@ -26,6 +26,7 @@ import ProductAccordion from "./ProductAccordion";
 import ProductMobileBar from "./ProductMobileBar";
 
 import { formatPrice } from "@/lib/utils";
+import Link from "next/link";
 
 
 export default function ProductDetail({
@@ -263,7 +264,6 @@ const handleAddToCart = () => {
             <p className="mb-9 max-w-110 text-[15px] leading-[1.9] text-muted-foreground">
               {short_dec}
             </p>
-
             {product.audio && <ProductAudioTeaser audio={product.audio} />}
 
             <ProductSizeSelector
@@ -300,6 +300,10 @@ const handleAddToCart = () => {
               onToggleWishlist={toggleWishlist}
               onBuyNow={handleBuyNow}
             />
+            <p className="py-2 text-sm">
+              دسته بندی : 
+            <Link className="mx-2 underline hover:text-gray-500" href={`/store/categories/${product.category.slug}`}>{product.category.title}</Link>
+            </p>
             
             <ProductAccordion
               sections={accordionSections}

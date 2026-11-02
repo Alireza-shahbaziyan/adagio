@@ -1,3 +1,4 @@
+import { Category } from "./category";
 import { Audio, ProductImage, ProductVariant } from "./products";
 
 export interface Product {
@@ -9,8 +10,8 @@ export interface Product {
   status: "active" | "inactive";
   published_at: string | null;
   featured: boolean;
-
   collections: Collection[];
+  category:Category
   images: ProductImage[];
   audio: Audio | null;
   variants: ProductVariant[];
