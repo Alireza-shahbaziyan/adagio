@@ -123,6 +123,8 @@ type BackendFetchOptions = Omit<
 > & {
   body?: unknown;
   headers?: HeadersInit;
+  /** Detail used when the backend fails without a JSON body. */
+  fallbackDetail?: string;
 };
 
 export async function backendFetch(
@@ -268,8 +270,14 @@ export async function backendFetch(
       data = text || null;
     }
 
+    const payload =
+      data ??
+      (!response.ok && options.fallbackDetail
+        ? { detail: options.fallbackDetail }
+        : null);
+
     const nextResponse = NextResponse.json(
-      data,
+      payload,
       {
         status: response.status,
       },
@@ -300,5 +308,78 @@ export async function backendFetch(
       { status: 500 },
     );
   }
+}
+
+export type BackendProxyHeaders =
+  | {
+      ok: true;
+      headers: Headers;
+      csrfResponse: Response | null;
+    }
+  | {
+      ok: false;
+      response: NextResponse;
+    };
+
+/**
+ * Shared request-header preparation for hand-rolled backend proxies.
+ *
+ * Enforces the CSRF contract consistently: every non-GET request gets a
+ * guaranteed `X-CSRFToken` (initialized/refreshed via `ensureCsrf` when the
+ * cookie is missing or stale), the full cookie header, and the `Referer`
+ * Django's CSRF checks expect. GET requests only forward cookies and never
+ * require a token. When the CSRF token cannot be initialized the returned
+ * `response` should be sent as-is.
+ */
+export async function buildProxyHeaders(
+  req: NextRequest,
+  extraHeaders?: HeadersInit,
+): Promise<BackendProxyHeaders> {
+  const headers = new Headers(extraHeaders);
+  headers.set("Referer", referer ?? frontend ?? "");
+
+  const method = (req.method ?? "GET").toUpperCase();
+
+  if (!MUTATING_METHODS.has(method)) {
+    const cookieHeader = req.headers.get("cookie");
+
+    if (cookieHeader) {
+      headers.set("Cookie", cookieHeader);
+    }
+
+    return { ok: true, headers, csrfResponse: null };
+  }
+
+  const csrf = await ensureCsrf(req);
+
+  if (!csrf.token) {
+    if (csrf.csrfResponse) {
+      const data = await csrf.csrfResponse
+        .json()
+        .catch(() => null);
+
+      const response = NextResponse.json(
+        data ?? { detail: "Unable to initialize CSRF token" },
+        { status: csrf.csrfResponse.status },
+      );
+
+      forwardSetCookie(csrf.csrfResponse, response);
+
+      return { ok: false, response };
+    }
+
+    return {
+      ok: false,
+      response: NextResponse.json(
+        { detail: "Unable to initialize CSRF token" },
+        { status: 500 },
+      ),
+    };
+  }
+
+  headers.set("Cookie", csrf.cookieHeader);
+  headers.set("X-CSRFToken", csrf.token);
+
+  return { ok: true, headers, csrfResponse: csrf.csrfResponse };
 }
 

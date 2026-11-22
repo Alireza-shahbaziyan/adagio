@@ -2,11 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import { useWishlistToggle } from "@/lib/wishlist";
 import { HeartIcon } from "@/components/icons";
 import { Product } from "@/types/products";
 import ProductCardDec from "./ProductCardDec";
+import QuickAddToCart from "./QuickAddToCart";
 import checkAvailable from "@/utils/availbleProduct";
 
 export default function ProductCard({
@@ -51,14 +51,14 @@ export default function ProductCard({
               e.stopPropagation();
               toggleWishlist();
             }}
+            aria-label="افزودن به علاقه‌مندی‌ها"
             className="absolute top-3.5 left-3.5 flex h-9 w-9 items-center justify-center rounded-full bg-black/50 text-foreground backdrop-blur-md"
           >
             <HeartIcon size={16} filled={wishlisted} />
           </button>
-        
-        
-       
-      </div>
+
+          <QuickAddToCart product={product} />
+        </div>
       <ProductCardDec
         variant={product.variants}
         isvalid={invalidProduct}

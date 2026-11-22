@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { backend, frontend, referer } from "@/utils/getURL";
+import { backend } from "@/utils/getURL";
+import { buildProxyHeaders } from "@/lib/backend-client";
 import { forwardSetCookie } from "@/utils/forwardSetCookie";
 
 export const dynamic = "force-dynamic";
@@ -10,15 +11,15 @@ export async function DELETE(
 ) {
   const { slug } = await params;
   try {
-    const csrfToken = req.cookies.get("csrftoken")?.value;
+    const proxy = await buildProxyHeaders(req, {
+      "Content-Type": "application/json",
+    });
+
+    if (!proxy.ok) return proxy.response;
+
     const res = await fetch(`${backend}/api/wishlist/items/${slug}/`, {
       method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        cookie: req.headers.get("cookie") ?? "",
-         Referer: referer ?? frontend ?? "",
-        ...(csrfToken ? { "X-CSRFToken": csrfToken } : {}),
-      },
+      headers: proxy.headers,
       cache: "no-store",
     });
 
@@ -32,6 +33,7 @@ export async function DELETE(
     }
 
     const response = NextResponse.json(data, { status: 200 });
+    if (proxy.csrfResponse) forwardSetCookie(proxy.csrfResponse, response);
     forwardSetCookie(res, response);
     return response;
   } catch {

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { backend } from "@/utils/getURL";
+import { buildProxyHeaders } from "@/lib/backend-client";
 import { forwardSetCookie } from "@/utils/forwardSetCookie";
 
 export const dynamic = "force-dynamic";
@@ -11,14 +12,15 @@ async function proxyCartItemRequest(
 ) {
   try {
     const body = method === "PATCH" ? await req.text() : undefined;
-    const csrfToken = req.cookies.get("csrftoken")?.value;
+    const proxy = await buildProxyHeaders(req, {
+      "Content-Type": "application/json",
+    });
+
+    if (!proxy.ok) return proxy.response;
+
     const res = await fetch(`${backend}/api/cart/items/${sku}/`, {
       method,
-      headers: {
-        "Content-Type": "application/json",
-        cookie: req.headers.get("cookie") ?? "",
-        ...(csrfToken ? { "X-CSRFToken": csrfToken } : {}),
-      },
+      headers: proxy.headers,
       body,
       cache: "no-store",
     });
@@ -33,6 +35,7 @@ async function proxyCartItemRequest(
     }
 
     const response = NextResponse.json(data, { status: 200 });
+    if (proxy.csrfResponse) forwardSetCookie(proxy.csrfResponse, response);
     forwardSetCookie(res, response);
     return response;
   } catch {

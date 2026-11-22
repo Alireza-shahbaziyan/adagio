@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { backend, frontend, referer } from "@/utils/getURL";
+import { backend } from "@/utils/getURL";
+import { buildProxyHeaders } from "@/lib/backend-client";
 import { forwardSetCookie } from "@/utils/forwardSetCookie";
 
 export const dynamic = "force-dynamic";
@@ -11,15 +12,15 @@ export async function PUT(
   const { id } = await params;
   try {
     const body = await req.text();
-    const csrfToken = req.cookies.get("csrftoken")?.value;
+    const proxy = await buildProxyHeaders(req, {
+      "Content-Type": "application/json",
+    });
+
+    if (!proxy.ok) return proxy.response;
+
     const res = await fetch(`${backend}/api/auth/addresses/${id}/`, {
       method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        cookie: req.headers.get("cookie") ?? "",
-         Referer: referer ?? frontend ?? "",
-        ...(csrfToken ? { "X-CSRFToken": csrfToken } : {}),
-      },
+      headers: proxy.headers,
       body,
       cache: "no-store",
     });
@@ -33,6 +34,7 @@ export async function PUT(
     }
 
     const response = NextResponse.json(data, { status: 200 });
+    if (proxy.csrfResponse) forwardSetCookie(proxy.csrfResponse, response);
     forwardSetCookie(res, response);
     return response;
   } catch {
@@ -49,20 +51,21 @@ export async function DELETE(
 ) {
   const { id } = await params;
   try {
-    const csrfToken = req.cookies.get("csrftoken")?.value;
+    const proxy = await buildProxyHeaders(req, {
+      "Content-Type": "application/json",
+    });
+
+    if (!proxy.ok) return proxy.response;
+
     const res = await fetch(`${backend}/api/auth/addresses/${id}/`, {
       method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        cookie: req.headers.get("cookie") ?? "",
-         Referer: referer ?? frontend ?? "",
-        ...(csrfToken ? { "X-CSRFToken": csrfToken } : {}),
-      },
+      headers: proxy.headers,
       cache: "no-store",
     });
 
     if (res.status === 204) {
       const response = new NextResponse(null, { status: 204 });
+      if (proxy.csrfResponse) forwardSetCookie(proxy.csrfResponse, response);
       forwardSetCookie(res, response);
       return response;
     }
@@ -76,6 +79,7 @@ export async function DELETE(
     }
 
     const response = NextResponse.json(data, { status: 200 });
+    if (proxy.csrfResponse) forwardSetCookie(proxy.csrfResponse, response);
     forwardSetCookie(res, response);
     return response;
   } catch {

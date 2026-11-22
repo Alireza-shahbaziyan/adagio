@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { forwardSetCookie } from "@/utils/forwardSetCookie";
-import { backend, frontend, referer } from "@/utils/getURL";
+import { backend } from "@/utils/getURL";
+import { buildProxyHeaders } from "@/lib/backend-client";
 
 export const dynamic = "force-dynamic";
 
@@ -24,15 +25,15 @@ export async function POST(
       );
     }
 
-    const csrfToken = req.cookies.get("csrftoken")?.value;
+    const proxy = await buildProxyHeaders(req, {
+      "Content-Type": "application/json",
+    });
+
+    if (!proxy.ok) return proxy.response;
+
     const res = await fetch(`${backend}/api/orders/${token}/pay/`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        cookie: req.headers.get("cookie") ?? "",
-        Referer: referer ?? frontend ?? "",
-        ...(csrfToken ? { "X-CSRFToken": csrfToken } : {}),
-      },
+      headers: proxy.headers,
       body: JSON.stringify({ gateway_id: body.gateway_id }),
       cache: "no-store",
     });
@@ -75,6 +76,7 @@ export async function POST(
           },
         });
 
+    if (proxy.csrfResponse) forwardSetCookie(proxy.csrfResponse, response);
     forwardSetCookie(res, response);
 
     return response;

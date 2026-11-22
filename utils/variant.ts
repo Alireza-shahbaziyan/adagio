@@ -13,3 +13,10 @@ export function findFirstAvailableVariant(
 ): ProductVariant | undefined {
   return variants?.find(isVariantInStock);
 }
+
+/** Variants a customer can buy right now (active with stock left). */
+export function getPurchasableVariants(
+  variants: ProductVariant[] | null | undefined,
+): ProductVariant[] {
+  return variants?.filter(isVariantInStock) ?? [];
+}

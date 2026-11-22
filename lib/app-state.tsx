@@ -6,6 +6,7 @@ type AppStateContextValue = {
   toastMessage: string;
   toastVisible: boolean;
   showToast: (message: string) => void;
+  hideToast: () => void;
 };
 
 const AppStateContext = createContext<AppStateContextValue | null>(null);
@@ -22,13 +23,20 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     toastTimer.current = setTimeout(() => setToastVisible(false), 2200);
   }, []);
 
+  const hideToast = useCallback(() => {
+    if (toastTimer.current) clearTimeout(toastTimer.current);
+    toastTimer.current = null;
+    setToastVisible(false);
+  }, []);
+
   const value = useMemo(
     () => ({
       toastMessage,
       toastVisible,
       showToast,
+      hideToast,
     }),
-    [toastMessage, toastVisible, showToast]
+    [toastMessage, toastVisible, showToast, hideToast]
   );
 
   return <AppStateContext.Provider value={value}>{children}</AppStateContext.Provider>;
