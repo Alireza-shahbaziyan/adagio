@@ -1,5 +1,7 @@
+
 import type { Metadata } from "next";
-import { Mail, MapPin, Phone, ArrowUpRight, ArrowUpLeft } from "lucide-react";
+import {Mail,MapPin,Phone,UserRound,ArrowUpRight,ArrowUpLeft} from "lucide-react";
+
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar/Navbar";
 import MobileBottomNav from "@/components/MobileNavBottom/MobileBottomNav";
@@ -13,9 +15,9 @@ export const metadata: Metadata = {
 const contactInfo = [
   {
     icon: Phone,
-    title: "تلفن",
-    value: "09392622300",
-    href: "tel:+989392622300",
+    title: "شماره تماس",
+    value: "09059085230",
+    href: "tel:+989059085230",
   },
   {
     icon: Mail,
@@ -24,11 +26,14 @@ const contactInfo = [
     href: "mailto:info@adagiostyle.ir",
   },
   {
-    icon: MapPin,
-    title: "اصفهان - شاهین شهر",
-    value: "ایران",
+    icon: UserRound,
+    title: "نام و نام خانوادگی",
+    value: "ابوالفضل شهبازی",
   },
 ] as const;
+
+const address =
+  "استان اصفهان، شاهین‌شهر، بلوار فردوسی، شرقی ۳، بن‌بست جنوبی ۵، مجتمع نیلوفر، واحد ۱، پلاک ۷۶";
 
 export default function ContactPage() {
   return (
@@ -64,40 +69,18 @@ export default function ContactPage() {
             return (
               <div
                 key={item.title}
-                className="
-                group
-                border border-white/10
-                bg-white/2
-                p-8
-                transition-all
-                duration-500
-                hover:border-white/30
-                hover:bg-white/6
-                "
+                className="group border border-white/10 bg-white/[0.02] p-8 transition-all duration-500 hover:border-white/30 hover:bg-white/[0.06]"
               >
-                <Icon
-                  className="
-                  h-6 w-6
-                  text-white/50
-                  transition
-                  group-hover:text-white
-                  "
-                />
+                <Icon className="h-6 w-6 text-white/50 transition group-hover:text-white" />
 
-                <h2 className="mt-8 text-lg font-medium">{item.title}</h2>
+                <h2 className="mt-8 text-lg font-medium">
+                  {item.title}
+                </h2>
 
                 {"href" in item ? (
                   <a
                     href={item.href}
-                    className="
-                    mt-3
-                    flex
-                    items-center
-                    gap-2
-                    text-white/50
-                    transition
-                    hover:text-white
-                    "
+                    className="mt-3 flex items-center gap-2 text-white/50 transition hover:text-white"
                   >
                     {item.value}
                     <ArrowUpRight size={14} />
@@ -109,19 +92,38 @@ export default function ContactPage() {
             );
           })}
         </div>
+
+        {/* Full address */}
+        <div className="group mt-5 border border-white/10 bg-white/[0.02] p-8 transition-all duration-500 hover:border-white/30 hover:bg-white/[0.06] md:p-10">
+          <div className="flex items-start gap-4">
+            <MapPin className="mt-1 h-6 w-6 shrink-0 text-white/50 transition group-hover:text-white" />
+
+            <div className="min-w-0 flex-1">
+              <h2 className="text-lg font-medium">
+                آدرس
+              </h2>
+
+              <p className="mt-4 max-w-3xl text-sm leading-9 text-white/50 md:text-base">
+                {address}
+              </p>
+
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=مجتمع+نیلوفر+بلوار+فردوسی+شاهین+شهر+اصفهان"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center gap-2 text-sm text-white/70 transition hover:text-white"
+              >
+                مشاهده موقعیت روی نقشه
+                <ArrowUpLeft size={15} />
+              </a>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Form */}
       <section className="mx-auto max-w-4xl px-6 pb-32">
-        <div
-          className="
-          border
-          border-white/10
-          bg-white/2
-          p-8
-          md:p-12
-          "
-        >
+        <div className="border border-white/10 bg-white/[0.02] p-8 md:p-12">
           <div className="mb-10">
             <h2 className="text-3xl font-light">ارسال پیام</h2>
 
@@ -139,72 +141,41 @@ export default function ContactPage() {
                   </label>
 
                   <input
-                    className="
-                    w-full
-                    border-b
-                    border-white/20
-                    bg-transparent
-                    py-3
-                    text-white
-                    outline-none
-                    transition
-                    focus:border-white
-                    "
+                    name={label === "ایمیل" ? "email" : "name"}
+                    type={label === "ایمیل" ? "email" : "text"}
+                    className="w-full border-b border-white/20 bg-transparent py-3 text-white outline-none transition focus:border-white"
                   />
                 </div>
               ))}
             </div>
 
             <div>
-              <label className="mb-3 block text-sm text-white/60">موضوع</label>
+              <label className="mb-3 block text-sm text-white/60">
+                موضوع
+              </label>
 
               <input
-                className="
-                w-full
-                border-b
-                border-white/20
-                bg-transparent
-                py-3
-                outline-none
-                focus:border-white
-                "
+                name="subject"
+                type="text"
+                className="w-full border-b border-white/20 bg-transparent py-3 outline-none focus:border-white"
               />
             </div>
 
             <div>
-              <label className="mb-3 block text-sm text-white/60">پیام</label>
+              <label className="mb-3 block text-sm text-white/60">
+                پیام
+              </label>
 
               <textarea
+                name="message"
                 rows={5}
-                className="
-                w-full
-                resize-none
-                border-b
-                border-white/20
-                bg-transparent
-                py-3
-                outline-none
-                focus:border-white
-                "
+                className="w-full resize-none border-b border-white/20 bg-transparent py-3 outline-none focus:border-white"
               />
             </div>
 
             <button
-              className="
-              group
-              mt-5
-              flex
-              items-center
-              gap-3
-              border
-              border-white
-              px-10
-              py-4
-              text-sm
-              transition
-              hover:bg-white
-              hover:text-black
-              "
+              type="submit"
+              className="group mt-5 flex items-center gap-3 border border-white px-10 py-4 text-sm transition hover:bg-white hover:text-black"
             >
               ارسال پیام
               <ArrowUpLeft
@@ -215,6 +186,7 @@ export default function ContactPage() {
           </form>
         </div>
       </section>
+
       <MobileBottomNav />
       <Footer />
     </main>
