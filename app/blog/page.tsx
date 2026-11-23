@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import BlogPostCard from "@/components/blog/BlogPostCard";
+import FeaturedPostHero from "@/components/blog/FeaturedPostHero";
+import PopularPostItem from "@/components/blog/PopularPostItem";
 import { Post, PostsResponse } from "@/types/posts";
 import SectionHeader from "@/components/blog/SectionHeader";
 import EmptyState from "@/components/blog/EmptyState";
@@ -128,6 +130,13 @@ export default async function BlogPage() {
     })),
   };
 
+  // The first featured post becomes the editorial hero of the page.
+  const heroPost = featuredPosts[0] ?? null;
+  const remainingFeatured = heroPost ? featuredPosts.slice(1, 6) : [];
+
+  const discoveryChipClass =
+    "rounded-full border border-border px-4 py-2 text-xs font-medium text-muted-foreground transition-colors hover:border-white/30 hover:text-foreground";
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       {/* Structured Data */}
@@ -175,11 +184,44 @@ export default async function BlogPage() {
         />
       </section>
 
+      {/* Section discovery */}
+      <nav
+        aria-label="بخش‌های مجله"
+        className="border-b border-border bg-card/20"
+      >
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-3 px-5 py-6 md:px-8">
+          {featuredPosts.length > 0 && (
+            <a href="#featured-posts" className={discoveryChipClass}>
+              ویژه
+            </a>
+          )}
+          {weeklyBestPosts.length > 0 && (
+            <a href="#weekly-best-posts" className={discoveryChipClass}>
+              بهترین‌های هفته
+            </a>
+          )}
+          <a href="#latest-posts" className={discoveryChipClass}>
+            جدیدترین
+          </a>
+          {popularPosts.length > 0 && (
+            <a href="#popular-posts" className={discoveryChipClass}>
+              محبوب‌ترین
+            </a>
+          )}
+          {tshirtPosts.length > 0 && (
+            <a href="#tshirt-posts" className={discoveryChipClass}>
+              تیشرت
+            </a>
+          )}
+        </div>
+      </nav>
+
       {/* Featured Posts */}
       {featuredPosts.length > 0 && (
         <section
+          id="featured-posts"
           aria-labelledby="featured-posts-title"
-          className="border-b border-border bg-card/30"
+          className="scroll-mt-24 border-b border-border bg-card/30"
         >
           <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
             <SectionHeader
@@ -188,11 +230,15 @@ export default async function BlogPage() {
               description="منتخب مقالات مجله آداجیو؛ مطالبی که برای کشف موسیقی، هنرمندان و فرهنگ پاپ پیشنهاد می‌کنیم."
             />
 
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {featuredPosts.slice(0, 6).map((post) => (
-                <BlogPostCard key={post.id} post={post} />
-              ))}
-            </div>
+            {heroPost && <FeaturedPostHero post={heroPost} />}
+
+            {remainingFeatured.length > 0 && (
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
+                {remainingFeatured.map((post) => (
+                  <BlogPostCard key={post.id} post={post} featured />
+                ))}
+              </div>
+            )}
           </div>
         </section>
       )}
@@ -200,8 +246,9 @@ export default async function BlogPage() {
       {/* Weekly Best */}
       {weeklyBestPosts.length > 0 && (
         <section
+          id="weekly-best-posts"
           aria-labelledby="weekly-best-posts-title"
-          className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24"
+          className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 md:px-8 md:py-24"
         >
           <SectionHeader
             eyebrow="BEST OF THE WEEK"
@@ -209,7 +256,7 @@ export default async function BlogPage() {
             description="مقالاتی که در این هفته ارزش خواندن دارند؛ از داستان هنرمندان تا موسیقی و فرهنگ پاپ."
           />
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
             {weeklyBestPosts.slice(0, 6).map((post) => (
               <BlogPostCard key={post.id} post={post} />
             ))}
@@ -219,8 +266,9 @@ export default async function BlogPage() {
 
       {/* Latest */}
       <section
+        id="latest-posts"
         aria-labelledby="latest-posts-title"
-        className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24"
+        className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 md:px-8 md:py-24"
       >
         <SectionHeader
           eyebrow="LATEST"
@@ -229,7 +277,7 @@ export default async function BlogPage() {
         />
 
         {latestPosts.length > 0 ? (
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
             {latestPosts.slice(0, 6).map((post) => (
               <BlogPostCard key={post.id} post={post} />
             ))}
@@ -242,8 +290,9 @@ export default async function BlogPage() {
       {/* Popular */}
       {popularPosts.length > 0 && (
         <section
+          id="popular-posts"
           aria-labelledby="popular-posts-title"
-          className="border-y border-border bg-card/30"
+          className="scroll-mt-24 border-y border-border bg-card/30"
         >
           <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
             <SectionHeader
@@ -252,11 +301,15 @@ export default async function BlogPage() {
               description="مقالاتی که بیشتر از همه توسط مخاطبان آداجیو خوانده شده‌اند."
             />
 
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {popularPosts.slice(0, 6).map((post) => (
-                <BlogPostCard key={post.id} post={post} />
+            <ol className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 xl:grid-cols-3">
+              {popularPosts.slice(0, 6).map((post, index) => (
+                <PopularPostItem
+                  key={post.id}
+                  post={post}
+                  rank={index + 1}
+                />
               ))}
-            </div>
+            </ol>
           </div>
         </section>
       )}
@@ -264,8 +317,9 @@ export default async function BlogPage() {
       {/* T-Shirts */}
       {tshirtPosts.length > 0 && (
         <section
+          id="tshirt-posts"
           aria-labelledby="tshirt-posts-title"
-          className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24"
+          className="mx-auto max-w-7xl scroll-mt-24 px-5 py-16 md:px-8 md:py-24"
         >
           <SectionHeader
             eyebrow="T-SHIRTS"
@@ -273,26 +327,10 @@ export default async function BlogPage() {
             description="داستان‌ها، الهام‌ها و مطالب مرتبط با تیشرت‌های آداجیو."
           />
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
             {tshirtPosts.slice(0, 6).map((post) => (
               <BlogPostCard key={post.id} post={post} />
             ))}
-          </div>
-
-          <div className="mt-10 flex justify-center">
-            <Link
-              href="/blog/category/t-shirts"
-              className="group inline-flex items-center gap-3 rounded-full border border-border px-6 py-3 text-sm font-medium transition-all duration-300 hover:border-white/30 hover:bg-white/[0.04]"
-            >
-              <span>مشاهده همه مقالات تیشرت</span>
-
-              <span
-                aria-hidden="true"
-                className="transition-transform duration-300 group-hover:-translate-x-1"
-              >
-                ←
-              </span>
-            </Link>
           </div>
         </section>
       )}

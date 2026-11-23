@@ -6,6 +6,7 @@ import { Post, PostDetail, PostsResponse } from "@/types/posts";
 import { referer } from "@/utils/getURL";
 import { StructuredData } from "@/components/blog/StructuredData";
 import { formatDate } from "@/components/blog/formatDate";
+import ArticleScrollButtons from "@/components/blog/ArticleScrollButtons";
 import ProductCard from "@/components/ProductCard/ProductCard";
 
 
@@ -310,7 +311,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             }}
           />
         </div>
-          {relatedProducts && (
+          {relatedProducts && relatedProducts.length > 0 && (
           <section
             id="featured"
             className="relative z-1 bg-primary-foreground  px-5 pb-16 pt-20 md:px-16 md:pb-32 md:pt-40"
@@ -404,6 +405,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </footer>
       </article>
+
+      <ArticleScrollButtons />
     </main>
   );
 }
