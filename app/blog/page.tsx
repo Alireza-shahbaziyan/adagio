@@ -11,8 +11,7 @@ import { referer } from "@/utils/getURL";
 
 const API_URL = `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/api/blog/posts/`;
 
-export const dynamic = "force-static";
-export const revalidate = false;
+
 
 export const metadata: Metadata = {
   title: "مجله آداجیو | مقالات موسیقی، مد و فرهنگ پاپ",
@@ -47,7 +46,7 @@ async function getPosts(
 
   try {
     const response = await fetch(`${API_URL}?${searchParams.toString()}`, {
-      cache: "force-cache",
+      cache: "default",
     });
 
     if (!response.ok) {
